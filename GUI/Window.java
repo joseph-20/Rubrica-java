@@ -15,6 +15,10 @@ public class Window{
     private JPanel InfoContattiPrivata;
     private JButton aggiungiContattoButton;
     private JButton creaGruppoButton;
+    private JPanel PanelBottoni;
+    private JPanel PanelBottoniPrivati;
+    private JButton aggiungiContattoPrivatoButton;
+    private JButton creaGruppoButton2;
 
 
     public static void main(String[] args){
