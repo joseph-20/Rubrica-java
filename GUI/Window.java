@@ -12,4 +12,6 @@ public class Window{
     private JPanel InfoContatti;
     private JPanel ListaContattiPrivata;
     private JPanel InfoContattiPrivata;
+    private JButton aggiungiContattoButton;
+    private JButton creaGruppoButton;
 }
