@@ -18,10 +18,9 @@ public class Window{
     private JPanel PanelBottoni;
     private JPanel PanelBottoniPrivati;
     private JButton aggiungiContattoPrivatoButton;
-    private JButton creaGruppoButton2;
 
 
-    public static void main(String[] args){
+    public static void run(){
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException e1) {
@@ -43,5 +42,9 @@ public class Window{
         frame.pack();
         frame.setVisible(true);
         frame.setMinimumSize(new Dimension(1000, 750));
+    }
+
+    public static void main (String[] args){
+        run();
     }
 }
