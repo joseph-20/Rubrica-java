@@ -1,9 +1,15 @@
 package GUI;
 
+import Database.ConnessioneDatabase;
+import org.postgresql.util.PSQLException;
+
 import javax.swing.*;
 import java.awt.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
-public class Window{
+public class Window {
     //Dichiarazioni
     private JPanel panel;
     private JTabbedPane Tabs;
@@ -20,7 +26,7 @@ public class Window{
     private JButton aggiungiContattoPrivatoButton;
 
 
-    public static void run(){
+    public static void run() {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException e1) {
@@ -44,7 +50,9 @@ public class Window{
         frame.setMinimumSize(new Dimension(1000, 750));
     }
 
-    public static void main (String[] args){
+    public static void main(String[] args) throws SQLException {
         run();
+        ConnessioneDatabase conn = new ConnessioneDatabase();
+
     }
 }
