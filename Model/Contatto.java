@@ -6,17 +6,45 @@ public class Contatto {
     private String imgPath;
     private boolean security;
 
-
-    public void setContatto(String name,String surname,String img,boolean sec){
+    // Metodo setter generale
+    // TODO: decidere se tenerlo o meno
+    public void setContatto(String name, String surname, String img, boolean sec){
         nome = name;
         cognome = surname;
         imgPath = img;
         security = sec;
     }
-    public String getNome(){
+
+    // Metodi setter
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
+    }
+
+    public void setSecurity(boolean security) {
+        this.security = security;
+    }
+
+    // Metodi getter
+    public String getNome() {
         return nome;
     }
-    public String getCognome(){
+    public String getCognome() {
         return cognome;
+    }
+
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public boolean getSecurity() {
+        return security;
     }
 }
