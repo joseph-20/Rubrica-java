@@ -15,7 +15,8 @@ public class Window {
     //Dichiarazioni
     private ResultSet rs;
     private Statement s;
-    private ArrayList<Integer> pk;
+    private ArrayList<Integer> pkContatti;
+    private ArrayList<Integer> pkContattiPrivati;
     private JPanel panel;
     private JTabbedPane Tabs;
     private JSplitPane SplitPaneAreaPrivata;
@@ -36,6 +37,8 @@ public class Window {
     private JPanel panelBackgroundInfoIndirizzo;
     private JPanel panelInfoIndirizzo;
     private JLabel lblIndirizzo;
+    private JList listAreaPrivata;
+    private JScrollPane scrollPaneAreaPrivata;
 
     public Window() throws SQLException{
         Controller c = new Controller();
@@ -56,34 +59,53 @@ public class Window {
         //Creazione della JList per la finestra Contatti
         s = con.createStatement();
 
-        //QUERY DI SELEZIONE DEI CONTATTI
+        //QUERY DI SELEZIONE DEI CONTATTI CON SECURITY FALSE
         rs = s.executeQuery("SELECT * " +
                             "FROM CONTATTO " +
                             "WHERE SECURITY = FALSE " +
                             "ORDER BY NOME,COGNOME");
 
-        DefaultListModel DLM = new DefaultListModel();
-        pk= new ArrayList<Integer>();
+        SplitPaneContatti.setEnabled(false);
+        SplitPaneAreaPrivata.setEnabled(false);
+        DefaultListModel DLMCONTATTI = new DefaultListModel();
+        DefaultListModel DLMCONTATTIPRIVATI = new DefaultListModel();
+        pkContatti = new ArrayList<Integer>();
         while(rs.next()){                                   //Finche non scorro tutto il resultSet
             Contatto cont = new Contatto();
             cont.setContatto(rs.getString("nome"), rs.getString("cognome"), rs.getString("foto"), rs.getBoolean("security"));
-            DLM.addElement(cont.getNome()+" "+cont.getCognome());
-            pk.add(rs.getInt("id"));
+            DLMCONTATTI.addElement(cont.getNome()+" "+cont.getCognome());
+            pkContatti.add(rs.getInt("id"));
         }
-        listContatti.setModel(DLM);                         //Aggiungiamo nel JList i nomi e cognomi dei contatti
+        //QUERY DI SELEZIONE DEI CONTATTI CON SECURITY TRUE
+        rs = s.executeQuery("SELECT * " +
+                "FROM CONTATTO " +
+                "WHERE SECURITY = TRUE " +
+                "ORDER BY NOME,COGNOME");
+
+        while(rs.next()){                                   //Finche non scorro tutto il resultSet
+            Contatto cont = new Contatto();
+            cont.setContatto(rs.getString("nome"), rs.getString("cognome"), rs.getString("foto"), rs.getBoolean("security"));
+            DLMCONTATTIPRIVATI.addElement(cont.getNome()+" "+cont.getCognome());
+            pkContattiPrivati.add(rs.getInt("id"));
+        }
+        
+        listContatti.setModel(DLMCONTATTI);                         //Aggiungiamo nel JList i nomi e cognomi dei contatti
+        listAreaPrivata.setModel(DLMCONTATTIPRIVATI);
         scrollPaneContatti.setViewportView(listContatti);   //Aggiungiamo una VerticalScrollBar alla JList
         scrollPaneContatti.setVisible(true);
+        scrollPaneAreaPrivata.setViewportView(listAreaPrivata);
+        scrollPaneAreaPrivata.setVisible(true);
 
         listContatti.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 try {
-                    rs = s.executeQuery("SELECT * FROM email where id_contatto ="+pk.get(listContatti.getSelectedIndex()));
+                    rs = s.executeQuery("SELECT * FROM email where id_contatto ="+ pkContatti.get(listContatti.getSelectedIndex()));
                     while(rs.next()) {
                         lblEmailContatto.setText("Email: "+rs.getString("username")+"@"+rs.getString("dominio"));
                     }
-                    rs = s.executeQuery("SELECT * FROM indirizzo_principale where id_contatto ="+pk.get(listContatti.getAnchorSelectionIndex()));
+                    rs = s.executeQuery("SELECT * FROM indirizzo_principale where id_contatto ="+ pkContatti.get(listContatti.getAnchorSelectionIndex()));
                     while(rs.next()){
                         lblIndirizzo.setText("Indirizzo principale: "+rs.getString("via")+" "+rs.getString("civico")+"   Città: "+rs.getString("citta"));
                     }
