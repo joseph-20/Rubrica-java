@@ -1,12 +1,11 @@
 package GUI;
 
-import Database.ConnessioneDatabase;
 import Model.Contatto;
-import org.postgresql.util.PSQLException;
 
 import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
+import javax.swing.UIManager.*;
 
 import Controller.Controller;
 
@@ -25,7 +24,8 @@ public class Window {
     private JPanel PanelBottoni;
     private JPanel PanelBottoniPrivati;
     private JButton aggiungiContattoPrivatoButton;
-    private JList list1;
+    private JList listContatti;
+    private JScrollPane scrollPaneContatti;
 
     public Window() throws SQLException{
         Controller c = new Controller();
@@ -33,18 +33,6 @@ public class Window {
     }
 
     private void run(Controller c) throws SQLException {
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException e1) {
-            e1.printStackTrace();
-        } catch (InstantiationException e1) {
-            e1.printStackTrace();
-        } catch (IllegalAccessException e1) {
-            e1.printStackTrace();
-        } catch (UnsupportedLookAndFeelException e1) {
-            e1.printStackTrace();
-        }
-
         //Creazione finestra principale
         JFrame frame = new JFrame("Rubrica");
         frame.setContentPane(this.panel);
@@ -56,25 +44,35 @@ public class Window {
         Connection con = c.getConnection();
 
         //Creazione della JList per la finestra Contatti
-        ResultSet set;
+        ResultSet rs;
         Statement s;
-        s=con.createStatement();
-        set = s.executeQuery("SELECT *" +
-                "FROM CONTATTO");
+        s = con.createStatement();
+
+        //QUERY DI SELEZIONE DEI CONTATTI
+        rs = s.executeQuery("SELECT * " +
+                            "FROM CONTATTO " +
+                            "WHERE SECURITY = FALSE " +
+                            "ORDER BY NOME,COGNOME");
+
         DefaultListModel DLM = new DefaultListModel();
-        while(set.next()){
+
+        while(rs.next()){                                   //Finche non scorro tutto il resultSet
             Contatto cont = new Contatto();
-            System.out.println(set.getString("Nome"));
-            cont.setContatto(set.getString("nome"), set.getString("cognome"), set.getString("foto"), set.getBoolean("security"));
+            cont.setContatto(rs.getString("nome"), rs.getString("cognome"), rs.getString("foto"), rs.getBoolean("security"));
             DLM.addElement(cont.getNome()+" "+cont.getCognome());
         }
-        list1.setModel(DLM);
+        listContatti.setModel(DLM);                         //Aggiungiamo nel JList i nomi e cognomi dei contatti
+        scrollPaneContatti.setViewportView(listContatti);   //Aggiungiamo una VerticalScrollBar alla JList
+        scrollPaneContatti.setVisible(true);
     }
 
 
     public static void main(String[] args) throws SQLException{
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); //System Look And Feel
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
         new Window();
-
     }
-
 }
