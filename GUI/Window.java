@@ -4,13 +4,21 @@ import Model.Contatto;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.UIManager.*;
+import javax.swing.event.ListSelectionListener;
 
 import Controller.Controller;
 
 public class Window {
     //Dichiarazioni
+    private ResultSet rs;
+    private Statement s;
+    private ArrayList<Integer> pk;
     private JPanel panel;
     private JTabbedPane Tabs;
     private JSplitPane SplitPaneAreaPrivata;
@@ -44,8 +52,6 @@ public class Window {
         Connection con = c.getConnection();
 
         //Creazione della JList per la finestra Contatti
-        ResultSet rs;
-        Statement s;
         s = con.createStatement();
 
         //QUERY DI SELEZIONE DEI CONTATTI
@@ -55,15 +61,35 @@ public class Window {
                             "ORDER BY NOME,COGNOME");
 
         DefaultListModel DLM = new DefaultListModel();
-
+        pk= new ArrayList<Integer>();
         while(rs.next()){                                   //Finche non scorro tutto il resultSet
             Contatto cont = new Contatto();
             cont.setContatto(rs.getString("nome"), rs.getString("cognome"), rs.getString("foto"), rs.getBoolean("security"));
             DLM.addElement(cont.getNome()+" "+cont.getCognome());
+            pk.add(rs.getInt("id"));
         }
         listContatti.setModel(DLM);                         //Aggiungiamo nel JList i nomi e cognomi dei contatti
         scrollPaneContatti.setViewportView(listContatti);   //Aggiungiamo una VerticalScrollBar alla JList
         scrollPaneContatti.setVisible(true);
+
+        listContatti.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                try {
+                    rs = s.executeQuery("SELECT * FROM email where id_contatto ="+pk.get(listContatti.getSelectedIndex()));
+                    while(rs.next()) {
+                        System.out.println("Email: "+rs.getString("username") + "@" + rs.getString("dominio"));
+                    }
+                    rs = s.executeQuery("SELECT * FROM indirizzo_principale where id_contatto ="+pk.get(listContatti.getAnchorSelectionIndex()));
+                    while(rs.next()){
+                        System.out.println("Indirizzo principale:"+" "+rs.getString("via")+" "+rs.getString("civico")+"\nCittà : "+rs.getString("citta"));
+                    }
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
     }
 
 
