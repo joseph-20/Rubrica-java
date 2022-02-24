@@ -203,7 +203,9 @@
                   </grid>
                   <component id="a53a6" class="javax.swing.JList" binding="listAreaPrivata">
                     <constraints border-constraint="First"/>
-                    <properties/>
+                    <properties>
+                      <font size="20"/>
+                    </properties>
                   </component>
                   <scrollpane id="e76b6" binding="scrollPaneAreaPrivata">
                     <constraints border-constraint="Center"/>

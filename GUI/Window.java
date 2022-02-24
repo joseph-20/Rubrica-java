@@ -82,6 +82,7 @@ public class Window {
                 "WHERE SECURITY = TRUE " +
                 "ORDER BY NOME,COGNOME");
 
+        pkContattiPrivati = new ArrayList<Integer>();
         while(rs.next()){                                   //Finche non scorro tutto il resultSet
             Contatto cont = new Contatto();
             cont.setContatto(rs.getString("nome"), rs.getString("cognome"), rs.getString("foto"), rs.getBoolean("security"));
