@@ -4,13 +4,10 @@ import Model.Contatto;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.*;
 import java.util.ArrayList;
-import javax.swing.UIManager.*;
-import javax.swing.event.ListSelectionListener;
 
 import Controller.Controller;
 
@@ -23,8 +20,8 @@ public class Window {
     private JTabbedPane Tabs;
     private JSplitPane SplitPaneAreaPrivata;
     private JSplitPane SplitPaneContatti;
-    private JPanel ListaContatti;
-    private JPanel InfoContatti;
+    private JPanel panelListaContatti;
+    private JPanel panelInfoContatti;
     private JPanel ListaContattiPrivata;
     private JPanel InfoContattiPrivata;
     private JButton aggiungiContattoButton;
@@ -34,6 +31,11 @@ public class Window {
     private JButton aggiungiContattoPrivatoButton;
     private JList listContatti;
     private JScrollPane scrollPaneContatti;
+    private JPanel panelInfoMail;
+    private JLabel lblEmailContatto;
+    private JPanel panelBackgroundInfoIndirizzo;
+    private JPanel panelInfoIndirizzo;
+    private JLabel lblIndirizzo;
 
     public Window() throws SQLException{
         Controller c = new Controller();
@@ -79,11 +81,11 @@ public class Window {
                 try {
                     rs = s.executeQuery("SELECT * FROM email where id_contatto ="+pk.get(listContatti.getSelectedIndex()));
                     while(rs.next()) {
-                        System.out.println("Email: "+rs.getString("username") + "@" + rs.getString("dominio"));
+                        lblEmailContatto.setText("Email: "+rs.getString("username")+"@"+rs.getString("dominio"));
                     }
                     rs = s.executeQuery("SELECT * FROM indirizzo_principale where id_contatto ="+pk.get(listContatti.getAnchorSelectionIndex()));
                     while(rs.next()){
-                        System.out.println("Indirizzo principale:"+" "+rs.getString("via")+" "+rs.getString("civico")+"\nCittà : "+rs.getString("citta"));
+                        lblIndirizzo.setText("Indirizzo principale: "+rs.getString("via")+" "+rs.getString("civico")+"   Città: "+rs.getString("citta"));
                     }
                 } catch (SQLException ex) {
                     ex.printStackTrace();
@@ -100,5 +102,9 @@ public class Window {
             e.printStackTrace();
         }
         new Window();
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
 }
