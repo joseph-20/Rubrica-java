@@ -1,5 +1,7 @@
 package GUI;
 
+import DAO.ContattoDAO;
+import ImplementazionePostgresDAO.ImplementazioneContattoDAO;
 import Model.Contatto;
 
 import javax.swing.*;
@@ -13,6 +15,7 @@ import Controller.Controller;
 
 public class Window {
     //Dichiarazioni
+    private ContattoDAO contact = new ImplementazioneContattoDAO();
     private ResultSet rs;
     private Statement s;
     private ArrayList<Integer> pkContatti;
@@ -32,6 +35,8 @@ public class Window {
     private JButton aggiungiContattoPrivatoButton;
     private JList listContatti;
     private JScrollPane scrollPaneContatti;
+    DefaultListModel DLMContatti = new DefaultListModel();
+    DefaultListModel DLMContattiPrivati = new DefaultListModel();
     private JPanel panelInfoMail;
     private JLabel lblEmailContatto;
     private JPanel panelBackgroundInfoIndirizzo;
@@ -53,68 +58,26 @@ public class Window {
         frame.setVisible(true);
         frame.setMinimumSize(new Dimension(1000, 750));
 
-        //Connessione al database
-        Connection con = c.getConnection();
-
-        //Creazione della JList per la finestra Contatti
-        s = con.createStatement();
-
-        //QUERY DI SELEZIONE DEI CONTATTI CON SECURITY FALSE
-        rs = s.executeQuery("SELECT * " +
-                            "FROM CONTATTO " +
-                            "WHERE SECURITY = FALSE " +
-                            "ORDER BY NOME,COGNOME");
-
-        SplitPaneContatti.setEnabled(false);
-        SplitPaneAreaPrivata.setEnabled(false);
-        DefaultListModel DLMCONTATTI = new DefaultListModel();
-        DefaultListModel DLMCONTATTIPRIVATI = new DefaultListModel();
-        pkContatti = new ArrayList<Integer>();
-        while(rs.next()){                                   //Finche non scorro tutto il resultSet
-            Contatto cont = new Contatto();
-            cont.setContatto(rs.getString("nome"), rs.getString("cognome"), rs.getString("foto"), rs.getBoolean("security"));
-            DLMCONTATTI.addElement(cont.getNome()+" "+cont.getCognome());
-            pkContatti.add(rs.getInt("id"));
-        }
-        //QUERY DI SELEZIONE DEI CONTATTI CON SECURITY TRUE
-        rs = s.executeQuery("SELECT * " +
-                "FROM CONTATTO " +
-                "WHERE SECURITY = TRUE " +
-                "ORDER BY NOME,COGNOME");
-
-        pkContattiPrivati = new ArrayList<Integer>();
-        while(rs.next()){                                   //Finche non scorro tutto il resultSet
-            Contatto cont = new Contatto();
-            cont.setContatto(rs.getString("nome"), rs.getString("cognome"), rs.getString("foto"), rs.getBoolean("security"));
-            DLMCONTATTIPRIVATI.addElement(cont.getNome()+" "+cont.getCognome());
-            pkContattiPrivati.add(rs.getInt("id"));
-        }
-        
-        listContatti.setModel(DLMCONTATTI);                         //Aggiungiamo nel JList i nomi e cognomi dei contatti
-        listAreaPrivata.setModel(DLMCONTATTIPRIVATI);
-        scrollPaneContatti.setViewportView(listContatti);   //Aggiungiamo una VerticalScrollBar alla JList
+        //Blocco scorrimento ScrollBar
+        scrollPaneContatti.setViewportView(listContatti);    //Aggiungiamo una VerticalScrollBar alla JList
         scrollPaneContatti.setVisible(true);
         scrollPaneAreaPrivata.setViewportView(listAreaPrivata);
         scrollPaneAreaPrivata.setVisible(true);
 
-        listContatti.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                try {
-                    rs = s.executeQuery("SELECT * FROM email where id_contatto ="+ pkContatti.get(listContatti.getSelectedIndex()));
-                    while(rs.next()) {
-                        lblEmailContatto.setText("Email: "+rs.getString("username")+"@"+rs.getString("dominio"));
-                    }
-                    rs = s.executeQuery("SELECT * FROM indirizzo_principale where id_contatto ="+ pkContatti.get(listContatti.getAnchorSelectionIndex()));
-                    while(rs.next()){
-                        lblIndirizzo.setText("Indirizzo principale: "+rs.getString("via")+" "+rs.getString("civico")+"   Città: "+rs.getString("citta"));
-                    }
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
-            }
-        });
+        SplitPaneContatti.setEnabled(false);
+        SplitPaneAreaPrivata.setEnabled(false);
+
+        //Gestione zona contatti
+        pkContatti = new ArrayList<Integer>();
+        DLMContatti = contact.getContatti(pkContatti);
+        listContatti.setModel(DLMContatti);                                         //Aggiungiamo nel JList i nomi e cognomi dei contatti
+
+        //Gestione zona contatti privati
+        pkContattiPrivati = new ArrayList<Integer>();
+        DLMContattiPrivati = contact.getContattiPrivati(pkContattiPrivati);
+        listAreaPrivata.setModel(DLMContattiPrivati);                               //Aggiungiamo nel JList i nomi e cognomi dei contatti
+
+
     }
 
 
