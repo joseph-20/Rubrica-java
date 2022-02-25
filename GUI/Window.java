@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -37,13 +38,12 @@ public class Window {
     private JScrollPane scrollPaneContatti;
     DefaultListModel DLMContatti = new DefaultListModel();
     DefaultListModel DLMContattiPrivati = new DefaultListModel();
-    private JPanel panelInfoMail;
-    private JLabel lblEmailContatto;
-    private JPanel panelBackgroundInfoIndirizzo;
-    private JPanel panelInfoIndirizzo;
-    private JLabel lblIndirizzo;
     private JList listAreaPrivata;
     private JScrollPane scrollPaneAreaPrivata;
+    private JPanel panelFoto;
+    private JLabel lblFoto;
+    private JPanel panelInfoTop;
+    private JLabel lblNome;
 
     public Window() throws SQLException{
         Controller c = new Controller();
@@ -56,7 +56,7 @@ public class Window {
         frame.setContentPane(this.panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        frame.setMinimumSize(new Dimension(1000, 750));
+        frame.setMinimumSize(new Dimension(0, 0));
 
         //Blocco scorrimento ScrollBar
         scrollPaneContatti.setViewportView(listContatti);    //Aggiungiamo una VerticalScrollBar alla JList
@@ -77,6 +77,9 @@ public class Window {
         DLMContattiPrivati = contact.getContattiPrivati(pkContattiPrivati);
         listAreaPrivata.setModel(DLMContattiPrivati);                               //Aggiungiamo nel JList i nomi e cognomi dei contatti
 
+        ImageIcon prova = new ImageIcon(".images/contact400.jpg");
+        lblFoto.setIcon(prova);
+        lblFoto.setVisible(true);
 
     }
 
