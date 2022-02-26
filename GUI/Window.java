@@ -2,13 +2,9 @@ package GUI;
 
 import DAO.ContattoDAO;
 import ImplementazionePostgresDAO.ImplementazioneContattoDAO;
-import Model.Contatto;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -40,10 +36,11 @@ public class Window {
     DefaultListModel DLMContattiPrivati = new DefaultListModel();
     private JList listAreaPrivata;
     private JScrollPane scrollPaneAreaPrivata;
-    private JPanel panelFoto;
     private JLabel lblFoto;
-    private JPanel panelInfoTop;
     private JLabel lblNome;
+    private JLabel lblCognome;
+    private JPanel panelInfoTop;
+    private JSeparator InfoContattiSeparator;
 
     public Window() throws SQLException{
         Controller c = new Controller();
@@ -56,7 +53,7 @@ public class Window {
         frame.setContentPane(this.panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        frame.setMinimumSize(new Dimension(0, 0));
+        frame.setMinimumSize(new Dimension(1000, 700));
 
         //Blocco scorrimento ScrollBar
         scrollPaneContatti.setViewportView(listContatti);    //Aggiungiamo una VerticalScrollBar alla JList
@@ -77,7 +74,7 @@ public class Window {
         DLMContattiPrivati = contact.getContattiPrivati(pkContattiPrivati);
         listAreaPrivata.setModel(DLMContattiPrivati);                               //Aggiungiamo nel JList i nomi e cognomi dei contatti
 
-        ImageIcon prova = new ImageIcon(".images/contact400.jpg");
+        ImageIcon prova = new ImageIcon(".images/placeholder300x300.jpg");
         lblFoto.setIcon(prova);
         lblFoto.setVisible(true);
 
@@ -91,9 +88,5 @@ public class Window {
             e.printStackTrace();
         }
         new Window();
-    }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
     }
 }
