@@ -5,6 +5,8 @@ import ImplementazionePostgresDAO.ImplementazioneContattoDAO;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -50,6 +52,15 @@ public class Window {
     private JScrollPane emailScroll;
     private JList emailList;
     private JList indirizzoPrincipaleList;
+    private JButton reindirizzamentiButton;
+    private JPanel panelServizi;
+    private JLabel lblMessenger;
+    private JLabel lblWhatsapp;
+    private JLabel lblViber;
+    private JLabel lblTelegram;
+    private JLabel lblSkype;
+    private JLabel lblWeChat;
+    private JLabel lblTeams;
 
     public Window() throws SQLException{
         Controller c = new Controller();
@@ -83,10 +94,42 @@ public class Window {
         DLMContattiPrivati = contact.getContattiPrivati(pkContattiPrivati);
         listAreaPrivata.setModel(DLMContattiPrivati);                               //Aggiungiamo nel JList i nomi e cognomi dei contatti
 
-        ImageIcon prova = new ImageIcon(".images/contact200.jpg");
-        lblFoto.setIcon(prova);
+        ImageIcon icon = new ImageIcon(".images/contact200.jpg");
+        lblFoto.setIcon(icon);
         lblFoto.setVisible(true);
         indirizzoPrincipaleList.setBorder(BorderFactory.createLineBorder(Color.gray));
+        icon = new ImageIcon(".images/Messenger25x25.png");
+        lblMessenger.setIcon(icon);
+        icon = new ImageIcon(".images/Skype25x25.png");
+        lblSkype.setIcon(icon);
+        icon = new ImageIcon(".images/Teams25x25.png");
+        lblTeams.setIcon(icon);
+        icon = new ImageIcon(".images/WeChat25x25.png");
+        lblWeChat.setIcon(icon);
+        icon = new ImageIcon(".images/WhatsApp25x25.png");
+        lblWhatsapp.setIcon(icon);
+        icon = new ImageIcon(".images/Viber25x25.png");
+        lblViber.setIcon(icon);
+        icon = new ImageIcon(".images/Telegram25x25.png");
+        lblTelegram.setIcon(icon);
+        icon = new ImageIcon(".images/Messenger30x30.png");
+        ImageIcon finalIcon = icon;
+        icon = new ImageIcon(".images/Messenger30x30.png");
+        ImageIcon icon2 = new ImageIcon(".images/Messenger25x25.png");
+        lblMessenger.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                lblMessenger.setIcon(finalIcon);
+            }
+        });
+        lblMessenger.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                lblMessenger.setIcon(icon2);
+            }
+        });
 
     }
 
