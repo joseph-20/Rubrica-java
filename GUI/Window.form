@@ -174,7 +174,7 @@
                           <horizontalTextPosition value="0"/>
                           <iconTextGap value="4"/>
                           <inheritsPopupMenu value="true"/>
-                          <text value="Sputo"/>
+                          <text value="Pinto"/>
                         </properties>
                       </component>
                       <hspacer id="6249">
@@ -197,54 +197,14 @@
                     <properties/>
                     <border type="none"/>
                     <children>
-                      <scrollpane id="4ef8f" binding="numeriFissiScroll">
-                        <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                          <gridbag weightx="0.0" weighty="0.0"/>
-                        </constraints>
-                        <properties>
-                          <horizontalScrollBarPolicy value="30"/>
-                          <preferredSize width="57" height="192"/>
-                          <verticalScrollBarPolicy value="20"/>
-                          <visible value="true"/>
-                        </properties>
-                        <border type="none"/>
-                        <children>
-                          <component id="7e4bd" class="javax.swing.JList" binding="numeriFissiList">
-                            <constraints/>
-                            <properties>
-                              <autoscrolls value="true"/>
-                              <enabled value="false"/>
-                              <font size="16"/>
-                              <layoutOrientation value="0"/>
-                              <maximumSize width="57" height="24"/>
-                              <minimumSize width="57" height="24"/>
-                              <model>
-                                <item value="s"/>
-                              </model>
-                              <preferredSize width="57" height="24"/>
-                            </properties>
-                          </component>
-                        </children>
-                      </scrollpane>
-                      <hspacer id="b5ce2">
-                        <constraints>
-                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                          <gridbag weightx="0.0" weighty="0.0"/>
-                        </constraints>
-                      </hspacer>
-                      <vspacer id="3e1a7">
-                        <constraints>
-                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-                          <gridbag weightx="0.0" weighty="0.0"/>
-                        </constraints>
-                      </vspacer>
                       <scrollpane id="fe68" binding="numeriMobiliScroll">
                         <constraints>
                           <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                           <gridbag weightx="0.0" weighty="0.0"/>
                         </constraints>
-                        <properties/>
+                        <properties>
+                          <preferredSize width="67" height="72"/>
+                        </properties>
                         <border type="none"/>
                         <children>
                           <component id="c1353" class="javax.swing.JList" binding="numeriMobiliList">
@@ -253,8 +213,11 @@
                               <enabled value="false"/>
                               <font size="16"/>
                               <model>
-                                <item value="fassafsa"/>
+                                <item value="3662186629"/>
+                                <item value="3334384745"/>
+                                <item value="3318284829"/>
                               </model>
+                              <visibleRowCount value="3"/>
                             </properties>
                           </component>
                         </children>
@@ -265,7 +228,7 @@
                           <gridbag weightx="0.0" weighty="0.0" ipadx="20"/>
                         </constraints>
                         <properties>
-                          <font name="Consolas" size="18" style="0"/>
+                          <font name="Consolas" size="18"/>
                           <horizontalAlignment value="0"/>
                           <horizontalTextPosition value="0"/>
                           <text value="Numeri Fissi"/>
@@ -283,6 +246,108 @@
                           <horizontalAlignment value="0"/>
                           <horizontalTextPosition value="0"/>
                           <text value="Numeri Mobili"/>
+                        </properties>
+                      </component>
+                      <scrollpane id="74b6c" binding="numeriFissiScroll">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <preferredSize width="67" height="72"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="275a1" class="javax.swing.JList" binding="numeriFissiList">
+                            <constraints/>
+                            <properties>
+                              <enabled value="false"/>
+                              <font size="16"/>
+                              <model>
+                                <item value="0813535132"/>
+                                <item value="0813512425"/>
+                                <item value="0816931244"/>
+                                <item value="0814623513"/>
+                              </model>
+                              <visibleRowCount value="3"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </scrollpane>
+                      <vspacer id="3e1a7">
+                        <constraints>
+                          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0" ipady="15"/>
+                        </constraints>
+                      </vspacer>
+                      <component id="599e0" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0" ipadx="20"/>
+                        </constraints>
+                        <properties>
+                          <font name="Consolas" size="18"/>
+                          <horizontalAlignment value="0"/>
+                          <horizontalTextPosition value="0"/>
+                          <text value="Email"/>
+                        </properties>
+                      </component>
+                      <vspacer id="ad126">
+                        <constraints>
+                          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0" ipady="15"/>
+                        </constraints>
+                      </vspacer>
+                      <scrollpane id="76c8e" binding="emailScroll">
+                        <constraints>
+                          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <preferredSize width="240" height="72"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="a8b2" class="javax.swing.JList" binding="emailList">
+                            <constraints/>
+                            <properties>
+                              <enabled value="false"/>
+                              <font size="16"/>
+                              <model>
+                                <item value="pippobaudo@gmail.com"/>
+                                <item value="pierino@gmail.com"/>
+                                <item value="pierluigi@gmail.com"/>
+                                <item value="Diononesiste@divinita.it"/>
+                              </model>
+                              <visibleRowCount value="3"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </scrollpane>
+                      <component id="8442a" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0" ipadx="20"/>
+                        </constraints>
+                        <properties>
+                          <font name="Consolas" size="18"/>
+                          <horizontalAlignment value="0"/>
+                          <horizontalTextPosition value="0"/>
+                          <text value="Indirizzo principale"/>
+                        </properties>
+                      </component>
+                      <component id="3382e" class="javax.swing.JList" binding="indirizzoPrincipaleList">
+                        <constraints>
+                          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <enabled value="false"/>
+                          <font size="16"/>
+                          <model>
+                            <item value="Via Bartolo Longo 55A,Napoli,80147,Italia"/>
+                          </model>
+                          <visibleRowCount value="3"/>
                         </properties>
                       </component>
                     </children>

@@ -41,12 +41,15 @@ public class Window {
     private JLabel lblCognome;
     private JPanel panelInfoTop;
     private JPanel panelInfoBottom;
-    private JList numeriFissiList;
     private JList numeriMobiliList;
-    private JScrollPane numeriFissiScroll;
     private JLabel numeriFissiLabel;
     private JLabel numeriMobiliLabel;
     private JScrollPane numeriMobiliScroll;
+    private JScrollPane numeriFissiScroll;
+    private JList numeriFissiList;
+    private JScrollPane emailScroll;
+    private JList emailList;
+    private JList indirizzoPrincipaleList;
 
     public Window() throws SQLException{
         Controller c = new Controller();
@@ -83,6 +86,7 @@ public class Window {
         ImageIcon prova = new ImageIcon(".images/contact200.jpg");
         lblFoto.setIcon(prova);
         lblFoto.setVisible(true);
+        indirizzoPrincipaleList.setBorder(BorderFactory.createLineBorder(Color.gray));
 
     }
 
