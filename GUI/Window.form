@@ -30,7 +30,7 @@
               <tabbedpane title="Contatti"/>
             </constraints>
             <properties>
-              <dividerLocation value="350"/>
+              <dividerLocation value="386"/>
               <minimumSize width="10" height="10"/>
               <requestFocusEnabled value="false"/>
               <resizeWeight value="0.15"/>
@@ -60,7 +60,7 @@
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <font name="Comic Sans MS" size="20"/>
+                          <font name="Consolas" size="20" style="1"/>
                           <text value="Aggiungi Contatto"/>
                         </properties>
                       </component>
@@ -79,7 +79,7 @@
                           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <font name="Comic Sans MS" size="20"/>
+                          <font name="Consolas" size="20" style="1"/>
                           <text value="Crea Gruppo"/>
                         </properties>
                       </component>
@@ -91,7 +91,7 @@
                       <background color="-1"/>
                       <doubleBuffered value="false"/>
                       <dragEnabled value="false"/>
-                      <font name="Comic Sans MS" size="20"/>
+                      <font name="Consolas" size="20"/>
                       <layoutOrientation value="0"/>
                       <model/>
                       <valueIsAdjusting value="false"/>
@@ -153,7 +153,7 @@
                         </constraints>
                         <properties>
                           <alignmentY value="0.0"/>
-                          <font size="48"/>
+                          <font name="Consolas" size="48"/>
                           <horizontalAlignment value="0"/>
                           <horizontalTextPosition value="0"/>
                           <iconTextGap value="0"/>
@@ -169,7 +169,7 @@
                           <alignmentX value="1.0"/>
                           <alignmentY value="1.0"/>
                           <autoscrolls value="false"/>
-                          <font size="48"/>
+                          <font name="Consolas" size="48"/>
                           <horizontalAlignment value="0"/>
                           <horizontalTextPosition value="0"/>
                           <iconTextGap value="4"/>
@@ -202,28 +202,27 @@
                           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                           <gridbag weightx="0.0" weighty="0.0"/>
                         </constraints>
-                        <properties/>
+                        <properties>
+                          <horizontalScrollBarPolicy value="30"/>
+                          <preferredSize width="57" height="192"/>
+                          <verticalScrollBarPolicy value="20"/>
+                          <visible value="true"/>
+                        </properties>
                         <border type="none"/>
                         <children>
                           <component id="7e4bd" class="javax.swing.JList" binding="numeriFissiList">
                             <constraints/>
                             <properties>
-                              <maximumSize width="-1" height="200"/>
-                              <minimumSize width="-1" height="200"/>
+                              <autoscrolls value="true"/>
+                              <enabled value="false"/>
+                              <font size="16"/>
+                              <layoutOrientation value="0"/>
+                              <maximumSize width="57" height="24"/>
+                              <minimumSize width="57" height="24"/>
                               <model>
-                                <item value="12"/>
-                                <item value="23"/>
-                                <item value="32"/>
-                                <item value="32"/>
-                                <item value="3"/>
-                                <item value="2"/>
-                                <item value="3"/>
-                                <item value="23"/>
-                                <item value="2"/>
-                                <item value="32"/>
-                                <item value="3"/>
+                                <item value="s"/>
                               </model>
-                              <preferredSize width="-1" height="200"/>
+                              <preferredSize width="57" height="24"/>
                             </properties>
                           </component>
                         </children>
@@ -251,17 +250,10 @@
                           <component id="c1353" class="javax.swing.JList" binding="numeriMobiliList">
                             <constraints/>
                             <properties>
+                              <enabled value="false"/>
+                              <font size="16"/>
                               <model>
-                                <item value="54"/>
-                                <item value="564"/>
-                                <item value="5"/>
-                                <item value="45"/>
-                                <item value="4"/>
-                                <item value="5"/>
-                                <item value="45"/>
-                                <item value="44"/>
-                                <item value="5"/>
-                                <item value="4"/>
+                                <item value="fassafsa"/>
                               </model>
                             </properties>
                           </component>
@@ -273,6 +265,7 @@
                           <gridbag weightx="0.0" weighty="0.0" ipadx="20"/>
                         </constraints>
                         <properties>
+                          <font name="Consolas" size="18" style="0"/>
                           <horizontalAlignment value="0"/>
                           <horizontalTextPosition value="0"/>
                           <text value="Numeri Fissi"/>
@@ -286,6 +279,7 @@
                         <properties>
                           <alignmentY value="0.0"/>
                           <autoscrolls value="false"/>
+                          <font name="Consolas" size="18"/>
                           <horizontalAlignment value="0"/>
                           <horizontalTextPosition value="0"/>
                           <text value="Numeri Mobili"/>

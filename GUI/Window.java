@@ -59,7 +59,7 @@ public class Window {
         frame.setContentPane(this.panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        frame.setMinimumSize (new Dimension (1000, 700));
+        frame.setMinimumSize (new Dimension (1200, 720));
 
         //Blocco scorrimento ScrollBar
         scrollPaneContatti.setViewportView(listContatti);    //Aggiungiamo una VerticalScrollBar alla JList
