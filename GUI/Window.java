@@ -61,6 +61,7 @@ public class Window {
     private JLabel lblSkype;
     private JLabel lblWeChat;
     private JLabel lblTeams;
+    private ImageIcon img;
 
     public Window() throws SQLException{
         Controller c = new Controller();
@@ -100,37 +101,131 @@ public class Window {
         indirizzoPrincipaleList.setBorder(BorderFactory.createLineBorder(Color.gray));
         icon = new ImageIcon(".images/Messenger25x25.png");
         lblMessenger.setIcon(icon);
-        icon = new ImageIcon(".images/Skype25x25.png");
-        lblSkype.setIcon(icon);
-        icon = new ImageIcon(".images/Teams25x25.png");
-        lblTeams.setIcon(icon);
-        icon = new ImageIcon(".images/WeChat25x25.png");
-        lblWeChat.setIcon(icon);
-        icon = new ImageIcon(".images/WhatsApp25x25.png");
-        lblWhatsapp.setIcon(icon);
-        icon = new ImageIcon(".images/Viber25x25.png");
-        lblViber.setIcon(icon);
-        icon = new ImageIcon(".images/Telegram25x25.png");
-        lblTelegram.setIcon(icon);
-        icon = new ImageIcon(".images/Messenger30x30.png");
-        ImageIcon finalIcon = icon;
-        icon = new ImageIcon(".images/Messenger30x30.png");
-        ImageIcon icon2 = new ImageIcon(".images/Messenger25x25.png");
+
         lblMessenger.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
                 super.mouseEntered(e);
-                lblMessenger.setIcon(finalIcon);
+                img = new ImageIcon(".images/Messenger30x30.png");
+                lblMessenger.setIcon(img);
             }
         });
         lblMessenger.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseExited(MouseEvent e) {
                 super.mouseExited(e);
-                lblMessenger.setIcon(icon2);
+                img = new ImageIcon(".images/Messenger25x25.png");
+                lblMessenger.setIcon(img);
             }
         });
-
+        icon = new ImageIcon(".images/Skype25x25.png");
+        lblSkype.setIcon(icon);
+        lblSkype.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                img = new ImageIcon(".images/Skype30x30.png");
+                lblSkype.setIcon(img);
+            }
+        });
+        lblSkype.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                img = new ImageIcon(".images/Skype25x25.png");
+                lblSkype.setIcon(img);
+            }
+        });
+        icon = new ImageIcon(".images/Teams25x25.png");
+        lblTeams.setIcon(icon);
+        lblTeams.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                img = new ImageIcon(".images/Teams30x30.png");
+                lblTeams.setIcon(img);
+            }
+        });
+        lblTeams.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                img = new ImageIcon(".images/Teams25x25.png");
+                lblTeams.setIcon(img);
+            }
+        });
+        icon = new ImageIcon(".images/WeChat25x25.png");
+        lblWeChat.setIcon(icon);
+        lblWeChat.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                img = new ImageIcon(".images/WeChat30x30.png");
+                lblWeChat.setIcon(img);
+            }
+        });
+        lblWeChat.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                img = new ImageIcon(".images/WeChat25x25.png");
+                lblWeChat.setIcon(img);
+            }
+        });
+        icon = new ImageIcon(".images/WhatsApp25x25.png");
+        lblWhatsapp.setIcon(icon);
+        lblWhatsapp.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                img = new ImageIcon(".images/Whatsapp30x30.png");
+                lblWhatsapp.setIcon(img);
+            }
+        });
+        lblWhatsapp.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                img = new ImageIcon(".images/Whatsapp25x25.png");
+                lblWhatsapp.setIcon(img);
+            }
+        });
+        icon = new ImageIcon(".images/Viber25x25.png");
+        lblViber.setIcon(icon);
+        lblViber.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                img = new ImageIcon(".images/Viber30x30.png");
+                lblViber.setIcon(img);
+            }
+        });
+        lblViber.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                img = new ImageIcon(".images/Viber25x25.png");
+                lblViber.setIcon(img);
+            }
+        });
+        icon = new ImageIcon(".images/Telegram25x25.png");
+        lblTelegram.setIcon(icon);
+        lblTelegram.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                img = new ImageIcon(".images/Telegram30x30.png");
+                lblTelegram.setIcon(img);
+            }
+        });
+        lblTelegram.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                img = new ImageIcon(".images/Telegram25x25.png");
+                lblTelegram.setIcon(img);
+            }
+        });
     }
 
 
