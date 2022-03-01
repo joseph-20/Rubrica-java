@@ -154,7 +154,7 @@
                           <horizontalTextPosition value="0"/>
                           <iconTextGap value="0"/>
                           <inheritsPopupMenu value="true"/>
-                          <text value="Andrea"/>
+                          <text value=""/>
                         </properties>
                       </component>
                       <component id="8ec15" class="javax.swing.JLabel" binding="lblCognome">
@@ -172,7 +172,7 @@
                           <iconTextGap value="4"/>
                           <inheritsPopupMenu value="true"/>
                           <requestFocusEnabled value="false"/>
-                          <text value="Pinto"/>
+                          <text value=""/>
                           <verifyInputWhenFocusTarget value="false"/>
                           <verticalAlignment value="0"/>
                         </properties>
@@ -358,9 +358,7 @@
                             </constraints>
                             <properties>
                               <font size="14"/>
-                              <model>
-                                <item value="Via Bartolo Longo 55A,Napoli,80147,Italia"/>
-                              </model>
+                              <model/>
                               <selectionBackground color="-1"/>
                               <selectionForeground color="-16777216"/>
                               <visibleRowCount value="1"/>

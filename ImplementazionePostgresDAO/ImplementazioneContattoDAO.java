@@ -17,6 +17,7 @@ public class ImplementazioneContattoDAO implements ContattoDAO {
     private ArrayList<Integer> pkCon;
     DefaultListModel DLM = new DefaultListModel();
     DefaultListModel DLMPrivati = new DefaultListModel();
+    DefaultListModel DLMIndirizzoPrincipale = new DefaultListModel();
     private ResultSet rs;
     private Statement s;
 
@@ -65,6 +66,45 @@ public class ImplementazioneContattoDAO implements ContattoDAO {
         s.close();
         return DLMPrivati;
 
+    }
+
+    public DefaultListModel getIndirizzoPrincipale (int pk) throws SQLException{
+        DLMIndirizzoPrincipale.removeAllElements();
+        s = connection.createStatement();
+        //QUERY DI SELEZIONE ATTRIBUTI DI INDIRIZZO_PRINCIPALE
+        rs = s.executeQuery("SELECT * " +
+                            "FROM INDIRIZZO_PRINCIPALE " +
+                            "WHERE ID_CONTATTO = "+pk);
+        while(rs.next()){                                      //Finche non scorro tutto il resultSet
+            DLMIndirizzoPrincipale.addElement(rs.getString("via")+","+rs.getString("civico")+","+rs.getString("citta")+","+rs.getString("cap")+","+rs.getString("nazione"));
+        }
+        return DLMIndirizzoPrincipale;
+    }
+
+    public String getNome (int pk) throws SQLException {
+        String name = new String();
+        s = connection.createStatement();
+        //QUERY DI SELEZIONE NOME CONTATTO
+        rs = s.executeQuery("SELECT NOME " +
+                "FROM CONTATTO " +
+                "WHERE ID = " + pk);
+        while (rs.next()) {
+            name =  rs.getString("NOME");
+        }
+        return name;
+    }
+
+    public String getCognome (int pk) throws SQLException {
+        String surname = new String();
+        s = connection.createStatement();
+        //QUERY DI SELEZIONE NOME CONTATTO
+        rs = s.executeQuery("SELECT COGNOME " +
+                "FROM CONTATTO " +
+                "WHERE ID = " + pk);
+        while (rs.next()) {
+            surname = rs.getString("COGNOME");
+        }
+        return surname;
     }
 
 }

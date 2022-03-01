@@ -14,7 +14,6 @@ import Controller.Controller;
 
 public class Window {
     //Dichiarazioni
-    private ContattoDAO contact = new ImplementazioneContattoDAO();
     private ResultSet rs;
     private Statement s;
     private ArrayList<Integer> pkContatti;
@@ -36,6 +35,7 @@ public class Window {
     private JScrollPane scrollPaneContatti;
     DefaultListModel DLMContatti = new DefaultListModel();
     DefaultListModel DLMContattiPrivati = new DefaultListModel();
+    DefaultListModel DLMIndirizzoPrincipale = new DefaultListModel();
     private JList listAreaPrivata;
     private JScrollPane scrollPaneAreaPrivata;
     private JLabel lblFoto;
@@ -100,21 +100,42 @@ public class Window {
 
         //Gestione zona contatti
         pkContatti = new ArrayList<Integer>();
-        DLMContatti = contact.getContatti(pkContatti);
+        DLMContatti = c.getContatti(pkContatti);
         listContatti.setModel(DLMContatti);                                         //Aggiungiamo nel JList i nomi e cognomi dei contatti
+        indirizzoPrincipaleList.setModel(DLMIndirizzoPrincipale);
 
         //Gestione zona contatti privati
         pkContattiPrivati = new ArrayList<Integer>();
-        DLMContattiPrivati = contact.getContattiPrivati(pkContattiPrivati);
+        DLMContattiPrivati = c.getContattiPrivati(pkContattiPrivati);
         listAreaPrivata.setModel(DLMContattiPrivati);                               //Aggiungiamo nel JList i nomi e cognomi dei contatti
 
+        //Listener contatto click
+        listContatti.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                try {
+                    DLMIndirizzoPrincipale = c.getIndirizzoPrincipale(pkContatti.get(listContatti.getSelectedIndex()));
+                    indirizzoPrincipaleList.setModel(DLMIndirizzoPrincipale);
+                    lblNome.setText(c.getNome(pkContatti.get(listContatti.getSelectedIndex())));
+                    lblCognome.setText(c.getCognome(pkContatti.get(listContatti.getSelectedIndex())));
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        //Set foto del contatto
         img = new ImageIcon(".images/user200x200.png");
         lblFoto.setIcon(img);
         lblFoto.setVisible(true);
         indirizzoPrincipaleList.setBorder(BorderFactory.createLineBorder(Color.gray));
+
+        //Set Interazioni lblMessenger
         img = new ImageIcon(".images/Messenger25x25.png");
         lblMessenger.setIcon(img);
 
+        //Mouse entered
         lblMessenger.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -123,6 +144,7 @@ public class Window {
                 lblMessenger.setIcon(img);
             }
         });
+        //Mouse exited
         lblMessenger.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseExited(MouseEvent e) {
@@ -131,8 +153,11 @@ public class Window {
                 lblMessenger.setIcon(img);
             }
         });
+
+        //Set Interazioni lblSkype
         img = new ImageIcon(".images/Skype25x25.png");
         lblSkype.setIcon(img);
+        //Mouse entered
         lblSkype.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -141,6 +166,7 @@ public class Window {
                 lblSkype.setIcon(img);
             }
         });
+        //Mouse exited
         lblSkype.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseExited(MouseEvent e) {
@@ -149,8 +175,11 @@ public class Window {
                 lblSkype.setIcon(img);
             }
         });
+
+        //Set Interazioni lblTeams
         img  = new ImageIcon(".images/Teams25x25.png");
         lblTeams.setIcon(img );
+        //Mouse entered
         lblTeams.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -159,6 +188,7 @@ public class Window {
                 lblTeams.setIcon(img);
             }
         });
+        //Mouse exited
         lblTeams.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseExited(MouseEvent e) {
@@ -167,8 +197,11 @@ public class Window {
                 lblTeams.setIcon(img);
             }
         });
+
+        //Set Interazioni lblWeChat
         img  = new ImageIcon(".images/WeChat25x25.png");
         lblWeChat.setIcon(img);
+        //Mouse entered
         lblWeChat.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -177,6 +210,7 @@ public class Window {
                 lblWeChat.setIcon(img);
             }
         });
+        //Mouse exited
         lblWeChat.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseExited(MouseEvent e) {
@@ -185,8 +219,11 @@ public class Window {
                 lblWeChat.setIcon(img);
             }
         });
+
+        //Set Interazioni lblWhatsapp
         img  = new ImageIcon(".images/WhatsApp25x25.png");
         lblWhatsapp.setIcon(img);
+        //Mouse entered
         lblWhatsapp.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -195,6 +232,7 @@ public class Window {
                 lblWhatsapp.setIcon(img);
             }
         });
+        //Mouse exited
         lblWhatsapp.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseExited(MouseEvent e) {
@@ -203,8 +241,11 @@ public class Window {
                 lblWhatsapp.setIcon(img);
             }
         });
+
+        //Set Interazioni lblViber
         img = new ImageIcon(".images/Viber25x25.png");
         lblViber.setIcon(img);
+        //Mouse entered
         lblViber.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -213,6 +254,7 @@ public class Window {
                 lblViber.setIcon(img);
             }
         });
+        //Mouse exited
         lblViber.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseExited(MouseEvent e) {
@@ -221,8 +263,11 @@ public class Window {
                 lblViber.setIcon(img);
             }
         });
+
+        //Set Interazioni lblTelegram
         img = new ImageIcon(".images/Telegram25x25.png");
         lblTelegram.setIcon(img);
+        //Mouse entered
         lblTelegram.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -231,6 +276,7 @@ public class Window {
                 lblTelegram.setIcon(img);
             }
         });
+        //Mouse exited
         lblTelegram.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseExited(MouseEvent e) {

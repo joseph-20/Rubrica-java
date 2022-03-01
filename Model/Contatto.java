@@ -7,7 +7,6 @@ public class Contatto {
     private boolean security;
 
     // Metodo setter generale
-    // TODO: decidere se tenerlo o meno
     public void setContatto(String name, String surname, String img, boolean sec){
         nome = name;
         cognome = surname;
@@ -19,15 +18,12 @@ public class Contatto {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
     public void setCognome(String cognome) {
         this.cognome = cognome;
     }
-
     public void setImgPath(String imgPath) {
         this.imgPath = imgPath;
     }
-
     public void setSecurity(boolean security) {
         this.security = security;
     }
@@ -39,11 +35,9 @@ public class Contatto {
     public String getCognome() {
         return cognome;
     }
-
     public String getImgPath() {
         return imgPath;
     }
-
     public boolean getSecurity() {
         return security;
     }
