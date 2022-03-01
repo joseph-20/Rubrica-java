@@ -18,6 +18,10 @@ public class ImplementazioneContattoDAO implements ContattoDAO {
     DefaultListModel DLM = new DefaultListModel();
     DefaultListModel DLMPrivati = new DefaultListModel();
     DefaultListModel DLMIndirizzoPrincipale = new DefaultListModel();
+    DefaultListModel DLMIndirizziSecondari = new DefaultListModel();
+    DefaultListModel DLMEmail = new DefaultListModel();
+    DefaultListModel DLMNumeriFissi = new DefaultListModel();
+    DefaultListModel DLMNumeriMobili = new DefaultListModel();
     private ResultSet rs;
     private Statement s;
 
@@ -65,7 +69,6 @@ public class ImplementazioneContattoDAO implements ContattoDAO {
         rs.close();
         s.close();
         return DLMPrivati;
-
     }
 
     public DefaultListModel getIndirizzoPrincipale (int pk) throws SQLException{
@@ -107,4 +110,55 @@ public class ImplementazioneContattoDAO implements ContattoDAO {
         return surname;
     }
 
+    public DefaultListModel getIndirizziSecondari(int pk) throws SQLException{
+        DLMIndirizziSecondari.removeAllElements();
+        s = connection.createStatement();
+        //QUERY DI SELEZIONE ATTRIBUTI DI INDIRIZZO_SECONDARIO
+        rs = s.executeQuery("SELECT * " +
+                "FROM INDIRIZZO_SECONDARIO " +
+                "WHERE ID_CONTATTO = "+pk);
+        while(rs.next()){                                      //Finche non scorro tutto il resultSet
+            DLMIndirizziSecondari.addElement(rs.getString("via")+","+rs.getString("civico")+","+rs.getString("citta")+","+rs.getString("cap")+","+rs.getString("nazione"));
+        }
+        return DLMIndirizziSecondari;
+    }
+
+    public DefaultListModel getEmail(int pk) throws SQLException{
+        DLMEmail.removeAllElements();
+        s = connection.createStatement();
+        //QUERY DI SELEZIONE ATTRIBUTI DI EMAIL
+        rs = s.executeQuery("SELECT * " +
+                "FROM EMAIL " +
+                "WHERE ID_CONTATTO = "+pk);
+        while(rs.next()){                                      //Finche non scorro tutto il resultSet
+            DLMEmail.addElement(rs.getString("username")+"@"+rs.getString("dominio"));
+        }
+        return DLMEmail;
+    }
+
+    public DefaultListModel getNumeriFissi(int pk) throws SQLException{
+        DLMNumeriFissi.removeAllElements();
+        s = connection.createStatement();
+        //QUERY DI SELEZIONE ATTRIBUTI DI NUMERO FISSO
+        rs = s.executeQuery("SELECT * " +
+                "FROM NUMERO_FISSO " +
+                "WHERE ID_CONTATTO = "+pk);
+        while(rs.next()){                                      //Finche non scorro tutto il resultSet
+            DLMNumeriFissi.addElement(rs.getString("prefisso")+" "+rs.getString("numero"));
+        }
+        return DLMNumeriFissi;
+    }
+
+    public DefaultListModel getNumeriMobili(int pk) throws SQLException{
+        DLMNumeriMobili.removeAllElements();
+        s = connection.createStatement();
+        //QUERY DI SELEZIONE ATTRIBUTI DI NUMERO MOBILE
+        rs = s.executeQuery("SELECT * " +
+                "FROM NUMERO_MOBILE " +
+                "WHERE ID_CONTATTO = "+pk);
+        while(rs.next()){                                      //Finche non scorro tutto il resultSet
+            DLMNumeriMobili.addElement(rs.getString("prefisso")+" "+rs.getString("numero"));
+        }
+        return DLMNumeriMobili;
+    }
 }

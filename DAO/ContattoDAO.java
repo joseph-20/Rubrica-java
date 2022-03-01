@@ -11,4 +11,8 @@ public interface ContattoDAO {
     public DefaultListModel getIndirizzoPrincipale (int pk) throws SQLException;
     public String getNome (int pk) throws SQLException;
     public String getCognome (int pk) throws SQLException;
+    public DefaultListModel getIndirizziSecondari(int pk) throws SQLException;
+    public DefaultListModel getEmail(int pk) throws SQLException;
+    public DefaultListModel getNumeriFissi(int pk) throws SQLException;
+    public DefaultListModel getNumeriMobili(int pk) throws SQLException;
 }

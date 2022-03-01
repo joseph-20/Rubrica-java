@@ -407,13 +407,10 @@
                                 <constraints/>
                                 <properties>
                                   <font size="12"/>
-                                  <model>
-                                    <item value="Via Benedetto Cozzolino 5,Napoli,80147,Italia"/>
-                                    <item value="Via Delle Repubbliche Marinare 495,Napoli,80146,Italia"/>
-                                  </model>
+                                  <model/>
                                   <selectionBackground color="-1"/>
                                   <selectionForeground color="-16777216"/>
-                                  <visibleRowCount value="3"/>
+                                  <visibleRowCount value="1"/>
                                 </properties>
                               </component>
                             </children>
@@ -449,11 +446,7 @@
                                 <constraints/>
                                 <properties>
                                   <font size="14"/>
-                                  <model>
-                                    <item value="andreacacca@gmail.com"/>
-                                    <item value="diocaccone@cacca.cacca"/>
-                                    <item value="cacacacca@cacca.cacaca"/>
-                                  </model>
+                                  <model/>
                                   <selectionBackground color="-1"/>
                                   <selectionForeground color="-16777216"/>
                                   <visibleRowCount value="3"/>
@@ -492,12 +485,7 @@
                                 <constraints/>
                                 <properties>
                                   <font size="14"/>
-                                  <model>
-                                    <item value="33343837135"/>
-                                    <item value="33141853151"/>
-                                    <item value="33815134124"/>
-                                    <item value="33374129831"/>
-                                  </model>
+                                  <model/>
                                   <selectionBackground color="-1"/>
                                   <selectionForeground color="-16777216"/>
                                   <visibleRowCount value="3"/>
@@ -536,12 +524,7 @@
                                 <constraints/>
                                 <properties>
                                   <font size="14"/>
-                                  <model>
-                                    <item value="0810482933"/>
-                                    <item value="0813532542"/>
-                                    <item value="0815352642"/>
-                                    <item value="0813556264"/>
-                                  </model>
+                                  <model/>
                                   <selectionBackground color="-1"/>
                                   <selectionForeground color="-16777216"/>
                                   <visibleRowCount value="3"/>

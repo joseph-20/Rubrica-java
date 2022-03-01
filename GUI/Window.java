@@ -36,6 +36,11 @@ public class Window {
     DefaultListModel DLMContatti = new DefaultListModel();
     DefaultListModel DLMContattiPrivati = new DefaultListModel();
     DefaultListModel DLMIndirizzoPrincipale = new DefaultListModel();
+    DefaultListModel DLMIndirizziSecondari = new DefaultListModel();
+    DefaultListModel DLMEmail = new DefaultListModel();
+    DefaultListModel DLMVuoto = new DefaultListModel();
+    DefaultListModel DLMNumeriFissi = new DefaultListModel();
+    DefaultListModel DLMNumeriMobili = new DefaultListModel();
     private JList listAreaPrivata;
     private JScrollPane scrollPaneAreaPrivata;
     private JLabel lblFoto;
@@ -75,6 +80,7 @@ public class Window {
     private JButton buttonModifica;
     private JButton eliminaButton;
     private ImageIcon img;
+    private DefaultListCellRenderer renderer;
 
     public Window() throws SQLException{
         Controller c = new Controller();
@@ -98,6 +104,8 @@ public class Window {
         SplitPaneContatti.setEnabled(false);
         SplitPaneAreaPrivata.setEnabled(false);
 
+        //Settaggio DLMVuoto
+        DLMVuoto.addElement("NO VALUES FOUND");
         //Gestione zona contatti
         pkContatti = new ArrayList<Integer>();
         DLMContatti = c.getContatti(pkContatti);
@@ -115,10 +123,78 @@ public class Window {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 try {
+                    //SET INDIRIZZO PRINCIPALE
                     DLMIndirizzoPrincipale = c.getIndirizzoPrincipale(pkContatti.get(listContatti.getSelectedIndex()));
                     indirizzoPrincipaleList.setModel(DLMIndirizzoPrincipale);
+                    //SET NOME
                     lblNome.setText(c.getNome(pkContatti.get(listContatti.getSelectedIndex())));
+                    //SET COGNOME
                     lblCognome.setText(c.getCognome(pkContatti.get(listContatti.getSelectedIndex())));
+
+
+                    //SET INDIRIZZI SECONDARI
+                    DLMIndirizziSecondari = c.getIndirizziSecondari(pkContatti.get(listContatti.getSelectedIndex()));
+                    //SE NON CI SONO INDIRIZZI SECONDARI MOSTRA 'NO VALUES FOUND' CON UN ALLINEAMENTO CENTRALE
+                    if(DLMIndirizziSecondari.isEmpty()){
+                        indirizziSecondariList.setModel(DLMVuoto);
+                        indirizziSecondariList.setVisibleRowCount(1);
+                        renderer =  (DefaultListCellRenderer)indirizziSecondariList.getCellRenderer();
+                        renderer.setHorizontalAlignment(JLabel.CENTER);
+                    }else {
+                        //ALTRIMENTI MOSTRA CON UN ALLINEAMENTO A EAST GLI INDIRIZZI
+                        indirizziSecondariList.setModel(DLMIndirizziSecondari);
+                        indirizziSecondariList.setVisibleRowCount(2);
+                        renderer =  (DefaultListCellRenderer)indirizziSecondariList.getCellRenderer();
+                        renderer.setHorizontalAlignment(0);
+                    }
+
+                    //SET EMAIL
+                    DLMEmail = c.getEmail(pkContatti.get(listContatti.getSelectedIndex()));
+                    //SE NON CI SONO EMAIL MOSTRA 'NO VALUES FOUND' CON UN ALLINEAMENTO CENTRALE
+                    if(DLMEmail.isEmpty()){
+                        emailList.setModel(DLMVuoto);
+                        emailList.setVisibleRowCount(1);
+                        renderer =  (DefaultListCellRenderer)emailList.getCellRenderer();
+                        renderer.setHorizontalAlignment(JLabel.CENTER);
+                    }else{
+                        //ALTRIMENTI MOSTRA CON UN ALLINEAMENTO A EAST LE EMAIL
+                        emailList.setModel(DLMEmail);
+                        emailList.setVisibleRowCount(2);
+                        renderer =  (DefaultListCellRenderer)emailList.getCellRenderer();
+                        renderer.setHorizontalAlignment(0);
+                    }
+
+                    //SET NUMERI FISSI
+                    DLMNumeriFissi = c.getNumeriFissi(pkContatti.get(listContatti.getSelectedIndex()));
+                    //SE NON CI SONO NUMERI FISSI MOSTRA 'NO VALUES FOUND' CON UN ALLINEAMENTO CENTRALE
+                    if(DLMNumeriFissi.isEmpty()){
+                        numeriFissiList.setModel(DLMVuoto);
+                        numeriFissiList.setVisibleRowCount(1);
+                        renderer =  (DefaultListCellRenderer)numeriFissiList.getCellRenderer();
+                        renderer.setHorizontalAlignment(JLabel.CENTER);
+                    }else{
+                        //ALTRIMENTI MOSTRA CON UN ALLINEAMENTO A EAST I NUMERI FISSI
+                        numeriFissiList.setModel(DLMNumeriFissi);
+                        numeriFissiList.setVisibleRowCount(2);
+                        renderer =  (DefaultListCellRenderer)numeriFissiList.getCellRenderer();
+                        renderer.setHorizontalAlignment(0);
+                    }
+
+                    //SET NUMERI MOBILI
+                    DLMNumeriMobili = c.getNumeriMobili(pkContatti.get(listContatti.getSelectedIndex()));
+                    //SE NON CI SONO NUMERI MOBILI MOSTRA 'NO VALUES FOUND' CON UN ALLINEAMENTO CENTRALE
+                    if(DLMNumeriMobili.isEmpty()){
+                        numeriMobiliList.setModel(DLMVuoto);
+                        numeriMobiliList.setVisibleRowCount(1);
+                        renderer =  (DefaultListCellRenderer)numeriMobiliList.getCellRenderer();
+                        renderer.setHorizontalAlignment(JLabel.CENTER);
+                    }else{
+                        //ALTRIMENTI MOSTRA CON UN ALLINEAMENTO A EAST I NUMERI MOBILI
+                        numeriMobiliList.setModel(DLMNumeriMobili);
+                        numeriMobiliList.setVisibleRowCount(2);
+                        renderer =  (DefaultListCellRenderer)numeriMobiliList.getCellRenderer();
+                        renderer.setHorizontalAlignment(0);
+                    }
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
