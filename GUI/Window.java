@@ -4,6 +4,7 @@ import DAO.ContattoDAO;
 import ImplementazionePostgresDAO.ImplementazioneContattoDAO;
 
 import javax.swing.*;
+import javax.swing.plaf.PanelUI;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
