@@ -100,7 +100,7 @@
                   </scrollpane>
                 </children>
               </grid>
-              <grid id="67aa2" binding="panelInfoContatti" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="67aa2" binding="panelInfoContatti" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
                   <splitpane position="right"/>
@@ -188,7 +188,152 @@
                       </hspacer>
                     </children>
                   </grid>
-                  <grid id="c036" binding="panelInfoBottom" layout-manager="GridBagLayout">
+                  <grid id="1263e" binding="panelServizi" layout-manager="GridBagLayout">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <grid id="95bce" binding="panelMerda" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="0" left="0" bottom="0" right="0"/>
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="1" indent="0" use-parent-layout="true">
+                            <preferred-size width="-1" height="20"/>
+                            <maximum-size width="-1" height="50"/>
+                          </grid>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <grid id="fbc8a" layout-manager="GridBagLayout">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="4" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                                <preferred-size width="50" height="50"/>
+                              </grid>
+                            </constraints>
+                            <properties>
+                              <alignmentX value="1.0"/>
+                              <alignmentY value="1.0"/>
+                              <autoscrolls value="false"/>
+                              <doubleBuffered value="false"/>
+                              <requestFocusEnabled value="false"/>
+                            </properties>
+                            <border type="none">
+                              <size top="40" left="40" bottom="40" right="40"/>
+                            </border>
+                            <children>
+                              <component id="a7852" class="javax.swing.JLabel" binding="lblMessenger">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <horizontalAlignment value="10"/>
+                                  <horizontalTextPosition value="10"/>
+                                  <text value=""/>
+                                  <verticalTextPosition value="0"/>
+                                </properties>
+                              </component>
+                              <component id="f0838" class="javax.swing.JLabel" binding="lblSkype">
+                                <constraints>
+                                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <text value=""/>
+                                </properties>
+                              </component>
+                              <component id="c1a41" class="javax.swing.JLabel" binding="lblTeams">
+                                <constraints>
+                                  <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <text value=""/>
+                                </properties>
+                              </component>
+                              <component id="1a9af" class="javax.swing.JLabel" binding="lblTelegram">
+                                <constraints>
+                                  <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <text value=""/>
+                                </properties>
+                              </component>
+                              <component id="afea1" class="javax.swing.JLabel" binding="lblViber">
+                                <constraints>
+                                  <grid row="0" column="8" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <text value=""/>
+                                </properties>
+                              </component>
+                              <component id="5c9d2" class="javax.swing.JLabel" binding="lblWeChat">
+                                <constraints>
+                                  <grid row="0" column="10" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <text value=""/>
+                                </properties>
+                              </component>
+                              <component id="2326" class="javax.swing.JLabel" binding="lblWhatsapp">
+                                <constraints>
+                                  <grid row="0" column="12" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <text value=""/>
+                                </properties>
+                              </component>
+                              <hspacer id="a44a3">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
+                                </constraints>
+                              </hspacer>
+                              <hspacer id="8e9db">
+                                <constraints>
+                                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
+                                </constraints>
+                              </hspacer>
+                              <hspacer id="ac3d3">
+                                <constraints>
+                                  <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
+                                </constraints>
+                              </hspacer>
+                              <hspacer id="ffc76">
+                                <constraints>
+                                  <grid row="0" column="7" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
+                                </constraints>
+                              </hspacer>
+                              <hspacer id="c9e0f">
+                                <constraints>
+                                  <grid row="0" column="9" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
+                                </constraints>
+                              </hspacer>
+                              <hspacer id="85519">
+                                <constraints>
+                                  <grid row="0" column="11" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
+                                </constraints>
+                              </hspacer>
+                            </children>
+                          </grid>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                  <grid id="c036" binding="panelInfoBottom" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
                         <maximum-size width="9999" height="9999"/>
@@ -197,304 +342,241 @@
                     <properties/>
                     <border type="none"/>
                     <children>
-                      <scrollpane id="fe68" binding="numeriMobiliScroll">
+                      <grid id="9515e" binding="panelIndirizzoPrincipale" layout-manager="GridBagLayout">
                         <constraints>
-                          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                          <gridbag weightx="0.0" weighty="0.0"/>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                         </constraints>
-                        <properties>
-                          <preferredSize width="67" height="72"/>
-                        </properties>
+                        <properties/>
                         <border type="none"/>
                         <children>
-                          <component id="c1353" class="javax.swing.JList" binding="numeriMobiliList">
-                            <constraints/>
+                          <component id="abf81" class="javax.swing.JList" binding="indirizzoPrincipaleList">
+                            <constraints>
+                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                <preferred-size width="150" height="50"/>
+                              </grid>
+                              <gridbag weightx="0.0" weighty="0.0"/>
+                            </constraints>
                             <properties>
-                              <enabled value="true"/>
-                              <font size="16"/>
+                              <font size="14"/>
                               <model>
-                                <item value="3662186629"/>
-                                <item value="3334384745"/>
-                                <item value="3318284829"/>
+                                <item value="Via Bartolo Longo 55A,Napoli,80147,Italia"/>
                               </model>
                               <selectionBackground color="-1"/>
                               <selectionForeground color="-16777216"/>
-                              <visibleRowCount value="3"/>
+                              <visibleRowCount value="1"/>
+                            </properties>
+                          </component>
+                          <component id="5356b" class="javax.swing.JLabel" binding="lblIndirizzoPrincipale">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                              <gridbag weightx="0.0" weighty="0.0"/>
+                            </constraints>
+                            <properties>
+                              <font size="18"/>
+                              <text value="Indirizzo Principale"/>
                             </properties>
                           </component>
                         </children>
-                      </scrollpane>
-                      <component id="d703c" class="javax.swing.JLabel" binding="numeriFissiLabel">
+                      </grid>
+                      <grid id="126ba" binding="panelIndirizzoSecondario" layout-manager="GridBagLayout">
                         <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                          <gridbag weightx="0.0" weighty="0.0" ipadx="20"/>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                         </constraints>
-                        <properties>
-                          <font size="18"/>
-                          <horizontalAlignment value="0"/>
-                          <horizontalTextPosition value="0"/>
-                          <text value="Numeri Fissi"/>
-                        </properties>
-                      </component>
-                      <component id="5ced1" class="javax.swing.JLabel" binding="numeriMobiliLabel">
-                        <constraints>
-                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                          <gridbag weightx="0.0" weighty="0.0" ipadx="20"/>
-                        </constraints>
-                        <properties>
-                          <alignmentY value="0.0"/>
-                          <autoscrolls value="false"/>
-                          <font size="18"/>
-                          <horizontalAlignment value="0"/>
-                          <horizontalTextPosition value="0"/>
-                          <text value="Numeri Mobili"/>
-                        </properties>
-                      </component>
-                      <scrollpane id="74b6c" binding="numeriFissiScroll">
-                        <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                          <gridbag weightx="0.0" weighty="0.0"/>
-                        </constraints>
-                        <properties>
-                          <preferredSize width="67" height="72"/>
-                        </properties>
+                        <properties/>
                         <border type="none"/>
                         <children>
-                          <component id="275a1" class="javax.swing.JList" binding="numeriFissiList">
-                            <constraints/>
+                          <component id="f25ae" class="javax.swing.JLabel" binding="lblIndirizzoSecondario">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                              <gridbag weightx="0.0" weighty="0.0"/>
+                            </constraints>
                             <properties>
-                              <enabled value="true"/>
-                              <focusable value="true"/>
-                              <font size="16"/>
-                              <inheritsPopupMenu value="false"/>
-                              <model>
-                                <item value="0813535132"/>
-                                <item value="0813512425"/>
-                                <item value="0816931244"/>
-                                <item value="0814623513"/>
-                              </model>
-                              <requestFocusEnabled value="true"/>
-                              <selectionBackground color="-1"/>
-                              <selectionForeground color="-16777216"/>
-                              <visibleRowCount value="3"/>
+                              <font size="18"/>
+                              <text value="Indirizzi Secondari"/>
                             </properties>
-                            <clientProperties>
-                              <List.isFileList class="java.lang.Boolean" value="false"/>
-                              <html.disable class="java.lang.Boolean" value="false"/>
-                            </clientProperties>
                           </component>
+                          <scrollpane id="5607c" binding="indirizziSecondariScroll">
+                            <constraints>
+                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                              <gridbag weightx="0.0" weighty="0.0"/>
+                            </constraints>
+                            <properties>
+                              <font size="12"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="91350" class="javax.swing.JList" binding="indirizziSecondariList">
+                                <constraints/>
+                                <properties>
+                                  <font size="12"/>
+                                  <model>
+                                    <item value="Via Benedetto Cozzolino 5,Napoli,80147,Italia"/>
+                                    <item value="Via Delle Repubbliche Marinare 495,Napoli,80146,Italia"/>
+                                  </model>
+                                  <selectionBackground color="-1"/>
+                                  <selectionForeground color="-16777216"/>
+                                  <visibleRowCount value="3"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </scrollpane>
                         </children>
-                      </scrollpane>
-                      <vspacer id="3e1a7">
+                      </grid>
+                      <grid id="ec2d8" binding="panelEmail" layout-manager="GridBagLayout">
                         <constraints>
-                          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-                          <gridbag weightx="0.0" weighty="0.0" ipady="15"/>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                         </constraints>
-                      </vspacer>
-                      <component id="599e0" class="javax.swing.JLabel">
-                        <constraints>
-                          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                          <gridbag weightx="0.0" weighty="0.0" ipadx="20"/>
-                        </constraints>
-                        <properties>
-                          <font size="18"/>
-                          <horizontalAlignment value="0"/>
-                          <horizontalTextPosition value="0"/>
-                          <text value="Email"/>
-                        </properties>
-                      </component>
-                      <vspacer id="ad126">
-                        <constraints>
-                          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-                          <gridbag weightx="0.0" weighty="0.0" ipady="15"/>
-                        </constraints>
-                      </vspacer>
-                      <scrollpane id="76c8e" binding="emailScroll">
-                        <constraints>
-                          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                          <gridbag weightx="0.0" weighty="0.0"/>
-                        </constraints>
-                        <properties>
-                          <preferredSize width="240" height="72"/>
-                        </properties>
+                        <properties/>
                         <border type="none"/>
                         <children>
-                          <component id="a8b2" class="javax.swing.JList" binding="emailList">
-                            <constraints/>
+                          <component id="e87c6" class="javax.swing.JLabel" binding="lblEmail">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                              <gridbag weightx="0.0" weighty="0.0"/>
+                            </constraints>
                             <properties>
-                              <enabled value="true"/>
-                              <font size="16"/>
-                              <model>
-                                <item value="pippobaudo@gmail.com"/>
-                                <item value="pierino@gmail.com"/>
-                                <item value="pierluigi@gmail.com"/>
-                                <item value="Diononesiste@divinita.it"/>
-                              </model>
-                              <selectionBackground color="-1"/>
-                              <selectionForeground color="-16777216"/>
-                              <visibleRowCount value="3"/>
+                              <font size="18"/>
+                              <text value="Email"/>
                             </properties>
                           </component>
+                          <scrollpane id="9db96" binding="emailScroll">
+                            <constraints>
+                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                              <gridbag weightx="0.0" weighty="0.0"/>
+                            </constraints>
+                            <properties/>
+                            <border type="none"/>
+                            <children>
+                              <component id="b5c1f" class="javax.swing.JList" binding="emailList">
+                                <constraints/>
+                                <properties>
+                                  <font size="14"/>
+                                  <model>
+                                    <item value="andreacacca@gmail.com"/>
+                                    <item value="diocaccone@cacca.cacca"/>
+                                    <item value="cacacacca@cacca.cacaca"/>
+                                  </model>
+                                  <selectionBackground color="-1"/>
+                                  <selectionForeground color="-16777216"/>
+                                  <visibleRowCount value="3"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </scrollpane>
                         </children>
-                      </scrollpane>
-                      <component id="8442a" class="javax.swing.JLabel">
+                      </grid>
+                      <grid id="726e7" binding="panelNumeriMobili" layout-manager="GridBagLayout">
                         <constraints>
-                          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                          <gridbag weightx="0.0" weighty="0.0" ipadx="20"/>
+                          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                         </constraints>
-                        <properties>
-                          <font size="18"/>
-                          <horizontalAlignment value="0"/>
-                          <horizontalTextPosition value="0"/>
-                          <text value="Indirizzo principale"/>
-                        </properties>
-                      </component>
-                      <component id="3382e" class="javax.swing.JList" binding="indirizzoPrincipaleList">
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <component id="ef260" class="javax.swing.JLabel" binding="lblNumeriMobili">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                              <gridbag weightx="0.0" weighty="0.0"/>
+                            </constraints>
+                            <properties>
+                              <font size="18"/>
+                              <text value="Numeri Mobili"/>
+                            </properties>
+                          </component>
+                          <scrollpane id="6efdd" binding="numeriMobiliScroll">
+                            <constraints>
+                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                              <gridbag weightx="0.0" weighty="0.0"/>
+                            </constraints>
+                            <properties/>
+                            <border type="none"/>
+                            <children>
+                              <component id="231a6" class="javax.swing.JList" binding="numeriMobiliList">
+                                <constraints/>
+                                <properties>
+                                  <font size="14"/>
+                                  <model>
+                                    <item value="33343837135"/>
+                                    <item value="33141853151"/>
+                                    <item value="33815134124"/>
+                                    <item value="33374129831"/>
+                                  </model>
+                                  <selectionBackground color="-1"/>
+                                  <selectionForeground color="-16777216"/>
+                                  <visibleRowCount value="3"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </scrollpane>
+                        </children>
+                      </grid>
+                      <grid id="caa9a" binding="panelNumeriFissi" layout-manager="GridBagLayout">
                         <constraints>
-                          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                          <gridbag weightx="0.0" weighty="0.0"/>
+                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                         </constraints>
-                        <properties>
-                          <enabled value="true"/>
-                          <font size="16"/>
-                          <model>
-                            <item value="Via Bartolo Longo 55A,Napoli,80147,Italia"/>
-                          </model>
-                          <selectionBackground color="-1"/>
-                          <selectionForeground color="-16777216"/>
-                          <visibleRowCount value="3"/>
-                        </properties>
-                      </component>
-                      <component id="991aa" class="javax.swing.JButton" binding="reindirizzamentiButton" default-binding="true">
-                        <constraints>
-                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                          <gridbag weightx="0.0" weighty="0.0"/>
-                        </constraints>
-                        <properties>
-                          <font size="16"/>
-                          <text value="Reindirizzamenti"/>
-                        </properties>
-                      </component>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <component id="6f3bf" class="javax.swing.JLabel" binding="lblNumeriFissi">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                              <gridbag weightx="0.0" weighty="0.0"/>
+                            </constraints>
+                            <properties>
+                              <font size="18"/>
+                              <text value="Numeri Fissi"/>
+                            </properties>
+                          </component>
+                          <scrollpane id="7f91" binding="numeriFissiScroll">
+                            <constraints>
+                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                              <gridbag weightx="0.0" weighty="0.0"/>
+                            </constraints>
+                            <properties/>
+                            <border type="none"/>
+                            <children>
+                              <component id="2dbf4" class="javax.swing.JList" binding="numeriFissiList">
+                                <constraints/>
+                                <properties>
+                                  <font size="14"/>
+                                  <model>
+                                    <item value="0810482933"/>
+                                    <item value="0813532542"/>
+                                    <item value="0815352642"/>
+                                    <item value="0813556264"/>
+                                  </model>
+                                  <selectionBackground color="-1"/>
+                                  <selectionForeground color="-16777216"/>
+                                  <visibleRowCount value="3"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </scrollpane>
+                        </children>
+                      </grid>
                     </children>
                   </grid>
-                  <grid id="7bd18" binding="panelServizi" layout-manager="GridBagLayout">
+                  <grid id="35440" binding="panelBottoniInfo" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="2">
                     <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                        <preferred-size width="50" height="50"/>
-                      </grid>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
-                    <properties>
-                      <alignmentX value="1.0"/>
-                      <alignmentY value="1.0"/>
-                      <autoscrolls value="false"/>
-                      <doubleBuffered value="false"/>
-                      <requestFocusEnabled value="false"/>
-                    </properties>
-                    <border type="none">
-                      <size top="40" left="40" bottom="40" right="40"/>
-                    </border>
+                    <properties/>
+                    <border type="none"/>
                     <children>
-                      <component id="52f01" class="javax.swing.JLabel" binding="lblMessenger">
-                        <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                          <gridbag weightx="0.0" weighty="0.0"/>
-                        </constraints>
+                      <component id="88a96" class="javax.swing.JButton" binding="eliminaButton" default-binding="true">
+                        <constraints/>
                         <properties>
-                          <horizontalAlignment value="10"/>
-                          <horizontalTextPosition value="10"/>
-                          <text value=""/>
+                          <font size="20"/>
+                          <text value="Elimina"/>
                         </properties>
                       </component>
-                      <component id="f10d4" class="javax.swing.JLabel" binding="lblSkype">
-                        <constraints>
-                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                          <gridbag weightx="0.0" weighty="0.0"/>
-                        </constraints>
+                      <component id="d30a6" class="javax.swing.JButton" binding="buttonModifica">
+                        <constraints/>
                         <properties>
-                          <text value=""/>
+                          <font size="20"/>
+                          <horizontalAlignment value="0"/>
+                          <text value="Modifica"/>
                         </properties>
                       </component>
-                      <component id="1bf48" class="javax.swing.JLabel" binding="lblTeams">
-                        <constraints>
-                          <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                          <gridbag weightx="0.0" weighty="0.0"/>
-                        </constraints>
-                        <properties>
-                          <text value=""/>
-                        </properties>
-                      </component>
-                      <component id="befc" class="javax.swing.JLabel" binding="lblTelegram">
-                        <constraints>
-                          <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                          <gridbag weightx="0.0" weighty="0.0"/>
-                        </constraints>
-                        <properties>
-                          <text value=""/>
-                        </properties>
-                      </component>
-                      <component id="c8919" class="javax.swing.JLabel" binding="lblViber">
-                        <constraints>
-                          <grid row="0" column="8" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                          <gridbag weightx="0.0" weighty="0.0"/>
-                        </constraints>
-                        <properties>
-                          <text value=""/>
-                        </properties>
-                      </component>
-                      <component id="8dab6" class="javax.swing.JLabel" binding="lblWeChat">
-                        <constraints>
-                          <grid row="0" column="10" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                          <gridbag weightx="0.0" weighty="0.0"/>
-                        </constraints>
-                        <properties>
-                          <text value=""/>
-                        </properties>
-                      </component>
-                      <component id="354be" class="javax.swing.JLabel" binding="lblWhatsapp">
-                        <constraints>
-                          <grid row="0" column="12" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                          <gridbag weightx="0.0" weighty="0.0"/>
-                        </constraints>
-                        <properties>
-                          <text value=""/>
-                        </properties>
-                      </component>
-                      <hspacer id="7fdf3">
-                        <constraints>
-                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                          <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
-                        </constraints>
-                      </hspacer>
-                      <hspacer id="ac602">
-                        <constraints>
-                          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                          <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
-                        </constraints>
-                      </hspacer>
-                      <hspacer id="57e14">
-                        <constraints>
-                          <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                          <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
-                        </constraints>
-                      </hspacer>
-                      <hspacer id="7f225">
-                        <constraints>
-                          <grid row="0" column="7" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                          <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
-                        </constraints>
-                      </hspacer>
-                      <hspacer id="f82c2">
-                        <constraints>
-                          <grid row="0" column="9" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                          <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
-                        </constraints>
-                      </hspacer>
-                      <hspacer id="9a55e">
-                        <constraints>
-                          <grid row="0" column="11" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                          <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
-                        </constraints>
-                      </hspacer>
                     </children>
                   </grid>
                 </children>

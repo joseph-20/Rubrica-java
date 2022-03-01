@@ -4,7 +4,6 @@ import DAO.ContattoDAO;
 import ImplementazionePostgresDAO.ImplementazioneContattoDAO;
 
 import javax.swing.*;
-import javax.swing.plaf.PanelUI;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -44,16 +43,7 @@ public class Window {
     private JLabel lblCognome;
     private JPanel panelInfoTop;
     private JPanel panelInfoBottom;
-    private JList numeriMobiliList;
-    private JLabel numeriFissiLabel;
-    private JLabel numeriMobiliLabel;
-    private JScrollPane numeriMobiliScroll;
-    private JScrollPane numeriFissiScroll;
-    private JList numeriFissiList;
-    private JScrollPane emailScroll;
-    private JList emailList;
     private JList indirizzoPrincipaleList;
-    private JButton reindirizzamentiButton;
     private JPanel panelServizi;
     private JLabel lblMessenger;
     private JLabel lblWhatsapp;
@@ -62,6 +52,28 @@ public class Window {
     private JLabel lblSkype;
     private JLabel lblWeChat;
     private JLabel lblTeams;
+    private JPanel panelMerda;
+    private JPanel panelIndirizzoPrincipale;
+    private JLabel lblIndirizzoPrincipale;
+    private JPanel panelIndirizzoSecondario;
+    private JLabel lblIndirizzoSecondario;
+    private JScrollPane indirizziSecondariScroll;
+    private JList indirizziSecondariList;
+    private JPanel panelEmail;
+    private JPanel panelNumeriMobili;
+    private JPanel panelNumeriFissi;
+    private JScrollPane numeriFissiScroll;
+    private JList numeriFissiList;
+    private JLabel lblNumeriMobili;
+    private JLabel lblNumeriFissi;
+    private JScrollPane numeriMobiliScroll;
+    private JList numeriMobiliList;
+    private JLabel lblEmail;
+    private JScrollPane emailScroll;
+    private JList emailList;
+    private JPanel panelBottoniInfo;
+    private JButton buttonModifica;
+    private JButton eliminaButton;
     private ImageIcon img;
 
     public Window() throws SQLException{
@@ -96,12 +108,12 @@ public class Window {
         DLMContattiPrivati = contact.getContattiPrivati(pkContattiPrivati);
         listAreaPrivata.setModel(DLMContattiPrivati);                               //Aggiungiamo nel JList i nomi e cognomi dei contatti
 
-        ImageIcon icon = new ImageIcon(".images/contact200.jpg");
-        lblFoto.setIcon(icon);
+        img = new ImageIcon(".images/user200x200.png");
+        lblFoto.setIcon(img);
         lblFoto.setVisible(true);
         indirizzoPrincipaleList.setBorder(BorderFactory.createLineBorder(Color.gray));
-        icon = new ImageIcon(".images/Messenger25x25.png");
-        lblMessenger.setIcon(icon);
+        img = new ImageIcon(".images/Messenger25x25.png");
+        lblMessenger.setIcon(img);
 
         lblMessenger.addMouseListener(new MouseAdapter() {
             @Override
@@ -119,8 +131,8 @@ public class Window {
                 lblMessenger.setIcon(img);
             }
         });
-        icon = new ImageIcon(".images/Skype25x25.png");
-        lblSkype.setIcon(icon);
+        img = new ImageIcon(".images/Skype25x25.png");
+        lblSkype.setIcon(img);
         lblSkype.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -137,8 +149,8 @@ public class Window {
                 lblSkype.setIcon(img);
             }
         });
-        icon = new ImageIcon(".images/Teams25x25.png");
-        lblTeams.setIcon(icon);
+        img  = new ImageIcon(".images/Teams25x25.png");
+        lblTeams.setIcon(img );
         lblTeams.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -155,8 +167,8 @@ public class Window {
                 lblTeams.setIcon(img);
             }
         });
-        icon = new ImageIcon(".images/WeChat25x25.png");
-        lblWeChat.setIcon(icon);
+        img  = new ImageIcon(".images/WeChat25x25.png");
+        lblWeChat.setIcon(img);
         lblWeChat.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -173,8 +185,8 @@ public class Window {
                 lblWeChat.setIcon(img);
             }
         });
-        icon = new ImageIcon(".images/WhatsApp25x25.png");
-        lblWhatsapp.setIcon(icon);
+        img  = new ImageIcon(".images/WhatsApp25x25.png");
+        lblWhatsapp.setIcon(img);
         lblWhatsapp.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -191,8 +203,8 @@ public class Window {
                 lblWhatsapp.setIcon(img);
             }
         });
-        icon = new ImageIcon(".images/Viber25x25.png");
-        lblViber.setIcon(icon);
+        img = new ImageIcon(".images/Viber25x25.png");
+        lblViber.setIcon(img);
         lblViber.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -209,8 +221,8 @@ public class Window {
                 lblViber.setIcon(img);
             }
         });
-        icon = new ImageIcon(".images/Telegram25x25.png");
-        lblTelegram.setIcon(icon);
+        img = new ImageIcon(".images/Telegram25x25.png");
+        lblTelegram.setIcon(img);
         lblTelegram.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
