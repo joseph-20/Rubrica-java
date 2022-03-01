@@ -143,9 +143,12 @@ public class Window {
                     }else {
                         //ALTRIMENTI MOSTRA CON UN ALLINEAMENTO A EAST GLI INDIRIZZI
                         indirizziSecondariList.setModel(DLMIndirizziSecondari);
-                        indirizziSecondariList.setVisibleRowCount(2);
                         renderer =  (DefaultListCellRenderer)indirizziSecondariList.getCellRenderer();
                         renderer.setHorizontalAlignment(0);
+                        if(DLMIndirizziSecondari.getSize()==1) indirizziSecondariList.setVisibleRowCount(1);
+                        else if(DLMIndirizziSecondari.getSize()==2) indirizziSecondariList.setVisibleRowCount(2);
+                        else indirizziSecondariList.setVisibleRowCount(3);
+
                     }
 
                     //SET EMAIL
@@ -159,9 +162,11 @@ public class Window {
                     }else{
                         //ALTRIMENTI MOSTRA CON UN ALLINEAMENTO A EAST LE EMAIL
                         emailList.setModel(DLMEmail);
-                        emailList.setVisibleRowCount(2);
                         renderer =  (DefaultListCellRenderer)emailList.getCellRenderer();
                         renderer.setHorizontalAlignment(0);
+                        if(DLMEmail.getSize()==1) emailList.setVisibleRowCount(1);
+                        else if(DLMEmail.getSize()==2) emailList.setVisibleRowCount(2);
+                        else emailList.setVisibleRowCount(3);
                     }
 
                     //SET NUMERI FISSI
@@ -175,9 +180,11 @@ public class Window {
                     }else{
                         //ALTRIMENTI MOSTRA CON UN ALLINEAMENTO A EAST I NUMERI FISSI
                         numeriFissiList.setModel(DLMNumeriFissi);
-                        numeriFissiList.setVisibleRowCount(2);
                         renderer =  (DefaultListCellRenderer)numeriFissiList.getCellRenderer();
                         renderer.setHorizontalAlignment(0);
+                        if(DLMNumeriFissi.getSize()==1) numeriFissiList.setVisibleRowCount(1);
+                        else if(DLMNumeriFissi.getSize()==2) numeriFissiList.setVisibleRowCount(2);
+                        else numeriFissiList.setVisibleRowCount(3);
                     }
 
                     //SET NUMERI MOBILI
@@ -191,9 +198,11 @@ public class Window {
                     }else{
                         //ALTRIMENTI MOSTRA CON UN ALLINEAMENTO A EAST I NUMERI MOBILI
                         numeriMobiliList.setModel(DLMNumeriMobili);
-                        numeriMobiliList.setVisibleRowCount(2);
                         renderer =  (DefaultListCellRenderer)numeriMobiliList.getCellRenderer();
                         renderer.setHorizontalAlignment(0);
+                        if(DLMNumeriMobili.getSize()==1) numeriMobiliList.setVisibleRowCount(1);
+                        else if(DLMNumeriMobili.getSize()==2) numeriMobiliList.setVisibleRowCount(2);
+                        else numeriMobiliList.setVisibleRowCount(3);
                     }
                 } catch (SQLException ex) {
                     ex.printStackTrace();

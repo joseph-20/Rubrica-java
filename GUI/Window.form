@@ -395,7 +395,7 @@
                           </component>
                           <scrollpane id="5607c" binding="indirizziSecondariScroll">
                             <constraints>
-                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                               <gridbag weightx="0.0" weighty="0.0"/>
                             </constraints>
                             <properties>
@@ -436,7 +436,7 @@
                           </component>
                           <scrollpane id="9db96" binding="emailScroll">
                             <constraints>
-                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                               <gridbag weightx="0.0" weighty="0.0"/>
                             </constraints>
                             <properties/>
@@ -475,15 +475,18 @@
                           </component>
                           <scrollpane id="6efdd" binding="numeriMobiliScroll">
                             <constraints>
-                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                               <gridbag weightx="0.0" weighty="0.0"/>
                             </constraints>
-                            <properties/>
+                            <properties>
+                              <alignmentX value="0.0"/>
+                            </properties>
                             <border type="none"/>
                             <children>
                               <component id="231a6" class="javax.swing.JList" binding="numeriMobiliList">
                                 <constraints/>
                                 <properties>
+                                  <alignmentX value="0.0"/>
                                   <font size="14"/>
                                   <model/>
                                   <selectionBackground color="-1"/>
@@ -514,7 +517,7 @@
                           </component>
                           <scrollpane id="7f91" binding="numeriFissiScroll">
                             <constraints>
-                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                               <gridbag weightx="0.0" weighty="0.0"/>
                             </constraints>
                             <properties/>
@@ -523,6 +526,7 @@
                               <component id="2dbf4" class="javax.swing.JList" binding="numeriFissiList">
                                 <constraints/>
                                 <properties>
+                                  <alignmentX value="0.0"/>
                                   <font size="14"/>
                                   <model/>
                                   <selectionBackground color="-1"/>
