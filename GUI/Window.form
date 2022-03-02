@@ -33,9 +33,9 @@
               <dividerLocation value="350"/>
               <lastDividerLocation value="355"/>
               <maximumSize width="120" height="10"/>
-              <minimumSize width="10" height="10"/>
+              <minimumSize width="0" height="0"/>
               <orientation value="1"/>
-              <preferredSize width="120" height="24"/>
+              <preferredSize width="0" height="0"/>
               <requestFocusEnabled value="false"/>
               <resizeWeight value="0.15"/>
             </properties>
@@ -46,8 +46,8 @@
                   <splitpane position="left"/>
                 </constraints>
                 <properties>
-                  <minimumSize width="350" height="0"/>
-                  <preferredSize width="120" height="24"/>
+                  <minimumSize width="0" height="0"/>
+                  <preferredSize width="0" height="0"/>
                 </properties>
                 <border type="none"/>
                 <children>
@@ -84,29 +84,24 @@
                       </component>
                     </children>
                   </grid>
-                  <component id="684e5" class="javax.swing.JList" binding="listContatti">
-                    <constraints border-constraint="First"/>
-                    <properties>
-                      <background color="-1"/>
-                      <doubleBuffered value="false"/>
-                      <dragEnabled value="false"/>
-                      <font size="20"/>
-                      <layoutOrientation value="0"/>
-                      <model/>
-                      <preferredSize width="100" height="0"/>
-                      <valueIsAdjusting value="false"/>
-                      <visible value="true"/>
-                    </properties>
-                  </component>
                   <scrollpane id="6768d" binding="scrollPaneContatti">
                     <constraints border-constraint="Center"/>
                     <properties>
-                      <maximumSize width="10" height="10"/>
-                      <preferredSize width="10" height="10"/>
+                      <maximumSize width="0" height="0"/>
+                      <minimumSize width="0" height="0"/>
+                      <preferredSize width="0" height="0"/>
                       <visible value="true"/>
                     </properties>
                     <border type="none"/>
-                    <children/>
+                    <children>
+                      <component id="ea37f" class="javax.swing.JList" binding="listContatti">
+                        <constraints/>
+                        <properties>
+                          <focusable value="false"/>
+                          <font size="18"/>
+                        </properties>
+                      </component>
+                    </children>
                   </scrollpane>
                 </children>
               </grid>

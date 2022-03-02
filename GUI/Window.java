@@ -88,6 +88,7 @@ public class Window {
 
         SplitPaneContatti.setEnabled(false);
         SplitPaneAreaPrivata.setEnabled(false);
+        panelInfoContatti.setVisible(false);
 
         //Gestione zona contatti
         pkContatti = new ArrayList<Integer>();
@@ -115,6 +116,8 @@ public class Window {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 try {
+                    panelInfoContatti.setVisible(true);
+                    SplitPaneContatti.setDividerLocation(350);
                     //SET NOME
                     lblNome.setText(c.getNome(pkContatti.get(listContatti.getSelectedIndex())));
                     //SET COGNOME
