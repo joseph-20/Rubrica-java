@@ -26,7 +26,7 @@ public class Controller {
     public DefaultListModel getContattiPrivati(ArrayList<Integer> pkContatti) throws SQLException{
         return contact.getContattiPrivati(pkContatti);
     }
-    public DefaultListModel getIndirizzoPrincipale (int pk) throws SQLException{
+    public String getIndirizzoPrincipale (int pk) throws SQLException{
         return contact.getIndirizzoPrincipale(pk);
     }
     public String getNome (int pk) throws SQLException{
@@ -35,16 +35,16 @@ public class Controller {
     public String getCognome (int pk) throws SQLException{
         return contact.getCognome(pk);
     }
-    public DefaultListModel getIndirizziSecondari(int pk) throws SQLException{
+    public String getIndirizziSecondari(int pk) throws SQLException{
         return contact.getIndirizziSecondari(pk);
     }
-    public DefaultListModel getEmail(int pk) throws SQLException{
+    public String getEmail(int pk) throws SQLException{
         return contact.getEmail(pk);
     }
-    public DefaultListModel getNumeriFissi(int pk) throws SQLException{
+    public String getNumeriFissi(int pk) throws SQLException{
         return contact.getNumeriFissi(pk);
     }
-    public DefaultListModel getNumeriMobili(int pk) throws SQLException{
+    public String getNumeriMobili(int pk) throws SQLException{
         return contact.getNumeriMobili(pk);
     }
 }

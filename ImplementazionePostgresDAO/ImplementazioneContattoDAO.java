@@ -17,13 +17,14 @@ public class ImplementazioneContattoDAO implements ContattoDAO {
     private ArrayList<Integer> pkCon;
     DefaultListModel DLM = new DefaultListModel();
     DefaultListModel DLMPrivati = new DefaultListModel();
-    DefaultListModel DLMIndirizzoPrincipale = new DefaultListModel();
-    DefaultListModel DLMIndirizziSecondari = new DefaultListModel();
-    DefaultListModel DLMEmail = new DefaultListModel();
-    DefaultListModel DLMNumeriFissi = new DefaultListModel();
-    DefaultListModel DLMNumeriMobili = new DefaultListModel();
+    private String indirizzoPrincipale;
+    private String indirizziSecondari;
+    private String email;
+    private String numeriFissi;
+    private String numeriMobili;
     private ResultSet rs;
     private Statement s;
+    private int cont = 0;
 
 
     public ImplementazioneContattoDAO(){
@@ -71,17 +72,21 @@ public class ImplementazioneContattoDAO implements ContattoDAO {
         return DLMPrivati;
     }
 
-    public DefaultListModel getIndirizzoPrincipale (int pk) throws SQLException{
-        DLMIndirizzoPrincipale.removeAllElements();
+    public String getIndirizzoPrincipale (int pk) throws SQLException{
+        cont = 0;
+        indirizzoPrincipale = "<html>";
         s = connection.createStatement();
         //QUERY DI SELEZIONE ATTRIBUTI DI INDIRIZZO_PRINCIPALE
         rs = s.executeQuery("SELECT * " +
                             "FROM INDIRIZZO_PRINCIPALE " +
                             "WHERE ID_CONTATTO = "+pk);
         while(rs.next()){                                      //Finche non scorro tutto il resultSet
-            DLMIndirizzoPrincipale.addElement(rs.getString("via")+","+rs.getString("civico")+","+rs.getString("citta")+","+rs.getString("cap")+","+rs.getString("nazione"));
+            indirizzoPrincipale = indirizzoPrincipale+(rs.getString("via")+","+rs.getString("civico")+","+rs.getString("citta")+","+rs.getString("cap")+","+rs.getString("nazione")+"<br/>");
+            cont++;
         }
-        return DLMIndirizzoPrincipale;
+        indirizzoPrincipale = indirizzoPrincipale+"<br/><html>";
+        if(cont==0) return "NOT FOUND";
+        return indirizzoPrincipale;
     }
 
     public String getNome (int pk) throws SQLException {
@@ -110,55 +115,71 @@ public class ImplementazioneContattoDAO implements ContattoDAO {
         return surname;
     }
 
-    public DefaultListModel getIndirizziSecondari(int pk) throws SQLException{
-        DLMIndirizziSecondari.removeAllElements();
+    public String getIndirizziSecondari(int pk) throws SQLException{
+        cont = 0;
+        indirizziSecondari = "<html>";
         s = connection.createStatement();
         //QUERY DI SELEZIONE ATTRIBUTI DI INDIRIZZO_SECONDARIO
         rs = s.executeQuery("SELECT * " +
                 "FROM INDIRIZZO_SECONDARIO " +
                 "WHERE ID_CONTATTO = "+pk);
         while(rs.next()){                                      //Finche non scorro tutto il resultSet
-            DLMIndirizziSecondari.addElement(rs.getString("via")+","+rs.getString("civico")+","+rs.getString("citta")+","+rs.getString("cap")+","+rs.getString("nazione"));
+            indirizziSecondari = indirizziSecondari+(rs.getString("via")+","+rs.getString("civico")+","+rs.getString("citta")+","+rs.getString("cap")+","+rs.getString("nazione")+"<br/>");
+            cont++;
         }
-        return DLMIndirizziSecondari;
+        indirizziSecondari = indirizziSecondari+"<br/><html>";
+        if(cont==0) return "NOT FOUND";
+        return indirizziSecondari;
     }
 
-    public DefaultListModel getEmail(int pk) throws SQLException{
-        DLMEmail.removeAllElements();
+    public String getEmail(int pk) throws SQLException{
+        cont = 0;
+        email = "<html>";
         s = connection.createStatement();
         //QUERY DI SELEZIONE ATTRIBUTI DI EMAIL
         rs = s.executeQuery("SELECT * " +
                 "FROM EMAIL " +
                 "WHERE ID_CONTATTO = "+pk);
         while(rs.next()){                                      //Finche non scorro tutto il resultSet
-            DLMEmail.addElement(rs.getString("username")+"@"+rs.getString("dominio"));
+           email = email+(rs.getString("username")+"@"+rs.getString("dominio")+"<br/>");
+           cont++;
         }
-        return DLMEmail;
+        email = email+"<br/><html>";
+        if(cont==0) return "NOT FOUND";
+        return email;
     }
 
-    public DefaultListModel getNumeriFissi(int pk) throws SQLException{
-        DLMNumeriFissi.removeAllElements();
+    public String getNumeriFissi(int pk) throws SQLException{
+        cont = 0;
+        numeriFissi = "<html>";
         s = connection.createStatement();
         //QUERY DI SELEZIONE ATTRIBUTI DI NUMERO FISSO
         rs = s.executeQuery("SELECT * " +
                 "FROM NUMERO_FISSO " +
                 "WHERE ID_CONTATTO = "+pk);
         while(rs.next()){                                      //Finche non scorro tutto il resultSet
-            DLMNumeriFissi.addElement(rs.getString("prefisso")+" "+rs.getString("numero"));
+            numeriFissi = numeriFissi+(rs.getString("prefisso")+" "+rs.getString("numero")+"<br/>");
+            cont++;
         }
-        return DLMNumeriFissi;
+        numeriFissi = numeriFissi+"<br/><html>";
+        if(cont==0) return "NOT FOUND";
+        return numeriFissi;
     }
 
-    public DefaultListModel getNumeriMobili(int pk) throws SQLException{
-        DLMNumeriMobili.removeAllElements();
+    public String getNumeriMobili(int pk) throws SQLException{
+        cont = 0;
+        numeriMobili = "<html>";
         s = connection.createStatement();
         //QUERY DI SELEZIONE ATTRIBUTI DI NUMERO MOBILE
         rs = s.executeQuery("SELECT * " +
                 "FROM NUMERO_MOBILE " +
                 "WHERE ID_CONTATTO = "+pk);
         while(rs.next()){                                      //Finche non scorro tutto il resultSet
-            DLMNumeriMobili.addElement(rs.getString("prefisso")+" "+rs.getString("numero"));
+            numeriMobili= numeriMobili+(rs.getString("prefisso")+" "+rs.getString("numero")+"<br/>");
+            cont++;
         }
-        return DLMNumeriMobili;
+        numeriMobili = numeriMobili+"<br/><html>";
+        if(cont==0) return "NOT FOUND";
+        return numeriMobili;
     }
 }

@@ -1,8 +1,5 @@
 package GUI;
 
-import DAO.ContattoDAO;
-import ImplementazionePostgresDAO.ImplementazioneContattoDAO;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -51,12 +48,22 @@ public class Window {
     private JLabel lblSkype;
     private JLabel lblWeChat;
     private JLabel lblTeams;
-    private JPanel panelMerda;
+    private JPanel panelM;
     private JPanel panelBottoniInfo;
     private JButton buttonModifica;
     private JButton eliminaButton;
     private JScrollPane infoBottomScroll;
-    private JLabel lblFiera;
+    private JPanel panelScroll;
+    private JLabel lblEmail;
+    private JLabel lblGetEmail;
+    private JLabel lblNumeriFissi;
+    private JLabel lblGetNumeriFissi;
+    private JLabel lblNumeriMobili;
+    private JLabel lblGetNumeriMobili;
+    private JLabel lblIndirizzoPrincipale;
+    private JLabel lblGetIndirizzoPrincipale;
+    private JLabel lblIndirizziSecondari;
+    private JLabel lblGetIndirizziSecondari;
     private ImageIcon img;
     private DefaultListCellRenderer renderer;
 
@@ -92,6 +99,16 @@ public class Window {
         DLMContattiPrivati = c.getContattiPrivati(pkContattiPrivati);
         listAreaPrivata.setModel(DLMContattiPrivati);                               //Aggiungiamo nel JList i nomi e cognomi dei contatti
 
+        //SETTAGGIO LBL INIZIALI
+        lblEmail.setText("<html>Email<br/><html>");
+        lblNumeriFissi.setText("<html>Numeri Fissi<br/><html>");
+        lblNumeriMobili.setText("<html>Numeri Mobili<br/><html>");
+        lblIndirizzoPrincipale.setText("<html>Indirizzo Principale<br/><html>");
+        lblIndirizziSecondari.setText("<html>Indirizzi Secondari<br/><html>");
+
+        //ELIMINAZIONE BORDER AUTOMATICO DELLO SCROLL
+        infoBottomScroll.setBorder(null);
+
         //Listener contatto click
         listContatti.addMouseListener(new MouseAdapter() {
             @Override
@@ -102,6 +119,51 @@ public class Window {
                     lblNome.setText(c.getNome(pkContatti.get(listContatti.getSelectedIndex())));
                     //SET COGNOME
                     lblCognome.setText(c.getCognome(pkContatti.get(listContatti.getSelectedIndex())));
+                    //SET EMAIL
+                    if(c.getEmail((pkContatti.get(listContatti.getSelectedIndex()))).equals("NOT FOUND")){
+                        lblEmail.setVisible(false);
+                        lblGetEmail.setVisible(false);
+                    }else {
+                        lblGetEmail.setText(c.getEmail((pkContatti.get(listContatti.getSelectedIndex()))));
+                        lblEmail.setVisible(true);
+                        lblGetEmail.setVisible(true);
+                    }
+                    //SET NUMERI FISSI
+                    if(c.getNumeriFissi(pkContatti.get(listContatti.getSelectedIndex())).equals("NOT FOUND")){
+                        lblNumeriFissi.setVisible(false);
+                        lblGetNumeriFissi.setVisible(false);
+                    }else{
+                        lblGetNumeriFissi.setText(c.getNumeriFissi(pkContatti.get(listContatti.getSelectedIndex())));
+                        lblNumeriFissi.setVisible(true);
+                        lblGetNumeriFissi.setVisible(true);
+                    }
+                    //SET NUMERI MOBILI
+                    if(c.getNumeriMobili(pkContatti.get(listContatti.getSelectedIndex())).equals("NOT FOUND")){
+                        lblNumeriMobili.setVisible(false);
+                        lblGetNumeriMobili.setVisible(false);
+                    }else{
+                        lblGetNumeriMobili.setText(c.getNumeriFissi(pkContatti.get(listContatti.getSelectedIndex())));
+                        lblNumeriMobili.setVisible(true);
+                        lblGetNumeriMobili.setVisible(true);
+                    }
+                    //SET INDIRIZZO PRINCIPALE
+                    if(c.getIndirizzoPrincipale(pkContatti.get(listContatti.getSelectedIndex())).equals("NOT FOUND")){
+                        lblIndirizzoPrincipale.setVisible(false);
+                        lblGetIndirizzoPrincipale.setVisible(false);
+                    }else{
+                        lblGetIndirizzoPrincipale.setText(c.getIndirizzoPrincipale(pkContatti.get(listContatti.getSelectedIndex())));
+                        lblIndirizzoPrincipale.setVisible(true);
+                        lblGetIndirizzoPrincipale.setVisible(true);
+                    }
+                    //SET INDIRIZZI SECONDARI
+                    if(c.getIndirizziSecondari(pkContatti.get(listContatti.getSelectedIndex())).equals("NOT FOUND")){
+                        lblIndirizziSecondari.setVisible(false);
+                        lblGetIndirizziSecondari.setVisible(false);
+                    }else{
+                        lblGetIndirizziSecondari.setText(c.getIndirizziSecondari(pkContatti.get(listContatti.getSelectedIndex())));
+                        lblIndirizziSecondari.setVisible(true);
+                        lblGetIndirizziSecondari.setVisible(true);
+                    }
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
@@ -267,7 +329,6 @@ public class Window {
                 lblTelegram.setIcon(img);
             }
         });
-        lblFiera.setText("<html>Hello World!<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah<br/>blahblahblah</html>");
     }
 
 
