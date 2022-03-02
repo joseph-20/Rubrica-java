@@ -1,8 +1,8 @@
 package Controller;
 
-import DAO.ContattoDAO;
+import DAO.*;
 import Database.ConnessioneDatabase;
-import ImplementazionePostgresDAO.ImplementazioneContattoDAO;
+import ImplementazionePostgresDAO.*;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -10,7 +10,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Controller {
-    private ContattoDAO contact = new ImplementazioneContattoDAO();
+    private ContattoDAO contact = new ImplementazioneContattoPostgresDAO();
+    private EmailDAO email = new ImplementazioneEmailPostgresDAO();
+    private IndirizzoPrincipaleDAO indirizzoP = new ImplementazioneIndirizzoPrincipalePostgresDAO();
+    private IndirizziSecondariDAO indirizziS = new ImplementazioneIndirizziSecondariPostgresDAO();
+    private NumeriFissiDAO numeriF = new ImplementazioneNumeriFissiPostgresDAO();
+    private NumeriMobiliDAO numeriM = new ImplementazioneNumeriMobiliPostgresDAO();
 
    public Connection getConnection () throws SQLException {
         ConnessioneDatabase conn = ConnessioneDatabase.getInstance();
@@ -27,7 +32,7 @@ public class Controller {
         return contact.getContattiPrivati(pkContatti);
     }
     public String getIndirizzoPrincipale (int pk) throws SQLException{
-        return contact.getIndirizzoPrincipale(pk);
+        return indirizzoP.getIndirizzoPrincipale(pk);
     }
     public String getNome (int pk) throws SQLException{
         return contact.getNome(pk);
@@ -36,15 +41,15 @@ public class Controller {
         return contact.getCognome(pk);
     }
     public String getIndirizziSecondari(int pk) throws SQLException{
-        return contact.getIndirizziSecondari(pk);
+        return indirizziS.getIndirizziSecondari(pk);
     }
     public String getEmail(int pk) throws SQLException{
-        return contact.getEmail(pk);
+        return email.getEmail(pk);
     }
     public String getNumeriFissi(int pk) throws SQLException{
-        return contact.getNumeriFissi(pk);
+        return numeriF.getNumeriFissi(pk);
     }
     public String getNumeriMobili(int pk) throws SQLException{
-        return contact.getNumeriMobili(pk);
+        return numeriM.getNumeriMobili(pk);
     }
 }
