@@ -1,5 +1,7 @@
 package Model;
 
+import DAO.ContattoDAO;
+
 public class Contatto {
     private String nome;
     private String cognome;
