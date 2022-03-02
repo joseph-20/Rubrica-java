@@ -332,8 +332,7 @@
                       </grid>
                     </children>
                   </grid>
-                  <grid id="c036" binding="panelInfoBottom" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                    <margin top="0" left="0" bottom="0" right="0"/>
+                  <grid id="c036" binding="panelInfoBottom" layout-manager="BorderLayout" hgap="0" vgap="0">
                     <constraints>
                       <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
                         <maximum-size width="9999" height="9999"/>
@@ -342,202 +341,20 @@
                     <properties/>
                     <border type="none"/>
                     <children>
-                      <grid id="9515e" binding="panelIndirizzoPrincipale" layout-manager="GridBagLayout">
-                        <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                        </constraints>
+                      <scrollpane id="3d286" binding="infoBottomScroll">
+                        <constraints border-constraint="Center"/>
                         <properties/>
                         <border type="none"/>
                         <children>
-                          <component id="abf81" class="javax.swing.JList" binding="indirizzoPrincipaleList">
-                            <constraints>
-                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                <preferred-size width="150" height="50"/>
-                              </grid>
-                              <gridbag weightx="0.0" weighty="0.0"/>
-                            </constraints>
+                          <component id="5f7e8" class="javax.swing.JLabel" binding="lblFiera">
+                            <constraints/>
                             <properties>
-                              <font size="14"/>
-                              <model/>
-                              <selectionBackground color="-1"/>
-                              <selectionForeground color="-16777216"/>
-                              <visibleRowCount value="1"/>
-                            </properties>
-                          </component>
-                          <component id="5356b" class="javax.swing.JLabel" binding="lblIndirizzoPrincipale">
-                            <constraints>
-                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                              <gridbag weightx="0.0" weighty="0.0"/>
-                            </constraints>
-                            <properties>
-                              <font size="18"/>
-                              <text value="Indirizzo Principale"/>
+                              <text value="Label"/>
+                              <verticalAlignment value="1"/>
                             </properties>
                           </component>
                         </children>
-                      </grid>
-                      <grid id="126ba" binding="panelIndirizzoSecondario" layout-manager="GridBagLayout">
-                        <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties/>
-                        <border type="none"/>
-                        <children>
-                          <component id="f25ae" class="javax.swing.JLabel" binding="lblIndirizzoSecondario">
-                            <constraints>
-                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                              <gridbag weightx="0.0" weighty="0.0"/>
-                            </constraints>
-                            <properties>
-                              <font size="18"/>
-                              <text value="Indirizzi Secondari"/>
-                            </properties>
-                          </component>
-                          <scrollpane id="5607c" binding="indirizziSecondariScroll">
-                            <constraints>
-                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-                              <gridbag weightx="0.0" weighty="0.0"/>
-                            </constraints>
-                            <properties>
-                              <font size="12"/>
-                            </properties>
-                            <border type="none"/>
-                            <children>
-                              <component id="91350" class="javax.swing.JList" binding="indirizziSecondariList">
-                                <constraints/>
-                                <properties>
-                                  <font size="12"/>
-                                  <model/>
-                                  <selectionBackground color="-1"/>
-                                  <selectionForeground color="-16777216"/>
-                                  <visibleRowCount value="1"/>
-                                </properties>
-                              </component>
-                            </children>
-                          </scrollpane>
-                        </children>
-                      </grid>
-                      <grid id="ec2d8" binding="panelEmail" layout-manager="GridBagLayout">
-                        <constraints>
-                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties/>
-                        <border type="none"/>
-                        <children>
-                          <component id="e87c6" class="javax.swing.JLabel" binding="lblEmail">
-                            <constraints>
-                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                              <gridbag weightx="0.0" weighty="0.0"/>
-                            </constraints>
-                            <properties>
-                              <font size="18"/>
-                              <text value="Email"/>
-                            </properties>
-                          </component>
-                          <scrollpane id="9db96" binding="emailScroll">
-                            <constraints>
-                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-                              <gridbag weightx="0.0" weighty="0.0"/>
-                            </constraints>
-                            <properties/>
-                            <border type="none"/>
-                            <children>
-                              <component id="b5c1f" class="javax.swing.JList" binding="emailList">
-                                <constraints/>
-                                <properties>
-                                  <font size="14"/>
-                                  <model/>
-                                  <selectionBackground color="-1"/>
-                                  <selectionForeground color="-16777216"/>
-                                  <visibleRowCount value="3"/>
-                                </properties>
-                              </component>
-                            </children>
-                          </scrollpane>
-                        </children>
-                      </grid>
-                      <grid id="726e7" binding="panelNumeriMobili" layout-manager="GridBagLayout">
-                        <constraints>
-                          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties/>
-                        <border type="none"/>
-                        <children>
-                          <component id="ef260" class="javax.swing.JLabel" binding="lblNumeriMobili">
-                            <constraints>
-                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                              <gridbag weightx="0.0" weighty="0.0"/>
-                            </constraints>
-                            <properties>
-                              <font size="18"/>
-                              <text value="Numeri Mobili"/>
-                            </properties>
-                          </component>
-                          <scrollpane id="6efdd" binding="numeriMobiliScroll">
-                            <constraints>
-                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-                              <gridbag weightx="0.0" weighty="0.0"/>
-                            </constraints>
-                            <properties>
-                              <alignmentX value="0.0"/>
-                            </properties>
-                            <border type="none"/>
-                            <children>
-                              <component id="231a6" class="javax.swing.JList" binding="numeriMobiliList">
-                                <constraints/>
-                                <properties>
-                                  <alignmentX value="0.0"/>
-                                  <font size="14"/>
-                                  <model/>
-                                  <selectionBackground color="-1"/>
-                                  <selectionForeground color="-16777216"/>
-                                  <visibleRowCount value="3"/>
-                                </properties>
-                              </component>
-                            </children>
-                          </scrollpane>
-                        </children>
-                      </grid>
-                      <grid id="caa9a" binding="panelNumeriFissi" layout-manager="GridBagLayout">
-                        <constraints>
-                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties/>
-                        <border type="none"/>
-                        <children>
-                          <component id="6f3bf" class="javax.swing.JLabel" binding="lblNumeriFissi">
-                            <constraints>
-                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                              <gridbag weightx="0.0" weighty="0.0"/>
-                            </constraints>
-                            <properties>
-                              <font size="18"/>
-                              <text value="Numeri Fissi"/>
-                            </properties>
-                          </component>
-                          <scrollpane id="7f91" binding="numeriFissiScroll">
-                            <constraints>
-                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-                              <gridbag weightx="0.0" weighty="0.0"/>
-                            </constraints>
-                            <properties/>
-                            <border type="none"/>
-                            <children>
-                              <component id="2dbf4" class="javax.swing.JList" binding="numeriFissiList">
-                                <constraints/>
-                                <properties>
-                                  <alignmentX value="0.0"/>
-                                  <font size="14"/>
-                                  <model/>
-                                  <selectionBackground color="-1"/>
-                                  <selectionForeground color="-16777216"/>
-                                  <visibleRowCount value="3"/>
-                                </properties>
-                              </component>
-                            </children>
-                          </scrollpane>
-                        </children>
-                      </grid>
+                      </scrollpane>
                     </children>
                   </grid>
                   <grid id="35440" binding="panelBottoniInfo" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="2">
