@@ -381,6 +381,15 @@ public class Window {
                 lblTelegram.setIcon(img);
             }
         });
+        //GESTIONE CLICK ELIMINA IN INFO CONTATTI
+        btnElimina.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                img = c.SetImageSize(".images/warning.png",30,30);
+                JOptionPane.showConfirmDialog(null,"SEI SICURO DI VOLER ELIMINARE QUESTO CONTATTO?","ATTENZIONE!",0,1,img);
+            }
+        });
         //GESTIONE CLICK CREA CONTATTO IN LISTA CONTATTI
         aggiungiContattoButton.addMouseListener(new MouseAdapter() {
             @Override
