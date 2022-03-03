@@ -18,7 +18,7 @@ public class Window {
     private JPanel panel;
     private JTabbedPane Tabs;
     private JSplitPane SplitPaneAreaPrivata;
-    private JSplitPane SplitPaneContatti;
+    private JSplitPane contattiSplitPane;
     private JPanel panelListaContatti;
     private JPanel panelInfoContatti;
     private JPanel ListaContattiPrivata;
@@ -50,8 +50,8 @@ public class Window {
     private JLabel lblTeams;
     private JPanel panelM;
     private JPanel panelBottoniInfo;
-    private JButton buttonModifica;
-    private JButton eliminaButton;
+    private JButton btnModifica;
+    private JButton btnElimina;
     private JScrollPane infoBottomScroll;
     private JPanel panelScroll;
     private JLabel lblEmail;
@@ -64,6 +64,12 @@ public class Window {
     private JLabel lblGetIndirizzoPrincipale;
     private JLabel lblIndirizziSecondari;
     private JLabel lblGetIndirizziSecondari;
+    private JPanel panelInfoContattoSinistra;
+    private JPanel panelCreaContatto;
+    private JSplitPane InfoCreaSplitPane;
+    private JPanel panelBottoniCreaContatto;
+    private JButton btnAggiungiContatto;
+    private JButton btnAnnulla;
     private ImageIcon img;
     private DefaultListCellRenderer renderer;
 
@@ -80,15 +86,18 @@ public class Window {
         frame.setVisible(true);
         frame.setMinimumSize (new Dimension (1200, 720));
 
-        //Blocco scorrimento ScrollBar
+        //Blocco scorrimento ScrollBar e settaggio visibilità panel
         scrollPaneContatti.setViewportView(listContatti);    //Aggiungiamo una VerticalScrollBar alla JList
         scrollPaneContatti.setVisible(true);
         scrollPaneAreaPrivata.setViewportView(listAreaPrivata);
         scrollPaneAreaPrivata.setVisible(true);
-
-        SplitPaneContatti.setEnabled(false);
+        panelCreaContatto.setVisible(false);
+        contattiSplitPane.setEnabled(false);
         SplitPaneAreaPrivata.setEnabled(false);
+        InfoCreaSplitPane.setEnabled(false);
         panelInfoContatti.setVisible(false);
+        InfoCreaSplitPane.setDividerSize(0);
+        contattiSplitPane.setDividerSize(0);
 
         //Gestione zona contatti
         pkContatti = new ArrayList<Integer>();
@@ -100,7 +109,7 @@ public class Window {
         DLMContattiPrivati = c.getContattiPrivati(pkContattiPrivati);
         listAreaPrivata.setModel(DLMContattiPrivati);                               //Aggiungiamo nel JList i nomi e cognomi dei contatti
 
-        //SETTAGGIO LBL INIZIALI
+        //SETTAGGIO LABEL INIZIALI
         lblEmail.setText("<html>Email<br/><html>");
         lblNumeriFissi.setText("<html>Numeri Fissi<br/><html>");
         lblNumeriMobili.setText("<html>Numeri Mobili<br/><html>");
@@ -117,7 +126,7 @@ public class Window {
                 super.mouseClicked(e);
                 try {
                     panelInfoContatti.setVisible(true);
-                    SplitPaneContatti.setDividerLocation(350);
+                    contattiSplitPane.setDividerLocation(350);
                     //SET NOME
                     lblNome.setText(c.getNome(pkContatti.get(listContatti.getSelectedIndex())));
                     //SET COGNOME
@@ -145,7 +154,7 @@ public class Window {
                         lblNumeriMobili.setVisible(false);
                         lblGetNumeriMobili.setVisible(false);
                     }else{
-                        lblGetNumeriMobili.setText(c.getNumeriFissi(pkContatti.get(listContatti.getSelectedIndex())));
+                        lblGetNumeriMobili.setText(c.getNumeriMobili(pkContatti.get(listContatti.getSelectedIndex())));
                         lblNumeriMobili.setVisible(true);
                         lblGetNumeriMobili.setVisible(true);
                     }
@@ -330,6 +339,22 @@ public class Window {
                 super.mouseExited(e);
                 img = new ImageIcon(".images/Telegram25x25.png");
                 lblTelegram.setIcon(img);
+            }
+        });
+        //GESTIONE CLICK CREA CONTATTO
+        aggiungiContattoButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                c.swapVisibility(panelCreaContatto,panelInfoContattoSinistra);
+            }
+        });
+        //GESTIONE CLICK ANNULLA IN CREA CONTATTO
+        btnAnnulla.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                c.swapVisibility(panelInfoContattoSinistra,panelCreaContatto);
             }
         });
     }

@@ -52,4 +52,8 @@ public class Controller {
     public String getNumeriMobili(int pk) throws SQLException{
         return numeriM.getNumeriMobili(pk);
     }
+    public void swapVisibility (JPanel active,JPanel disable){
+        active.setVisible(true);
+        disable.setVisible(false);
+    }
 }
