@@ -1,13 +1,23 @@
 package GUI;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.CopyOption;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Base64;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import Controller.Controller;
+
 
 public class Window {
     //Dichiarazioni
@@ -70,6 +80,9 @@ public class Window {
     private JPanel panelBottoniCreaContatto;
     private JButton btnAggiungiContatto;
     private JButton btnAnnulla;
+    private JButton btnReindirizzamenti;
+    private JTextField textField1;
+    private JButton button1;
     private ImageIcon img;
     private DefaultListCellRenderer renderer;
 
@@ -84,7 +97,7 @@ public class Window {
         frame.setContentPane(this.panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        frame.setMinimumSize (new Dimension (1200, 720));
+        frame.setMinimumSize (new Dimension (1200, 800));
 
         //Blocco scorrimento ScrollBar e settaggio visibilità panel
         scrollPaneContatti.setViewportView(listContatti);    //Aggiungiamo una VerticalScrollBar alla JList
@@ -98,6 +111,8 @@ public class Window {
         panelInfoContatti.setVisible(false);
         InfoCreaSplitPane.setDividerSize(0);
         contattiSplitPane.setDividerSize(0);
+        panelInfoContattoSinistra.setVisible(false);
+        panelCreaContatto.setVisible(false);
 
         //Gestione zona contatti
         pkContatti = new ArrayList<Integer>();
@@ -126,6 +141,7 @@ public class Window {
                 super.mouseClicked(e);
                 try {
                     panelInfoContatti.setVisible(true);
+                    c.swapVisibility(panelInfoContattoSinistra,panelCreaContatto);
                     contattiSplitPane.setDividerLocation(350);
                     //SET NOME
                     lblNome.setText(c.getNome(pkContatti.get(listContatti.getSelectedIndex())));
@@ -341,12 +357,14 @@ public class Window {
                 lblTelegram.setIcon(img);
             }
         });
-        //GESTIONE CLICK CREA CONTATTO
+        //GESTIONE CLICK CREA CONTATTO IN LISTA CONTATTI
         aggiungiContattoButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+                panelInfoContatti.setVisible(true);
                 c.swapVisibility(panelCreaContatto,panelInfoContattoSinistra);
+                contattiSplitPane.setDividerLocation(350);
             }
         });
         //GESTIONE CLICK ANNULLA IN CREA CONTATTO
@@ -354,7 +372,29 @@ public class Window {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                c.swapVisibility(panelInfoContattoSinistra,panelCreaContatto);
+                panelInfoContattoSinistra.setVisible(false);
+                panelCreaContatto.setVisible(false);
+                panelInfoContatti.setVisible(false);
+
+            }
+        });
+
+        button1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                CopyOption c;
+                JFileChooser jfc = new JFileChooser();
+                jfc.showDialog(null,"Please Select the File");
+                jfc.setVisible(true);
+                File filename = jfc.getSelectedFile();
+                System.out.println("File name "+filename.getPath());
+                try {
+                    Files.copy(Path.of((filename.getPath())), Path.of((".images/"+(pkContatti.size()+pkContattiPrivati.size()+2))),StandardCopyOption.REPLACE_EXISTING);
+                    //TODO ELIMINA CONTATTO HA GLI STESSI ID
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
     }

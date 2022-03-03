@@ -39,6 +39,7 @@ VALUES ('Andrea','Pinto,null,'false')]]></console>
     <connection id="00f33de0-43d9-4fe5-be9d-147ef2b44f27" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="00f33de0-43d9-4fe5-be9d-147ef2b44f27" dataset="public.numero_mobile" active-filter-id="" />
     <filter-actions connection-id="00f33de0-43d9-4fe5-be9d-147ef2b44f27" dataset="public.contatto" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
