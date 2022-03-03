@@ -5,6 +5,7 @@ import Database.ConnessioneDatabase;
 import ImplementazionePostgresDAO.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -55,5 +56,13 @@ public class Controller {
     public void swapVisibility (JPanel active,JPanel disable){
         active.setVisible(true);
         disable.setVisible(false);
+    }
+    public ImageIcon SetImageSize(String path,int width,int height){
+        ImageIcon icon = new ImageIcon(path);
+        Image img = icon.getImage();
+        Image newImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        ImageIcon newImc = new ImageIcon(newImg);
+
+        return newImc;
     }
 }

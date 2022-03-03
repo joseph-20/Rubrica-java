@@ -5,16 +5,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.CopyOption;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Base64;
-import java.io.OutputStream;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.awt.Image;
+import java.util.Random;
 
 import Controller.Controller;
 
@@ -81,10 +78,16 @@ public class Window {
     private JButton btnAggiungiContatto;
     private JButton btnAnnulla;
     private JButton btnReindirizzamenti;
-    private JTextField textField1;
-    private JButton button1;
+    private JButton btnAddContact;
+    private JTextField textFieldNome;
+    private JTextField textFieldCognome;
     private ImageIcon img;
     private DefaultListCellRenderer renderer;
+    private JFileChooser jfc = new JFileChooser();
+    private File foto;
+    private Image image;
+    private ArrayList<String> randImage;
+    private Random rand = new Random();
 
     public Window() throws SQLException{
         Controller c = new Controller();
@@ -97,7 +100,25 @@ public class Window {
         frame.setContentPane(this.panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        frame.setMinimumSize (new Dimension (1200, 800));
+        frame.setMinimumSize (new Dimension (1280, 720));
+
+        //Inizializzazione ArrayList randImage con foto default
+        randImage = new ArrayList<String>();
+        randImage.add("icon_blue.png");
+        randImage.add("icon_green.png");
+        randImage.add("icon_grey.png");
+        randImage.add("icon_lightblue.png");
+        randImage.add("icon_lightbrown.png");
+        randImage.add("icon_lightgreen.png");
+        randImage.add("icon_lightorange.png");
+        randImage.add("icon_lightpink.png");
+        randImage.add("icon_lightpurple.png");
+        randImage.add("icon_lightred.png");
+        randImage.add("icon_lightyellow.png");
+        randImage.add("icon_magenta.png");
+        randImage.add("icon_orange.png");
+        randImage.add("icon_purple.png");
+        randImage.add("icon_white.png");
 
         //Blocco scorrimento ScrollBar e settaggio visibilità panel
         scrollPaneContatti.setViewportView(listContatti);    //Aggiungiamo una VerticalScrollBar alla JList
@@ -143,6 +164,9 @@ public class Window {
                     panelInfoContatti.setVisible(true);
                     c.swapVisibility(panelInfoContattoSinistra,panelCreaContatto);
                     contattiSplitPane.setDividerLocation(350);
+                    //SET FOTO
+                    img = c.SetImageSize(".images/"+randImage.get(rand.nextInt(randImage.size()-1)),200,200);
+                    lblFoto.setIcon(img);
                     //SET NOME
                     lblNome.setText(c.getNome(pkContatti.get(listContatti.getSelectedIndex())));
                     //SET COGNOME
@@ -199,7 +223,7 @@ public class Window {
         });
 
         //Set foto del contatto
-        img = new ImageIcon(".images/user200x200.png");
+        img = c.SetImageSize(".images/icon_blue.png",200,200);
         lblFoto.setIcon(img);
         lblFoto.setVisible(true);
 
@@ -365,6 +389,8 @@ public class Window {
                 panelInfoContatti.setVisible(true);
                 c.swapVisibility(panelCreaContatto,panelInfoContattoSinistra);
                 contattiSplitPane.setDividerLocation(350);
+                img = c.SetImageSize(".images/"+randImage.get(rand.nextInt(randImage.size()-1)),200,200);
+                btnAddContact.setIcon(img);
             }
         });
         //GESTIONE CLICK ANNULLA IN CREA CONTATTO
@@ -375,22 +401,23 @@ public class Window {
                 panelInfoContattoSinistra.setVisible(false);
                 panelCreaContatto.setVisible(false);
                 panelInfoContatti.setVisible(false);
-
+                textFieldNome.setText(null);
+                textFieldCognome.setText(null);
             }
         });
 
-        button1.addMouseListener(new MouseAdapter() {
+        //INTERAZIONI AGGIUNTA FOTO CONTATTO IN CREA CONTATTO
+        btnAddContact.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                CopyOption c;
-                JFileChooser jfc = new JFileChooser();
-                jfc.showDialog(null,"Please Select the File");
+                jfc.showDialog(null,"Seleziona la foto del contatto");
                 jfc.setVisible(true);
-                File filename = jfc.getSelectedFile();
-                System.out.println("File name "+filename.getPath());
+                foto = jfc.getSelectedFile();
                 try {
-                    Files.copy(Path.of((filename.getPath())), Path.of((".images/"+(pkContatti.size()+pkContattiPrivati.size()+2))),StandardCopyOption.REPLACE_EXISTING);
+                    Files.copy(Path.of((foto.getPath())), Path.of((".images/"+(pkContatti.size()+pkContattiPrivati.size()+2))),StandardCopyOption.REPLACE_EXISTING);
+                    img = c.SetImageSize(".images/"+(pkContatti.size()+pkContattiPrivati.size()+2),200,200);
+                    btnAddContact.setIcon(img);
                     //TODO ELIMINA CONTATTO HA GLI STESSI ID
                 } catch (IOException ex) {
                     ex.printStackTrace();
