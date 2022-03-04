@@ -74,19 +74,17 @@ public class Window {
     private JPanel panelInfoContattoSinistra;
     private JPanel panelCreaContatto;
     private JSplitPane InfoCreaSplitPane;
-    private JPanel panelBottoniCreaContatto;
-    private JButton btnAggiungiContatto;
     private JButton btnAnnulla;
     private JButton btnReindirizzamenti;
+    private JPanel panelCreaContattoTop;
     private JButton btnAddContact;
+    private JLabel nomeLabel;
+    private JLabel cognomeLabel;
     private JTextField textFieldNome;
     private JTextField textFieldCognome;
-    private JScrollPane panelTopMessaging;
-    private JLabel lblCognomeCreaContatto;
-    private JLabel lblNomeCreaContatto;
-    private JPanel panelMessaging;
-    private JPanel panelIntoMessaging;
-    private JPanel panelCreaContattoScroll;
+    private JPanel panelMidCreaContatto;
+    private JPanel panelServices;
+    private JPanel panelGridBagServices;
     private JLabel lblMessengerCreaContatto;
     private JLabel lblSkypeCreaContatto;
     private JLabel lblTeamsCreaContatto;
@@ -94,12 +92,13 @@ public class Window {
     private JLabel lblViberCreaContatto;
     private JLabel lblWeChatCreaContatto;
     private JLabel lblWhatsappCreaContatto;
-    private JPanel panelIntoMessaging2;
+    private JPanel panelBottomCreaContatto;
     private JScrollPane creaContattoScrollPane;
     private JPanel panelCreaContattoScrollPane;
     private JLabel lblEmailCreaContatto;
     private JTextField textFieldEmail0;
     private JButton btnAddEmail;
+    private JButton btnBackEmail;
     private JTextField textFieldEmail1;
     private JTextField textFieldEmail2;
     private JTextField textFieldEmail3;
@@ -109,7 +108,7 @@ public class Window {
     private JTextField textFieldEmail7;
     private JTextField textFieldEmail8;
     private JTextField textFieldEmail9;
-    private JButton btnEliminaEmail;
+    private JButton btnAddEmailCanGrow;
     private ImageIcon img;
     private DefaultListCellRenderer renderer;
     private JFileChooser jfc = new JFileChooser();
@@ -164,7 +163,6 @@ public class Window {
         contattiSplitPane.setDividerSize(0);
         panelInfoContattoSinistra.setVisible(false);
         panelCreaContatto.setVisible(false);
-        panelTopMessaging.setBorder(null);
         creaContattoScrollPane.setBorder(null);
 
         //Gestione zona contatti
@@ -638,13 +636,25 @@ public class Window {
             }
         });
 
+        //INTERAZIONI CON PULSANTE BTNADDEMAIL
         btnAddEmail.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+                    textFieldEmail0.setVisible(true);
+                    btnBackEmail.setVisible(true);
+                    btnAddEmailCanGrow.setVisible(true);
+                    btnAddEmail.setVisible(false);
+                    cont++;
+            }
+        });
+
+        //INTERAZIONI COPIA DI BTNADDEMAIL
+        btnAddEmailCanGrow.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
                 switch(cont){
-                    case 0 : textFieldEmail0.setVisible(true);
-                        break;
                     case 1 : textFieldEmail1.setVisible(true);
                         break;
                     case 2 : textFieldEmail2.setVisible(true);
@@ -664,9 +674,60 @@ public class Window {
                     case 9 : textFieldEmail9.setVisible(true);
                         break;
                 }
+                if(cont>9) {
+                    img = c.SetImageSize(".images/warning.png",30,30);
+                    JOptionPane.showMessageDialog(null,"LIMITE EMAIL MASSIME RAGGIUNTO!","ATTENZIONE!",1,img);
+                    cont--;
+                }
                 panelCreaContattoScrollPane.setVisible(false);
                 panelCreaContattoScrollPane.setVisible(true);
                 cont++;
+            }
+        });
+
+        //INTERAZIONI CON BTNBACKEMAIL
+        btnBackEmail.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                switch(cont){
+                    case 1 : textFieldEmail0.setVisible(false);
+                    textFieldEmail0.setText("");
+                        btnBackEmail.setVisible(false);
+                        btnAddEmailCanGrow.setVisible(false);
+                        btnAddEmail.setVisible(true);
+                        break;
+                    case 2 : textFieldEmail1.setVisible(false);
+                        textFieldEmail1.setText("");
+                        break;
+                    case 3 : textFieldEmail2.setVisible(false);
+                        textFieldEmail2.setText("");
+                        break;
+                    case 4 : textFieldEmail3.setVisible(false);
+                        textFieldEmail3.setText("");
+                        break;
+                    case 5 : textFieldEmail4.setVisible(false);
+                        textFieldEmail4.setText("");
+                        break;
+                    case 6 : textFieldEmail5.setVisible(false);
+                        textFieldEmail5.setText("");
+                        break;
+                    case 7 : textFieldEmail6.setVisible(false);
+                        textFieldEmail6.setText("");
+                        break;
+                    case 8 : textFieldEmail7.setVisible(false);
+                        textFieldEmail7.setText("");
+                        break;
+                    case 9 : textFieldEmail8.setVisible(false);
+                        textFieldEmail8.setText("");
+                        break;
+                    case 10 : textFieldEmail9.setVisible(false);
+                        textFieldEmail9.setText("");
+                        break;
+                }
+                panelCreaContattoScrollPane.setVisible(false);
+                panelCreaContattoScrollPane.setVisible(true);
+                cont--;
             }
         });
     }
