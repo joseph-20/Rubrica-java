@@ -81,6 +81,23 @@ public class Window {
     private JButton btnAddContact;
     private JTextField textFieldNome;
     private JTextField textFieldCognome;
+    private JScrollPane creaContattoScroll;
+    private JLabel lblCognomeCreaContatto;
+    private JLabel lblNomeCreaContatto;
+    private JPanel panelCreaContattoScroll;
+    private JLabel lblMessengerCreaContatto;
+    private JLabel lblSkypeCreaContatto;
+    private JLabel lblTeamsCreaContatto;
+    private JLabel lblTelegramCreaContatto;
+    private JLabel lblViberCreaContatto;
+    private JLabel lblWeChatCreaContatto;
+    private JLabel lblWhatsappCreaContatto;
+    private JScrollPane creaContattoScrollPane;
+    private JPanel panelCreaContattoScrollInfo;
+    private JLabel lblEmailCreaContatto;
+    private JTextField textField1;
+    private JButton btnAddEmail;
+    private JLabel lblNumeriFissiCreaContatto;
     private ImageIcon img;
     private DefaultListCellRenderer renderer;
     private JFileChooser jfc = new JFileChooser();
@@ -134,6 +151,8 @@ public class Window {
         contattiSplitPane.setDividerSize(0);
         panelInfoContattoSinistra.setVisible(false);
         panelCreaContatto.setVisible(false);
+        creaContattoScroll.setBorder(null);
+        creaContattoScrollPane.setBorder(null);
 
         //Gestione zona contatti
         pkContatti = new ArrayList<Integer>();
@@ -151,6 +170,12 @@ public class Window {
         lblNumeriMobili.setText("<html>Numeri Mobili<br/><html>");
         lblIndirizzoPrincipale.setText("<html>Indirizzo Principale<br/><html>");
         lblIndirizziSecondari.setText("<html>Indirizzi Secondari<br/><html>");
+
+        lblEmailCreaContatto.setText("<html>Email<br/><html>");
+        /*lblNumeriFissiCreaContatto.setText("<html>Numeri Fissi<br/><html>");
+        lblNumeriMobiliCreaContatto.setText("<html>Numeri Mobili<br/><html>");
+        lblIndirizzoPrincipaleCreaContatto.setText("<html>Indirizzo Principale<br/><html>");
+        lblIndirizziSecondariCreaContatto.setText("<html>Indirizzi Secondari<br/><html>");*/
 
         //ELIMINAZIONE BORDER AUTOMATICO DELLO SCROLL
         infoBottomScroll.setBorder(null);
@@ -379,6 +404,161 @@ public class Window {
                 super.mouseExited(e);
                 img = new ImageIcon(".images/Telegram25x25.png");
                 lblTelegram.setIcon(img);
+            }
+        });
+
+        //Set interazioni lblMessengerCreaContatto
+        img = new ImageIcon(".images/Messenger25x25.png");
+        lblMessengerCreaContatto.setIcon(img);
+
+        //Mouse entered
+        lblMessengerCreaContatto.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                img = new ImageIcon(".images/Messenger30x30.png");
+                lblMessengerCreaContatto.setIcon(img);
+            }
+        });
+        //Mouse exited
+        lblMessengerCreaContatto.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                img = new ImageIcon(".images/Messenger25x25.png");
+                lblMessengerCreaContatto.setIcon(img);
+            }
+        });
+
+        //Set Interazioni lblSkypeCreaContatto
+        img = new ImageIcon(".images/Skype25x25.png");
+        lblSkypeCreaContatto.setIcon(img);
+        //Mouse entered
+        lblSkypeCreaContatto.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                img = new ImageIcon(".images/Skype30x30.png");
+                lblSkypeCreaContatto.setIcon(img);
+            }
+        });
+        //Mouse exited
+        lblSkypeCreaContatto.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                img = new ImageIcon(".images/Skype25x25.png");
+                lblSkypeCreaContatto.setIcon(img);
+            }
+        });
+
+        //Set Interazioni lblTeamsCreaContatto
+        img  = new ImageIcon(".images/Teams25x25.png");
+        lblTeamsCreaContatto.setIcon(img );
+        //Mouse entered
+        lblTeamsCreaContatto.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                img = new ImageIcon(".images/Teams30x30.png");
+                lblTeamsCreaContatto.setIcon(img);
+            }
+        });
+        //Mouse exited
+        lblTeamsCreaContatto.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                img = new ImageIcon(".images/Teams25x25.png");
+                lblTeamsCreaContatto.setIcon(img);
+            }
+        });
+
+        //Set Interazioni lblWeChatCreaContatto
+        img  = new ImageIcon(".images/WeChat25x25.png");
+        lblWeChatCreaContatto.setIcon(img);
+        //Mouse entered
+        lblWeChatCreaContatto.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                img = new ImageIcon(".images/WeChat30x30.png");
+                lblWeChatCreaContatto.setIcon(img);
+            }
+        });
+        //Mouse exited
+        lblWeChatCreaContatto.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                img = new ImageIcon(".images/WeChat25x25.png");
+                lblWeChatCreaContatto.setIcon(img);
+            }
+        });
+
+        //Set Interazioni lblWhatsappCreaContatto
+        img  = new ImageIcon(".images/WhatsApp25x25.png");
+        lblWhatsappCreaContatto.setIcon(img);
+        //Mouse entered
+        lblWhatsappCreaContatto.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                img = new ImageIcon(".images/Whatsapp30x30.png");
+                lblWhatsappCreaContatto.setIcon(img);
+            }
+        });
+        //Mouse exited
+        lblWhatsappCreaContatto.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                img = new ImageIcon(".images/Whatsapp25x25.png");
+                lblWhatsappCreaContatto.setIcon(img);
+            }
+        });
+
+        //Set Interazioni lblViberCreaContatto
+        img = new ImageIcon(".images/Viber25x25.png");
+        lblViberCreaContatto.setIcon(img);
+        //Mouse entered
+        lblViberCreaContatto.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                img = new ImageIcon(".images/Viber30x30.png");
+                lblViberCreaContatto.setIcon(img);
+            }
+        });
+        //Mouse exited
+        lblViberCreaContatto.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                img = new ImageIcon(".images/Viber25x25.png");
+                lblViberCreaContatto.setIcon(img);
+            }
+        });
+
+        //Set Interazioni lblTelegramCreaContatto
+        img = new ImageIcon(".images/Telegram25x25.png");
+        lblTelegramCreaContatto.setIcon(img);
+        //Mouse entered
+        lblTelegramCreaContatto.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                img = new ImageIcon(".images/Telegram30x30.png");
+                lblTelegramCreaContatto.setIcon(img);
+            }
+        });
+        //Mouse exited
+        lblTelegramCreaContatto.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                img = new ImageIcon(".images/Telegram25x25.png");
+                lblTelegramCreaContatto.setIcon(img);
             }
         });
         //GESTIONE CLICK ELIMINA IN INFO CONTATTI
