@@ -30,6 +30,7 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
 
 
     public DefaultListModel getContatti (ArrayList<Integer> pkContatti) throws SQLException {
+        pkContatti.clear();
         s = connection.createStatement();
         //QUERY DI SELEZIONE DEI CONTATTI CON SECURITY FALSE
         rs = s.executeQuery("SELECT * " +
@@ -48,6 +49,7 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
     }
 
     public DefaultListModel getContattiPrivati (ArrayList<Integer> pkContattiPrivati) throws SQLException{
+        pkContattiPrivati.clear();
         s = connection.createStatement();
         //QUERY DI SELEZIONE DEI CONTATTI CON SECURITY TRUE
         rs = s.executeQuery("SELECT * " +
@@ -89,5 +91,13 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
             surname = rs.getString("COGNOME");
         }
         return surname;
+    }
+
+    public void cancellaContatto(int pk) throws SQLException{
+        s = connection.createStatement();
+        //QUERY DI CANCELLAZIONE CONTATTO
+        s.executeUpdate("DELETE " +
+                            "FROM CONTATTO " +
+                            "WHERE ID = "+ pk);
     }
 }

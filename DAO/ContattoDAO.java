@@ -10,4 +10,5 @@ public interface ContattoDAO {
     public DefaultListModel getContattiPrivati (ArrayList<Integer> pkContattiPrivati) throws SQLException;
     public String getNome (int pk) throws SQLException;
     public String getCognome (int pk) throws SQLException;
+    public void cancellaContatto(int pk) throws SQLException;
 }

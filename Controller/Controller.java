@@ -65,4 +65,7 @@ public class Controller {
 
         return newImc;
     }
+    public void cancellaContatto(int pk) throws SQLException {
+        contact.cancellaContatto(pk);
+    }
 }

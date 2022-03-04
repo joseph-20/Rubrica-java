@@ -387,7 +387,18 @@ public class Window {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 img = c.SetImageSize(".images/warning.png",30,30);
-                JOptionPane.showConfirmDialog(null,"SEI SICURO DI VOLER ELIMINARE QUESTO CONTATTO?","ATTENZIONE!",0,1,img);
+                if(JOptionPane.showConfirmDialog(null,"SEI SICURO DI VOLER ELIMINARE QUESTO CONTATTO?","ATTENZIONE!",0,1,img)==0){
+                    try {
+                        c.cancellaContatto(pkContatti.get(listContatti.getSelectedIndex()));
+                        //REFRESH LISTA CONTATTI E RESET DLM
+                        panelInfoContatti.setVisible(false);
+                        DLMContatti.clear();
+                        DLMContatti = c.getContatti(pkContatti);
+                        listContatti.setModel(DLMContatti);                                         //Aggiungiamo nel JList i nomi e cognomi dei contatti
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                }
             }
         });
         //GESTIONE CLICK CREA CONTATTO IN LISTA CONTATTI
