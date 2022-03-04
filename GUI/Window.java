@@ -81,9 +81,11 @@ public class Window {
     private JButton btnAddContact;
     private JTextField textFieldNome;
     private JTextField textFieldCognome;
-    private JScrollPane creaContattoScroll;
+    private JScrollPane panelTopMessaging;
     private JLabel lblCognomeCreaContatto;
     private JLabel lblNomeCreaContatto;
+    private JPanel panelMessaging;
+    private JPanel panelIntoMessaging;
     private JPanel panelCreaContattoScroll;
     private JLabel lblMessengerCreaContatto;
     private JLabel lblSkypeCreaContatto;
@@ -92,17 +94,28 @@ public class Window {
     private JLabel lblViberCreaContatto;
     private JLabel lblWeChatCreaContatto;
     private JLabel lblWhatsappCreaContatto;
+    private JPanel panelIntoMessaging2;
     private JScrollPane creaContattoScrollPane;
-    private JPanel panelCreaContattoScrollInfo;
+    private JPanel panelCreaContattoScrollPane;
     private JLabel lblEmailCreaContatto;
-    private JTextField textField1;
+    private JTextField textFieldEmail0;
     private JButton btnAddEmail;
-    private JLabel lblNumeriFissiCreaContatto;
+    private JTextField textFieldEmail1;
+    private JTextField textFieldEmail2;
+    private JTextField textFieldEmail3;
+    private JTextField textFieldEmail4;
+    private JTextField textFieldEmail5;
+    private JTextField textFieldEmail6;
+    private JTextField textFieldEmail7;
+    private JTextField textFieldEmail8;
+    private JTextField textFieldEmail9;
+    private JButton btnEliminaEmail;
     private ImageIcon img;
     private DefaultListCellRenderer renderer;
     private JFileChooser jfc = new JFileChooser();
     private File foto;
     private Image image;
+    private int cont=0;
     private ArrayList<String> randImage;
     private Random rand = new Random();
 
@@ -151,7 +164,7 @@ public class Window {
         contattiSplitPane.setDividerSize(0);
         panelInfoContattoSinistra.setVisible(false);
         panelCreaContatto.setVisible(false);
-        creaContattoScroll.setBorder(null);
+        panelTopMessaging.setBorder(null);
         creaContattoScrollPane.setBorder(null);
 
         //Gestione zona contatti
@@ -622,6 +635,38 @@ public class Window {
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
+            }
+        });
+
+        btnAddEmail.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                switch(cont){
+                    case 0 : textFieldEmail0.setVisible(true);
+                        break;
+                    case 1 : textFieldEmail1.setVisible(true);
+                        break;
+                    case 2 : textFieldEmail2.setVisible(true);
+                        break;
+                    case 3 : textFieldEmail3.setVisible(true);
+                        break;
+                    case 4 : textFieldEmail4.setVisible(true);
+                        break;
+                    case 5 : textFieldEmail5.setVisible(true);
+                        break;
+                    case 6 : textFieldEmail6.setVisible(true);
+                        break;
+                    case 7 : textFieldEmail7.setVisible(true);
+                        break;
+                    case 8 : textFieldEmail8.setVisible(true);
+                        break;
+                    case 9 : textFieldEmail9.setVisible(true);
+                        break;
+                }
+                panelCreaContattoScrollPane.setVisible(false);
+                panelCreaContattoScrollPane.setVisible(true);
+                cont++;
             }
         });
     }
