@@ -123,6 +123,19 @@ public class Window {
     private JTextField textFieldNumeriFissi8;
     private JTextField textFieldNumeriFissi9;
     private JLabel lblIndirizzoPrincipaleCreaContatto;
+    private JLabel lblNumeriMobiliCreaContatto;
+    private JButton btnAddNumeriMobili;
+    private JButton btnBackNumeriMobili;
+    private JTextField textFieldNumeriMobili0;
+    private JTextField textFieldNumeriMobili1;
+    private JTextField textFieldNumeriMobili2;
+    private JTextField textFieldNumeriMobili3;
+    private JTextField textFieldNumeriMobili4;
+    private JTextField textFieldNumeriMobili5;
+    private JTextField textFieldNumeriMobili6;
+    private JTextField textFieldNumeriMobili7;
+    private JTextField textFieldNumeriMobili8;
+    private JTextField textFieldNumeriMobili9;
     private ImageIcon img;
     private DefaultListCellRenderer renderer;
     private JFileChooser jfc = new JFileChooser();
@@ -130,6 +143,9 @@ public class Window {
     private Image image;
     private int contEmail = 1;
     private int contNumeriFissi = 1;
+    private int contNumeriMobili = 1;
+    private Cursor textCursor = new Cursor (Cursor.TEXT_CURSOR);
+    private Cursor defaultCursor = new Cursor (Cursor.DEFAULT_CURSOR);
     private ArrayList<String> randImage;
     private Random rand = new Random();
 
@@ -805,7 +821,566 @@ public class Window {
                 contNumeriFissi--;
             }
         });
+
+        //INTERAZIONI CON PULSANTE BTNADDNUMERIMOBILI
+        btnAddNumeriMobili.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                switch(contNumeriMobili){
+                    case 1 : textFieldNumeriMobili1.setVisible(true);
+                        break;
+                    case 2 : textFieldNumeriMobili2.setVisible(true);
+                        break;
+                    case 3 : textFieldNumeriMobili3.setVisible(true);
+                        break;
+                    case 4 : textFieldNumeriMobili4.setVisible(true);
+                        break;
+                    case 5 : textFieldNumeriMobili5.setVisible(true);
+                        break;
+                    case 6 : textFieldNumeriMobili6.setVisible(true);
+                        break;
+                    case 7 : textFieldNumeriMobili7.setVisible(true);
+                        break;
+                    case 8 : textFieldNumeriMobili8.setVisible(true);
+                        break;
+                    case 9 : textFieldNumeriMobili9.setVisible(true);
+                        break;
+                }
+                if(contNumeriMobili >9) {
+                    img = c.SetImageSize(".images/warning.png",30,30);
+                    JOptionPane.showMessageDialog(null,"LIMITE NUMERI MOBILI MASSIMI RAGGIUNTO!","ATTENZIONE!",1,img);
+                    contNumeriMobili--;
+                }
+                panelCreaContattoScrollPane.setVisible(false);
+                panelCreaContattoScrollPane.setVisible(true);
+                contNumeriMobili++;
+            }
+        });
+
+        //INTERAZIONI CON BTNBACKNUMERIMOBILI
+        btnBackNumeriMobili.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                switch(contNumeriMobili){
+                    case 1 : img = c.SetImageSize(".images/warning.png",30,30);
+                        JOptionPane.showMessageDialog(null,"NON E' POSSIBILE ELIMINARE ULTERIORI TEXTBOX!","ATTENZIONE!",1,img);
+                        contNumeriMobili++;
+                        break;
+                    case 2 : textFieldNumeriMobili1.setVisible(false);
+                        textFieldNumeriMobili1.setText("");
+                        break;
+                    case 3 : textFieldNumeriMobili2.setVisible(false);
+                        textFieldNumeriMobili2.setText("");
+                        break;
+                    case 4 : textFieldNumeriMobili3.setVisible(false);
+                        textFieldNumeriMobili3.setText("");
+                        break;
+                    case 5 : textFieldNumeriMobili4.setVisible(false);
+                        textFieldNumeriMobili4.setText("");
+                        break;
+                    case 6 : textFieldNumeriMobili5.setVisible(false);
+                        textFieldNumeriMobili5.setText("");
+                        break;
+                    case 7 : textFieldNumeriMobili6.setVisible(false);
+                        textFieldNumeriMobili6.setText("");
+                        break;
+                    case 8 : textFieldNumeriMobili7.setVisible(false);
+                        textFieldNumeriMobili7.setText("");
+                        break;
+                    case 9 : textFieldNumeriMobili8.setVisible(false);
+                        textFieldNumeriMobili8.setText("");
+                        break;
+                    case 10 : textFieldNumeriMobili9.setVisible(false);
+                        textFieldNumeriMobili9.setText("");
+                        break;
+                }
+                panelCreaContattoScrollPane.setVisible(false);
+                panelCreaContattoScrollPane.setVisible(true);
+                contNumeriMobili--;
+            }
+        });
+
+        //SETTAGGIO TEXT CURSOR NEL TEXTFIELD NOME
+        textFieldNome.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldNome.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+
+        //SETTAGGIO TEXT CURSOR NEI TEXTFIELD COGNOME
+        textFieldCognome.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldCognome.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+
+        //SETTAGGIO TEXT CURSOR NEI TEXTFIELD EMAIL
+        textFieldEmail0.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldEmail0.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldEmail1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldEmail1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldEmail2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldEmail2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldEmail3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldEmail3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldEmail4.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldEmail4.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldEmail5.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldEmail5.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldEmail6.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldEmail6.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldEmail7.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldEmail7.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldEmail8.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldEmail8.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldEmail9.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldEmail9.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+
+        //SETTAGGIO TEXT CURSOR NEI TEXTFIELD NUMERI FISSI
+        textFieldNumeriFissi0.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldNumeriFissi0.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldNumeriFissi1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldNumeriFissi1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldNumeriFissi2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldNumeriFissi2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldNumeriFissi3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldNumeriFissi3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldNumeriFissi4.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldNumeriFissi4.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldNumeriFissi5.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldNumeriFissi5.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldNumeriFissi6.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldNumeriFissi6.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldNumeriFissi7.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldNumeriFissi7.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldNumeriFissi8.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldNumeriFissi8.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldNumeriFissi9.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldNumeriFissi9.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+
+        //SETTAGGIO TEXT CURSOR NEI TEXTFIELD NUMERI MOBILI
+        textFieldNumeriMobili0.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldNumeriMobili0.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldNumeriMobili1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldNumeriMobili1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldNumeriMobili2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldNumeriMobili2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldNumeriMobili3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldNumeriMobili3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldNumeriMobili4.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldNumeriMobili4.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldNumeriMobili5.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldNumeriMobili5.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldNumeriMobili6.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldNumeriMobili6.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldNumeriMobili7.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldNumeriMobili7.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldNumeriMobili8.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldNumeriMobili8.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldNumeriMobili9.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldNumeriMobili9.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+
+        //SETTAGGIO TEXT CURSOR NEI TEXTFIELD INDIRIZZO PRINCIPALE
+        textFieldIndirizzoPrincipale.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldIndirizzoPrincipale.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
     }
+
+    /*TODO
+    QUANDO SI CAMBIA SCHERMATA (DA QUELLA DI CREA CONTATTO) RIMANGONO VISIBILI TUTTI I TEXTFIELD SETTATI IN
+    QUEL MOMENTO, SETTARE SIA IN BTNANNULLA CHE BTNCREACONTATTO
+     */
 
 
     public static void main(String[] args) throws SQLException{
