@@ -18,8 +18,6 @@ import Controller.Controller;
 
 public class Window {
     //Dichiarazioni
-    private ResultSet rs;
-    private Statement s;
     private ArrayList<Integer> pkContatti;
     private ArrayList<Integer> pkContattiPrivati;
     private JPanel panel;
@@ -109,12 +107,29 @@ public class Window {
     private JTextField textFieldEmail8;
     private JTextField textFieldEmail9;
     private JButton btnAddEmailCanGrow;
+    private JTextField textFieldIndirizzoPrincipale;
+    private JLabel lblNumeroFissoCreaContatto;
+    private JButton btnAddNumeriFissi;
+    private JButton btnAddNumeriFissiCanGrow;
+    private JButton btnBackNumeriFissi;
+    private JTextField textFieldNumeriFissi0;
+    private JTextField textFieldNumeriFissi1;
+    private JTextField textFieldNumeriFissi2;
+    private JTextField textFieldNumeriFissi3;
+    private JTextField textFieldNumeriFissi4;
+    private JTextField textFieldNumeriFissi5;
+    private JTextField textFieldNumeriFissi6;
+    private JTextField textFieldNumeriFissi7;
+    private JTextField textFieldNumeriFissi8;
+    private JTextField textFieldNumeriFissi9;
+    private JLabel lblIndirizzoPrincipaleCreaContatto;
     private ImageIcon img;
     private DefaultListCellRenderer renderer;
     private JFileChooser jfc = new JFileChooser();
     private File foto;
     private Image image;
-    private int cont=0;
+    private int contEmail = 1;
+    private int contNumeriFissi = 1;
     private ArrayList<String> randImage;
     private Random rand = new Random();
 
@@ -175,18 +190,12 @@ public class Window {
         DLMContattiPrivati = c.getContattiPrivati(pkContattiPrivati);
         listAreaPrivata.setModel(DLMContattiPrivati);                               //Aggiungiamo nel JList i nomi e cognomi dei contatti
 
-        //SETTAGGIO LABEL INIZIALI
+        //SETTAGGIO LABEL INIZIALI E ICONE
         lblEmail.setText("<html>Email<br/><html>");
         lblNumeriFissi.setText("<html>Numeri Fissi<br/><html>");
         lblNumeriMobili.setText("<html>Numeri Mobili<br/><html>");
         lblIndirizzoPrincipale.setText("<html>Indirizzo Principale<br/><html>");
         lblIndirizziSecondari.setText("<html>Indirizzi Secondari<br/><html>");
-
-        lblEmailCreaContatto.setText("<html>Email<br/><html>");
-        /*lblNumeriFissiCreaContatto.setText("<html>Numeri Fissi<br/><html>");
-        lblNumeriMobiliCreaContatto.setText("<html>Numeri Mobili<br/><html>");
-        lblIndirizzoPrincipaleCreaContatto.setText("<html>Indirizzo Principale<br/><html>");
-        lblIndirizziSecondariCreaContatto.setText("<html>Indirizzi Secondari<br/><html>");*/
 
         //ELIMINAZIONE BORDER AUTOMATICO DELLO SCROLL
         infoBottomScroll.setBorder(null);
@@ -641,20 +650,7 @@ public class Window {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                    textFieldEmail0.setVisible(true);
-                    btnBackEmail.setVisible(true);
-                    btnAddEmailCanGrow.setVisible(true);
-                    btnAddEmail.setVisible(false);
-                    cont++;
-            }
-        });
-
-        //INTERAZIONI COPIA DI BTNADDEMAIL
-        btnAddEmailCanGrow.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                switch(cont){
+                switch(contEmail){
                     case 1 : textFieldEmail1.setVisible(true);
                         break;
                     case 2 : textFieldEmail2.setVisible(true);
@@ -674,31 +670,30 @@ public class Window {
                     case 9 : textFieldEmail9.setVisible(true);
                         break;
                 }
-                if(cont>9) {
+                if(contEmail >9) {
                     img = c.SetImageSize(".images/warning.png",30,30);
                     JOptionPane.showMessageDialog(null,"LIMITE EMAIL MASSIME RAGGIUNTO!","ATTENZIONE!",1,img);
-                    cont--;
+                    contEmail--;
                 }
                 panelCreaContattoScrollPane.setVisible(false);
                 panelCreaContattoScrollPane.setVisible(true);
-                cont++;
+                contEmail++;
             }
         });
+
 
         //INTERAZIONI CON BTNBACKEMAIL
         btnBackEmail.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                switch(cont){
-                    case 1 : textFieldEmail0.setVisible(false);
-                    textFieldEmail0.setText("");
-                        btnBackEmail.setVisible(false);
-                        btnAddEmailCanGrow.setVisible(false);
-                        btnAddEmail.setVisible(true);
+                switch(contEmail){
+                    case 1 : img = c.SetImageSize(".images/warning.png",30,30);
+                        JOptionPane.showMessageDialog(null,"NON E' POSSIBILE ELIMINARE ULTERIORI TEXTBOX!","ATTENZIONE!",1,img);
+                        contEmail++;
                         break;
                     case 2 : textFieldEmail1.setVisible(false);
-                        textFieldEmail1.setText("");
+                    textFieldEmail1.setText("");
                         break;
                     case 3 : textFieldEmail2.setVisible(false);
                         textFieldEmail2.setText("");
@@ -727,7 +722,87 @@ public class Window {
                 }
                 panelCreaContattoScrollPane.setVisible(false);
                 panelCreaContattoScrollPane.setVisible(true);
-                cont--;
+                contEmail--;
+            }
+        });
+
+        //INTERAZIONI CON PULSANTE BTNADDNUMERIFISSI
+        btnAddNumeriFissi.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                switch(contNumeriFissi){
+                    case 1 : textFieldNumeriFissi1.setVisible(true);
+                        break;
+                    case 2 : textFieldNumeriFissi2.setVisible(true);
+                        break;
+                    case 3 : textFieldNumeriFissi3.setVisible(true);
+                        break;
+                    case 4 : textFieldNumeriFissi4.setVisible(true);
+                        break;
+                    case 5 : textFieldNumeriFissi5.setVisible(true);
+                        break;
+                    case 6 : textFieldNumeriFissi6.setVisible(true);
+                        break;
+                    case 7 : textFieldNumeriFissi7.setVisible(true);
+                        break;
+                    case 8 : textFieldNumeriFissi8.setVisible(true);
+                        break;
+                    case 9 : textFieldNumeriFissi9.setVisible(true);
+                        break;
+                }
+                if(contNumeriFissi >9) {
+                    img = c.SetImageSize(".images/warning.png",30,30);
+                    JOptionPane.showMessageDialog(null,"LIMITE NUMERI FISSI MASSIMI RAGGIUNTO!","ATTENZIONE!",1,img);
+                    contNumeriFissi--;
+                }
+                panelCreaContattoScrollPane.setVisible(false);
+                panelCreaContattoScrollPane.setVisible(true);
+                contNumeriFissi++;
+            }
+        });
+
+        //INTERAZIONI CON BTNBACKNUMERIFISSI
+        btnBackNumeriFissi.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                switch(contNumeriFissi){
+                    case 1 : img = c.SetImageSize(".images/warning.png",30,30);
+                        JOptionPane.showMessageDialog(null,"NON E' POSSIBILE ELIMINARE ULTERIORI TEXTBOX!","ATTENZIONE!",1,img);
+                        contNumeriFissi++;
+                        break;
+                    case 2 : textFieldNumeriFissi1.setVisible(false);
+                        textFieldNumeriFissi1.setText("");
+                        break;
+                    case 3 : textFieldNumeriFissi2.setVisible(false);
+                        textFieldNumeriFissi2.setText("");
+                        break;
+                    case 4 : textFieldNumeriFissi3.setVisible(false);
+                        textFieldNumeriFissi3.setText("");
+                        break;
+                    case 5 : textFieldNumeriFissi4.setVisible(false);
+                        textFieldNumeriFissi4.setText("");
+                        break;
+                    case 6 : textFieldNumeriFissi5.setVisible(false);
+                        textFieldNumeriFissi5.setText("");
+                        break;
+                    case 7 : textFieldNumeriFissi6.setVisible(false);
+                        textFieldNumeriFissi6.setText("");
+                        break;
+                    case 8 : textFieldNumeriFissi7.setVisible(false);
+                        textFieldNumeriFissi7.setText("");
+                        break;
+                    case 9 : textFieldNumeriFissi8.setVisible(false);
+                        textFieldNumeriFissi8.setText("");
+                        break;
+                    case 10 : textFieldNumeriFissi9.setVisible(false);
+                        textFieldNumeriFissi9.setText("");
+                        break;
+                }
+                panelCreaContattoScrollPane.setVisible(false);
+                panelCreaContattoScrollPane.setVisible(true);
+                contNumeriFissi--;
             }
         });
     }
