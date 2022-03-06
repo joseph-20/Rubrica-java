@@ -116,6 +116,6 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
         s = connection.createStatement();
         //QUERY DI CREAZIONE CONTATTO
         s.executeUpdate("INSERT INTO CONTATTO (FOTO,NOME,COGNOME,SECURITY) " +
-                            "VALUES ('"+pathFoto+"','"+nome+"','"+cognome+"',"+security+")");
+                            "VALUES ("+pathFoto+",'"+nome+"','"+cognome+"',"+security+")");
     }
 }

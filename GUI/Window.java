@@ -242,7 +242,7 @@ public class Window {
                     c.swapVisibility(panelInfoContattoSinistra,panelCreaContatto);
                     contattiSplitPane.setDividerLocation(350);
                     //SET FOTO
-                    if(c.getPath(pkContatti.get(listContatti.getSelectedIndex()))==null) {
+                    if(c.getPath(pkContatti.get(listContatti.getSelectedIndex())) == null) {
                         img = c.SetImageSize(".images/" + randImage.get(rand.nextInt(randImage.size() - 1)), 200, 200);
                         lblFoto.setIcon(img);
                     }else{
@@ -1712,124 +1712,130 @@ public class Window {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                try {
-                    if(jfc.getSelectedFile()==null){
-                        c.creaContatto(null,textFieldNome.getText(),textFieldCognome.getText(),contattoPrivatoCheckBox.isSelected());
-                    }else{
-                        c.creaContatto("C:/Users/39366/IdeaProjects/Rubrica-java/.images/"+(pkContatti.size()+pkContattiPrivati.size()+2),textFieldNome.getText(),textFieldCognome.getText(),contattoPrivatoCheckBox.isSelected());
+                //SE NON E' STATO INSERITO UN INDIRIZZO PRINCIPALE NON CONTINUARE
+                if (textFieldIndirizzoPrincipale.getText().equals("")) {
+                    img = c.SetImageSize(".images/warning.png", 30, 30);
+                    JOptionPane.showMessageDialog(null, "NON E' STATO AGGIUNTO UN INDIRIZZO PRINCIPALE!", "ATTENZIONE!", 1, img);
+                } else {
+                    try {
+                        if (jfc.getSelectedFile() == null) {
+                            c.creaContatto("null", textFieldNome.getText(), textFieldCognome.getText(), contattoPrivatoCheckBox.isSelected());
+                        } else {
+                            c.creaContatto("C:/Users/39366/IdeaProjects/Rubrica-java/.images/" + (pkContatti.size() + pkContattiPrivati.size() + 2), textFieldNome.getText(), textFieldCognome.getText(), contattoPrivatoCheckBox.isSelected());
+                        }
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
                     }
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
+                    //Refresh dlm contatti
+                    DLMContatti.clear();
+                    try {
+                        DLMContatti = c.getContatti(pkContatti);
+                        listContatti.setModel(DLMContatti);                                         //Aggiungiamo nel JList i nomi e cognomi dei contatti
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                    //Chiusura pannello creazione contatto
+                    panelInfoContatti.setVisible(false);
+
+                    //MESSAGGIO DI CONFERMA CREAZIONE CONTATTO
+                    img = c.SetImageSize(".images/creazionecontatto.png", 30, 30);
+                    JOptionPane.showMessageDialog(null, textFieldNome.getText() + " " + textFieldCognome.getText() + " aggiunto/a con successo!", "CREAZIONE RIUSCITA!", 1, img);
+
+                    //Settaggio di tutti i textField a default
+                    //email
+                    textFieldNome.setText(null);
+                    textFieldCognome.setText(null);
+                    textFieldEmail0.setText(null);
+                    textFieldEmail1.setText(null);
+                    textFieldEmail1.setVisible(false);
+                    textFieldEmail2.setText(null);
+                    textFieldEmail2.setVisible(false);
+                    textFieldEmail3.setText(null);
+                    textFieldEmail3.setVisible(false);
+                    textFieldEmail4.setText(null);
+                    textFieldEmail4.setVisible(false);
+                    textFieldEmail5.setText(null);
+                    textFieldEmail5.setVisible(false);
+                    textFieldEmail6.setText(null);
+                    textFieldEmail6.setVisible(false);
+                    textFieldEmail7.setText(null);
+                    textFieldEmail7.setVisible(false);
+                    textFieldEmail8.setText(null);
+                    textFieldEmail8.setVisible(false);
+                    textFieldEmail9.setText(null);
+                    textFieldEmail9.setVisible(false);
+                    //numeri fissi
+                    textFieldNumeriFissi0.setText(null);
+                    textFieldNumeriFissi1.setText(null);
+                    textFieldNumeriFissi1.setVisible(false);
+                    textFieldNumeriFissi2.setText(null);
+                    textFieldNumeriFissi2.setVisible(false);
+                    textFieldNumeriFissi3.setText(null);
+                    textFieldNumeriFissi3.setVisible(false);
+                    textFieldNumeriFissi4.setText(null);
+                    textFieldNumeriFissi4.setVisible(false);
+                    textFieldNumeriFissi5.setText(null);
+                    textFieldNumeriFissi5.setVisible(false);
+                    textFieldNumeriFissi6.setText(null);
+                    textFieldNumeriFissi6.setVisible(false);
+                    textFieldNumeriFissi7.setText(null);
+                    textFieldNumeriFissi7.setVisible(false);
+                    textFieldNumeriFissi8.setText(null);
+                    textFieldNumeriFissi8.setVisible(false);
+                    textFieldNumeriFissi9.setText(null);
+                    textFieldNumeriFissi9.setVisible(false);
+                    //Numeri mobili
+                    textFieldNumeriMobili0.setText(null);
+                    textFieldNumeriMobili1.setText(null);
+                    textFieldNumeriMobili1.setVisible(false);
+                    textFieldNumeriMobili2.setText(null);
+                    textFieldNumeriMobili2.setVisible(false);
+                    textFieldNumeriMobili3.setText(null);
+                    textFieldNumeriMobili3.setVisible(false);
+                    textFieldNumeriMobili4.setText(null);
+                    textFieldNumeriMobili4.setVisible(false);
+                    textFieldNumeriMobili5.setText(null);
+                    textFieldNumeriMobili5.setVisible(false);
+                    textFieldNumeriMobili6.setText(null);
+                    textFieldNumeriMobili6.setVisible(false);
+                    textFieldNumeriMobili7.setText(null);
+                    textFieldNumeriMobili7.setVisible(false);
+                    textFieldNumeriMobili8.setText(null);
+                    textFieldNumeriMobili8.setVisible(false);
+                    textFieldNumeriMobili9.setText(null);
+                    textFieldNumeriMobili9.setVisible(false);
+                    //indirizzo principale
+                    textFieldIndirizzoPrincipale.setText(null);
+                    //indirizzi secondari
+                    textFieldIndirizziSecondari0.setText(null);
+                    textFieldIndirizziSecondari1.setText(null);
+                    textFieldIndirizziSecondari1.setVisible(false);
+                    textFieldIndirizziSecondari2.setText(null);
+                    textFieldIndirizziSecondari2.setVisible(false);
+                    textFieldIndirizziSecondari3.setText(null);
+                    textFieldIndirizziSecondari3.setVisible(false);
+                    textFieldIndirizziSecondari4.setText(null);
+                    textFieldIndirizziSecondari4.setVisible(false);
+                    textFieldIndirizziSecondari5.setText(null);
+                    textFieldIndirizziSecondari5.setVisible(false);
+                    textFieldIndirizziSecondari6.setText(null);
+                    textFieldIndirizziSecondari6.setVisible(false);
+                    textFieldIndirizziSecondari7.setText(null);
+                    textFieldIndirizziSecondari7.setVisible(false);
+                    textFieldIndirizziSecondari8.setText(null);
+                    textFieldIndirizziSecondari8.setVisible(false);
+                    textFieldIndirizziSecondari9.setText(null);
+                    textFieldIndirizziSecondari9.setVisible(false);
+
+                    //settaggio contatori
+                    contEmail = 1;
+                    contNumeriFissi = 1;
+                    contNumeriMobili = 1;
+                    contIndirizziSecondari = 1;
+
+                    //Rimozione spunta JCheckBox
+                    contattoPrivatoCheckBox.setSelected(false);
                 }
-                //Refresh dlm contatti
-                DLMContatti.clear();
-                try {
-                    DLMContatti = c.getContatti(pkContatti);
-                    listContatti.setModel(DLMContatti);                                         //Aggiungiamo nel JList i nomi e cognomi dei contatti
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
-                //Chiusura pannello creazione contatto
-                panelInfoContatti.setVisible(false);
-
-                //MESSAGGIO DI CONFERMA CREAZIONE CONTATTO
-                img = c.SetImageSize(".images/creazionecontatto.png",30,30);
-                JOptionPane.showMessageDialog(null,textFieldNome.getText()+" "+textFieldCognome.getText()+" aggiunto/a con successo!","CREAZIONE RIUSCITA!",1,img);
-
-                //Settaggio di tutti i textField a default
-                //email
-                textFieldNome.setText(null);
-                textFieldCognome.setText(null);
-                textFieldEmail0.setText(null);
-                textFieldEmail1.setText(null);
-                textFieldEmail1.setVisible(false);
-                textFieldEmail2.setText(null);
-                textFieldEmail2.setVisible(false);
-                textFieldEmail3.setText(null);
-                textFieldEmail3.setVisible(false);
-                textFieldEmail4.setText(null);
-                textFieldEmail4.setVisible(false);
-                textFieldEmail5.setText(null);
-                textFieldEmail5.setVisible(false);
-                textFieldEmail6.setText(null);
-                textFieldEmail6.setVisible(false);
-                textFieldEmail7.setText(null);
-                textFieldEmail7.setVisible(false);
-                textFieldEmail8.setText(null);
-                textFieldEmail8.setVisible(false);
-                textFieldEmail9.setText(null);
-                textFieldEmail9.setVisible(false);
-                //numeri fissi
-                textFieldNumeriFissi0.setText(null);
-                textFieldNumeriFissi1.setText(null);
-                textFieldNumeriFissi1.setVisible(false);
-                textFieldNumeriFissi2.setText(null);
-                textFieldNumeriFissi2.setVisible(false);
-                textFieldNumeriFissi3.setText(null);
-                textFieldNumeriFissi3.setVisible(false);
-                textFieldNumeriFissi4.setText(null);
-                textFieldNumeriFissi4.setVisible(false);
-                textFieldNumeriFissi5.setText(null);
-                textFieldNumeriFissi5.setVisible(false);
-                textFieldNumeriFissi6.setText(null);
-                textFieldNumeriFissi6.setVisible(false);
-                textFieldNumeriFissi7.setText(null);
-                textFieldNumeriFissi7.setVisible(false);
-                textFieldNumeriFissi8.setText(null);
-                textFieldNumeriFissi8.setVisible(false);
-                textFieldNumeriFissi9.setText(null);
-                textFieldNumeriFissi9.setVisible(false);
-                //Numeri mobili
-                textFieldNumeriMobili0.setText(null);
-                textFieldNumeriMobili1.setText(null);
-                textFieldNumeriMobili1.setVisible(false);
-                textFieldNumeriMobili2.setText(null);
-                textFieldNumeriMobili2.setVisible(false);
-                textFieldNumeriMobili3.setText(null);
-                textFieldNumeriMobili3.setVisible(false);
-                textFieldNumeriMobili4.setText(null);
-                textFieldNumeriMobili4.setVisible(false);
-                textFieldNumeriMobili5.setText(null);
-                textFieldNumeriMobili5.setVisible(false);
-                textFieldNumeriMobili6.setText(null);
-                textFieldNumeriMobili6.setVisible(false);
-                textFieldNumeriMobili7.setText(null);
-                textFieldNumeriMobili7.setVisible(false);
-                textFieldNumeriMobili8.setText(null);
-                textFieldNumeriMobili8.setVisible(false);
-                textFieldNumeriMobili9.setText(null);
-                textFieldNumeriMobili9.setVisible(false);
-                //indirizzo principale
-                textFieldIndirizzoPrincipale.setText(null);
-                //indirizzi secondari
-                textFieldIndirizziSecondari0.setText(null);
-                textFieldIndirizziSecondari1.setText(null);
-                textFieldIndirizziSecondari1.setVisible(false);
-                textFieldIndirizziSecondari2.setText(null);
-                textFieldIndirizziSecondari2.setVisible(false);
-                textFieldIndirizziSecondari3.setText(null);
-                textFieldIndirizziSecondari3.setVisible(false);
-                textFieldIndirizziSecondari4.setText(null);
-                textFieldIndirizziSecondari4.setVisible(false);
-                textFieldIndirizziSecondari5.setText(null);
-                textFieldIndirizziSecondari5.setVisible(false);
-                textFieldIndirizziSecondari6.setText(null);
-                textFieldIndirizziSecondari6.setVisible(false);
-                textFieldIndirizziSecondari7.setText(null);
-                textFieldIndirizziSecondari7.setVisible(false);
-                textFieldIndirizziSecondari8.setText(null);
-                textFieldIndirizziSecondari8.setVisible(false);
-                textFieldIndirizziSecondari9.setText(null);
-                textFieldIndirizziSecondari9.setVisible(false);
-
-                //settaggio contatori
-                contEmail = 1;
-                contNumeriFissi = 1;
-                contNumeriMobili = 1;
-                contIndirizziSecondari = 1;
-
-                //Rimozione spunta JCheckBox
-                contattoPrivatoCheckBox.setSelected(false);
             }
         });
     }
