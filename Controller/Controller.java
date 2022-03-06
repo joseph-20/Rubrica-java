@@ -35,6 +35,9 @@ public class Controller {
     public String getIndirizzoPrincipale (int pk) throws SQLException{
         return indirizzoP.getIndirizzoPrincipale(pk);
     }
+    public String getPath (int pk) throws SQLException{
+        return contact.getPath(pk);
+    }
     public String getNome (int pk) throws SQLException{
         return contact.getNome(pk);
     }
@@ -67,5 +70,8 @@ public class Controller {
     }
     public void cancellaContatto(int pk) throws SQLException {
         contact.cancellaContatto(pk);
+    }
+    public void creaContatto(String pathFoto,String nome,String cognome,boolean security) throws SQLException{
+        contact.creaContatto(pathFoto,nome,cognome,security);
     }
 }

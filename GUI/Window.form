@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="panel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="1360" height="1813"/>
+      <xy x="20" y="20" width="1360" height="2074"/>
     </constraints>
     <properties>
       <maximumSize width="1920" height="1080"/>
@@ -614,6 +614,16 @@
                                   <horizontalAlignment value="2"/>
                                 </properties>
                               </component>
+                              <component id="4c1e4" class="javax.swing.JCheckBox" binding="contattoPrivatoCheckBox" default-binding="true">
+                                <constraints>
+                                  <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font size="16" style="1"/>
+                                  <selected value="false"/>
+                                  <text value="Contatto privato"/>
+                                </properties>
+                              </component>
                             </children>
                           </grid>
                           <grid id="6ec48" binding="panelMidCreaContatto" layout-manager="GridBagLayout">
@@ -767,7 +777,7 @@
                             <properties/>
                             <border type="none"/>
                             <children>
-                              <component id="c962f" class="javax.swing.JButton">
+                              <component id="c962f" class="javax.swing.JButton" binding="btnAggiungi">
                                 <constraints/>
                                 <properties>
                                   <font size="20"/>
@@ -791,7 +801,7 @@
                             <properties/>
                             <border type="none"/>
                             <children>
-                              <grid id="75e24" binding="panelCreaContattoScrollPane" layout-manager="GridLayoutManager" row-count="36" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                              <grid id="75e24" binding="panelCreaContattoScrollPane" layout-manager="GridLayoutManager" row-count="47" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                                 <margin top="0" left="0" bottom="0" right="0"/>
                                 <constraints/>
                                 <properties/>
@@ -804,12 +814,12 @@
                                     <properties>
                                       <enabled value="true"/>
                                       <font size="20" style="1"/>
-                                      <text value="Email"/>
+                                      <text value="Posta Elettronica"/>
                                     </properties>
                                   </component>
                                   <vspacer id="f1f8b">
                                     <constraints>
-                                      <grid row="35" column="0" row-span="1" col-span="6" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                                      <grid row="46" column="0" row-span="1" col-span="6" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                   </vspacer>
                                   <component id="f0ef8" class="javax.swing.JButton" binding="btnAddEmail">
@@ -1287,6 +1297,154 @@
                                       <font size="16"/>
                                       <horizontalAlignment value="0"/>
                                       <visible value="false"/>
+                                    </properties>
+                                  </component>
+                                  <component id="e1667" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari0">
+                                    <constraints>
+                                      <grid row="36" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                        <preferred-size width="400" height="-1"/>
+                                      </grid>
+                                    </constraints>
+                                    <properties>
+                                      <font size="16"/>
+                                      <horizontalAlignment value="0"/>
+                                      <visible value="true"/>
+                                    </properties>
+                                  </component>
+                                  <component id="51293" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari1">
+                                    <constraints>
+                                      <grid row="37" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                        <preferred-size width="400" height="-1"/>
+                                      </grid>
+                                    </constraints>
+                                    <properties>
+                                      <font size="16"/>
+                                      <horizontalAlignment value="0"/>
+                                      <visible value="false"/>
+                                    </properties>
+                                  </component>
+                                  <component id="6d8fe" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari2">
+                                    <constraints>
+                                      <grid row="38" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                        <preferred-size width="400" height="-1"/>
+                                      </grid>
+                                    </constraints>
+                                    <properties>
+                                      <font size="16"/>
+                                      <horizontalAlignment value="0"/>
+                                      <visible value="false"/>
+                                    </properties>
+                                  </component>
+                                  <component id="742f3" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari3">
+                                    <constraints>
+                                      <grid row="39" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                        <preferred-size width="400" height="-1"/>
+                                      </grid>
+                                    </constraints>
+                                    <properties>
+                                      <font size="16"/>
+                                      <horizontalAlignment value="0"/>
+                                      <visible value="false"/>
+                                    </properties>
+                                  </component>
+                                  <component id="d4f5a" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari4">
+                                    <constraints>
+                                      <grid row="40" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                        <preferred-size width="400" height="-1"/>
+                                      </grid>
+                                    </constraints>
+                                    <properties>
+                                      <font size="16"/>
+                                      <horizontalAlignment value="0"/>
+                                      <visible value="false"/>
+                                    </properties>
+                                  </component>
+                                  <component id="41e50" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari5">
+                                    <constraints>
+                                      <grid row="41" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                        <preferred-size width="400" height="-1"/>
+                                      </grid>
+                                    </constraints>
+                                    <properties>
+                                      <font size="16"/>
+                                      <horizontalAlignment value="0"/>
+                                      <visible value="false"/>
+                                    </properties>
+                                  </component>
+                                  <component id="9576c" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari6">
+                                    <constraints>
+                                      <grid row="42" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                        <preferred-size width="400" height="-1"/>
+                                      </grid>
+                                    </constraints>
+                                    <properties>
+                                      <font size="16"/>
+                                      <horizontalAlignment value="0"/>
+                                      <visible value="false"/>
+                                    </properties>
+                                  </component>
+                                  <component id="127d6" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari7">
+                                    <constraints>
+                                      <grid row="43" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                        <preferred-size width="400" height="-1"/>
+                                      </grid>
+                                    </constraints>
+                                    <properties>
+                                      <font size="16"/>
+                                      <horizontalAlignment value="0"/>
+                                      <visible value="false"/>
+                                    </properties>
+                                  </component>
+                                  <component id="8b890" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari8">
+                                    <constraints>
+                                      <grid row="44" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                        <preferred-size width="400" height="-1"/>
+                                      </grid>
+                                    </constraints>
+                                    <properties>
+                                      <font size="16"/>
+                                      <horizontalAlignment value="0"/>
+                                      <visible value="false"/>
+                                    </properties>
+                                  </component>
+                                  <component id="e4989" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari9">
+                                    <constraints>
+                                      <grid row="45" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                        <preferred-size width="400" height="-1"/>
+                                      </grid>
+                                    </constraints>
+                                    <properties>
+                                      <font size="16"/>
+                                      <horizontalAlignment value="0"/>
+                                      <visible value="false"/>
+                                    </properties>
+                                  </component>
+                                  <component id="8d4f6" class="javax.swing.JLabel" binding="lblIndirizziSecondariCreaContatto">
+                                    <constraints>
+                                      <grid row="35" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="4" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <font size="20" style="1"/>
+                                      <text value="Indirizzi Secondari"/>
+                                    </properties>
+                                  </component>
+                                  <component id="1789c" class="javax.swing.JButton" binding="btnAddIndirizziSecondari">
+                                    <constraints>
+                                      <grid row="35" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <font size="16" style="1"/>
+                                      <text value="+"/>
+                                    </properties>
+                                  </component>
+                                  <component id="f339" class="javax.swing.JButton" binding="btnBackIndirizziSecondari">
+                                    <constraints>
+                                      <grid row="35" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="4" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <font size="16" style="1"/>
+                                      <text value="-"/>
+                                      <visible value="true"/>
                                     </properties>
                                   </component>
                                 </children>

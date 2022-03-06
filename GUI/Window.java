@@ -136,6 +136,21 @@ public class Window {
     private JTextField textFieldNumeriMobili7;
     private JTextField textFieldNumeriMobili8;
     private JTextField textFieldNumeriMobili9;
+    private JTextField textFieldIndirizziSecondari0;
+    private JTextField textFieldIndirizziSecondari1;
+    private JTextField textFieldIndirizziSecondari2;
+    private JTextField textFieldIndirizziSecondari3;
+    private JTextField textFieldIndirizziSecondari4;
+    private JTextField textFieldIndirizziSecondari5;
+    private JTextField textFieldIndirizziSecondari6;
+    private JTextField textFieldIndirizziSecondari7;
+    private JTextField textFieldIndirizziSecondari8;
+    private JTextField textFieldIndirizziSecondari9;
+    private JLabel lblIndirizziSecondariCreaContatto;
+    private JButton btnAddIndirizziSecondari;
+    private JButton btnBackIndirizziSecondari;
+    private JButton btnAggiungi;
+    private JCheckBox contattoPrivatoCheckBox;
     private ImageIcon img;
     private DefaultListCellRenderer renderer;
     private JFileChooser jfc = new JFileChooser();
@@ -144,6 +159,7 @@ public class Window {
     private int contEmail = 1;
     private int contNumeriFissi = 1;
     private int contNumeriMobili = 1;
+    private int contIndirizziSecondari = 1;
     private Cursor textCursor = new Cursor (Cursor.TEXT_CURSOR);
     private Cursor defaultCursor = new Cursor (Cursor.DEFAULT_CURSOR);
     private ArrayList<String> randImage;
@@ -207,7 +223,7 @@ public class Window {
         listAreaPrivata.setModel(DLMContattiPrivati);                               //Aggiungiamo nel JList i nomi e cognomi dei contatti
 
         //SETTAGGIO LABEL INIZIALI E ICONE
-        lblEmail.setText("<html>Email<br/><html>");
+        lblEmail.setText("<html>Posta Elettronica<br/><html>");
         lblNumeriFissi.setText("<html>Numeri Fissi<br/><html>");
         lblNumeriMobili.setText("<html>Numeri Mobili<br/><html>");
         lblIndirizzoPrincipale.setText("<html>Indirizzo Principale<br/><html>");
@@ -226,8 +242,13 @@ public class Window {
                     c.swapVisibility(panelInfoContattoSinistra,panelCreaContatto);
                     contattiSplitPane.setDividerLocation(350);
                     //SET FOTO
-                    img = c.SetImageSize(".images/"+randImage.get(rand.nextInt(randImage.size()-1)),200,200);
-                    lblFoto.setIcon(img);
+                    if(c.getPath(pkContatti.get(listContatti.getSelectedIndex()))==null) {
+                        img = c.SetImageSize(".images/" + randImage.get(rand.nextInt(randImage.size() - 1)), 200, 200);
+                        lblFoto.setIcon(img);
+                    }else{
+                        img = c.SetImageSize(c.getPath(pkContatti.get(listContatti.getSelectedIndex())),200,200);
+                        lblFoto.setIcon(img);
+                    }
                     //SET NOME
                     lblNome.setText(c.getNome(pkContatti.get(listContatti.getSelectedIndex())));
                     //SET COGNOME
@@ -282,11 +303,6 @@ public class Window {
                 }
             }
         });
-
-        //Set foto del contatto
-        img = c.SetImageSize(".images/icon_blue.png",200,200);
-        lblFoto.setIcon(img);
-        lblFoto.setVisible(true);
 
         //Set interazioni lblMessenger
         img = new ImageIcon(".images/Messenger25x25.png");
@@ -634,11 +650,104 @@ public class Window {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+                //swap finestra
                 panelInfoContattoSinistra.setVisible(false);
                 panelCreaContatto.setVisible(false);
                 panelInfoContatti.setVisible(false);
+                //Settaggio di tutti i textField a default
+                //email
                 textFieldNome.setText(null);
                 textFieldCognome.setText(null);
+                textFieldEmail0.setText(null);
+                textFieldEmail1.setText(null);
+                textFieldEmail1.setVisible(false);
+                textFieldEmail2.setText(null);
+                textFieldEmail2.setVisible(false);
+                textFieldEmail3.setText(null);
+                textFieldEmail3.setVisible(false);
+                textFieldEmail4.setText(null);
+                textFieldEmail4.setVisible(false);
+                textFieldEmail5.setText(null);
+                textFieldEmail5.setVisible(false);
+                textFieldEmail6.setText(null);
+                textFieldEmail6.setVisible(false);
+                textFieldEmail7.setText(null);
+                textFieldEmail7.setVisible(false);
+                textFieldEmail8.setText(null);
+                textFieldEmail8.setVisible(false);
+                textFieldEmail9.setText(null);
+                textFieldEmail9.setVisible(false);
+                //numeri fissi
+                textFieldNumeriFissi0.setText(null);
+                textFieldNumeriFissi1.setText(null);
+                textFieldNumeriFissi1.setVisible(false);
+                textFieldNumeriFissi2.setText(null);
+                textFieldNumeriFissi2.setVisible(false);
+                textFieldNumeriFissi3.setText(null);
+                textFieldNumeriFissi3.setVisible(false);
+                textFieldNumeriFissi4.setText(null);
+                textFieldNumeriFissi4.setVisible(false);
+                textFieldNumeriFissi5.setText(null);
+                textFieldNumeriFissi5.setVisible(false);
+                textFieldNumeriFissi6.setText(null);
+                textFieldNumeriFissi6.setVisible(false);
+                textFieldNumeriFissi7.setText(null);
+                textFieldNumeriFissi7.setVisible(false);
+                textFieldNumeriFissi8.setText(null);
+                textFieldNumeriFissi8.setVisible(false);
+                textFieldNumeriFissi9.setText(null);
+                textFieldNumeriFissi9.setVisible(false);
+                //Numeri mobili
+                textFieldNumeriMobili0.setText(null);
+                textFieldNumeriMobili1.setText(null);
+                textFieldNumeriMobili1.setVisible(false);
+                textFieldNumeriMobili2.setText(null);
+                textFieldNumeriMobili2.setVisible(false);
+                textFieldNumeriMobili3.setText(null);
+                textFieldNumeriMobili3.setVisible(false);
+                textFieldNumeriMobili4.setText(null);
+                textFieldNumeriMobili4.setVisible(false);
+                textFieldNumeriMobili5.setText(null);
+                textFieldNumeriMobili5.setVisible(false);
+                textFieldNumeriMobili6.setText(null);
+                textFieldNumeriMobili6.setVisible(false);
+                textFieldNumeriMobili7.setText(null);
+                textFieldNumeriMobili7.setVisible(false);
+                textFieldNumeriMobili8.setText(null);
+                textFieldNumeriMobili8.setVisible(false);
+                textFieldNumeriMobili9.setText(null);
+                textFieldNumeriMobili9.setVisible(false);
+                //indirizzo principale
+                textFieldIndirizzoPrincipale.setText(null);
+                //indirizzi secondari
+                textFieldIndirizziSecondari0.setText(null);
+                textFieldIndirizziSecondari1.setText(null);
+                textFieldIndirizziSecondari1.setVisible(false);
+                textFieldIndirizziSecondari2.setText(null);
+                textFieldIndirizziSecondari2.setVisible(false);
+                textFieldIndirizziSecondari3.setText(null);
+                textFieldIndirizziSecondari3.setVisible(false);
+                textFieldIndirizziSecondari4.setText(null);
+                textFieldIndirizziSecondari4.setVisible(false);
+                textFieldIndirizziSecondari5.setText(null);
+                textFieldIndirizziSecondari5.setVisible(false);
+                textFieldIndirizziSecondari6.setText(null);
+                textFieldIndirizziSecondari6.setVisible(false);
+                textFieldIndirizziSecondari7.setText(null);
+                textFieldIndirizziSecondari7.setVisible(false);
+                textFieldIndirizziSecondari8.setText(null);
+                textFieldIndirizziSecondari8.setVisible(false);
+                textFieldIndirizziSecondari9.setText(null);
+                textFieldIndirizziSecondari9.setVisible(false);
+
+                //settaggio contatori
+                contEmail = 1;
+                contNumeriFissi = 1;
+                contNumeriMobili = 1;
+                contIndirizziSecondari = 1;
+
+                //Rimozione spunta JCheckBox
+                contattoPrivatoCheckBox.setSelected(false);
             }
         });
 
@@ -709,31 +818,31 @@ public class Window {
                         contEmail++;
                         break;
                     case 2 : textFieldEmail1.setVisible(false);
-                    textFieldEmail1.setText("");
+                    textFieldEmail1.setText(null);
                         break;
                     case 3 : textFieldEmail2.setVisible(false);
-                        textFieldEmail2.setText("");
+                        textFieldEmail2.setText(null);
                         break;
                     case 4 : textFieldEmail3.setVisible(false);
-                        textFieldEmail3.setText("");
+                        textFieldEmail3.setText(null);
                         break;
                     case 5 : textFieldEmail4.setVisible(false);
-                        textFieldEmail4.setText("");
+                        textFieldEmail4.setText(null);
                         break;
                     case 6 : textFieldEmail5.setVisible(false);
-                        textFieldEmail5.setText("");
+                        textFieldEmail5.setText(null);
                         break;
                     case 7 : textFieldEmail6.setVisible(false);
-                        textFieldEmail6.setText("");
+                        textFieldEmail6.setText(null);
                         break;
                     case 8 : textFieldEmail7.setVisible(false);
-                        textFieldEmail7.setText("");
+                        textFieldEmail7.setText(null);
                         break;
                     case 9 : textFieldEmail8.setVisible(false);
-                        textFieldEmail8.setText("");
+                        textFieldEmail8.setText(null);
                         break;
                     case 10 : textFieldEmail9.setVisible(false);
-                        textFieldEmail9.setText("");
+                        textFieldEmail9.setText(null);
                         break;
                 }
                 panelCreaContattoScrollPane.setVisible(false);
@@ -789,31 +898,31 @@ public class Window {
                         contNumeriFissi++;
                         break;
                     case 2 : textFieldNumeriFissi1.setVisible(false);
-                        textFieldNumeriFissi1.setText("");
+                        textFieldNumeriFissi1.setText(null);
                         break;
                     case 3 : textFieldNumeriFissi2.setVisible(false);
-                        textFieldNumeriFissi2.setText("");
+                        textFieldNumeriFissi2.setText(null);
                         break;
                     case 4 : textFieldNumeriFissi3.setVisible(false);
-                        textFieldNumeriFissi3.setText("");
+                        textFieldNumeriFissi3.setText(null);
                         break;
                     case 5 : textFieldNumeriFissi4.setVisible(false);
-                        textFieldNumeriFissi4.setText("");
+                        textFieldNumeriFissi4.setText(null);
                         break;
                     case 6 : textFieldNumeriFissi5.setVisible(false);
-                        textFieldNumeriFissi5.setText("");
+                        textFieldNumeriFissi5.setText(null);
                         break;
                     case 7 : textFieldNumeriFissi6.setVisible(false);
-                        textFieldNumeriFissi6.setText("");
+                        textFieldNumeriFissi6.setText(null);
                         break;
                     case 8 : textFieldNumeriFissi7.setVisible(false);
-                        textFieldNumeriFissi7.setText("");
+                        textFieldNumeriFissi7.setText(null);
                         break;
                     case 9 : textFieldNumeriFissi8.setVisible(false);
-                        textFieldNumeriFissi8.setText("");
+                        textFieldNumeriFissi8.setText(null);
                         break;
                     case 10 : textFieldNumeriFissi9.setVisible(false);
-                        textFieldNumeriFissi9.setText("");
+                        textFieldNumeriFissi9.setText(null);
                         break;
                 }
                 panelCreaContattoScrollPane.setVisible(false);
@@ -869,36 +978,116 @@ public class Window {
                         contNumeriMobili++;
                         break;
                     case 2 : textFieldNumeriMobili1.setVisible(false);
-                        textFieldNumeriMobili1.setText("");
+                        textFieldNumeriMobili1.setText(null);
                         break;
                     case 3 : textFieldNumeriMobili2.setVisible(false);
-                        textFieldNumeriMobili2.setText("");
+                        textFieldNumeriMobili2.setText(null);
                         break;
                     case 4 : textFieldNumeriMobili3.setVisible(false);
-                        textFieldNumeriMobili3.setText("");
+                        textFieldNumeriMobili3.setText(null);
                         break;
                     case 5 : textFieldNumeriMobili4.setVisible(false);
-                        textFieldNumeriMobili4.setText("");
+                        textFieldNumeriMobili4.setText(null);
                         break;
                     case 6 : textFieldNumeriMobili5.setVisible(false);
-                        textFieldNumeriMobili5.setText("");
+                        textFieldNumeriMobili5.setText(null);
                         break;
                     case 7 : textFieldNumeriMobili6.setVisible(false);
-                        textFieldNumeriMobili6.setText("");
+                        textFieldNumeriMobili6.setText(null);
                         break;
                     case 8 : textFieldNumeriMobili7.setVisible(false);
-                        textFieldNumeriMobili7.setText("");
+                        textFieldNumeriMobili7.setText(null);
                         break;
                     case 9 : textFieldNumeriMobili8.setVisible(false);
-                        textFieldNumeriMobili8.setText("");
+                        textFieldNumeriMobili8.setText(null);
                         break;
                     case 10 : textFieldNumeriMobili9.setVisible(false);
-                        textFieldNumeriMobili9.setText("");
+                        textFieldNumeriMobili9.setText(null);
                         break;
                 }
                 panelCreaContattoScrollPane.setVisible(false);
                 panelCreaContattoScrollPane.setVisible(true);
                 contNumeriMobili--;
+            }
+        });
+
+        //INTERAZIONI CON BTNBACKINDIRIZZISECONDARI
+        btnBackIndirizziSecondari.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                switch(contIndirizziSecondari){
+                    case 1 : img = c.SetImageSize(".images/warning.png",30,30);
+                        JOptionPane.showMessageDialog(null,"NON E' POSSIBILE ELIMINARE ULTERIORI TEXTBOX!","ATTENZIONE!",1,img);
+                        contIndirizziSecondari++;
+                        break;
+                    case 2 : textFieldIndirizziSecondari1.setVisible(false);
+                        textFieldIndirizziSecondari1.setText(null);
+                        break;
+                    case 3 : textFieldIndirizziSecondari2.setVisible(false);
+                        textFieldIndirizziSecondari2.setText(null);
+                        break;
+                    case 4 : textFieldIndirizziSecondari3.setVisible(false);
+                        textFieldIndirizziSecondari3.setText(null);
+                        break;
+                    case 5 : textFieldIndirizziSecondari4.setVisible(false);
+                        textFieldIndirizziSecondari4.setText(null);
+                        break;
+                    case 6 : textFieldIndirizziSecondari5.setVisible(false);
+                        textFieldIndirizziSecondari5.setText(null);
+                        break;
+                    case 7 : textFieldIndirizziSecondari6.setVisible(false);
+                        textFieldIndirizziSecondari6.setText(null);
+                        break;
+                    case 8 : textFieldIndirizziSecondari7.setVisible(false);
+                        textFieldIndirizziSecondari7.setText(null);
+                        break;
+                    case 9 : textFieldIndirizziSecondari8.setVisible(false);
+                        textFieldIndirizziSecondari8.setText(null);
+                        break;
+                    case 10 : textFieldIndirizziSecondari9.setVisible(false);
+                        textFieldIndirizziSecondari9.setText(null);
+                        break;
+                }
+                panelCreaContattoScrollPane.setVisible(false);
+                panelCreaContattoScrollPane.setVisible(true);
+                contIndirizziSecondari--;
+            }
+        });
+
+        //INTERAZIONI CON PULSANTE BTNADDINDIRIZZISECONDARI
+        btnAddIndirizziSecondari.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                switch(contIndirizziSecondari){
+                    case 1 : textFieldIndirizziSecondari1.setVisible(true);
+                        break;
+                    case 2 : textFieldIndirizziSecondari2.setVisible(true);
+                        break;
+                    case 3 : textFieldIndirizziSecondari3.setVisible(true);
+                        break;
+                    case 4 : textFieldIndirizziSecondari4.setVisible(true);
+                        break;
+                    case 5 : textFieldIndirizziSecondari5.setVisible(true);
+                        break;
+                    case 6 : textFieldIndirizziSecondari6.setVisible(true);
+                        break;
+                    case 7 : textFieldIndirizziSecondari7.setVisible(true);
+                        break;
+                    case 8 : textFieldIndirizziSecondari8.setVisible(true);
+                        break;
+                    case 9 : textFieldIndirizziSecondari9.setVisible(true);
+                        break;
+                }
+                if(contIndirizziSecondari >9) {
+                    img = c.SetImageSize(".images/warning.png",30,30);
+                    JOptionPane.showMessageDialog(null,"LIMITE NUMERI MOBILI MASSIMI RAGGIUNTO!","ATTENZIONE!",1,img);
+                    contIndirizziSecondari--;
+                }
+                panelCreaContattoScrollPane.setVisible(false);
+                panelCreaContattoScrollPane.setVisible(true);
+                contIndirizziSecondari++;
             }
         });
 
@@ -1375,14 +1564,275 @@ public class Window {
                 frame.setCursor(defaultCursor);
             }
         });
+
+        //SETTAGGIO TEXT CURSOR NEI TEXTFIELD NUMERI MOBILI
+        textFieldIndirizziSecondari0.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldIndirizziSecondari0.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldIndirizziSecondari1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldIndirizziSecondari1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldIndirizziSecondari2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldIndirizziSecondari2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldIndirizziSecondari3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldIndirizziSecondari3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldIndirizziSecondari4.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldIndirizziSecondari4.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldIndirizziSecondari5.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldIndirizziSecondari5.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldIndirizziSecondari6.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldIndirizziSecondari6.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldIndirizziSecondari7.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldIndirizziSecondari7.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldIndirizziSecondari8.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldIndirizziSecondari8.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+        textFieldIndirizziSecondari9.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldIndirizziSecondari9.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+
+        //INTERAZIONI BTNAGGIUNGI IN CREA CONTATTO
+        btnAggiungi.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                try {
+                    if(jfc.getSelectedFile()==null){
+                        c.creaContatto(null,textFieldNome.getText(),textFieldCognome.getText(),contattoPrivatoCheckBox.isSelected());
+                    }else{
+                        c.creaContatto("C:/Users/39366/IdeaProjects/Rubrica-java/.images/"+(pkContatti.size()+pkContattiPrivati.size()+2),textFieldNome.getText(),textFieldCognome.getText(),contattoPrivatoCheckBox.isSelected());
+                    }
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+                //Refresh dlm contatti
+                DLMContatti.clear();
+                try {
+                    DLMContatti = c.getContatti(pkContatti);
+                    listContatti.setModel(DLMContatti);                                         //Aggiungiamo nel JList i nomi e cognomi dei contatti
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+                //Chiusura pannello creazione contatto
+                panelInfoContatti.setVisible(false);
+
+                //MESSAGGIO DI CONFERMA CREAZIONE CONTATTO
+                img = c.SetImageSize(".images/creazionecontatto.png",30,30);
+                JOptionPane.showMessageDialog(null,textFieldNome.getText()+" "+textFieldCognome.getText()+" aggiunto/a con successo!","CREAZIONE RIUSCITA!",1,img);
+
+                //Settaggio di tutti i textField a default
+                //email
+                textFieldNome.setText(null);
+                textFieldCognome.setText(null);
+                textFieldEmail0.setText(null);
+                textFieldEmail1.setText(null);
+                textFieldEmail1.setVisible(false);
+                textFieldEmail2.setText(null);
+                textFieldEmail2.setVisible(false);
+                textFieldEmail3.setText(null);
+                textFieldEmail3.setVisible(false);
+                textFieldEmail4.setText(null);
+                textFieldEmail4.setVisible(false);
+                textFieldEmail5.setText(null);
+                textFieldEmail5.setVisible(false);
+                textFieldEmail6.setText(null);
+                textFieldEmail6.setVisible(false);
+                textFieldEmail7.setText(null);
+                textFieldEmail7.setVisible(false);
+                textFieldEmail8.setText(null);
+                textFieldEmail8.setVisible(false);
+                textFieldEmail9.setText(null);
+                textFieldEmail9.setVisible(false);
+                //numeri fissi
+                textFieldNumeriFissi0.setText(null);
+                textFieldNumeriFissi1.setText(null);
+                textFieldNumeriFissi1.setVisible(false);
+                textFieldNumeriFissi2.setText(null);
+                textFieldNumeriFissi2.setVisible(false);
+                textFieldNumeriFissi3.setText(null);
+                textFieldNumeriFissi3.setVisible(false);
+                textFieldNumeriFissi4.setText(null);
+                textFieldNumeriFissi4.setVisible(false);
+                textFieldNumeriFissi5.setText(null);
+                textFieldNumeriFissi5.setVisible(false);
+                textFieldNumeriFissi6.setText(null);
+                textFieldNumeriFissi6.setVisible(false);
+                textFieldNumeriFissi7.setText(null);
+                textFieldNumeriFissi7.setVisible(false);
+                textFieldNumeriFissi8.setText(null);
+                textFieldNumeriFissi8.setVisible(false);
+                textFieldNumeriFissi9.setText(null);
+                textFieldNumeriFissi9.setVisible(false);
+                //Numeri mobili
+                textFieldNumeriMobili0.setText(null);
+                textFieldNumeriMobili1.setText(null);
+                textFieldNumeriMobili1.setVisible(false);
+                textFieldNumeriMobili2.setText(null);
+                textFieldNumeriMobili2.setVisible(false);
+                textFieldNumeriMobili3.setText(null);
+                textFieldNumeriMobili3.setVisible(false);
+                textFieldNumeriMobili4.setText(null);
+                textFieldNumeriMobili4.setVisible(false);
+                textFieldNumeriMobili5.setText(null);
+                textFieldNumeriMobili5.setVisible(false);
+                textFieldNumeriMobili6.setText(null);
+                textFieldNumeriMobili6.setVisible(false);
+                textFieldNumeriMobili7.setText(null);
+                textFieldNumeriMobili7.setVisible(false);
+                textFieldNumeriMobili8.setText(null);
+                textFieldNumeriMobili8.setVisible(false);
+                textFieldNumeriMobili9.setText(null);
+                textFieldNumeriMobili9.setVisible(false);
+                //indirizzo principale
+                textFieldIndirizzoPrincipale.setText(null);
+                //indirizzi secondari
+                textFieldIndirizziSecondari0.setText(null);
+                textFieldIndirizziSecondari1.setText(null);
+                textFieldIndirizziSecondari1.setVisible(false);
+                textFieldIndirizziSecondari2.setText(null);
+                textFieldIndirizziSecondari2.setVisible(false);
+                textFieldIndirizziSecondari3.setText(null);
+                textFieldIndirizziSecondari3.setVisible(false);
+                textFieldIndirizziSecondari4.setText(null);
+                textFieldIndirizziSecondari4.setVisible(false);
+                textFieldIndirizziSecondari5.setText(null);
+                textFieldIndirizziSecondari5.setVisible(false);
+                textFieldIndirizziSecondari6.setText(null);
+                textFieldIndirizziSecondari6.setVisible(false);
+                textFieldIndirizziSecondari7.setText(null);
+                textFieldIndirizziSecondari7.setVisible(false);
+                textFieldIndirizziSecondari8.setText(null);
+                textFieldIndirizziSecondari8.setVisible(false);
+                textFieldIndirizziSecondari9.setText(null);
+                textFieldIndirizziSecondari9.setVisible(false);
+
+                //settaggio contatori
+                contEmail = 1;
+                contNumeriFissi = 1;
+                contNumeriMobili = 1;
+                contIndirizziSecondari = 1;
+
+                //Rimozione spunta JCheckBox
+                contattoPrivatoCheckBox.setSelected(false);
+            }
+        });
     }
-
-    /*TODO
-    QUANDO SI CAMBIA SCHERMATA (DA QUELLA DI CREA CONTATTO) RIMANGONO VISIBILI TUTTI I TEXTFIELD SETTATI IN
-    QUEL MOMENTO, SETTARE SIA IN BTNANNULLA CHE BTNCREACONTATTO
-     */
-
-
     public static void main(String[] args) throws SQLException{
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); //System Look And Feel
@@ -1392,3 +1842,5 @@ public class Window {
         new Window();
     }
 }
+
+//TODO QUANDO VIENE ELIMINATO UN CONTATTO CON UNA FOTO, QUELLA FOTO RIMANE LI.

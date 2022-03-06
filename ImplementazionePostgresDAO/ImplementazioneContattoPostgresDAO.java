@@ -17,7 +17,9 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
     private DefaultListModel DLMPrivati = new DefaultListModel();
     private ResultSet rs;
     private Statement s;
-    private int cont;
+    private String name;
+    private String surname;
+    private String path;
 
 
     public ImplementazioneContattoPostgresDAO(){
@@ -67,8 +69,19 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
         return DLMPrivati;
     }
 
+    public String getPath (int pk) throws SQLException{
+        s = connection.createStatement();
+        //QUERY DI SELEZIONE PATH CONTATTO
+        rs = s.executeQuery("SELECT FOTO " +
+                            "FROM CONTATTO " +
+                            "WHERE ID = " + pk);
+        while(rs.next()){
+            path = rs.getString("FOTO");
+        }
+        return path;
+    }
+
     public String getNome (int pk) throws SQLException {
-        String name = new String();
         s = connection.createStatement();
         //QUERY DI SELEZIONE NOME CONTATTO
         rs = s.executeQuery("SELECT NOME " +
@@ -81,7 +94,6 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
     }
 
     public String getCognome (int pk) throws SQLException {
-        String surname = new String();
         s = connection.createStatement();
         //QUERY DI SELEZIONE NOME CONTATTO
         rs = s.executeQuery("SELECT COGNOME " +
@@ -99,5 +111,11 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
         s.executeUpdate("DELETE " +
                             "FROM CONTATTO " +
                             "WHERE ID = "+ pk);
+    }
+    public void creaContatto(String pathFoto,String nome,String cognome,boolean security) throws SQLException{
+        s = connection.createStatement();
+        //QUERY DI CREAZIONE CONTATTO
+        s.executeUpdate("INSERT INTO CONTATTO (FOTO,NOME,COGNOME,SECURITY) " +
+                            "VALUES ('"+pathFoto+"','"+nome+"','"+cognome+"',"+security+")");
     }
 }
