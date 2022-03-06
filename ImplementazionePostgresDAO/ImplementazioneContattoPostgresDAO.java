@@ -20,6 +20,7 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
     private String name;
     private String surname;
     private String path;
+    private int pk;
 
 
     public ImplementazioneContattoPostgresDAO(){
@@ -112,10 +113,17 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
                             "FROM CONTATTO " +
                             "WHERE ID = "+ pk);
     }
-    public void creaContatto(String pathFoto,String nome,String cognome,boolean security) throws SQLException{
+    public int creaContatto(String pathFoto,String nome,String cognome,boolean security) throws SQLException{
         s = connection.createStatement();
         //QUERY DI CREAZIONE CONTATTO
         s.executeUpdate("INSERT INTO CONTATTO (FOTO,NOME,COGNOME,SECURITY) " +
                             "VALUES ("+pathFoto+",'"+nome+"','"+cognome+"',"+security+")");
+        rs = s.executeQuery("SELECT ID " +
+                            "FROM CONTATTO " +
+                            "WHERE NOME = '"+nome+"' AND COGNOME = '"+cognome+"' AND SECURITY = "+security);
+        while(rs.next()){
+            pk = rs.getInt("id");
+        }
+        return pk;
     }
 }

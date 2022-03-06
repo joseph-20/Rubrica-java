@@ -50,8 +50,14 @@ public class Controller {
     public String getEmail(int pk) throws SQLException{
         return email.getEmail(pk);
     }
+    public void creaEmail (ArrayList<String> username, ArrayList<String> dominio, int id, int n) throws SQLException{
+        email.creaEmail(username,dominio,id,n);
+    }
     public String getNumeriFissi(int pk) throws SQLException{
         return numeriF.getNumeriFissi(pk);
+    }
+    public void creaNumeriFissi (ArrayList<String> prefisso, ArrayList<String> numero, int id, int n) throws SQLException{
+        numeriF.creaNumeriFissi(prefisso,numero,id,n);
     }
     public String getNumeriMobili(int pk) throws SQLException{
         return numeriM.getNumeriMobili(pk);
@@ -71,7 +77,7 @@ public class Controller {
     public void cancellaContatto(int pk) throws SQLException {
         contact.cancellaContatto(pk);
     }
-    public void creaContatto(String pathFoto,String nome,String cognome,boolean security) throws SQLException{
-        contact.creaContatto(pathFoto,nome,cognome,security);
+    public int creaContatto(String pathFoto,String nome,String cognome,boolean security) throws SQLException{
+        return contact.creaContatto(pathFoto,nome,cognome,security);
     }
 }

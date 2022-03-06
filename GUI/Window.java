@@ -163,7 +163,13 @@ public class Window {
     private Cursor textCursor = new Cursor (Cursor.TEXT_CURSOR);
     private Cursor defaultCursor = new Cursor (Cursor.DEFAULT_CURSOR);
     private ArrayList<String> randImage;
+    private ArrayList<String> username = new ArrayList<>();
+    private ArrayList<String> dominio = new ArrayList<>();
+    private ArrayList<String> prefissoF = new ArrayList<>();
+    private ArrayList<String> numeroF = new ArrayList<>();
     private Random rand = new Random();
+    private int index;
+    private int getpk;
 
     public Window() throws SQLException{
         Controller c = new Controller();
@@ -1728,11 +1734,356 @@ public class Window {
                     JOptionPane.showMessageDialog(null, "NON E' STATO INSERITO UN INDIRIZZO PRINCIPALE PER IL CONTATTO!", "ATTENZIONE!", 1, img);
                 }else{
                     try {
+                        //QUERY CREA CONTATTO
                         if (jfc.getSelectedFile() == null) {
-                            c.creaContatto("null", textFieldNome.getText(), textFieldCognome.getText(), contattoPrivatoCheckBox.isSelected());
+                            getpk = c.creaContatto("null", textFieldNome.getText(), textFieldCognome.getText(), contattoPrivatoCheckBox.isSelected());
                         } else {
-                            c.creaContatto("C:/Users/39366/IdeaProjects/Rubrica-java/.images/" + (pkContatti.size() + pkContattiPrivati.size() + 2), textFieldNome.getText(), textFieldCognome.getText(), contattoPrivatoCheckBox.isSelected());
+                            getpk = c.creaContatto("'C:/Users/39366/IdeaProjects/Rubrica-java/.images/" + (pkContatti.size() + pkContattiPrivati.size() + 2)+"'", textFieldNome.getText(), textFieldCognome.getText(), contattoPrivatoCheckBox.isSelected());
                         }
+                        //QUERY CREA EMAIL
+                        username.clear();
+                        dominio.clear();
+                        if(contEmail==1){
+                            index = textFieldEmail0.getText().indexOf('@');
+                            System.out.println(index);
+                            username.add(textFieldEmail0.getText().substring(0,index));
+                            dominio.add(textFieldEmail0.getText().substring(index+1));
+                            c.creaEmail(username,dominio,getpk,1);
+                        }
+                        if(contEmail==2){
+                            index = textFieldEmail0.getText().indexOf('@');
+                            username.add(textFieldEmail0.getText().substring(0,index));
+                            dominio.add(textFieldEmail0.getText().substring(index+1));
+                            index = textFieldEmail1.getText().indexOf('@');
+                            username.add(textFieldEmail1.getText().substring(0,index));
+                            dominio.add(textFieldEmail1.getText().substring(index+1));
+                            c.creaEmail(username,dominio,getpk,2);
+                        }
+                        if(contEmail==3){
+                            index = textFieldEmail0.getText().indexOf('@');
+                            username.add(textFieldEmail0.getText().substring(0,index));
+                            dominio.add(textFieldEmail0.getText().substring(index+1));
+                            index = textFieldEmail1.getText().indexOf('@');
+                            username.add(textFieldEmail1.getText().substring(0,index));
+                            dominio.add(textFieldEmail1.getText().substring(index+1));
+                            index = textFieldEmail2.getText().indexOf('@');
+                            username.add(textFieldEmail2.getText().substring(0,index));
+                            dominio.add(textFieldEmail2.getText().substring(index+1));
+                            c.creaEmail(username,dominio,getpk,3);
+                        }
+                        if(contEmail==4){
+                            index = textFieldEmail0.getText().indexOf('@');
+                            username.add(textFieldEmail0.getText().substring(0,index));
+                            dominio.add(textFieldEmail0.getText().substring(index+1));
+                            index = textFieldEmail1.getText().indexOf('@');
+                            username.add(textFieldEmail1.getText().substring(0,index));
+                            dominio.add(textFieldEmail1.getText().substring(index+1));
+                            index = textFieldEmail2.getText().indexOf('@');
+                            username.add(textFieldEmail2.getText().substring(0,index));
+                            dominio.add(textFieldEmail2.getText().substring(index+1));
+                            index = textFieldEmail3.getText().indexOf('@');
+                            username.add(textFieldEmail3.getText().substring(0,index));
+                            dominio.add(textFieldEmail3.getText().substring(index+1));
+                            c.creaEmail(username,dominio,getpk,4);
+                        }
+                        if(contEmail==5){
+                            index = textFieldEmail0.getText().indexOf('@');
+                            username.add(textFieldEmail0.getText().substring(0,index));
+                            dominio.add(textFieldEmail0.getText().substring(index+1));
+                            index = textFieldEmail1.getText().indexOf('@');
+                            username.add(textFieldEmail1.getText().substring(0,index));
+                            dominio.add(textFieldEmail1.getText().substring(index+1));
+                            index = textFieldEmail2.getText().indexOf('@');
+                            username.add(textFieldEmail2.getText().substring(0,index));
+                            dominio.add(textFieldEmail2.getText().substring(index+1));
+                            index = textFieldEmail3.getText().indexOf('@');
+                            username.add(textFieldEmail3.getText().substring(0,index));
+                            dominio.add(textFieldEmail3.getText().substring(index+1));
+                            index = textFieldEmail4.getText().indexOf('@');
+                            username.add(textFieldEmail4.getText().substring(0,index));
+                            dominio.add(textFieldEmail4.getText().substring(index+1));
+                            c.creaEmail(username,dominio,getpk,5);
+                        }
+                        if(contEmail==6){
+                            index = textFieldEmail0.getText().indexOf('@');
+                            username.add(textFieldEmail0.getText().substring(0,index));
+                            dominio.add(textFieldEmail0.getText().substring(index+1));
+                            index = textFieldEmail1.getText().indexOf('@');
+                            username.add(textFieldEmail1.getText().substring(0,index));
+                            dominio.add(textFieldEmail1.getText().substring(index+1));
+                            index = textFieldEmail2.getText().indexOf('@');
+                            username.add(textFieldEmail2.getText().substring(0,index));
+                            dominio.add(textFieldEmail2.getText().substring(index+1));
+                            index = textFieldEmail3.getText().indexOf('@');
+                            username.add(textFieldEmail3.getText().substring(0,index));
+                            dominio.add(textFieldEmail3.getText().substring(index+1));
+                            index = textFieldEmail4.getText().indexOf('@');
+                            username.add(textFieldEmail4.getText().substring(0,index));
+                            dominio.add(textFieldEmail4.getText().substring(index+1));
+                            index = textFieldEmail5.getText().indexOf('@');
+                            username.add(textFieldEmail5.getText().substring(0,index));
+                            dominio.add(textFieldEmail5.getText().substring(index+1));
+                            c.creaEmail(username,dominio,getpk,6);
+                        }
+                        if(contEmail==7){
+                            index = textFieldEmail0.getText().indexOf('@');
+                            username.add(textFieldEmail0.getText().substring(0,index));
+                            dominio.add(textFieldEmail0.getText().substring(index+1));
+                            index = textFieldEmail1.getText().indexOf('@');
+                            username.add(textFieldEmail1.getText().substring(0,index));
+                            dominio.add(textFieldEmail1.getText().substring(index+1));
+                            index = textFieldEmail2.getText().indexOf('@');
+                            username.add(textFieldEmail2.getText().substring(0,index));
+                            dominio.add(textFieldEmail2.getText().substring(index+1));
+                            index = textFieldEmail3.getText().indexOf('@');
+                            username.add(textFieldEmail3.getText().substring(0,index));
+                            dominio.add(textFieldEmail3.getText().substring(index+1));
+                            index = textFieldEmail4.getText().indexOf('@');
+                            username.add(textFieldEmail4.getText().substring(0,index));
+                            dominio.add(textFieldEmail4.getText().substring(index+1));
+                            index = textFieldEmail5.getText().indexOf('@');
+                            username.add(textFieldEmail5.getText().substring(0,index));
+                            dominio.add(textFieldEmail5.getText().substring(index+1));
+                            index = textFieldEmail6.getText().indexOf('@');
+                            username.add(textFieldEmail6.getText().substring(0,index));
+                            dominio.add(textFieldEmail6.getText().substring(index+1));
+                            c.creaEmail(username,dominio,getpk,7);
+                        }
+                        if(contEmail==8){
+                            index = textFieldEmail0.getText().indexOf('@');
+                            username.add(textFieldEmail0.getText().substring(0,index));
+                            dominio.add(textFieldEmail0.getText().substring(index+1));
+                            index = textFieldEmail1.getText().indexOf('@');
+                            username.add(textFieldEmail1.getText().substring(0,index));
+                            dominio.add(textFieldEmail1.getText().substring(index+1));
+                            index = textFieldEmail2.getText().indexOf('@');
+                            username.add(textFieldEmail2.getText().substring(0,index));
+                            dominio.add(textFieldEmail2.getText().substring(index+1));
+                            index = textFieldEmail3.getText().indexOf('@');
+                            username.add(textFieldEmail3.getText().substring(0,index));
+                            dominio.add(textFieldEmail3.getText().substring(index+1));
+                            index = textFieldEmail4.getText().indexOf('@');
+                            username.add(textFieldEmail4.getText().substring(0,index));
+                            dominio.add(textFieldEmail4.getText().substring(index+1));
+                            index = textFieldEmail5.getText().indexOf('@');
+                            username.add(textFieldEmail5.getText().substring(0,index));
+                            dominio.add(textFieldEmail5.getText().substring(index+1));
+                            index = textFieldEmail6.getText().indexOf('@');
+                            username.add(textFieldEmail6.getText().substring(0,index));
+                            dominio.add(textFieldEmail6.getText().substring(index+1));
+                            index = textFieldEmail7.getText().indexOf('@');
+                            username.add(textFieldEmail7.getText().substring(0,index));
+                            dominio.add(textFieldEmail7.getText().substring(index+1));
+                            c.creaEmail(username,dominio,getpk,8);
+                        }
+                        if(contEmail==9){
+                            index = textFieldEmail0.getText().indexOf('@');
+                            username.add(textFieldEmail0.getText().substring(0,index));
+                            dominio.add(textFieldEmail0.getText().substring(index+1));
+                            index = textFieldEmail1.getText().indexOf('@');
+                            username.add(textFieldEmail1.getText().substring(0,index));
+                            dominio.add(textFieldEmail1.getText().substring(index+1));
+                            index = textFieldEmail2.getText().indexOf('@');
+                            username.add(textFieldEmail2.getText().substring(0,index));
+                            dominio.add(textFieldEmail2.getText().substring(index+1));
+                            index = textFieldEmail3.getText().indexOf('@');
+                            username.add(textFieldEmail3.getText().substring(0,index));
+                            dominio.add(textFieldEmail3.getText().substring(index+1));
+                            index = textFieldEmail4.getText().indexOf('@');
+                            username.add(textFieldEmail4.getText().substring(0,index));
+                            dominio.add(textFieldEmail4.getText().substring(index+1));
+                            index = textFieldEmail5.getText().indexOf('@');
+                            username.add(textFieldEmail5.getText().substring(0,index));
+                            dominio.add(textFieldEmail5.getText().substring(index+1));
+                            index = textFieldEmail6.getText().indexOf('@');
+                            username.add(textFieldEmail6.getText().substring(0,index));
+                            dominio.add(textFieldEmail6.getText().substring(index+1));
+                            index = textFieldEmail7.getText().indexOf('@');
+                            username.add(textFieldEmail7.getText().substring(0,index));
+                            dominio.add(textFieldEmail7.getText().substring(index+1));
+                            index = textFieldEmail8.getText().indexOf('@');
+                            username.add(textFieldEmail8.getText().substring(0,index));
+                            dominio.add(textFieldEmail8.getText().substring(index+1));
+                            c.creaEmail(username,dominio,getpk,9);
+                        }
+                        if(contEmail==10){
+                            index = textFieldEmail0.getText().indexOf('@');
+                            username.add(textFieldEmail0.getText().substring(0,index));
+                            dominio.add(textFieldEmail0.getText().substring(index+1));
+                            index = textFieldEmail1.getText().indexOf('@');
+                            username.add(textFieldEmail1.getText().substring(0,index));
+                            dominio.add(textFieldEmail1.getText().substring(index+1));
+                            index = textFieldEmail2.getText().indexOf('@');
+                            username.add(textFieldEmail2.getText().substring(0,index));
+                            dominio.add(textFieldEmail2.getText().substring(index+1));
+                            index = textFieldEmail3.getText().indexOf('@');
+                            username.add(textFieldEmail3.getText().substring(0,index));
+                            dominio.add(textFieldEmail3.getText().substring(index+1));
+                            index = textFieldEmail4.getText().indexOf('@');
+                            username.add(textFieldEmail4.getText().substring(0,index));
+                            dominio.add(textFieldEmail4.getText().substring(index+1));
+                            index = textFieldEmail5.getText().indexOf('@');
+                            username.add(textFieldEmail5.getText().substring(0,index));
+                            dominio.add(textFieldEmail5.getText().substring(index+1));
+                            index = textFieldEmail6.getText().indexOf('@');
+                            username.add(textFieldEmail6.getText().substring(0,index));
+                            dominio.add(textFieldEmail6.getText().substring(index+1));
+                            index = textFieldEmail7.getText().indexOf('@');
+                            username.add(textFieldEmail7.getText().substring(0,index));
+                            dominio.add(textFieldEmail7.getText().substring(index+1));
+                            index = textFieldEmail8.getText().indexOf('@');
+                            username.add(textFieldEmail8.getText().substring(0,index));
+                            dominio.add(textFieldEmail8.getText().substring(index+1));
+                            index = textFieldEmail9.getText().indexOf('@');
+                            username.add(textFieldEmail9.getText().substring(0,index));
+                            dominio.add(textFieldEmail9.getText().substring(index+1));
+                            c.creaEmail(username,dominio,getpk,10);
+                        }
+
+                        //QUERY CREA NUMERI FISSI
+                        prefissoF.clear();
+                        numeroF.clear();
+                        if(contNumeriFissi==1){
+                            prefissoF.add(textFieldNumeriFissi0.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi0.getText().substring(4));
+                            c.creaNumeriFissi(prefissoF,numeroF,getpk,1);
+                        }
+                        if(contNumeriFissi==2){
+                            prefissoF.add(textFieldNumeriFissi0.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi0.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi1.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi1.getText().substring(4));
+                            c.creaNumeriFissi(prefissoF,numeroF,getpk,2);
+                        }
+                        if(contNumeriFissi==3){
+                            prefissoF.add(textFieldNumeriFissi0.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi0.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi1.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi1.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi2.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi2.getText().substring(4));
+                            c.creaNumeriFissi(prefissoF,numeroF,getpk,3);
+                        }
+                        if(contNumeriFissi==4){
+                            prefissoF.add(textFieldNumeriFissi0.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi0.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi1.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi1.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi2.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi2.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi3.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi3.getText().substring(4));
+                            c.creaNumeriFissi(prefissoF,numeroF,getpk,4);
+                        }
+                        if(contNumeriFissi==5){
+                            prefissoF.add(textFieldNumeriFissi0.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi0.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi1.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi1.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi2.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi2.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi3.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi3.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi4.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi4.getText().substring(4));
+                            c.creaNumeriFissi(prefissoF,numeroF,getpk,5);
+                        }
+                        if(contNumeriFissi==6){
+                            prefissoF.add(textFieldNumeriFissi0.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi0.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi1.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi1.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi2.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi2.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi3.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi3.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi4.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi4.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi5.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi5.getText().substring(4));
+                            c.creaNumeriFissi(prefissoF,numeroF,getpk,6);
+                        }
+                        if(contNumeriFissi==7){
+                            prefissoF.add(textFieldNumeriFissi0.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi0.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi1.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi1.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi2.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi2.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi3.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi3.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi4.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi4.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi5.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi5.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi6.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi6.getText().substring(4));
+                            c.creaNumeriFissi(prefissoF,numeroF,getpk,7);
+                        }
+                        if(contNumeriFissi==8){
+                            prefissoF.add(textFieldNumeriFissi0.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi0.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi1.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi1.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi2.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi2.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi3.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi3.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi4.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi4.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi5.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi5.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi6.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi6.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi7.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi7.getText().substring(4));
+                            c.creaNumeriFissi(prefissoF,numeroF,getpk,8);
+                        }
+                        if(contNumeriFissi==9){
+                            prefissoF.add(textFieldNumeriFissi0.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi0.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi1.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi1.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi2.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi2.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi3.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi3.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi4.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi4.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi5.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi5.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi6.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi6.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi7.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi7.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi8.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi8.getText().substring(4));
+                            c.creaNumeriFissi(prefissoF,numeroF,getpk,9);
+                        }
+                        if(contNumeriFissi==10){
+                            prefissoF.add(textFieldNumeriFissi0.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi0.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi1.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi1.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi2.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi2.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi3.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi3.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi4.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi4.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi5.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi5.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi6.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi6.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi7.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi7.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi8.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi8.getText().substring(4));
+                            prefissoF.add(textFieldNumeriFissi9.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi9.getText().substring(4));
+                            c.creaNumeriFissi(prefissoF,numeroF,getpk,10);
+                        }
+
                     } catch (SQLException ex) {
                         ex.printStackTrace();
                     }
@@ -1860,3 +2211,5 @@ public class Window {
 }
 
 //TODO QUANDO VIENE ELIMINATO UN CONTATTO CON UNA FOTO, QUELLA FOTO RIMANE LI.
+
+//TODO SE METTE PIU TEXTFIELD LI DEVE PER FORZA SCRIVERE ALTRIMENTI NON DEVE FUNZIONARE

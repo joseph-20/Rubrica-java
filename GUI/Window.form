@@ -193,7 +193,7 @@
                                     <children>
                                       <component id="90d61" class="javax.swing.JLabel" binding="lblEmail">
                                         <constraints>
-                                          <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="7" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                          <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                         </constraints>
                                         <properties>
                                           <font size="22" style="1"/>
@@ -213,7 +213,7 @@
                                       </vspacer>
                                       <component id="6c24b" class="javax.swing.JLabel" binding="lblGetEmail">
                                         <constraints>
-                                          <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="7" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                          <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                         </constraints>
                                         <properties>
                                           <font size="14"/>
@@ -224,7 +224,7 @@
                                       </component>
                                       <component id="6066f" class="javax.swing.JLabel" binding="lblGetNumeriFissi">
                                         <constraints>
-                                          <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="7" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                          <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                         </constraints>
                                         <properties>
                                           <font size="14"/>
@@ -235,7 +235,7 @@
                                       </component>
                                       <component id="f2b79" class="javax.swing.JLabel" binding="lblNumeriMobili">
                                         <constraints>
-                                          <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="7" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                          <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                         </constraints>
                                         <properties>
                                           <font size="22" style="1"/>
@@ -246,7 +246,7 @@
                                       </component>
                                       <component id="92f26" class="javax.swing.JLabel" binding="lblGetNumeriMobili">
                                         <constraints>
-                                          <grid row="5" column="0" row-span="1" col-span="3" vsize-policy="7" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                          <grid row="5" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                         </constraints>
                                         <properties>
                                           <alignmentX value="0.5"/>
@@ -258,7 +258,7 @@
                                       </component>
                                       <component id="3af26" class="javax.swing.JLabel" binding="lblIndirizzoPrincipale">
                                         <constraints>
-                                          <grid row="6" column="0" row-span="1" col-span="3" vsize-policy="7" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                          <grid row="6" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                         </constraints>
                                         <properties>
                                           <font size="22" style="1"/>
@@ -269,7 +269,7 @@
                                       </component>
                                       <component id="8006f" class="javax.swing.JLabel" binding="lblGetIndirizzoPrincipale">
                                         <constraints>
-                                          <grid row="7" column="0" row-span="1" col-span="3" vsize-policy="7" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                          <grid row="7" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                         </constraints>
                                         <properties>
                                           <alignmentX value="0.5"/>
@@ -281,7 +281,7 @@
                                       </component>
                                       <component id="6d544" class="javax.swing.JLabel" binding="lblIndirizziSecondari">
                                         <constraints>
-                                          <grid row="8" column="0" row-span="1" col-span="3" vsize-policy="7" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                          <grid row="8" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                         </constraints>
                                         <properties>
                                           <font size="22" style="1"/>
@@ -292,7 +292,7 @@
                                       </component>
                                       <component id="b1f20" class="javax.swing.JLabel" binding="lblGetIndirizziSecondari">
                                         <constraints>
-                                          <grid row="9" column="0" row-span="1" col-span="3" vsize-policy="7" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                          <grid row="9" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                         </constraints>
                                         <properties>
                                           <font size="14"/>
@@ -301,7 +301,7 @@
                                       </component>
                                       <component id="645dc" class="javax.swing.JLabel" binding="lblNumeriFissi">
                                         <constraints>
-                                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                         </constraints>
                                         <properties>
                                           <font size="22" style="1"/>
@@ -840,6 +840,8 @@
                                     <properties>
                                       <font size="16"/>
                                       <horizontalAlignment value="0"/>
+                                      <text value=""/>
+                                      <toolTipText value="Username@Dominio"/>
                                       <visible value="true"/>
                                     </properties>
                                   </component>
@@ -960,6 +962,8 @@
                                     <properties>
                                       <font size="16"/>
                                       <horizontalAlignment value="0"/>
+                                      <text value=""/>
+                                      <toolTipText value="Via , Civico , Città , Cap , Nazione"/>
                                       <visible value="true"/>
                                     </properties>
                                   </component>

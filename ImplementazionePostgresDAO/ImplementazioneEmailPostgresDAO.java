@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class ImplementazioneEmailPostgresDAO implements EmailDAO {
     private Connection connection;
@@ -38,4 +39,14 @@ public class ImplementazioneEmailPostgresDAO implements EmailDAO {
         if(cont==0) return "NOT FOUND";
         return email;
     }
+
+    public void creaEmail (ArrayList<String> username, ArrayList<String> dominio, int id, int n) throws SQLException{
+        s = connection.createStatement();
+        //QUERY DI AGGIUNTA DI TUTTE LE MAIL
+        for(int i=0;i<n;i++){
+            s.executeUpdate("INSERT INTO EMAIL " +
+                            "VALUES ('"+username.get(i)+"','"+dominio.get(i)+"',"+id+")");
+        }
+    }
+
 }
