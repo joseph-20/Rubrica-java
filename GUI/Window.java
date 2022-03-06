@@ -1712,11 +1712,21 @@ public class Window {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                //SE NON E' STATO INSERITO UN INDIRIZZO PRINCIPALE NON CONTINUARE
-                if (textFieldIndirizzoPrincipale.getText().equals("")) {
+                //SE NON E' STATO INSERITO UN NOME AL CONTATTO NON CONTINUARE
+                if (textFieldNome.getText().equals("")) {
                     img = c.SetImageSize(".images/warning.png", 30, 30);
-                    JOptionPane.showMessageDialog(null, "NON E' STATO AGGIUNTO UN INDIRIZZO PRINCIPALE!", "ATTENZIONE!", 1, img);
-                } else {
+                    JOptionPane.showMessageDialog(null, "NON E' STATO INSERITO UN NOME PER IL CONTATTO!", "ATTENZIONE!", 1, img);
+                }
+                //SE NON E' STATO INSERITO UN COGNOME AL CONTATTO NON CONTINUARE
+                else if(textFieldCognome.getText().equals("")){
+                    img = c.SetImageSize(".images/warning.png", 30, 30);
+                    JOptionPane.showMessageDialog(null, "NON E' STATO INSERITO UN COGNOME PER IL CONTATTO!", "ATTENZIONE!", 1, img);
+                }
+                //SE NON E' STATO INSERITO UN INDIRIZZO PRINCIPALE AL CONTATTO NON CONTINUARE
+                else if(textFieldIndirizzoPrincipale.getText().equals("")){
+                    img = c.SetImageSize(".images/warning.png", 30, 30);
+                    JOptionPane.showMessageDialog(null, "NON E' STATO INSERITO UN INDIRIZZO PRINCIPALE PER IL CONTATTO!", "ATTENZIONE!", 1, img);
+                }else{
                     try {
                         if (jfc.getSelectedFile() == null) {
                             c.creaContatto("null", textFieldNome.getText(), textFieldCognome.getText(), contattoPrivatoCheckBox.isSelected());
