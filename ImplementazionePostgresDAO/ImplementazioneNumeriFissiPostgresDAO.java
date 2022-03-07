@@ -43,7 +43,7 @@ public class ImplementazioneNumeriFissiPostgresDAO implements NumeriFissiDAO {
 
     public void creaNumeriFissi (ArrayList<String> prefisso, ArrayList<String> numero, int id, int n) throws SQLException{
         s = connection.createStatement();
-        //QUERY DI AGGIUNTA DI TUTTE LE MAIL
+        //QUERY DI AGGIUNTA DI TUTTI I NUMERI FISSI
         for(int i=0;i<n;i++){
             s.executeUpdate("INSERT INTO NUMERO_FISSO " +
                     "VALUES ('"+prefisso.get(i)+"','"+numero.get(i)+"',"+id+")");

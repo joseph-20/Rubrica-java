@@ -35,6 +35,9 @@ public class Controller {
     public String getIndirizzoPrincipale (int pk) throws SQLException{
         return indirizzoP.getIndirizzoPrincipale(pk);
     }
+    public void creaIndirizzoPrincipale (String indirizzo,int id) throws SQLException{
+        indirizzoP.creaIndirizzoPrincipale(indirizzo,id);
+    }
     public String getPath (int pk) throws SQLException{
         return contact.getPath(pk);
     }
@@ -61,6 +64,9 @@ public class Controller {
     }
     public String getNumeriMobili(int pk) throws SQLException{
         return numeriM.getNumeriMobili(pk);
+    }
+    public void creaNumeriMobili (ArrayList<String> prefisso, ArrayList<String> numero, int id, int n) throws SQLException{
+        numeriM.creaNumeriMobili(prefisso,numero,id,n);
     }
     public void swapVisibility (JPanel active,JPanel disable){
         active.setVisible(true);

@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class ImplementazioneNumeriMobiliPostgresDAO implements NumeriMobiliDAO {
     private Connection connection;
@@ -38,5 +39,14 @@ public class ImplementazioneNumeriMobiliPostgresDAO implements NumeriMobiliDAO {
         numeriMobili = numeriMobili+"<br/><html>";
         if(cont==0) return "NOT FOUND";
         return numeriMobili;
+    }
+
+    public void creaNumeriMobili (ArrayList<String> prefisso, ArrayList<String> numero, int id, int n) throws SQLException{
+        s = connection.createStatement();
+        //QUERY DI AGGIUNTA DI I NUMERI MOBILI
+        for(int i=0;i<n;i++){
+            s.executeUpdate("INSERT INTO NUMERO_MOBILE " +
+                    "VALUES ('"+prefisso.get(i)+"','"+numero.get(i)+"',"+id+")");
+        }
     }
 }
