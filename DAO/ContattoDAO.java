@@ -13,4 +13,5 @@ public interface ContattoDAO {
     public void cancellaContatto(int pk) throws SQLException;
     public int creaContatto(String pathFoto,String nome,String cognome,boolean security) throws SQLException;
     public String getPath (int pk) throws SQLException;
+    public int getLastId() throws SQLException;
 }

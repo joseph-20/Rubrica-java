@@ -27,6 +27,9 @@ public class Controller {
    public DefaultListModel getContatti(ArrayList<Integer> pkContatti) throws SQLException{
        return contact.getContatti(pkContatti);
    }
+    public int getLastId() throws SQLException{
+       return contact.getLastId();
+    }
     /* Interazione con il database dell'interfaccia ContattoDAO implementata da ImplementazioneContattoDAO
      di postgres per ricavare tutti i contatti privati dal database */
     public DefaultListModel getContattiPrivati(ArrayList<Integer> pkContatti) throws SQLException{

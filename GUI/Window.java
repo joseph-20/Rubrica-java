@@ -160,7 +160,6 @@ public class Window {
     private int contNumeriFissi = 1;
     private int contNumeriMobili = 1;
     private int contIndirizziSecondari = 1;
-    private int index;
     private Cursor textCursor = new Cursor (Cursor.TEXT_CURSOR);
     private Cursor defaultCursor = new Cursor (Cursor.DEFAULT_CURSOR);
     private ArrayList<String> randImage;
@@ -628,6 +627,9 @@ public class Window {
                 img = c.SetImageSize(".images/warning.png",30,30);
                 if(JOptionPane.showConfirmDialog(null,"SEI SICURO DI VOLER ELIMINARE QUESTO CONTATTO?","ATTENZIONE!",0,1,img)==0){
                     try {
+                        if(c.getPath(pkContatti.get(listContatti.getSelectedIndex()))!=null) {
+                            Files.delete(Path.of(c.getPath(pkContatti.get(listContatti.getSelectedIndex()))));
+                        }
                         c.cancellaContatto(pkContatti.get(listContatti.getSelectedIndex()));
                         //REFRESH LISTA CONTATTI E RESET DLM
                         panelInfoContatti.setVisible(false);
@@ -635,6 +637,8 @@ public class Window {
                         DLMContatti = c.getContatti(pkContatti);
                         listContatti.setModel(DLMContatti);                                         //Aggiungiamo nel JList i nomi e cognomi dei contatti
                     } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    } catch (IOException ex) {
                         ex.printStackTrace();
                     }
                 }
@@ -755,6 +759,15 @@ public class Window {
 
                 //Rimozione spunta JCheckBox
                 contattoPrivatoCheckBox.setSelected(false);
+
+                //Eliminazione foto inserita
+                try {
+                    if(Files.exists(Path.of(".images/" + (pkContatti.size() + pkContattiPrivati.size()+2)))) {
+                        Files.delete(Path.of(".images/" + (pkContatti.size() + pkContattiPrivati.size() + 2)));
+                    }
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
 
@@ -767,11 +780,13 @@ public class Window {
                 jfc.setVisible(true);
                 foto = jfc.getSelectedFile();
                 try {
-                    Files.copy(Path.of((foto.getPath())), Path.of((".images/"+(pkContatti.size()+pkContattiPrivati.size()+2))),StandardCopyOption.REPLACE_EXISTING);
-                    img = c.SetImageSize(".images/"+(pkContatti.size()+pkContattiPrivati.size()+2),200,200);
+                    Files.copy(Path.of((foto.getPath())), Path.of((".images/"+(c.getLastId()+1))),StandardCopyOption.REPLACE_EXISTING);
+                    img = c.SetImageSize(".images/"+(c.getLastId()+1),200,200);
                     btnAddContact.setIcon(img);
                     //TODO ELIMINA CONTATTO HA GLI STESSI ID
                 } catch (IOException ex) {
+                    ex.printStackTrace();
+                } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
             }
@@ -1739,7 +1754,7 @@ public class Window {
                         if (jfc.getSelectedFile() == null) {
                             getpk = c.creaContatto("null", textFieldNome.getText(), textFieldCognome.getText(), contattoPrivatoCheckBox.isSelected());
                         } else {
-                            getpk = c.creaContatto("'C:/Users/39366/IdeaProjects/Rubrica-java/.images/" + (pkContatti.size() + pkContattiPrivati.size() + 2)+"'", textFieldNome.getText(), textFieldCognome.getText(), contattoPrivatoCheckBox.isSelected());
+                            getpk = c.creaContatto("'C:/Users/39366/IdeaProjects/Rubrica-java/.images/" + (c.getLastId()+1)+"'", textFieldNome.getText(), textFieldCognome.getText(), contattoPrivatoCheckBox.isSelected());
                         }
                         //QUERY CREA EMAIL
                         email.clear();
@@ -2244,7 +2259,5 @@ public class Window {
         new Window();
     }
 }
-
-//TODO QUANDO VIENE ELIMINATO UN CONTATTO CON UNA FOTO, QUELLA FOTO RIMANE LI.
 
 //TODO SE METTE PIU TEXTFIELD LI DEVE PER FORZA SCRIVERE ALTRIMENTI NON DEVE FUNZIONARE

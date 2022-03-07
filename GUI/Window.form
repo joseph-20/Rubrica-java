@@ -963,7 +963,7 @@
                                       <font size="16"/>
                                       <horizontalAlignment value="0"/>
                                       <text value=""/>
-                                      <toolTipText value="Via , Civico , Città , Cap , Nazione"/>
+                                      <toolTipText value="Via,Civico,Città,Cap,Nazione"/>
                                       <visible value="true"/>
                                     </properties>
                                   </component>

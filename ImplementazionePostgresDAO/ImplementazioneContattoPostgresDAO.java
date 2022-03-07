@@ -23,7 +23,7 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
     private int pk;
 
 
-    public ImplementazioneContattoPostgresDAO(){
+    public ImplementazioneContattoPostgresDAO() {
         try {
             connection = ConnessioneDatabase.getInstance().getConnection();
         } catch (SQLException e) {
@@ -32,7 +32,7 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
     }
 
 
-    public DefaultListModel getContatti (ArrayList<Integer> pkContatti) throws SQLException {
+    public DefaultListModel getContatti(ArrayList<Integer> pkContatti) throws SQLException {
         pkContatti.clear();
         s = connection.createStatement();
         //QUERY DI SELEZIONE DEI CONTATTI CON SECURITY FALSE
@@ -51,7 +51,7 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
         return DLM;
     }
 
-    public DefaultListModel getContattiPrivati (ArrayList<Integer> pkContattiPrivati) throws SQLException{
+    public DefaultListModel getContattiPrivati(ArrayList<Integer> pkContattiPrivati) throws SQLException {
         pkContattiPrivati.clear();
         s = connection.createStatement();
         //QUERY DI SELEZIONE DEI CONTATTI CON SECURITY TRUE
@@ -70,31 +70,31 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
         return DLMPrivati;
     }
 
-    public String getPath (int pk) throws SQLException{
+    public String getPath(int pk) throws SQLException {
         s = connection.createStatement();
         //QUERY DI SELEZIONE PATH CONTATTO
         rs = s.executeQuery("SELECT FOTO " +
-                            "FROM CONTATTO " +
-                            "WHERE ID = " + pk);
-        while(rs.next()){
+                "FROM CONTATTO " +
+                "WHERE ID = " + pk);
+        while (rs.next()) {
             path = rs.getString("FOTO");
         }
         return path;
     }
 
-    public String getNome (int pk) throws SQLException {
+    public String getNome(int pk) throws SQLException {
         s = connection.createStatement();
         //QUERY DI SELEZIONE NOME CONTATTO
         rs = s.executeQuery("SELECT NOME " +
                 "FROM CONTATTO " +
                 "WHERE ID = " + pk);
         while (rs.next()) {
-            name =  rs.getString("NOME");
+            name = rs.getString("NOME");
         }
         return name;
     }
 
-    public String getCognome (int pk) throws SQLException {
+    public String getCognome(int pk) throws SQLException {
         s = connection.createStatement();
         //QUERY DI SELEZIONE NOME CONTATTO
         rs = s.executeQuery("SELECT COGNOME " +
@@ -106,23 +106,34 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
         return surname;
     }
 
-    public void cancellaContatto(int pk) throws SQLException{
+    public void cancellaContatto(int pk) throws SQLException {
         s = connection.createStatement();
         //QUERY DI CANCELLAZIONE CONTATTO
         s.executeUpdate("DELETE " +
-                            "FROM CONTATTO " +
-                            "WHERE ID = "+ pk);
+                "FROM CONTATTO " +
+                "WHERE ID = " + pk);
     }
-    public int creaContatto(String pathFoto,String nome,String cognome,boolean security) throws SQLException{
+
+    public int creaContatto(String pathFoto, String nome, String cognome, boolean security) throws SQLException {
         s = connection.createStatement();
         //QUERY DI CREAZIONE CONTATTO
         s.executeUpdate("INSERT INTO CONTATTO (FOTO,NOME,COGNOME,SECURITY) " +
-                            "VALUES ("+pathFoto+",'"+nome+"','"+cognome+"',"+security+")");
+                "VALUES (" + pathFoto + ",'" + nome + "','" + cognome + "'," + security + ")");
         rs = s.executeQuery("SELECT ID " +
-                            "FROM CONTATTO " +
-                            "WHERE NOME = '"+nome+"' AND COGNOME = '"+cognome+"' AND SECURITY = "+security);
-        while(rs.next()){
+                "FROM CONTATTO " +
+                "WHERE NOME = '" + nome + "' AND COGNOME = '" + cognome + "' AND SECURITY = " + security);
+        while (rs.next()) {
             pk = rs.getInt("id");
+        }
+        return pk;
+    }
+
+    public int getLastId() throws SQLException {
+        s = connection.createStatement();
+        rs = s.executeQuery("SELECT LAST_VALUE " +
+                "FROM CONTATTO_ID_SEQ");
+        while (rs.next()) {
+            pk = rs.getInt(1);
         }
         return pk;
     }
