@@ -53,8 +53,8 @@ public class Controller {
     public String getEmail(int pk) throws SQLException{
         return email.getEmail(pk);
     }
-    public void creaEmail (ArrayList<String> username, ArrayList<String> dominio, int id, int n) throws SQLException{
-        email.creaEmail(username,dominio,id,n);
+    public void creaEmail (ArrayList<String> mail, int id, int n) throws SQLException{
+        email.creaEmail(mail,id,n);
     }
     public String getNumeriFissi(int pk) throws SQLException{
         return numeriF.getNumeriFissi(pk);

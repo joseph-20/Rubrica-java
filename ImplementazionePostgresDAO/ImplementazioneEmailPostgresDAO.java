@@ -13,7 +13,10 @@ public class ImplementazioneEmailPostgresDAO implements EmailDAO {
     private String email;
     private ResultSet rs;
     private Statement s;
-    int cont;
+    private int cont;
+    private int index;
+    private ArrayList<String> username = new ArrayList<>();
+    private ArrayList<String> dominio = new ArrayList<>();
 
     public ImplementazioneEmailPostgresDAO(){
         try {
@@ -40,10 +43,15 @@ public class ImplementazioneEmailPostgresDAO implements EmailDAO {
         return email;
     }
 
-    public void creaEmail (ArrayList<String> username, ArrayList<String> dominio, int id, int n) throws SQLException{
+    public void creaEmail (ArrayList<String> mail, int id, int n) throws SQLException{
         s = connection.createStatement();
+        username.clear();
+        dominio.clear();
         //QUERY DI AGGIUNTA DI TUTTE LE MAIL
         for(int i=0;i<n;i++){
+            index = mail.get(i).indexOf('@');
+            username.add(mail.get(i).substring(0,index));
+            dominio.add(mail.get(i).substring(index+1));
             s.executeUpdate("INSERT INTO EMAIL " +
                             "VALUES ('"+username.get(i)+"','"+dominio.get(i)+"',"+id+")");
         }
