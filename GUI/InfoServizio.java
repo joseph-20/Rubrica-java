@@ -9,7 +9,6 @@ import java.sql.SQLException;
 public class InfoServizio {
     private JLabel lblFotoServizio;
     private JLabel lblEmailAssociateServizio;
-    private JLabel lblStatoServizio;
     private JPanel panelMain;
     private JLabel lblStatoInfo;
     private JLabel lblEmailInfo;
