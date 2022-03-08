@@ -12,4 +12,6 @@ public interface MessagingDAO {
     public String getStato(String sistema, int pk) throws SQLException;
 
     public void creaMessaging(String username,String servizio,String stato,String email,int pk) throws SQLException;
+
+    public void eliminaMessaging (int pk) throws SQLException;
 }

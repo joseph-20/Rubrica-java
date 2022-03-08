@@ -55,6 +55,8 @@ public class CreaServizio {
                         JOptionPane.showMessageDialog(null,"Servizio aggiunto!","RIUSCITA!",1,img);
                         frame.dispose();
                     } catch (SQLException ex) {
+                        img = c.SetImageSize(".images/warning.png",30,30);
+                        JOptionPane.showMessageDialog(null,"QUESTA MAIL E' GIA STATA AGGIUNTA PER QUESTO SERVIZIO!","ATTENZIONE!",1,img);
                         ex.printStackTrace();
                     }
                 }

@@ -1437,6 +1437,13 @@ public class Window {
                 panelInfoContattoSinistra.setVisible(false);
                 panelCreaContatto.setVisible(false);
                 panelInfoContatti.setVisible(false);
+
+                //Eliminazione presunte mail aggiunte
+                try {
+                    c.eliminaMessaging(c.getLastId());
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
                 //Settaggio di tutti i textField a default
                 //email
                 textFieldNome.setText(null);

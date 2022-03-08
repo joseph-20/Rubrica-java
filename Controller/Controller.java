@@ -88,6 +88,9 @@ public class Controller {
     public String getStato(){
        return stato;
     }
+    public void eliminaMessaging (int pk) throws SQLException{
+       messaging.eliminaMessaging(pk);
+    }
     public void creaMessaging(String username,String servizio,String stato,String email,int pk) throws SQLException{
        messaging.creaMessaging(username,servizio,stato,email,pk);
     }

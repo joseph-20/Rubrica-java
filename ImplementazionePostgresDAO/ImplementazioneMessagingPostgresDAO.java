@@ -94,4 +94,10 @@ public class ImplementazioneMessagingPostgresDAO implements MessagingDAO {
                         "VALUES ('"+username+"','"+servizio+"','"+stato+"','"+emailUsername+"','"+emailDominio+"',"+pk+")");
     }
 
-}
+    public void eliminaMessaging (int pk) throws SQLException{
+        s = connection.createStatement();
+        //QUERY DI ELIMINAZIONE
+        s.executeUpdate("DELETE FROM SISTEMA_DI_MESSAGING " +
+                "WHERE ID_CONTATTO = "+pk);
+        }
+    }
