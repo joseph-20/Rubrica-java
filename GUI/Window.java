@@ -154,6 +154,7 @@ public class Window {
     private JCheckBox contattoPrivatoCheckBox;
     private ImageIcon img;
     private DefaultListCellRenderer renderer;
+    private DefaultListModel DlmServizi = new DefaultListModel();
     private JFileChooser jfc = new JFileChooser();
     private File foto;
     private int contEmail = 1;
@@ -183,6 +184,10 @@ public class Window {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.setMinimumSize (new Dimension (1280, 720));
+
+        //Settaggio finestra al centro
+        Point center = GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint();
+        frame.setBounds(center.x - 1280 / 2, center.y - 720 / 2, 1280, 720);
 
         //Inizializzazione ArrayList randImage con foto default
         randImage = new ArrayList<String>();
@@ -244,6 +249,22 @@ public class Window {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 try {
+                    //Settaggio visibilità dei lblServizi
+                    if(c.getServizio("Messenger",pkContatti.get(listContatti.getSelectedIndex())) == null) lblMessenger.setVisible(false);
+                    else lblMessenger.setVisible(true);
+                    if(c.getServizio("Skype",pkContatti.get(listContatti.getSelectedIndex())) == null) lblSkype.setVisible(false);
+                    else lblSkype.setVisible(true);
+                    if(c.getServizio("Teams",pkContatti.get(listContatti.getSelectedIndex())) == null) lblTeams.setVisible(false);
+                    else lblTeams.setVisible(true);
+                    if(c.getServizio("Telegram",pkContatti.get(listContatti.getSelectedIndex())) == null) lblTelegram.setVisible(false);
+                    else lblTelegram.setVisible(true);
+                    if(c.getServizio("Viber",pkContatti.get(listContatti.getSelectedIndex())) == null) lblViber.setVisible(false);
+                    else lblViber.setVisible(true);
+                    if(c.getServizio("WeChat",pkContatti.get(listContatti.getSelectedIndex())) == null) lblWeChat.setVisible(false);
+                    else lblWeChat.setVisible(true);
+                    if(c.getServizio("Whatsapp",pkContatti.get(listContatti.getSelectedIndex())) == null) lblWhatsapp.setVisible(false);
+                    else lblWhatsapp.setVisible(true);
+
                     panelInfoContatti.setVisible(true);
                     c.swapVisibility(panelInfoContattoSinistra,panelCreaContatto);
                     contattiSplitPane.setDividerLocation(350);
@@ -332,6 +353,22 @@ public class Window {
                 lblMessenger.setIcon(img);
             }
         });
+        //mouse clicked
+        lblMessenger.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                try {
+                    c.setImg(".images/Messenger512x512.png");
+                    c.setEmail("Messenger",pkContatti.get(listContatti.getSelectedIndex()));
+                    c.setUsername("Messenger",pkContatti.get(listContatti.getSelectedIndex()));
+                    c.setStato("Messenger",pkContatti.get(listContatti.getSelectedIndex()));
+                    new InfoServizio(c);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
 
         //Set Interazioni lblSkype
         img = new ImageIcon(".images/Skype25x25.png");
@@ -352,6 +389,22 @@ public class Window {
                 super.mouseExited(e);
                 img = new ImageIcon(".images/Skype25x25.png");
                 lblSkype.setIcon(img);
+            }
+        });
+        //mouse clicked
+        lblSkype.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                try {
+                    c.setImg(".images/Skype512x512.png");
+                    c.setEmail("Skype",pkContatti.get(listContatti.getSelectedIndex()));
+                    c.setUsername("Skype",pkContatti.get(listContatti.getSelectedIndex()));
+                    c.setStato("Skype",pkContatti.get(listContatti.getSelectedIndex()));
+                    new InfoServizio(c);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
 
@@ -376,6 +429,22 @@ public class Window {
                 lblTeams.setIcon(img);
             }
         });
+        //mouse clicked
+        lblTeams.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                try {
+                    c.setImg(".images/Teams512x512.png");
+                    c.setEmail("Teams",pkContatti.get(listContatti.getSelectedIndex()));
+                    c.setUsername("Teams",pkContatti.get(listContatti.getSelectedIndex()));
+                    c.setStato("Teams",pkContatti.get(listContatti.getSelectedIndex()));
+                    new InfoServizio(c);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
 
         //Set Interazioni lblWeChat
         img  = new ImageIcon(".images/WeChat25x25.png");
@@ -396,6 +465,22 @@ public class Window {
                 super.mouseExited(e);
                 img = new ImageIcon(".images/WeChat25x25.png");
                 lblWeChat.setIcon(img);
+            }
+        });
+        //mouse clicked
+        lblWeChat.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                try {
+                    c.setImg(".images/WeChat512x512.png");
+                    c.setEmail("WeChat",pkContatti.get(listContatti.getSelectedIndex()));
+                    c.setUsername("WeChat",pkContatti.get(listContatti.getSelectedIndex()));
+                    c.setStato("WeChat",pkContatti.get(listContatti.getSelectedIndex()));
+                    new InfoServizio(c);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
 
@@ -420,6 +505,22 @@ public class Window {
                 lblWhatsapp.setIcon(img);
             }
         });
+        //mouse clicked
+        lblWhatsapp.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                try {
+                    c.setImg(".images/Whatsapp512x512.png");
+                    c.setEmail("Whatsapp",pkContatti.get(listContatti.getSelectedIndex()));
+                    c.setUsername("Whatsapp",pkContatti.get(listContatti.getSelectedIndex()));
+                    c.setStato("Whatsapp",pkContatti.get(listContatti.getSelectedIndex()));
+                    new InfoServizio(c);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
 
         //Set Interazioni lblViber
         img = new ImageIcon(".images/Viber25x25.png");
@@ -442,6 +543,22 @@ public class Window {
                 lblViber.setIcon(img);
             }
         });
+        //mouse clicked
+        lblViber.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                try {
+                    c.setImg(".images/Viber512x512.png");
+                    c.setEmail("Viber",pkContatti.get(listContatti.getSelectedIndex()));
+                    c.setUsername("Viber",pkContatti.get(listContatti.getSelectedIndex()));
+                    c.setStato("Viber",pkContatti.get(listContatti.getSelectedIndex()));
+                    new InfoServizio(c);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
 
         //Set Interazioni lblTelegram
         img = new ImageIcon(".images/Telegram25x25.png");
@@ -462,6 +579,22 @@ public class Window {
                 super.mouseExited(e);
                 img = new ImageIcon(".images/Telegram25x25.png");
                 lblTelegram.setIcon(img);
+            }
+        });
+        //mouse clicked
+        lblTelegram.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                try {
+                    c.setImg(".images/Telegram512x512.png");
+                    c.setEmail("Telegram",pkContatti.get(listContatti.getSelectedIndex()));
+                    c.setUsername("Telegram",pkContatti.get(listContatti.getSelectedIndex()));
+                    c.setStato("Telegram",pkContatti.get(listContatti.getSelectedIndex()));
+                    new InfoServizio(c);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
 
@@ -487,6 +620,97 @@ public class Window {
                 lblMessengerCreaContatto.setIcon(img);
             }
         });
+        //Mouse clicked
+        lblMessengerCreaContatto.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                c.setImg(".images/Messenger512x512.png");
+                c.setServizioMessaging("Messenger");
+                switch(contEmail) {
+                    case 1:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        break;
+                    case 2:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        break;
+                    case 3:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        break;
+                    case 4:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        break;
+                    case 5:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        break;
+                    case 6:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        break;
+                    case 7:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        c.setDlmServizi(textFieldEmail6.getText(),0);
+                        break;
+                    case 8:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        c.setDlmServizi(textFieldEmail6.getText(),0);
+                        c.setDlmServizi(textFieldEmail7.getText(),0);
+                        break;
+                    case 9:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        c.setDlmServizi(textFieldEmail6.getText(),0);
+                        c.setDlmServizi(textFieldEmail7.getText(),0);
+                        c.setDlmServizi(textFieldEmail8.getText(),0);
+                        break;
+                    case 10:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        c.setDlmServizi(textFieldEmail6.getText(),0);
+                        c.setDlmServizi(textFieldEmail7.getText(),0);
+                        c.setDlmServizi(textFieldEmail8.getText(),0);
+                        c.setDlmServizi(textFieldEmail9.getText(),0);
+                        break;
+                }
+                try {
+                    new CreaServizio(c);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
 
         //Set Interazioni lblSkypeCreaContatto
         img = new ImageIcon(".images/Skype25x25.png");
@@ -509,6 +733,98 @@ public class Window {
                 lblSkypeCreaContatto.setIcon(img);
             }
         });
+        //Mouse clicked
+        lblSkypeCreaContatto.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                c.setImg(".images/Skype512x512.png");
+                c.setServizioMessaging("Skype");
+                switch(contEmail) {
+                    case 1:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        break;
+                    case 2:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        break;
+                    case 3:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        break;
+                    case 4:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        break;
+                    case 5:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        break;
+                    case 6:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        break;
+                    case 7:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        c.setDlmServizi(textFieldEmail6.getText(),0);
+                        break;
+                    case 8:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        c.setDlmServizi(textFieldEmail6.getText(),0);
+                        c.setDlmServizi(textFieldEmail7.getText(),0);
+                        break;
+                    case 9:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        c.setDlmServizi(textFieldEmail6.getText(),0);
+                        c.setDlmServizi(textFieldEmail7.getText(),0);
+                        c.setDlmServizi(textFieldEmail8.getText(),0);
+                        break;
+                    case 10:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        c.setDlmServizi(textFieldEmail6.getText(),0);
+                        c.setDlmServizi(textFieldEmail7.getText(),0);
+                        c.setDlmServizi(textFieldEmail8.getText(),0);
+                        c.setDlmServizi(textFieldEmail9.getText(),0);
+                        break;
+                }
+                try {
+                    new CreaServizio(c);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
 
         //Set Interazioni lblTeamsCreaContatto
         img  = new ImageIcon(".images/Teams25x25.png");
@@ -529,6 +845,97 @@ public class Window {
                 super.mouseExited(e);
                 img = new ImageIcon(".images/Teams25x25.png");
                 lblTeamsCreaContatto.setIcon(img);
+            }
+        });
+        //Mouse clicked
+        lblTeamsCreaContatto.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                c.setImg(".images/Teams512x512.png");
+                c.setServizioMessaging("Teams");
+                switch(contEmail) {
+                    case 1:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        break;
+                    case 2:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        break;
+                    case 3:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        break;
+                    case 4:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        break;
+                    case 5:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        break;
+                    case 6:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        break;
+                    case 7:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        c.setDlmServizi(textFieldEmail6.getText(),0);
+                        break;
+                    case 8:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        c.setDlmServizi(textFieldEmail6.getText(),0);
+                        c.setDlmServizi(textFieldEmail7.getText(),0);
+                        break;
+                    case 9:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        c.setDlmServizi(textFieldEmail6.getText(),0);
+                        c.setDlmServizi(textFieldEmail7.getText(),0);
+                        c.setDlmServizi(textFieldEmail8.getText(),0);
+                        break;
+                    case 10:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        c.setDlmServizi(textFieldEmail6.getText(),0);
+                        c.setDlmServizi(textFieldEmail7.getText(),0);
+                        c.setDlmServizi(textFieldEmail8.getText(),0);
+                        c.setDlmServizi(textFieldEmail9.getText(),0);
+                        break;
+                }
+                try {
+                    new CreaServizio(c);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
 
@@ -553,6 +960,97 @@ public class Window {
                 lblWeChatCreaContatto.setIcon(img);
             }
         });
+        //Mouse clicked
+        lblWeChatCreaContatto.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                c.setImg(".images/WeChat512x512.png");
+                c.setServizioMessaging("WeChat");
+                switch(contEmail) {
+                    case 1:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        break;
+                    case 2:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        break;
+                    case 3:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        break;
+                    case 4:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        break;
+                    case 5:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        break;
+                    case 6:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        break;
+                    case 7:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        c.setDlmServizi(textFieldEmail6.getText(),0);
+                        break;
+                    case 8:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        c.setDlmServizi(textFieldEmail6.getText(),0);
+                        c.setDlmServizi(textFieldEmail7.getText(),0);
+                        break;
+                    case 9:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        c.setDlmServizi(textFieldEmail6.getText(),0);
+                        c.setDlmServizi(textFieldEmail7.getText(),0);
+                        c.setDlmServizi(textFieldEmail8.getText(),0);
+                        break;
+                    case 10:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        c.setDlmServizi(textFieldEmail6.getText(),0);
+                        c.setDlmServizi(textFieldEmail7.getText(),0);
+                        c.setDlmServizi(textFieldEmail8.getText(),0);
+                        c.setDlmServizi(textFieldEmail9.getText(),0);
+                        break;
+                }
+                try {
+                    new CreaServizio(c);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
 
         //Set Interazioni lblWhatsappCreaContatto
         img  = new ImageIcon(".images/WhatsApp25x25.png");
@@ -573,6 +1071,97 @@ public class Window {
                 super.mouseExited(e);
                 img = new ImageIcon(".images/Whatsapp25x25.png");
                 lblWhatsappCreaContatto.setIcon(img);
+            }
+        });
+        //Mouse clicked
+        lblWhatsappCreaContatto.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                c.setImg(".images/Whatsapp512x512.png");
+                c.setServizioMessaging("Whatsapp");
+                switch(contEmail) {
+                    case 1:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        break;
+                    case 2:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        break;
+                    case 3:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        break;
+                    case 4:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        break;
+                    case 5:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        break;
+                    case 6:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        break;
+                    case 7:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        c.setDlmServizi(textFieldEmail6.getText(),0);
+                        break;
+                    case 8:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        c.setDlmServizi(textFieldEmail6.getText(),0);
+                        c.setDlmServizi(textFieldEmail7.getText(),0);
+                        break;
+                    case 9:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        c.setDlmServizi(textFieldEmail6.getText(),0);
+                        c.setDlmServizi(textFieldEmail7.getText(),0);
+                        c.setDlmServizi(textFieldEmail8.getText(),0);
+                        break;
+                    case 10:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        c.setDlmServizi(textFieldEmail6.getText(),0);
+                        c.setDlmServizi(textFieldEmail7.getText(),0);
+                        c.setDlmServizi(textFieldEmail8.getText(),0);
+                        c.setDlmServizi(textFieldEmail9.getText(),0);
+                        break;
+                }
+                try {
+                    new CreaServizio(c);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
 
@@ -597,6 +1186,97 @@ public class Window {
                 lblViberCreaContatto.setIcon(img);
             }
         });
+        //Mouse clicked
+        lblViberCreaContatto.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                c.setImg(".images/Viber512x512.png");
+                c.setServizioMessaging("Viber");
+                switch(contEmail) {
+                    case 1:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        break;
+                    case 2:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        break;
+                    case 3:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        break;
+                    case 4:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        break;
+                    case 5:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        break;
+                    case 6:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        break;
+                    case 7:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        c.setDlmServizi(textFieldEmail6.getText(),0);
+                        break;
+                    case 8:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        c.setDlmServizi(textFieldEmail6.getText(),0);
+                        c.setDlmServizi(textFieldEmail7.getText(),0);
+                        break;
+                    case 9:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        c.setDlmServizi(textFieldEmail6.getText(),0);
+                        c.setDlmServizi(textFieldEmail7.getText(),0);
+                        c.setDlmServizi(textFieldEmail8.getText(),0);
+                        break;
+                    case 10:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        c.setDlmServizi(textFieldEmail6.getText(),0);
+                        c.setDlmServizi(textFieldEmail7.getText(),0);
+                        c.setDlmServizi(textFieldEmail8.getText(),0);
+                        c.setDlmServizi(textFieldEmail9.getText(),0);
+                        break;
+                }
+                try {
+                    new CreaServizio(c);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
 
         //Set Interazioni lblTelegramCreaContatto
         img = new ImageIcon(".images/Telegram25x25.png");
@@ -619,6 +1299,98 @@ public class Window {
                 lblTelegramCreaContatto.setIcon(img);
             }
         });
+        //Mouse clicked
+        lblTelegramCreaContatto.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                c.setImg(".images/Telegram512x512.png");
+                c.setServizioMessaging("Telegram");
+                switch(contEmail) {
+                    case 1:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        break;
+                    case 2:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        break;
+                    case 3:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        break;
+                    case 4:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        break;
+                    case 5:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        break;
+                    case 6:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        break;
+                    case 7:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        c.setDlmServizi(textFieldEmail6.getText(),0);
+                        break;
+                    case 8:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        c.setDlmServizi(textFieldEmail6.getText(),0);
+                        c.setDlmServizi(textFieldEmail7.getText(),0);
+                        break;
+                    case 9:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        c.setDlmServizi(textFieldEmail6.getText(),0);
+                        c.setDlmServizi(textFieldEmail7.getText(),0);
+                        c.setDlmServizi(textFieldEmail8.getText(),0);
+                        break;
+                    case 10:
+                        c.setDlmServizi(textFieldEmail0.getText(), 1);
+                        c.setDlmServizi(textFieldEmail1.getText(), 0);
+                        c.setDlmServizi(textFieldEmail2.getText(),0);
+                        c.setDlmServizi(textFieldEmail3.getText(),0);
+                        c.setDlmServizi(textFieldEmail4.getText(),0);
+                        c.setDlmServizi(textFieldEmail5.getText(),0);
+                        c.setDlmServizi(textFieldEmail6.getText(),0);
+                        c.setDlmServizi(textFieldEmail7.getText(),0);
+                        c.setDlmServizi(textFieldEmail8.getText(),0);
+                        c.setDlmServizi(textFieldEmail9.getText(),0);
+                        break;
+                }
+                try {
+                    new CreaServizio(c);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
         //GESTIONE CLICK ELIMINA IN INFO CONTATTI
         btnElimina.addMouseListener(new MouseAdapter() {
             @Override

@@ -356,7 +356,7 @@
                                       <component id="a7852" class="javax.swing.JLabel" binding="lblMessenger">
                                         <constraints>
                                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                                          <gridbag weightx="0.0" weighty="0.0"/>
+                                          <gridbag top="0" left="30" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
                                         </constraints>
                                         <properties>
                                           <horizontalAlignment value="10"/>
@@ -367,8 +367,8 @@
                                       </component>
                                       <component id="f0838" class="javax.swing.JLabel" binding="lblSkype">
                                         <constraints>
-                                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                                          <gridbag weightx="0.0" weighty="0.0"/>
+                                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                          <gridbag top="0" left="30" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
                                         </constraints>
                                         <properties>
                                           <text value=""/>
@@ -376,8 +376,8 @@
                                       </component>
                                       <component id="c1a41" class="javax.swing.JLabel" binding="lblTeams">
                                         <constraints>
-                                          <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                                          <gridbag weightx="0.0" weighty="0.0"/>
+                                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                          <gridbag top="0" left="30" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
                                         </constraints>
                                         <properties>
                                           <text value=""/>
@@ -385,8 +385,8 @@
                                       </component>
                                       <component id="1a9af" class="javax.swing.JLabel" binding="lblTelegram">
                                         <constraints>
-                                          <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                                          <gridbag weightx="0.0" weighty="0.0"/>
+                                          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                          <gridbag top="0" left="30" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
                                         </constraints>
                                         <properties>
                                           <text value=""/>
@@ -394,8 +394,8 @@
                                       </component>
                                       <component id="afea1" class="javax.swing.JLabel" binding="lblViber">
                                         <constraints>
-                                          <grid row="0" column="8" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                                          <gridbag weightx="0.0" weighty="0.0"/>
+                                          <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                          <gridbag top="0" left="30" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
                                         </constraints>
                                         <properties>
                                           <text value=""/>
@@ -403,8 +403,8 @@
                                       </component>
                                       <component id="5c9d2" class="javax.swing.JLabel" binding="lblWeChat">
                                         <constraints>
-                                          <grid row="0" column="10" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                                          <gridbag weightx="0.0" weighty="0.0"/>
+                                          <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                          <gridbag top="0" left="30" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
                                         </constraints>
                                         <properties>
                                           <text value=""/>
@@ -412,49 +412,13 @@
                                       </component>
                                       <component id="2326" class="javax.swing.JLabel" binding="lblWhatsapp">
                                         <constraints>
-                                          <grid row="0" column="12" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                                          <gridbag weightx="0.0" weighty="0.0"/>
+                                          <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                          <gridbag top="0" left="30" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
                                         </constraints>
                                         <properties>
                                           <text value=""/>
                                         </properties>
                                       </component>
-                                      <hspacer id="a44a3">
-                                        <constraints>
-                                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                          <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
-                                        </constraints>
-                                      </hspacer>
-                                      <hspacer id="8e9db">
-                                        <constraints>
-                                          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                          <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
-                                        </constraints>
-                                      </hspacer>
-                                      <hspacer id="ac3d3">
-                                        <constraints>
-                                          <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                          <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
-                                        </constraints>
-                                      </hspacer>
-                                      <hspacer id="ffc76">
-                                        <constraints>
-                                          <grid row="0" column="7" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                          <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
-                                        </constraints>
-                                      </hspacer>
-                                      <hspacer id="c9e0f">
-                                        <constraints>
-                                          <grid row="0" column="9" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                          <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
-                                        </constraints>
-                                      </hspacer>
-                                      <hspacer id="85519">
-                                        <constraints>
-                                          <grid row="0" column="11" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                          <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
-                                        </constraints>
-                                      </hspacer>
                                     </children>
                                   </grid>
                                 </children>

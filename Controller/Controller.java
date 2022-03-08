@@ -17,6 +17,14 @@ public class Controller {
     private IndirizziSecondariDAO indirizziS = new ImplementazioneIndirizziSecondariPostgresDAO();
     private NumeriFissiDAO numeriF = new ImplementazioneNumeriFissiPostgresDAO();
     private NumeriMobiliDAO numeriM = new ImplementazioneNumeriMobiliPostgresDAO();
+    private MessagingDAO messaging = new ImplementazioneMessagingPostgresDAO();
+    private ImageIcon img;
+    private DefaultComboBoxModel dlmServizi = new DefaultComboBoxModel();
+    private int pk;
+    private String username;
+    private String emailServizio;
+    private String stato;
+    private String servizioMessaging;
 
    public Connection getConnection () throws SQLException {
         ConnessioneDatabase conn = ConnessioneDatabase.getInstance();
@@ -28,10 +36,61 @@ public class Controller {
        return contact.getContatti(pkContatti);
    }
     public int getLastId() throws SQLException{
-       return contact.getLastId();
+       return contact.getLastId()+1;
     }
-    /* Interazione con il database dell'interfaccia ContattoDAO implementata da ImplementazioneContattoDAO
-     di postgres per ricavare tutti i contatti privati dal database */
+    public void setImg (String path){
+       img = this.SetImageSize(path,70,70);
+    }
+    public void setDlmServizi(String mail,int reset){
+       if(reset == 1){
+           dlmServizi.removeAllElements();
+           dlmServizi.addElement(mail);
+       }else {
+           dlmServizi.addElement(mail);
+       }
+    }
+    public DefaultComboBoxModel getDlmServizi(){
+       return dlmServizi;
+    }
+    public ImageIcon getImg (){
+       return img;
+    }
+    public void setPk(int primary){
+       pk = primary;
+    }
+    public int getPk(){
+       return pk;
+    }
+    public void setServizioMessaging (String servizio){
+       servizioMessaging = servizio;
+    }
+    public String getServizioMessaging(){
+       return servizioMessaging;
+    }
+    public String getServizio(String sistema,int pk) throws SQLException {
+       return messaging.getServizio(sistema, pk);
+    }
+    public void setUsername (String sistema,int pk) throws SQLException{
+       username = messaging.getUsername(sistema,pk);
+    }
+    public void setEmail (String sistema,int pk) throws SQLException{
+       emailServizio = messaging.getEmail(sistema,pk);
+    }
+    public void setStato (String sistema,int pk) throws SQLException{
+       stato = messaging.getStato(sistema,pk);
+    }
+    public String getUsername(){
+       return username;
+    }
+    public String getEmail(){
+       return emailServizio;
+    }
+    public String getStato(){
+       return stato;
+    }
+    public void creaMessaging(String username,String servizio,String stato,String email,int pk) throws SQLException{
+       messaging.creaMessaging(username,servizio,stato,email,pk);
+    }
     public DefaultListModel getContattiPrivati(ArrayList<Integer> pkContatti) throws SQLException{
         return contact.getContattiPrivati(pkContatti);
     }

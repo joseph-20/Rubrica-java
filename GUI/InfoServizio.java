@@ -8,46 +8,37 @@ import java.sql.SQLException;
 
 public class InfoServizio {
     private JLabel lblFotoServizio;
-    private JLabel lblEmailAssociateServizio;
     private JPanel panelMain;
+    private JLabel lblUsernameInfo;
+    private JPanel panelStatoBorder;
+    private JScrollPane statoInfoScroll;
+    private JPanel panelStatoInfo;
     private JLabel lblStatoInfo;
     private JLabel lblEmailInfo;
-    private JScrollPane emailAssociateScroll;
-    private JScrollPane statoScroll;
-    private JPanel panelEmailAssociateScroll;
-    private JPanel panelStatoScroll;
 
-    public InfoServizio() throws SQLException {
-        Controller c = new Controller();
+    public InfoServizio(Controller c) throws SQLException {
         esegui(c);
 }
 
     private void esegui(Controller c) throws SQLException{
+
         //Creazione finestra principale
         JFrame frame = new JFrame("Servizio");
         frame.setContentPane(this.panelMain);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setMinimumSize (new Dimension(400, 300));
+        frame.setMinimumSize (new Dimension(300, 200));
         frame.setVisible(true);
 
-        //eliminazione bordi scroll
-        statoScroll.setBorder(null);
-        emailAssociateScroll.setBorder(null);
+        //Settaggio finestra al centro
+        Point center = GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint();
+        frame.setBounds(center.x - 300 / 2, center.y - 200 / 2, 300, 200);
+
+        //settaggio border
+        statoInfoScroll.setBorder(null);
+
         //settaggio lbl
-        lblEmailAssociateServizio.setText("<html>Email<br/><html>");
-        lblEmailInfo.setText("<html>andpnace00@gmail.com<br/>hermino904@gmail.com<br/>andpnace@icloud.com<br/>htco@icloud.com<br/>tech2@gmail.com<br/><html>");
-        lblStatoServizio.setText("Stato");
-        lblFotoServizio.setIcon(c.SetImageSize(".images/Teams512x512.png",100,100));
+        lblFotoServizio.setIcon(c.getImg());
+        lblEmailInfo.setText(c.getEmail());
+        lblUsernameInfo.setText(c.getUsername());
+        lblStatoInfo.setText(c.getStato());
     }
-
-    public static void main(String[] args) throws SQLException{
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); //System Look And Feel
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
-            e.printStackTrace();
-        }
-        new InfoServizio();
-    }
-
-
 }

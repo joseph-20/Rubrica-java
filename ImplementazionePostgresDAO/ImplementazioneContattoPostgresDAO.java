@@ -112,6 +112,9 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
         s.executeUpdate("DELETE " +
                 "FROM CONTATTO " +
                 "WHERE ID = " + pk);
+        s.executeUpdate("DELETE " +
+                        "FROM SISTEMA_DI_MESSAGING " +
+                        "WHERE ID_CONTATTO = " + pk);
     }
 
     public int creaContatto(String pathFoto, String nome, String cognome, boolean security) throws SQLException {
