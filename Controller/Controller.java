@@ -18,13 +18,17 @@ public class Controller {
     private NumeriFissiDAO numeriF = new ImplementazioneNumeriFissiPostgresDAO();
     private NumeriMobiliDAO numeriM = new ImplementazioneNumeriMobiliPostgresDAO();
     private MessagingDAO messaging = new ImplementazioneMessagingPostgresDAO();
+    private ReindirizzamentoDAO reindirizzamento = new ImplementazioneReindirizzamentoPostgresDAO();
     private ImageIcon img;
     private DefaultComboBoxModel dlmServizi = new DefaultComboBoxModel();
+    private DefaultComboBoxModel dlmReindirizzamentiMobili = new DefaultComboBoxModel();
+    private DefaultComboBoxModel dlmReindirizzamentiFissi = new DefaultComboBoxModel();
     private int pk;
     private String username;
     private String emailServizio;
     private String stato;
     private String servizioMessaging;
+    private String reindirizzamentoInfo;
 
    public Connection getConnection () throws SQLException {
         ConnessioneDatabase conn = ConnessioneDatabase.getInstance();
@@ -49,8 +53,33 @@ public class Controller {
            dlmServizi.addElement(mail);
        }
     }
+    public void setDlmReindirizzamentiMobili(String numero,int reset){
+        if(reset == 1){
+            dlmReindirizzamentiMobili.removeAllElements();
+            dlmReindirizzamentiMobili.addElement(numero);
+        }else {
+            dlmReindirizzamentiMobili.addElement(numero);
+        }
+    }
+    public void setDlmReindirizzamentiFissi(String numero,int reset){
+        if(reset == 1){
+            dlmReindirizzamentiFissi.removeAllElements();
+            dlmReindirizzamentiFissi.addElement(numero);
+        }else {
+            dlmReindirizzamentiFissi.addElement(numero);
+        }
+    }
+    public void creaReindirizzamento (String numero_mobile,String numero_fisso,int pk) throws SQLException{
+       reindirizzamento.creaReindirizzamento(numero_mobile,numero_fisso,pk);
+    }
     public DefaultComboBoxModel getDlmServizi(){
        return dlmServizi;
+    }
+    public DefaultComboBoxModel getDlmReindirizzamentiMobili(){
+        return dlmReindirizzamentiMobili;
+    }
+    public DefaultComboBoxModel getDlmReindirizzamentiFissi(){
+        return dlmReindirizzamentiFissi;
     }
     public ImageIcon getImg (){
        return img;
@@ -90,6 +119,15 @@ public class Controller {
     }
     public void eliminaMessaging (int pk) throws SQLException{
        messaging.eliminaMessaging(pk);
+    }
+    public void eliminaReindirizzamento (int pk) throws SQLException{
+       reindirizzamento.eliminaReindirizzamento(pk);
+    }
+    public void setReindirizzamenti(int pk) throws SQLException{
+      reindirizzamentoInfo = reindirizzamento.getReindirizzamenti(pk);
+    }
+    public String getReindirizzamenti(){
+       return reindirizzamentoInfo;
     }
     public void creaMessaging(String username,String servizio,String stato,String email,int pk) throws SQLException{
        messaging.creaMessaging(username,servizio,stato,email,pk);

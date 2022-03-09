@@ -14,7 +14,7 @@ public class ImplementazioneNumeriMobiliPostgresDAO implements NumeriMobiliDAO {
     private String numeriMobili;
     private ResultSet rs;
     private Statement s;
-    int cont;
+    private int cont;
 
     public ImplementazioneNumeriMobiliPostgresDAO(){
         try {

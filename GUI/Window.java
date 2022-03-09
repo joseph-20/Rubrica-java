@@ -1417,6 +1417,7 @@ public class Window {
                 }
             }
         });
+
         //GESTIONE CLICK CREA CONTATTO IN LISTA CONTATTI
         aggiungiContattoButton.addMouseListener(new MouseAdapter() {
             @Override
@@ -1429,6 +1430,7 @@ public class Window {
                 btnAddContact.setIcon(img);
             }
         });
+
         //GESTIONE CLICK ANNULLA IN CREA CONTATTO
         btnAnnulla.addMouseListener(new MouseAdapter() {
             @Override
@@ -1439,9 +1441,10 @@ public class Window {
                 panelCreaContatto.setVisible(false);
                 panelInfoContatti.setVisible(false);
 
-                //Eliminazione presunte mail aggiunte
+                //Eliminazione presunte mail aggiunte e presunti reindirizzamenti
                 try {
                     c.eliminaMessaging(c.getLastId());
+                    c.eliminaReindirizzamento(c.getLastId());
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
@@ -3029,6 +3032,190 @@ public class Window {
                 }
             }
         });
+
+        //Interazione click CreaReindirizzamenti
+        btnReindirizzamentiCreaContatto.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                switch(contNumeriFissi) {
+                    case 1:
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi0.getText(), 1);
+                        break;
+                    case 2:
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi0.getText(), 1);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi1.getText(), 0);
+                        break;
+                    case 3:
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi0.getText(), 1);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi1.getText(), 0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi2.getText(),0);
+                        break;
+                    case 4:
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi0.getText(), 1);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi1.getText(), 0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi2.getText(),0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi3.getText(),0);
+                        break;
+                    case 5:
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi0.getText(), 1);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi1.getText(), 0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi2.getText(),0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi3.getText(),0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi4.getText(),0);
+                        break;
+                    case 6:
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi0.getText(), 1);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi1.getText(), 0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi2.getText(),0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi3.getText(),0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi4.getText(),0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi5.getText(),0);
+                        break;
+                    case 7:
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi0.getText(), 1);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi1.getText(), 0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi2.getText(),0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi3.getText(),0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi4.getText(),0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi5.getText(),0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi6.getText(),0);
+                        break;
+                    case 8:
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi0.getText(), 1);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi1.getText(), 0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi2.getText(),0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi3.getText(),0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi4.getText(),0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi5.getText(),0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi6.getText(),0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi7.getText(),0);
+                        break;
+                    case 9:
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi0.getText(), 1);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi1.getText(), 0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi2.getText(),0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi3.getText(),0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi4.getText(),0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi5.getText(),0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi6.getText(),0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi7.getText(),0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi8.getText(),0);
+                        break;
+                    case 10:
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi0.getText(), 1);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi1.getText(), 0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi2.getText(),0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi3.getText(),0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi4.getText(),0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi5.getText(),0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi6.getText(),0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi7.getText(),0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi8.getText(),0);
+                        c.setDlmReindirizzamentiFissi(textFieldNumeriFissi9.getText(),0);
+                        break;
+                }
+                switch(contNumeriMobili) {
+                    case 1:
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili0.getText(), 1);
+                        break;
+                    case 2:
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili0.getText(), 1);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili1.getText(), 0);
+                        break;
+                    case 3:
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili0.getText(), 1);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili1.getText(), 0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili2.getText(),0);
+                        break;
+                    case 4:
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili0.getText(), 1);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili1.getText(), 0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili2.getText(),0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili3.getText(),0);
+                        break;
+                    case 5:
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili0.getText(), 1);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili1.getText(), 0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili2.getText(),0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili3.getText(),0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili4.getText(),0);
+                        break;
+                    case 6:
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili0.getText(), 1);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili1.getText(), 0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili2.getText(),0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili3.getText(),0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili4.getText(),0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili5.getText(),0);
+                        break;
+                    case 7:
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili0.getText(), 1);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili1.getText(), 0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili2.getText(),0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili3.getText(),0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili4.getText(),0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili5.getText(),0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili6.getText(),0);
+                        break;
+                    case 8:
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili0.getText(), 1);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili1.getText(), 0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili2.getText(),0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili3.getText(),0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili4.getText(),0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili5.getText(),0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili6.getText(),0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili7.getText(),0);
+                        break;
+                    case 9:
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili0.getText(), 1);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili1.getText(), 0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili2.getText(),0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili3.getText(),0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili4.getText(),0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili5.getText(),0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili6.getText(),0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili7.getText(),0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili8.getText(),0);
+                        break;
+                    case 10:
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili0.getText(), 1);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili1.getText(), 0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili2.getText(),0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili3.getText(),0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili4.getText(),0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili5.getText(),0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili6.getText(),0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili7.getText(),0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili8.getText(),0);
+                        c.setDlmReindirizzamentiMobili(textFieldNumeriMobili9.getText(),0);
+                        break;
+                }
+                try {
+                    new CreaReindirizzamento(c);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        //Set interazioni reindirizzamenti in infoContatto
+        btnReindirizzamenti.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                try {
+                    c.setReindirizzamenti(pkContatti.get(listContatti.getSelectedIndex()));
+                    if(c.getReindirizzamenti()==null){
+                        img = c.SetImageSize(".images/warning.png",30,30);
+                        JOptionPane.showMessageDialog(null,"NON VI SONO REINDIRIZZAMENTI PER QUESTO CONTATTO!","ATTENZIONE!",1,img);
+                    }else new InfoReindirizzamento(c);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
     }
     public static void main(String[] args) throws SQLException{
         try {
@@ -3041,3 +3228,5 @@ public class Window {
 }
 
 //TODO SE METTE PIU TEXTFIELD LI DEVE PER FORZA SCRIVERE ALTRIMENTI NON DEVE FUNZIONARE
+
+//TODO IMPEDIRE DI CREARE SERVIZI O REINDIRIZZAMENTI CON CAMPI VUOTI

@@ -14,7 +14,7 @@ public class ImplementazioneNumeriFissiPostgresDAO implements NumeriFissiDAO {
     private String numeriFissi;
     private ResultSet rs;
     private Statement s;
-    int cont;
+    private int cont;
 
     public ImplementazioneNumeriFissiPostgresDAO(){
         try {

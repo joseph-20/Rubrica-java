@@ -14,9 +14,8 @@ public class ImplementazioneIndirizzoPrincipalePostgresDAO implements IndirizzoP
     private String indirizzoPrincipale;
     private ResultSet rs;
     private Statement s;
-    int cont;
+    private int cont,index,indextmp;
     private String via,civico,citta,cap,nazione;
-    int index,indextmp;
 
     public ImplementazioneIndirizzoPrincipalePostgresDAO(){
         try {
