@@ -741,6 +741,13 @@
                             <properties/>
                             <border type="none"/>
                             <children>
+                              <component id="b3291" class="javax.swing.JButton" binding="btnReindirizzamentiCreaContatto">
+                                <constraints/>
+                                <properties>
+                                  <font size="20"/>
+                                  <text value="Reindirizzamenti Telefonici"/>
+                                </properties>
+                              </component>
                               <component id="c962f" class="javax.swing.JButton" binding="btnAggiungi">
                                 <constraints/>
                                 <properties>

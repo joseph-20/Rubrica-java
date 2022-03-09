@@ -152,6 +152,7 @@ public class Window {
     private JButton btnBackIndirizziSecondari;
     private JButton btnAggiungi;
     private JCheckBox contattoPrivatoCheckBox;
+    private JButton btnReindirizzamentiCreaContatto;
     private ImageIcon img;
     private DefaultListCellRenderer renderer;
     private DefaultListModel DlmServizi = new DefaultListModel();
