@@ -55,7 +55,7 @@ public class CreaReindirizzamento {
                     frame.dispose();
                 } catch (SQLException ex) {
                     img = c.SetImageSize(".images/warning.png",30,30);
-                    JOptionPane.showMessageDialog(null,"QUESTO REINDIRIZZAMENTO E' GIA STATO AGGIUNTO","ATTENZIONE!",1,img);
+                    JOptionPane.showMessageDialog(null,"Questo reindirizzamento è stato già aggiunto!","ATTENZIONE!",1,img);
                     ex.printStackTrace();
                 }
             }
