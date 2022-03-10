@@ -32,6 +32,9 @@ public class InfoServizio {
         Point center = GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint();
         frame.setBounds(center.x - 300 / 2, center.y - 200 / 2, 300, 200);
 
+        //Disattivazione resizability
+        frame.setResizable(false);
+
         //settaggio border
         statoInfoScroll.setBorder(null);
 

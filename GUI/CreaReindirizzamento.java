@@ -36,6 +36,9 @@ public class CreaReindirizzamento {
         Point center = GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint();
         frame.setBounds(center.x - 430 / 2, center.y - 430 / 2, 430, 200);
 
+        //Disattivazione resizability
+        frame.setResizable(false);
+
         //Settaggio lblFotoReindirizzamento
         lblFotoReindirizzamento.setIcon(c.SetImageSize(".images/Reindirizzamento.png",60,60));
 

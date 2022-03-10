@@ -1490,14 +1490,14 @@
                         <properties/>
                         <border type="none"/>
                         <children>
-                          <component id="fa696" class="javax.swing.JButton">
+                          <component id="fa696" class="javax.swing.JButton" binding="btnReindirizzamentiPrivati">
                             <constraints/>
                             <properties>
                               <font size="20"/>
                               <text value="Reindirizzamenti Telefonici"/>
                             </properties>
                           </component>
-                          <component id="104a" class="javax.swing.JButton">
+                          <component id="104a" class="javax.swing.JButton" binding="btnEliminaPrivati">
                             <constraints/>
                             <properties>
                               <font size="20"/>
@@ -1515,18 +1515,18 @@
                         <properties/>
                         <border type="none"/>
                         <children>
-                          <scrollpane id="2e5c4">
+                          <scrollpane id="2e5c4" binding="infoContattiPrivatiScroll">
                             <constraints border-constraint="Center"/>
                             <properties/>
                             <border type="none"/>
                             <children>
-                              <grid id="74be9" layout-manager="GridLayoutManager" row-count="11" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                              <grid id="74be9" binding="panelInfoContattiPrivatiScroll" layout-manager="GridLayoutManager" row-count="11" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                                 <margin top="0" left="0" bottom="0" right="0"/>
                                 <constraints/>
                                 <properties/>
                                 <border type="none"/>
                                 <children>
-                                  <component id="36cb1" class="javax.swing.JLabel">
+                                  <component id="36cb1" class="javax.swing.JLabel" binding="lblEmailPrivati">
                                     <constraints>
                                       <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
@@ -1546,7 +1546,7 @@
                                       </grid>
                                     </constraints>
                                   </vspacer>
-                                  <component id="c4364" class="javax.swing.JLabel">
+                                  <component id="c4364" class="javax.swing.JLabel" binding="lblInfoEmailPrivati">
                                     <constraints>
                                       <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
@@ -1557,7 +1557,7 @@
                                       <text value=""/>
                                     </properties>
                                   </component>
-                                  <component id="d7a7" class="javax.swing.JLabel">
+                                  <component id="d7a7" class="javax.swing.JLabel" binding="lblInfoNumeriFissiPrivati">
                                     <constraints>
                                       <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
@@ -1568,7 +1568,7 @@
                                       <text value=""/>
                                     </properties>
                                   </component>
-                                  <component id="c1598" class="javax.swing.JLabel">
+                                  <component id="c1598" class="javax.swing.JLabel" binding="lblNumeriMobiliPrivati">
                                     <constraints>
                                       <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
@@ -1579,7 +1579,7 @@
                                       <text value=""/>
                                     </properties>
                                   </component>
-                                  <component id="579b2" class="javax.swing.JLabel">
+                                  <component id="579b2" class="javax.swing.JLabel" binding="lblInfoNumeriMobiliPrivati">
                                     <constraints>
                                       <grid row="5" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
@@ -1591,7 +1591,7 @@
                                       <text value=""/>
                                     </properties>
                                   </component>
-                                  <component id="6307d" class="javax.swing.JLabel">
+                                  <component id="6307d" class="javax.swing.JLabel" binding="lblIndirizzoPrincipalePrivati">
                                     <constraints>
                                       <grid row="6" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
@@ -1602,7 +1602,7 @@
                                       <text value=""/>
                                     </properties>
                                   </component>
-                                  <component id="e62a1" class="javax.swing.JLabel">
+                                  <component id="e62a1" class="javax.swing.JLabel" binding="lblInfoIndirizzoPrincipalePrivati">
                                     <constraints>
                                       <grid row="7" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
@@ -1614,7 +1614,7 @@
                                       <text value=""/>
                                     </properties>
                                   </component>
-                                  <component id="dac96" class="javax.swing.JLabel">
+                                  <component id="dac96" class="javax.swing.JLabel" binding="lblIndirizziSecondariPrivati">
                                     <constraints>
                                       <grid row="8" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
@@ -1625,7 +1625,7 @@
                                       <text value=""/>
                                     </properties>
                                   </component>
-                                  <component id="cff7b" class="javax.swing.JLabel">
+                                  <component id="cff7b" class="javax.swing.JLabel" binding="lblInfoIndirizziSecondariPrivati">
                                     <constraints>
                                       <grid row="9" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
@@ -1634,7 +1634,7 @@
                                       <text value=""/>
                                     </properties>
                                   </component>
-                                  <component id="96bec" class="javax.swing.JLabel">
+                                  <component id="96bec" class="javax.swing.JLabel" binding="lblNumeriFissiPrivati">
                                     <constraints>
                                       <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
@@ -1659,7 +1659,7 @@
                         <properties/>
                         <border type="none"/>
                         <children>
-                          <grid id="e2e7d" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                          <grid id="e2e7d" binding="panelServiziPrivatiMid" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                             <margin top="0" left="0" bottom="0" right="0"/>
                             <constraints>
                               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="1" indent="0" use-parent-layout="true">
@@ -1671,7 +1671,7 @@
                             <properties/>
                             <border type="none"/>
                             <children>
-                              <grid id="7a94c" layout-manager="GridBagLayout">
+                              <grid id="7a94c" binding="panelServiziPrivatiCenter" layout-manager="GridBagLayout">
                                 <constraints>
                                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="4" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false">
                                     <preferred-size width="50" height="50"/>
@@ -1688,7 +1688,7 @@
                                   <size top="40" left="40" bottom="40" right="40"/>
                                 </border>
                                 <children>
-                                  <component id="936cc" class="javax.swing.JLabel">
+                                  <component id="936cc" class="javax.swing.JLabel" binding="lblMessengerPrivati">
                                     <constraints>
                                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                       <gridbag top="0" left="30" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
@@ -1700,7 +1700,7 @@
                                       <verticalTextPosition value="0"/>
                                     </properties>
                                   </component>
-                                  <component id="90854" class="javax.swing.JLabel">
+                                  <component id="90854" class="javax.swing.JLabel" binding="lblSkypePrivati">
                                     <constraints>
                                       <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                       <gridbag top="0" left="30" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
@@ -1709,7 +1709,7 @@
                                       <text value=""/>
                                     </properties>
                                   </component>
-                                  <component id="86842" class="javax.swing.JLabel">
+                                  <component id="86842" class="javax.swing.JLabel" binding="lblTeamsPrivati">
                                     <constraints>
                                       <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                       <gridbag top="0" left="30" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
@@ -1718,7 +1718,7 @@
                                       <text value=""/>
                                     </properties>
                                   </component>
-                                  <component id="496d2" class="javax.swing.JLabel">
+                                  <component id="496d2" class="javax.swing.JLabel" binding="lblTelegramPrivati">
                                     <constraints>
                                       <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                       <gridbag top="0" left="30" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
@@ -1727,7 +1727,7 @@
                                       <text value=""/>
                                     </properties>
                                   </component>
-                                  <component id="7b576" class="javax.swing.JLabel">
+                                  <component id="7b576" class="javax.swing.JLabel" binding="lblViberPrivati">
                                     <constraints>
                                       <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                       <gridbag top="0" left="30" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
@@ -1736,7 +1736,7 @@
                                       <text value=""/>
                                     </properties>
                                   </component>
-                                  <component id="cbb2d" class="javax.swing.JLabel">
+                                  <component id="cbb2d" class="javax.swing.JLabel" binding="lblWeChatPrivati">
                                     <constraints>
                                       <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                       <gridbag top="0" left="30" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
@@ -1745,7 +1745,7 @@
                                       <text value=""/>
                                     </properties>
                                   </component>
-                                  <component id="2a0e6" class="javax.swing.JLabel">
+                                  <component id="2a0e6" class="javax.swing.JLabel" binding="lblWhatsappPrivati">
                                     <constraints>
                                       <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                       <gridbag top="0" left="30" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
@@ -1774,7 +1774,7 @@
                           <color color="-16777216"/>
                         </border>
                         <children>
-                          <component id="34384" class="javax.swing.JLabel">
+                          <component id="34384" class="javax.swing.JLabel" binding="lblNomePrivati">
                             <constraints>
                               <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
@@ -1788,7 +1788,7 @@
                               <text value=""/>
                             </properties>
                           </component>
-                          <component id="d1466" class="javax.swing.JLabel">
+                          <component id="d1466" class="javax.swing.JLabel" binding="lblCognomePrivati">
                             <constraints>
                               <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
@@ -1817,7 +1817,7 @@
                               </grid>
                             </constraints>
                           </hspacer>
-                          <component id="60e3e" class="javax.swing.JLabel">
+                          <component id="60e3e" class="javax.swing.JLabel" binding="lblFotoPrivati">
                             <constraints>
                               <grid row="0" column="0" row-span="4" col-span="2" vsize-policy="3" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false">
                                 <minimum-size width="200" height="200"/>

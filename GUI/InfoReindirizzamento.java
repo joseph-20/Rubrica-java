@@ -28,6 +28,9 @@ public class InfoReindirizzamento {
         Point center = GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint();
         frame.setBounds(center.x - 300 / 2, center.y - 150 / 2, 300, 150);
 
+        //Disattivazione resizability
+        frame.setResizable(false);
+
         //Settaggio bordi
         listaReindirizzamentiScroll.setBorder(null);
 

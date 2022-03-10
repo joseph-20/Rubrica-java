@@ -10,11 +10,9 @@ import java.nio.file.StandardCopyOption;
 import java.sql.*;
 import java.util.ArrayList;
 import java.nio.file.Path;
-import java.awt.Image;
 import java.util.Random;
 
 import Controller.Controller;
-import Model.Email;
 
 
 public class Window {
@@ -155,6 +153,32 @@ public class Window {
     private JPanel panelInfoConattiPrivatiMid;
     private JPanel panelServiziPrivati;
     private JPanel panelInfoContattiPrivatiTop;
+    private JButton btnReindirizzamentiPrivati;
+    private JButton btnEliminaPrivati;
+    private JLabel lblEmailPrivati;
+    private JLabel lblInfoEmailPrivati;
+    private JLabel lblInfoNumeriFissiPrivati;
+    private JLabel lblNumeriFissiPrivati;
+    private JLabel lblNumeriMobiliPrivati;
+    private JLabel lblInfoNumeriMobiliPrivati;
+    private JLabel lblIndirizzoPrincipalePrivati;
+    private JLabel lblInfoIndirizzoPrincipalePrivati;
+    private JLabel lblIndirizziSecondariPrivati;
+    private JLabel lblInfoIndirizziSecondariPrivati;
+    private JScrollPane infoContattiPrivatiScroll;
+    private JPanel panelInfoContattiPrivatiScroll;
+    private JPanel panelServiziPrivatiMid;
+    private JPanel panelServiziPrivatiCenter;
+    private JLabel lblMessengerPrivati;
+    private JLabel lblSkypePrivati;
+    private JLabel lblTeamsPrivati;
+    private JLabel lblTelegramPrivati;
+    private JLabel lblViberPrivati;
+    private JLabel lblWeChatPrivati;
+    private JLabel lblWhatsappPrivati;
+    private JLabel lblNomePrivati;
+    private JLabel lblCognomePrivati;
+    private JLabel lblFotoPrivati;
     private ImageIcon img;
     private DefaultListCellRenderer renderer;
     private DefaultListModel DlmServizi = new DefaultListModel();
@@ -225,6 +249,9 @@ public class Window {
         panelInfoContattoSinistra.setVisible(false);
         panelCreaContatto.setVisible(false);
         creaContattoScrollPane.setBorder(null);
+        infoContattiPrivatiScroll.setBorder(null);
+        InfoContattiPrivata.setVisible(false);
+
 
         //Gestione zona contatti
         pkContatti = new ArrayList<Integer>();
@@ -242,6 +269,11 @@ public class Window {
         lblNumeriMobili.setText("<html>Numeri Mobili<br/><html>");
         lblIndirizzoPrincipale.setText("<html>Indirizzo Principale<br/><html>");
         lblIndirizziSecondari.setText("<html>Indirizzi Secondari<br/><html>");
+        lblEmailPrivati.setText("<html>Posta Elettronica<br/><html>");
+        lblNumeriFissiPrivati.setText("<html>Numeri Fissi<br/><html>");
+        lblNumeriMobiliPrivati.setText("<html>Numeri Mobili<br/><html>");
+        lblIndirizzoPrincipalePrivati.setText("<html>Indirizzo Principale<br/><html>");
+        lblIndirizziSecondariPrivati.setText("<html>Indirizzi Secondari<br/><html>");
 
         //ELIMINAZIONE BORDER AUTOMATICO DELLO SCROLL
         infoBottomScroll.setBorder(null);
@@ -2963,11 +2995,14 @@ public class Window {
                     } catch (SQLException ex) {
                         ex.printStackTrace();
                     }
-                    //Refresh dlm contatti
+                    //Refresh dlm contatti e dlm contattiprivati
                     DLMContatti.clear();
+                    DLMContattiPrivati.clear();
                     try {
                         DLMContatti = c.getContatti(pkContatti);
                         listContatti.setModel(DLMContatti);                                         //Aggiungiamo nel JList i nomi e cognomi dei contatti
+                        DLMContattiPrivati = c.getContattiPrivati(pkContattiPrivati);
+                        listAreaPrivata.setModel(DLMContattiPrivati);
                     } catch (SQLException ex) {
                         ex.printStackTrace();
                     }
@@ -3265,6 +3300,142 @@ public class Window {
                 }
             }
         });
+
+
+        //SETTAGGIO ZONA PRIVATA
+        //Listener contattoprivato click
+        listAreaPrivata.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                InfoContattiPrivata.setVisible(true);
+                try {
+                    //Settaggio visibilità dei lblServizi
+                    if(c.getServizio("Messenger",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex())) == null) lblMessengerPrivati.setVisible(false);
+                    else lblMessengerPrivati.setVisible(true);
+                    if(c.getServizio("Skype",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex())) == null) lblSkypePrivati.setVisible(false);
+                    else lblSkypePrivati.setVisible(true);
+                    if(c.getServizio("Teams",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex())) == null) lblTeamsPrivati.setVisible(false);
+                    else lblTeamsPrivati.setVisible(true);
+                    if(c.getServizio("Telegram",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex())) == null) lblTelegramPrivati.setVisible(false);
+                    else lblTelegramPrivati.setVisible(true);
+                    if(c.getServizio("Viber",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex())) == null) lblViberPrivati.setVisible(false);
+                    else lblViberPrivati.setVisible(true);
+                    if(c.getServizio("WeChat",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex())) == null) lblWeChatPrivati.setVisible(false);
+                    else lblWeChatPrivati.setVisible(true);
+                    if(c.getServizio("Whatsapp",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex())) == null) lblWhatsappPrivati.setVisible(false);
+                    else lblWhatsappPrivati.setVisible(true);
+
+                    panelinfoContattiPrivati.setVisible(true);
+                    SplitPaneAreaPrivata.setDividerLocation(350);
+                    //SET FOTO
+                    if(c.getPath(pkContattiPrivati.get(listAreaPrivata.getSelectedIndex())) == null) {
+                        img = c.SetImageSize(".images/" + randImage.get(rand.nextInt(randImage.size() - 1)), 200, 200);
+                        lblFotoPrivati.setIcon(img);
+                    }else{
+                        img = c.SetImageSize(c.getPath(pkContattiPrivati.get(listAreaPrivata.getSelectedIndex())),200,200);
+                        lblFotoPrivati.setIcon(img);
+                    }
+                    //SET NOME
+                    lblNomePrivati.setText(c.getNome(pkContattiPrivati.get(listAreaPrivata.getSelectedIndex())));
+                    //SET COGNOME
+                    lblCognomePrivati.setText(c.getCognome(pkContattiPrivati.get(listAreaPrivata.getSelectedIndex())));
+                    //SET EMAIL
+                    if(c.getEmail((pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()))).equals("NOT FOUND")){
+                        lblEmailPrivati.setVisible(false);
+                        lblInfoEmailPrivati.setVisible(false);
+                    }else {
+                        lblInfoEmailPrivati.setText(c.getEmail((pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()))));
+                        lblEmailPrivati.setVisible(true);
+                        lblInfoEmailPrivati.setVisible(true);
+                    }
+                    //SET NUMERI FISSI
+                    if(c.getNumeriFissi(pkContattiPrivati.get(listAreaPrivata.getSelectedIndex())).equals("NOT FOUND")){
+                        lblNumeriFissiPrivati.setVisible(false);
+                        lblInfoNumeriFissiPrivati.setVisible(false);
+                    }else{
+                        lblInfoNumeriFissiPrivati.setText(c.getNumeriFissi(pkContattiPrivati.get(listAreaPrivata.getSelectedIndex())));
+                        lblNumeriFissiPrivati.setVisible(true);
+                        lblInfoNumeriFissiPrivati.setVisible(true);
+                    }
+                    //SET NUMERI MOBILI
+                    if(c.getNumeriMobili(pkContattiPrivati.get(listAreaPrivata.getSelectedIndex())).equals("NOT FOUND")){
+                        lblNumeriMobiliPrivati.setVisible(false);
+                        lblInfoNumeriMobiliPrivati.setVisible(false);
+                    }else{
+                        lblInfoNumeriMobiliPrivati.setText(c.getNumeriMobili(pkContattiPrivati.get(listAreaPrivata.getSelectedIndex())));
+                        lblNumeriMobiliPrivati.setVisible(true);
+                        lblInfoNumeriMobiliPrivati.setVisible(true);
+                    }
+                    //SET INDIRIZZO PRINCIPALE
+                    if(c.getIndirizzoPrincipale(pkContattiPrivati.get(listAreaPrivata.getSelectedIndex())).equals("NOT FOUND")){
+                        lblIndirizzoPrincipalePrivati.setVisible(false);
+                        lblInfoIndirizzoPrincipalePrivati.setVisible(false);
+                    }else{
+                        lblInfoIndirizzoPrincipalePrivati.setText(c.getIndirizzoPrincipale(pkContattiPrivati.get(listAreaPrivata.getSelectedIndex())));
+                        lblIndirizzoPrincipalePrivati.setVisible(true);
+                        lblInfoIndirizzoPrincipalePrivati.setVisible(true);
+                    }
+                    //SET INDIRIZZI SECONDARI
+                    if(c.getIndirizziSecondari(pkContattiPrivati.get(listAreaPrivata.getSelectedIndex())).equals("NOT FOUND")){
+                        lblIndirizziSecondariPrivati.setVisible(false);
+                        lblInfoIndirizziSecondariPrivati.setVisible(false);
+                    }else{
+                        lblInfoIndirizziSecondariPrivati.setText(c.getIndirizziSecondari(pkContattiPrivati.get(listAreaPrivata.getSelectedIndex())));
+                        lblIndirizziSecondariPrivati.setVisible(true);
+                        lblInfoIndirizziSecondariPrivati.setVisible(true);
+                    }
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        //GESTIONE CLICK ELIMINA IN INFO CONTATTI PRIVATI
+        btnEliminaPrivati.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                img = c.SetImageSize(".images/warning.png",30,30);
+                if(JOptionPane.showConfirmDialog(null,"SEI SICURO DI VOLER ELIMINARE QUESTO CONTATTO?","ATTENZIONE!",0,1,img)==0){
+                    try {
+                        if(c.getPath(pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()))!=null) {
+                            Files.delete(Path.of(c.getPath(pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()))));
+                        }
+                        c.cancellaContatto(pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
+                        //REFRESH LISTA CONTATTI E RESET DLM
+                        InfoContattiPrivata.setVisible(false);
+                        DLMContattiPrivati.clear();
+                        DLMContattiPrivati = c.getContattiPrivati(pkContattiPrivati);
+                        listAreaPrivata.setModel(DLMContattiPrivati);                                         //Aggiungiamo nel JList i nomi e cognomi dei contatti
+                        img = c.SetImageSize(".images/creazionecontatto.png", 30, 30);
+                        JOptionPane.showMessageDialog(null, lblNomePrivati.getText() + " " + lblCognomePrivati.getText() + "Contatto eliminato con successo!", "CREAZIONE RIUSCITA!", 1, img);
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        });
+
+        //Set interazioni reindirizzamenti in infoContattoPrivati
+        btnReindirizzamentiPrivati.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                try {
+                    c.setReindirizzamenti(pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
+                    if(c.getReindirizzamenti()==null){
+                        img = c.SetImageSize(".images/warning.png",30,30);
+                        JOptionPane.showMessageDialog(null,"Il contatto selezionato non ha reindirizzamenti!","ATTENZIONE!",1,img);
+                    }else new InfoReindirizzamento(c);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
     }
     public static void main(String[] args) throws SQLException{
         try {
@@ -3275,7 +3446,3 @@ public class Window {
         new Window();
     }
 }
-
-//TODO SI INSERISCONO SISTEMI DI MESSAGING CON LA STESSA MAIL
-//TODO RENDERE LE GUI NON RESIZABLE
-//TODO QUANDO SI AGGIUNGE UN CONTATTO PRIVATO AGGIORNARE DLMContattiPrivati
