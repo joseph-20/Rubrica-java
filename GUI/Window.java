@@ -179,6 +179,18 @@ public class Window {
     private JLabel lblNomePrivati;
     private JLabel lblCognomePrivati;
     private JLabel lblFotoPrivati;
+    private JButton btnModifica;
+    private JButton btnAnnullaModifica;
+    private JButton btnReindirizzamentiModifica;
+    private JButton btnAggiornaModifica;
+    private JTextField textFieldSearch;
+    private JPanel panelSearch;
+    private JButton btnSearch;
+    private JTextField textFieldSearchPrivati;
+    private JButton btnSearchPrivati;
+    private JPanel panelSearchPrivati;
+    private JButton btnBackPrivati;
+    private JButton btnBack;
     private ImageIcon img;
     private DefaultListCellRenderer renderer;
     private DefaultListModel DlmServizi = new DefaultListModel();
@@ -274,9 +286,33 @@ public class Window {
         lblNumeriMobiliPrivati.setText("<html>Numeri Mobili<br/><html>");
         lblIndirizzoPrincipalePrivati.setText("<html>Indirizzo Principale<br/><html>");
         lblIndirizziSecondariPrivati.setText("<html>Indirizzi Secondari<br/><html>");
+        img = c.SetImageSize(".images/search.png",30,30);
+        btnSearch.setIcon(img);
+        btnSearchPrivati.setIcon(img);
+        img = c.SetImageSize(".images/close.png",30,30);
+        btnBack.setIcon(img);
+        btnBackPrivati.setIcon(img);
 
         //ELIMINAZIONE BORDER AUTOMATICO DELLO SCROLL
         infoBottomScroll.setBorder(null);
+
+        //INTERAZIONI BTNBACKPRIVATI
+        btnBack.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                panelInfoContatti.setVisible(false);
+            }
+        });
+
+        //INTERAZIONI BTNBACKPRIVATI
+        btnBackPrivati.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                InfoContattiPrivata.setVisible(false);
+            }
+        });
 
         //Listener contatto click
         listContatti.addMouseListener(new MouseAdapter() {
@@ -363,6 +399,36 @@ public class Window {
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
+            }
+        });
+
+        //Interazioni btnSearch
+        btnSearch.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                DLMContatti.clear();
+                try {
+                    DLMContatti = c.getContattiSearch(textFieldSearch.getText(),pkContatti);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+                listContatti.setModel(DLMContatti);
+            }
+        });
+
+        //Interazioni btnSearchPrivati
+        btnSearchPrivati.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                DLMContattiPrivati.clear();
+                try {
+                    DLMContattiPrivati = c.getContattiSearchPrivati(textFieldSearchPrivati.getText(),pkContattiPrivati);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+                listAreaPrivata.setModel(DLMContattiPrivati);
             }
         });
 
@@ -1479,7 +1545,7 @@ public class Window {
                         DLMContatti = c.getContatti(pkContatti);
                         listContatti.setModel(DLMContatti);                                         //Aggiungiamo nel JList i nomi e cognomi dei contatti
                         img = c.SetImageSize(".images/creazionecontatto.png", 30, 30);
-                        JOptionPane.showMessageDialog(null, textFieldNome.getText() + " " + textFieldCognome.getText() + "Contatto eliminato con successo!", "CREAZIONE RIUSCITA!", 1, img);
+                        JOptionPane.showMessageDialog(null, textFieldNome.getText() + " " + textFieldCognome.getText() + " Eliminato con successo!", "CREAZIONE RIUSCITA!", 1, img);
                     } catch (SQLException ex) {
                         ex.printStackTrace();
                     } catch (IOException ex) {
@@ -3301,6 +3367,72 @@ public class Window {
             }
         });
 
+        //INTERAZIONI BTNMODIFICA
+        btnModifica.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                //swap finestra
+                panelInfoContatti.setVisible(true);
+                c.swapVisibility(panelCreaContatto,panelInfoContattoSinistra);
+                contattiSplitPane.setDividerLocation(350);
+                img = c.SetImageSize(".images/"+randImage.get(rand.nextInt(randImage.size()-1)),200,200);
+                btnAddContact.setIcon(img);
+
+                //Settaggio bottoni
+                btnReindirizzamentiModifica.setVisible(true);
+                btnAggiornaModifica.setVisible(true);
+                btnAnnullaModifica.setVisible(true);
+                btnReindirizzamentiCreaContatto.setVisible(false);
+                btnAggiungi.setVisible(false);
+                btnAnnulla.setVisible(false);
+
+                try {
+                    //Settaggio lbl Nome
+                    textFieldNome.setText(c.getNome(pkContatti.get(listContatti.getSelectedIndex())));
+                    //Settaggio lbl Cognome
+                    textFieldCognome.setText(c.getCognome(pkContatti.get(listContatti.getSelectedIndex())));
+                    //Settaggio lbl Email
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+        //INTERAZIONI BTNANNULLAMODIFICA
+        btnAnnullaModifica.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                //Settaggio bottoni
+                btnReindirizzamentiModifica.setVisible(false);
+                btnAggiornaModifica.setVisible(false);
+                btnAnnullaModifica.setVisible(false);
+                btnReindirizzamentiCreaContatto.setVisible(true);
+                btnAggiungi.setVisible(true);
+                btnAnnulla.setVisible(true);
+
+                //Torna alla schermata di prima
+                panelInfoContatti.setVisible(true);
+                c.swapVisibility(panelInfoContattoSinistra,panelCreaContatto);
+                contattiSplitPane.setDividerLocation(350);
+            }
+        });
+
+        //INTERAZIONI BTNAGGIORNAMODIFICA
+        btnAggiornaModifica.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+            }
+        });
+
+        //INTERAZIONI BTNAGGIORNAMODIFICA
+        btnReindirizzamentiModifica.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+            }
+        });
 
         //SETTAGGIO ZONA PRIVATA
         //Listener contattoprivato click
@@ -3409,7 +3541,7 @@ public class Window {
                         DLMContattiPrivati = c.getContattiPrivati(pkContattiPrivati);
                         listAreaPrivata.setModel(DLMContattiPrivati);                                         //Aggiungiamo nel JList i nomi e cognomi dei contatti
                         img = c.SetImageSize(".images/creazionecontatto.png", 30, 30);
-                        JOptionPane.showMessageDialog(null, lblNomePrivati.getText() + " " + lblCognomePrivati.getText() + "Contatto eliminato con successo!", "CREAZIONE RIUSCITA!", 1, img);
+                        JOptionPane.showMessageDialog(null, lblNomePrivati.getText() + " " + lblCognomePrivati.getText() + " Eliminato con successo!", "CREAZIONE RIUSCITA!", 1, img);
                     } catch (SQLException ex) {
                         ex.printStackTrace();
                     } catch (IOException ex) {
@@ -3430,6 +3562,273 @@ public class Window {
                         img = c.SetImageSize(".images/warning.png",30,30);
                         JOptionPane.showMessageDialog(null,"Il contatto selezionato non ha reindirizzamenti!","ATTENZIONE!",1,img);
                     }else new InfoReindirizzamento(c);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        //Set interazioni lblMessengerPrivati
+        img = new ImageIcon(".images/Messenger25x25.png");
+        lblMessengerPrivati.setIcon(img);
+
+        //Mouse entered
+        lblMessengerPrivati.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                img = new ImageIcon(".images/Messenger30x30.png");
+                lblMessengerPrivati.setIcon(img);
+            }
+        });
+        //Mouse exited
+        lblMessengerPrivati.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                img = new ImageIcon(".images/Messenger25x25.png");
+                lblMessengerPrivati.setIcon(img);
+            }
+        });
+        //mouse clicked
+        lblMessengerPrivati.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                try {
+                    c.setImg(".images/Messenger512x512.png");
+                    c.setEmail("Messenger",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
+                    c.setUsername("Messenger",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
+                    c.setStato("Messenger",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
+                    new InfoServizio(c);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        //Set Interazioni lblSkypePrivati
+        img = new ImageIcon(".images/Skype25x25.png");
+        lblSkypePrivati.setIcon(img);
+        //Mouse entered
+        lblSkypePrivati.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                img = new ImageIcon(".images/Skype30x30.png");
+                lblSkypePrivati.setIcon(img);
+            }
+        });
+        //Mouse exited
+        lblSkypePrivati.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                img = new ImageIcon(".images/Skype25x25.png");
+                lblSkypePrivati.setIcon(img);
+            }
+        });
+        //mouse clicked
+        lblSkypePrivati.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                try {
+                    c.setImg(".images/Skype512x512.png");
+                    c.setEmail("Skype",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
+                    c.setUsername("Skype",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
+                    c.setStato("Skype",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
+                    new InfoServizio(c);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        //Set Interazioni lblTeamsPrivati
+        img  = new ImageIcon(".images/Teams25x25.png");
+        lblTeamsPrivati.setIcon(img );
+        //Mouse entered
+        lblTeamsPrivati.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                img = new ImageIcon(".images/Teams30x30.png");
+                lblTeamsPrivati.setIcon(img);
+            }
+        });
+        //Mouse exited
+        lblTeamsPrivati.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                img = new ImageIcon(".images/Teams25x25.png");
+                lblTeamsPrivati.setIcon(img);
+            }
+        });
+        //mouse clicked
+        lblTeamsPrivati.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                try {
+                    c.setImg(".images/Teams512x512.png");
+                    c.setEmail("Teams",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
+                    c.setUsername("Teams",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
+                    c.setStato("Teams",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
+                    new InfoServizio(c);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        //Set Interazioni lblWeChatPrivati
+        img  = new ImageIcon(".images/WeChat25x25.png");
+        lblWeChatPrivati.setIcon(img);
+        //Mouse entered
+        lblWeChatPrivati.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                img = new ImageIcon(".images/WeChat30x30.png");
+                lblWeChatPrivati.setIcon(img);
+            }
+        });
+        //Mouse exited
+        lblWeChatPrivati.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                img = new ImageIcon(".images/WeChat25x25.png");
+                lblWeChat.setIcon(img);
+            }
+        });
+        //mouse clicked
+        lblWeChatPrivati.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                try {
+                    c.setImg(".images/WeChat512x512.png");
+                    c.setEmail("WeChat",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
+                    c.setUsername("WeChat",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
+                    c.setStato("WeChat",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
+                    new InfoServizio(c);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        //Set Interazioni lblWhatsappPrivati
+        img  = new ImageIcon(".images/WhatsApp25x25.png");
+        lblWhatsappPrivati.setIcon(img);
+        //Mouse entered
+        lblWhatsappPrivati.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                img = new ImageIcon(".images/Whatsapp30x30.png");
+                lblWhatsappPrivati.setIcon(img);
+            }
+        });
+        //Mouse exited
+        lblWhatsappPrivati.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                img = new ImageIcon(".images/Whatsapp25x25.png");
+                lblWhatsappPrivati.setIcon(img);
+            }
+        });
+        //mouse clicked
+        lblWhatsappPrivati.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                try {
+                    c.setImg(".images/Whatsapp512x512.png");
+                    c.setEmail("Whatsapp",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
+                    c.setUsername("Whatsapp",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
+                    c.setStato("Whatsapp",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
+                    new InfoServizio(c);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        //Set Interazioni lblViberPrivati
+        img = new ImageIcon(".images/Viber25x25.png");
+        lblViberPrivati.setIcon(img);
+        //Mouse entered
+        lblViberPrivati.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                img = new ImageIcon(".images/Viber30x30.png");
+                lblViberPrivati.setIcon(img);
+            }
+        });
+        //Mouse exited
+        lblViberPrivati.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                img = new ImageIcon(".images/Viber25x25.png");
+                lblViberPrivati.setIcon(img);
+            }
+        });
+        //mouse clicked
+        lblViberPrivati.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                try {
+                    c.setImg(".images/Viber512x512.png");
+                    c.setEmail("Viber",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
+                    c.setUsername("Viber",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
+                    c.setStato("Viber",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
+                    new InfoServizio(c);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        //Set Interazioni lblTelegramPrivati
+        img = new ImageIcon(".images/Telegram25x25.png");
+        lblTelegramPrivati.setIcon(img);
+        //Mouse entered
+        lblTelegramPrivati.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                img = new ImageIcon(".images/Telegram30x30.png");
+                lblTelegram.setIcon(img);
+            }
+        });
+        //Mouse exited
+        lblTelegramPrivati.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                img = new ImageIcon(".images/Telegram25x25.png");
+                lblTelegramPrivati.setIcon(img);
+            }
+        });
+        //mouse clicked
+        lblTelegramPrivati.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                try {
+                    c.setImg(".images/Telegram512x512.png");
+                    c.setEmail("Telegram",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
+                    c.setUsername("Telegram",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
+                    c.setStato("Telegram",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
+                    new InfoServizio(c);
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }

@@ -8,10 +8,11 @@ import java.sql.SQLException;
 
 public class InfoReindirizzamento {
     private JPanel panelMain;
-    private JLabel lblReindirizzamenti;
     private JScrollPane listaReindirizzamentiScroll;
     private JPanel panelReindirizzamentiScroll;
     private JLabel lblInfoReindirizzamenti;
+    private JLabel lblFissi;
+    private JLabel lblMobili;
 
     public InfoReindirizzamento(Controller c) throws SQLException {
         esegui(c);
@@ -19,7 +20,7 @@ public class InfoReindirizzamento {
 
     private void esegui(Controller c) throws SQLException {
         //Creazione finestra principale
-        JFrame frame = new JFrame("Reindirizzamento");
+        JFrame frame = new JFrame("Reindirizzamenti");
         frame.setContentPane(this.panelMain);
         frame.setMinimumSize(new Dimension(300, 150));
         frame.setVisible(true);

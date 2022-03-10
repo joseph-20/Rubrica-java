@@ -14,4 +14,6 @@ public interface ContattoDAO {
     public int creaContatto(String pathFoto,String nome,String cognome,boolean security) throws SQLException;
     public String getPath (int pk) throws SQLException;
     public int getLastId() throws SQLException;
+    public DefaultListModel getContattiSearch(String ricerca,ArrayList<Integer> pkContatti) throws SQLException;
+    public DefaultListModel getContattiSearchPrivati(String ricerca,ArrayList<Integer> pkContatti) throws SQLException;
 }

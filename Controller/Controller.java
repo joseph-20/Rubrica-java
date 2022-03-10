@@ -39,6 +39,9 @@ public class Controller {
    public DefaultListModel getContatti(ArrayList<Integer> pkContatti) throws SQLException{
        return contact.getContatti(pkContatti);
    }
+    public DefaultListModel getContattiSearch(String ricerca,ArrayList<Integer> pkContatti) throws SQLException{
+       return contact.getContattiSearch(ricerca,pkContatti);
+    }
     public int getLastId() throws SQLException{
        return contact.getLastId()+1;
     }
@@ -52,6 +55,9 @@ public class Controller {
        }else {
            dlmServizi.addElement(mail);
        }
+    }
+    public DefaultListModel getContattiSearchPrivati(String ricerca,ArrayList<Integer> pkContatti) throws SQLException{
+       return contact.getContattiSearchPrivati(ricerca,pkContatti);
     }
     public void setDlmReindirizzamentiMobili(String numero,int reset){
         if(reset == 1){

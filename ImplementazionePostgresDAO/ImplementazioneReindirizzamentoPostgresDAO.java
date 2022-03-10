@@ -47,9 +47,9 @@ public class ImplementazioneReindirizzamentoPostgresDAO implements Reindirizzame
                             "FROM REINDIRIZZAMENTO " +
                             "WHERE ID_CONTATTO_FISSO = "+pk);
         while(rs.next()){
-            reindirizzamento = reindirizzamento+rs.getString("prefisso_fisso")+" "+rs.getString("numero_fisso")+"    <img src=\""
+            reindirizzamento = reindirizzamento+rs.getString("prefisso_fisso")+" "+rs.getString("numero_fisso")+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src=\""
                     + ImplementazioneReindirizzamentoPostgresDAO.class.getResource("/.images/Reindirizzamento20x20.png")
-                    + "\">    "+rs.getString("prefisso_mobile")+" "+rs.getString("numero_mobile")+"<br/>";
+                    + "\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+rs.getString("prefisso_mobile")+" "+rs.getString("numero_mobile")+"<br/>";
             cont++;
         }
         if(cont == 0) return null;

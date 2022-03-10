@@ -21,6 +21,7 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
     private String surname;
     private String path;
     private int pk;
+    private int index;
 
 
     public ImplementazioneContattoPostgresDAO() {
@@ -49,6 +50,79 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
         rs.close();
         s.close();
         return DLM;
+    }
+    public DefaultListModel getContattiSearch(String ricerca,ArrayList<Integer> pkContatti) throws SQLException {
+        pkContatti.clear();
+        DLM.removeAllElements();
+        s = connection.createStatement();
+
+        //Settaggio index
+        index=0;
+        index = ricerca.indexOf(' ');
+        //QUERY DI SELEZIONE DEI CONTATTI CON SECURITY FALSE
+        if(ricerca.equals("")){
+            rs = s.executeQuery("SELECT * " +
+                    "FROM CONTATTO " +
+                    "WHERE SECURITY = FALSE " +
+                    "ORDER BY NOME,COGNOME");
+        }
+        else if(index!=-1) {
+            rs = s.executeQuery("SELECT * " +
+                    "FROM CONTATTO " +
+                    "WHERE SECURITY = FALSE AND (NOME ILIKE '" + ricerca + "' OR COGNOME ILIKE '" + ricerca + "' OR NOME ILIKE '" + ricerca.substring(0,index) + "' OR COGNOME ILIKE '"+ ricerca.substring(index)+"' OR NOME ILIKE '"+ricerca.substring(0,index)+"%' OR COGNOME ILIKE '"+ricerca.substring(0,index)+"%' OR NOME ILIKE '"+ricerca+"%' OR COGNOME ILIKE '"+ricerca+"%')"+
+                    " ORDER BY NOME,COGNOME");
+        }else{
+            rs = s.executeQuery("SELECT * " +
+                    "FROM CONTATTO " +
+                    "WHERE SECURITY = FALSE AND (NOME ILIKE '" + ricerca + "' OR COGNOME ILIKE '" + ricerca  + "' OR NOME ILIKE '"+ricerca+"%' OR COGNOME ILIKE '"+ricerca+"%')" +
+                    " ORDER BY NOME,COGNOME");
+        }
+        while (rs.next()) {                                   //Finche non scorro tutto il resultSet
+            Contatto contact = new Contatto();
+            contact.setContatto(rs.getString("nome"), rs.getString("cognome"), rs.getString("foto"), rs.getBoolean("security"));
+            DLM.addElement(contact.getNome() + " " + contact.getCognome());
+            pkContatti.add(rs.getInt("id"));
+        }
+        rs.close();
+        s.close();
+        return DLM;
+    }
+
+    public DefaultListModel getContattiSearchPrivati(String ricerca,ArrayList<Integer> pkContattiPrivati) throws SQLException {
+        pkContattiPrivati.clear();
+        DLMPrivati.removeAllElements();
+        s = connection.createStatement();
+
+        //Settaggio index
+        index=0;
+        index = ricerca.indexOf(' ');
+        //QUERY DI SELEZIONE DEI CONTATTI CON SECURITY TRUE
+        if(ricerca.equals("")){
+            rs = s.executeQuery("SELECT * " +
+                    "FROM CONTATTO " +
+                    "WHERE SECURITY = TRUE " +
+                    "ORDER BY NOME,COGNOME");
+        }
+        else if(index!=-1) {
+            rs = s.executeQuery("SELECT * " +
+                    "FROM CONTATTO " +
+                    "WHERE SECURITY = TRUE AND (NOME ILIKE '" + ricerca + "' OR COGNOME ILIKE '" + ricerca + "' OR NOME ILIKE '" + ricerca.substring(0,index) + "' OR COGNOME ILIKE '"+ ricerca.substring(index)+"' OR NOME ILIKE '"+ricerca.substring(0,index)+"%' OR COGNOME ILIKE '"+ricerca.substring(0,index)+"%' OR NOME ILIKE '"+ricerca+"%' OR COGNOME ILIKE '"+ricerca+"%')"+
+                    " ORDER BY NOME,COGNOME");
+        }else{
+            rs = s.executeQuery("SELECT * " +
+                    "FROM CONTATTO " +
+                    "WHERE SECURITY = TRUE AND (NOME ILIKE '" + ricerca + "' OR COGNOME ILIKE '" + ricerca  + "' OR NOME ILIKE '"+ricerca+"%' OR COGNOME ILIKE '"+ricerca+"%')" +
+                    " ORDER BY NOME,COGNOME");
+        }
+        while (rs.next()) {                                   //Finche non scorro tutto il resultSet
+            Contatto contact = new Contatto();
+            contact.setContatto(rs.getString("nome"), rs.getString("cognome"), rs.getString("foto"), rs.getBoolean("security"));
+            DLMPrivati.addElement(contact.getNome() + " " + contact.getCognome());
+            pkContattiPrivati.add(rs.getInt("id"));
+        }
+        rs.close();
+        s.close();
+        return DLMPrivati;
     }
 
     public DefaultListModel getContattiPrivati(ArrayList<Integer> pkContattiPrivati) throws SQLException {
