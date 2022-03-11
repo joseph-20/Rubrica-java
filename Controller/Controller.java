@@ -222,4 +222,28 @@ public class Controller {
     public String getIndirizzoPrincipaleNoHTML (int pk) throws SQLException{
        return indirizzoP.getIndirizzoPrincipaleNoHTML(pk);
     }
+    public DefaultListModel getContattiSearchEmail(String ricerca, ArrayList<Integer> pkContatti) throws SQLException{
+       return email.getContattiSearchEmail(ricerca,pkContatti);
+    }
+    public DefaultListModel getContattiSearchEmailPrivati(String ricerca, ArrayList<Integer> pkContattiPrivati) throws SQLException{
+       return email.getContattiSearchEmailPrivati(ricerca,pkContattiPrivati);
+    }
+    public DefaultListModel getContattiSearchUsername(String ricerca, ArrayList<Integer> pkContatti) throws SQLException{
+       return messaging.getContattiSearchUsername(ricerca,pkContatti);
+    }
+    public DefaultListModel getContattiSearchUsernamePrivati(String ricerca, ArrayList<Integer> pkContattiPrivati) throws SQLException{
+      return messaging.getContattiSearchUsernamePrivati(ricerca,pkContattiPrivati);
+    }
+    public DefaultListModel getContattiSearchNumeriFissi(String ricerca, ArrayList<Integer> pkContatti) throws SQLException{
+       return numeriF.getContattiSearchNumeriFissi(ricerca,pkContatti);
+    }
+    public DefaultListModel getContattiSearchNumeriFissiPrivati(String ricerca, ArrayList<Integer> pkContattiPrivati) throws SQLException{
+       return numeriF.getContattiSearchNumeriFissiPrivati(ricerca,pkContattiPrivati);
+    }
+    public DefaultListModel getContattiSearchNumeriMobili(String ricerca, ArrayList<Integer> pkContatti) throws SQLException{
+       return numeriM.getContattiSearchNumeriMobili(ricerca, pkContatti);
+    }
+    public DefaultListModel getContattiSearchNumeriMobiliPrivati(String ricerca, ArrayList<Integer> pkContattiPrivati) throws SQLException{
+       return numeriM.getContattiSearchNumeriMobiliPrivati(ricerca,pkContattiPrivati);
+    }
 }

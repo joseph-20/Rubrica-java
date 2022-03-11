@@ -1,6 +1,8 @@
 package DAO;
 
+import javax.swing.*;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public interface MessagingDAO {
     public String getServizio(String sistema, int pk) throws SQLException;
@@ -14,4 +16,8 @@ public interface MessagingDAO {
     public void creaMessaging(String username,String servizio,String stato,String email,int pk) throws SQLException;
 
     public void eliminaMessaging (int pk) throws SQLException;
+
+    public DefaultListModel getContattiSearchUsername(String ricerca, ArrayList<Integer> pkContatti) throws SQLException;
+
+    public DefaultListModel getContattiSearchUsernamePrivati(String ricerca, ArrayList<Integer> pkContattiPrivati) throws SQLException;
 }

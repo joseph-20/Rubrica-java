@@ -2,11 +2,14 @@ package ImplementazionePostgresDAO;
 
 import DAO.MessagingDAO;
 import Database.ConnessioneDatabase;
+import Model.Contatto;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class ImplementazioneMessagingPostgresDAO implements MessagingDAO {
     private Connection connection;
@@ -20,6 +23,8 @@ public class ImplementazioneMessagingPostgresDAO implements MessagingDAO {
     private String stato;
     private String emailUsername;
     private String emailDominio;
+    private DefaultListModel<String> DLM = new DefaultListModel<>();
+    private DefaultListModel<String> DLMPrivati = new DefaultListModel<>();
     private int index;
 
     public ImplementazioneMessagingPostgresDAO(){
@@ -100,4 +105,62 @@ public class ImplementazioneMessagingPostgresDAO implements MessagingDAO {
         s.executeUpdate("DELETE FROM SISTEMA_DI_MESSAGING " +
                 "WHERE ID_CONTATTO = "+pk);
         }
+
+    public DefaultListModel getContattiSearchUsername(String ricerca, ArrayList<Integer> pkContatti) throws SQLException {
+        pkContatti.clear();
+        DLM.removeAllElements();
+        s = connection.createStatement();
+
+        //QUERY DI SELEZIONE DEI CONTATTI CON SECURITY FALSE
+        if(ricerca.equals("")){
+            rs = s.executeQuery("SELECT DISTINCT NOME,COGNOME,FOTO,SECURITY,ID " +
+                    "FROM CONTATTO " +
+                    "WHERE SECURITY = FALSE " +
+                    "ORDER BY NOME,COGNOME");
+        }
+        else{
+            rs = s.executeQuery("SELECT DISTINCT NOME,COGNOME,FOTO,SECURITY,ID " +
+                    "FROM CONTATTO,SISTEMA_DI_MESSAGING " +
+                    "WHERE SECURITY = FALSE AND ID_CONTATTO = ID AND USERNAME ILIKE '%" + ricerca + "%'" +
+                    " ORDER BY NOME,COGNOME");
+        }
+        while (rs.next()) {                                   //Finche non scorro tutto il resultSet
+            Contatto contact = new Contatto();
+            contact.setContatto(rs.getString("nome"), rs.getString("cognome"), rs.getString("foto"), rs.getBoolean("security"));
+            DLM.addElement(contact.getNome() + " " + contact.getCognome());
+            pkContatti.add(rs.getInt("id"));
+        }
+        rs.close();
+        s.close();
+        return DLM;
+    }
+
+    public DefaultListModel getContattiSearchUsernamePrivati(String ricerca, ArrayList<Integer> pkContattiPrivati) throws SQLException {
+        pkContattiPrivati.clear();
+        DLMPrivati.removeAllElements();
+        s = connection.createStatement();
+
+        //QUERY DI SELEZIONE DEI CONTATTI CON SECURITY FALSE
+        if(ricerca.equals("")){
+            rs = s.executeQuery("SELECT DISTINCT NOME,COGNOME,FOTO,SECURITY,ID " +
+                    "FROM CONTATTO " +
+                    "WHERE SECURITY = TRUE " +
+                    " ORDER BY NOME,COGNOME");
+        }
+        else{
+            rs = s.executeQuery("SELECT DISTINCT NOME,COGNOME,FOTO,SECURITY,ID " +
+                    "FROM CONTATTO,SISTEMA_DI_MESSAGING " +
+                    "WHERE SECURITY = TRUE AND ID_CONTATTO = ID AND USERNAME ILIKE '%" + ricerca + "%'" +
+                    " ORDER BY NOME,COGNOME");
+        }
+        while (rs.next()) {                                   //Finche non scorro tutto il resultSet
+            Contatto contact = new Contatto();
+            contact.setContatto(rs.getString("nome"), rs.getString("cognome"), rs.getString("foto"), rs.getBoolean("security"));
+            DLMPrivati.addElement(contact.getNome() + " " + contact.getCognome());
+            pkContattiPrivati.add(rs.getInt("id"));
+        }
+        rs.close();
+        s.close();
+        return DLMPrivati;
+    }
     }

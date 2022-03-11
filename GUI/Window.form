@@ -1568,7 +1568,7 @@
                       </component>
                     </children>
                   </scrollpane>
-                  <grid id="1d70a" binding="panelSearchPrivati" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="1d70a" binding="panelSearchPrivati" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints border-constraint="North"/>
                     <properties/>
@@ -1584,11 +1584,27 @@
                       </component>
                       <component id="161f1" class="javax.swing.JButton" binding="btnSearchPrivati">
                         <constraints>
-                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="2" indent="0" use-parent-layout="false"/>
+                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="2" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <font size="18"/>
                           <text value=""/>
+                        </properties>
+                      </component>
+                      <component id="6b465" class="javax.swing.JComboBox" binding="comboBoxRicercaPrivati">
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font size="14"/>
+                          <maximumRowCount value="8"/>
+                          <model>
+                            <item value="NOME"/>
+                            <item value="EMAIL"/>
+                            <item value="ACCOUNT"/>
+                            <item value="NUMERI FISSI"/>
+                            <item value="NUMERI MOBILI"/>
+                          </model>
                         </properties>
                       </component>
                     </children>

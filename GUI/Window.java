@@ -193,6 +193,7 @@ public class Window {
     private JButton btnBack;
     private JButton btnAddContactModifica;
     private JComboBox comboBoxRicerca;
+    private JComboBox comboBoxRicercaPrivati;
     private ImageIcon img;
     private DefaultListCellRenderer renderer;
     private DefaultListModel DlmServizi = new DefaultListModel();
@@ -417,7 +418,26 @@ public class Window {
                 super.mouseClicked(e);
                 DLMContatti.clear();
                 try {
-                    DLMContatti = c.getContattiSearch(textFieldSearch.getText(),pkContatti);
+                    if(comboBoxRicerca.getSelectedItem().toString().equals("NOME")) {
+                        DLMContatti.removeAllElements();
+                        DLMContatti = c.getContattiSearch(textFieldSearch.getText(), pkContatti);
+                    }
+                    else if(comboBoxRicerca.getSelectedItem().toString().equals("EMAIL")){
+                        DLMContatti.removeAllElements();
+                        DLMContatti = c.getContattiSearchEmail(textFieldSearch.getText(), pkContatti);
+                    }
+                    else if(comboBoxRicerca.getSelectedItem().toString().equals("ACCOUNT")){
+                        DLMContatti.removeAllElements();
+                        DLMContatti = c.getContattiSearchUsername(textFieldSearch.getText(),pkContatti);
+                    }
+                    else if(comboBoxRicerca.getSelectedItem().toString().equals("NUMERO FISSO")){
+                        DLMContatti.removeAllElements();
+                        DLMContatti = c.getContattiSearchNumeriFissi(textFieldSearch.getText(),pkContatti);
+                    }
+                    else if(comboBoxRicerca.getSelectedItem().toString().equals("NUMERO MOBILE")){
+                        DLMContatti.removeAllElements();
+                        DLMContatti = c.getContattiSearchNumeriMobili(textFieldSearch.getText(),pkContatti);
+                    }
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }

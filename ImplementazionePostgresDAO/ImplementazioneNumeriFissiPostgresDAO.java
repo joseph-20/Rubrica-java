@@ -2,7 +2,9 @@ package ImplementazionePostgresDAO;
 
 import DAO.NumeriFissiDAO;
 import Database.ConnessioneDatabase;
+import Model.Contatto;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,6 +16,8 @@ public class ImplementazioneNumeriFissiPostgresDAO implements NumeriFissiDAO {
     private String numeriFissi;
     private ResultSet rs;
     private Statement s;
+    private DefaultListModel<String> DLM = new DefaultListModel<>();
+    private DefaultListModel<String> DLMPrivati = new DefaultListModel<>();
     private int cont;
     private int num;
 
@@ -73,5 +77,73 @@ public class ImplementazioneNumeriFissiPostgresDAO implements NumeriFissiDAO {
         while(rs.next()){
             array.add(rs.getString("PREFISSO")+rs.getString("NUMERO"));
         }
+    }
+
+    public DefaultListModel getContattiSearchNumeriFissi(String ricerca, ArrayList<Integer> pkContatti) throws SQLException {
+        pkContatti.clear();
+        DLM.removeAllElements();
+        s = connection.createStatement();
+
+        //QUERY DI SELEZIONE DEI CONTATTI CON SECURITY FALSE
+        if(ricerca.equals("")){
+            rs = s.executeQuery("SELECT DISTINCT NOME,COGNOME,FOTO,SECURITY,ID " +
+                    "FROM CONTATTO " +
+                    "WHERE SECURITY = FALSE " +
+                    "ORDER BY NOME,COGNOME");
+        }
+        else if (ricerca.length()>3){
+            rs = s.executeQuery("SELECT DISTINCT NOME,COGNOME,FOTO,SECURITY,ID " +
+                    "FROM CONTATTO,NUMERO_FISSO " +
+                    "WHERE SECURITY = FALSE AND ID_CONTATTO = ID AND PREFISSO = '" + ricerca.substring(0,3) + "' AND NUMERO ILIKE '"+ricerca.substring(3)+"%'" +
+                    " ORDER BY NOME,COGNOME");
+        }else{
+            rs = s.executeQuery("SELECT DISTINCT NOME,COGNOME,FOTO,SECURITY,ID " +
+                    "FROM CONTATTO,NUMERO_FISSO " +
+                    "WHERE SECURITY = FALSE AND ID_CONTATTO = ID AND PREFISSO ILIKE '" + ricerca + "%'"+
+                    " ORDER BY NOME,COGNOME");
+        }
+        while (rs.next()) {                                   //Finche non scorro tutto il resultSet
+            Contatto contact = new Contatto();
+            contact.setContatto(rs.getString("nome"), rs.getString("cognome"), rs.getString("foto"), rs.getBoolean("security"));
+            DLM.addElement(contact.getNome() + " " + contact.getCognome());
+            pkContatti.add(rs.getInt("id"));
+        }
+        rs.close();
+        s.close();
+        return DLM;
+    }
+
+    public DefaultListModel getContattiSearchNumeriFissiPrivati(String ricerca, ArrayList<Integer> pkContattiPrivati) throws SQLException {
+        pkContattiPrivati.clear();
+        DLMPrivati.removeAllElements();
+        s = connection.createStatement();
+
+        //QUERY DI SELEZIONE DEI CONTATTI CON SECURITY FALSE
+        if(ricerca.equals("")){
+            rs = s.executeQuery("SELECT DISTINCT NOME,COGNOME,FOTO,SECURITY,ID " +
+                    "FROM CONTATTO " +
+                    "WHERE SECURITY = TRUE " +
+                    " ORDER BY NOME,COGNOME");
+        }
+        else if (ricerca.length()>3){
+            rs = s.executeQuery("SELECT DISTINCT NOME,COGNOME,FOTO,SECURITY,ID " +
+                    "FROM CONTATTO,NUMERO_FISSO " +
+                    "WHERE SECURITY = TRUE AND ID_CONTATTO = ID AND PREFISSO = '" + ricerca.substring(0,3) + "' AND NUMERO ILIKE '"+ricerca.substring(3)+"%'" +
+                    " ORDER BY NOME,COGNOME");
+        }else{
+            rs = s.executeQuery("SELECT DISTINCT NOME,COGNOME,FOTO,SECURITY,ID " +
+                    "FROM CONTATTO,NUMERO_FISSO " +
+                    "WHERE SECURITY = TRUE AND ID_CONTATTO = ID AND PREFISSO ILIKE '" + ricerca + "%'"+
+                    " ORDER BY NOME,COGNOME");
+        }
+        while (rs.next()) {                                   //Finche non scorro tutto il resultSet
+            Contatto contact = new Contatto();
+            contact.setContatto(rs.getString("nome"), rs.getString("cognome"), rs.getString("foto"), rs.getBoolean("security"));
+            DLMPrivati.addElement(contact.getNome() + " " + contact.getCognome());
+            pkContattiPrivati.add(rs.getInt("id"));
+        }
+        rs.close();
+        s.close();
+        return DLMPrivati;
     }
 }
