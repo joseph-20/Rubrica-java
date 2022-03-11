@@ -195,4 +195,31 @@ public class Controller {
     public int creaContatto(String pathFoto,String nome,String cognome,boolean security) throws SQLException{
         return contact.creaContatto(pathFoto,nome,cognome,security);
     }
+    public int getcontNumEmail (int pk) throws SQLException{
+      return email.getcontNumEmail(pk);
+    }
+    public int getcontNumNumeriFissi (int pk) throws SQLException{
+       return numeriF.getcontNumNumeriFissi(pk);
+    }
+    public int getcontNumNumeriMobili(int pk) throws SQLException{
+      return numeriM.getcontNumNumeriMobili(pk);
+    }
+    public int getcontNumIndirizziSecondari(int pk) throws SQLException{
+       return indirizziS.getcontNumIndirizziSecondari(pk);
+    }
+    public void getArrayEmail (ArrayList<String> array,int pk) throws SQLException{
+       email.getArrayEmail(array,pk);
+    }
+    public void getArrayNumeriFissi (ArrayList<String> array,int pk) throws SQLException{
+       numeriF.getArrayNumeriFissi(array,pk);
+    }
+    public void getArrayNumeriMobili (ArrayList<String> array,int pk) throws SQLException{
+       numeriM.getArrayNumeriMobili(array,pk);
+    }
+    public void getArrayIndirizziSecondari (ArrayList<String> array, int pk) throws SQLException{
+       indirizziS.getArrayIndirizziSecondari(array,pk);
+    }
+    public String getIndirizzoPrincipaleNoHTML (int pk) throws SQLException{
+       return indirizzoP.getIndirizzoPrincipaleNoHTML(pk);
+    }
 }

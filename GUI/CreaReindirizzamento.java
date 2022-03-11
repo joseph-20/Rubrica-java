@@ -36,6 +36,10 @@ public class CreaReindirizzamento {
         Point center = GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint();
         frame.setBounds(center.x - 430 / 2, center.y - 430 / 2, 430, 200);
 
+        //settaggio icona frame
+        img = c.SetImageSize(".images/info.png",512,512);
+        frame.setIconImage(img.getImage());
+
         //Disattivazione resizability
         frame.setResizable(false);
 

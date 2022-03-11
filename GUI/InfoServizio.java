@@ -15,6 +15,7 @@ public class InfoServizio {
     private JPanel panelStatoInfo;
     private JLabel lblStatoInfo;
     private JLabel lblEmailInfo;
+    private ImageIcon img;
 
     public InfoServizio(Controller c) throws SQLException {
         esegui(c);
@@ -31,6 +32,10 @@ public class InfoServizio {
         //Settaggio finestra al centro
         Point center = GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint();
         frame.setBounds(center.x - 300 / 2, center.y - 200 / 2, 300, 200);
+
+        //settaggio icona frame
+        img = c.SetImageSize(".images/info.png",512,512);
+        frame.setIconImage(img.getImage());
 
         //Disattivazione resizability
         frame.setResizable(false);

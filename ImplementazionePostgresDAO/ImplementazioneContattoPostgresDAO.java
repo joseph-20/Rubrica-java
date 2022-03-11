@@ -69,12 +69,12 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
         else if(index!=-1) {
             rs = s.executeQuery("SELECT * " +
                     "FROM CONTATTO " +
-                    "WHERE SECURITY = FALSE AND (NOME ILIKE '" + ricerca + "' OR COGNOME ILIKE '" + ricerca + "' OR NOME ILIKE '" + ricerca.substring(0,index) + "' OR COGNOME ILIKE '"+ ricerca.substring(index)+"' OR NOME ILIKE '"+ricerca.substring(0,index)+"%' OR COGNOME ILIKE '"+ricerca.substring(0,index)+"%' OR NOME ILIKE '"+ricerca+"%' OR COGNOME ILIKE '"+ricerca+"%')"+
+                    "WHERE SECURITY = FALSE AND (NOME ILIKE '%"+ricerca.substring(0,index)+"%' AND COGNOME ILIKE '%"+ricerca.substring(index+1)+"%')"+
                     " ORDER BY NOME,COGNOME");
         }else{
             rs = s.executeQuery("SELECT * " +
                     "FROM CONTATTO " +
-                    "WHERE SECURITY = FALSE AND (NOME ILIKE '" + ricerca + "' OR COGNOME ILIKE '" + ricerca  + "' OR NOME ILIKE '"+ricerca+"%' OR COGNOME ILIKE '"+ricerca+"%')" +
+                    "WHERE SECURITY = FALSE AND (NOME ILIKE '%" + ricerca + "%' OR COGNOME ILIKE '%" + ricerca  + "%')" +
                     " ORDER BY NOME,COGNOME");
         }
         while (rs.next()) {                                   //Finche non scorro tutto il resultSet
@@ -106,12 +106,12 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
         else if(index!=-1) {
             rs = s.executeQuery("SELECT * " +
                     "FROM CONTATTO " +
-                    "WHERE SECURITY = TRUE AND (NOME ILIKE '" + ricerca + "' OR COGNOME ILIKE '" + ricerca + "' OR NOME ILIKE '" + ricerca.substring(0,index) + "' OR COGNOME ILIKE '"+ ricerca.substring(index)+"' OR NOME ILIKE '"+ricerca.substring(0,index)+"%' OR COGNOME ILIKE '"+ricerca.substring(0,index)+"%' OR NOME ILIKE '"+ricerca+"%' OR COGNOME ILIKE '"+ricerca+"%')"+
+                    "WHERE SECURITY = TRUE AND (NOME ILIKE '%"+ricerca.substring(0,index)+"%' AND COGNOME ILIKE '%"+ricerca.substring(index+1)+"%')"+
                     " ORDER BY NOME,COGNOME");
         }else{
             rs = s.executeQuery("SELECT * " +
                     "FROM CONTATTO " +
-                    "WHERE SECURITY = TRUE AND (NOME ILIKE '" + ricerca + "' OR COGNOME ILIKE '" + ricerca  + "' OR NOME ILIKE '"+ricerca+"%' OR COGNOME ILIKE '"+ricerca+"%')" +
+                    "WHERE SECURITY = TRUE AND (NOME ILIKE '%" + ricerca + "%' OR COGNOME ILIKE '%" + ricerca  + "%')" +
                     " ORDER BY NOME,COGNOME");
         }
         while (rs.next()) {                                   //Finche non scorro tutto il resultSet

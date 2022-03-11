@@ -13,6 +13,7 @@ public class InfoReindirizzamento {
     private JLabel lblInfoReindirizzamenti;
     private JLabel lblFissi;
     private JLabel lblMobili;
+    private ImageIcon img;
 
     public InfoReindirizzamento(Controller c) throws SQLException {
         esegui(c);
@@ -28,6 +29,10 @@ public class InfoReindirizzamento {
         //Settaggio finestra al centro
         Point center = GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint();
         frame.setBounds(center.x - 300 / 2, center.y - 150 / 2, 300, 150);
+
+        //settaggio icona frame
+        img = c.SetImageSize(".images/info.png",512,512);
+        frame.setIconImage(img.getImage());
 
         //Disattivazione resizability
         frame.setResizable(false);

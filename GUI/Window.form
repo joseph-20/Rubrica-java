@@ -103,7 +103,7 @@
                       </component>
                     </children>
                   </scrollpane>
-                  <grid id="7d56b" binding="panelSearch" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="7d56b" binding="panelSearch" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints border-constraint="North"/>
                     <properties/>
@@ -119,11 +119,27 @@
                       </component>
                       <component id="f2dbb" class="javax.swing.JButton" binding="btnSearch">
                         <constraints>
-                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="2" indent="0" use-parent-layout="false"/>
+                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="2" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <font size="18"/>
                           <text value=""/>
+                        </properties>
+                      </component>
+                      <component id="6a508" class="javax.swing.JComboBox" binding="comboBoxRicerca">
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font size="12"/>
+                          <maximumRowCount value="8"/>
+                          <model>
+                            <item value="NOME"/>
+                            <item value="EMAIL"/>
+                            <item value="ACCOUNT"/>
+                            <item value="NUMERO FISSO"/>
+                            <item value="NUMERO MOBILE"/>
+                          </model>
                         </properties>
                       </component>
                     </children>
@@ -560,7 +576,7 @@
                         </properties>
                         <border type="none"/>
                         <children>
-                          <grid id="738c" binding="panelCreaContattoTop" layout-manager="GridLayoutManager" row-count="4" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                          <grid id="738c" binding="panelCreaContattoTop" layout-manager="GridLayoutManager" row-count="4" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                             <margin top="0" left="0" bottom="0" right="0"/>
                             <constraints>
                               <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -572,7 +588,7 @@
                             <children>
                               <component id="53049" class="javax.swing.JButton" binding="btnAddContact">
                                 <constraints>
-                                  <grid row="0" column="0" row-span="4" col-span="1" vsize-policy="0" hsize-policy="4" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                                  <grid row="0" column="0" row-span="4" col-span="2" vsize-policy="0" hsize-policy="4" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <alignmentX value="0.5"/>
@@ -582,7 +598,7 @@
                               </component>
                               <component id="8383" class="javax.swing.JLabel" binding="nomeLabel">
                                 <constraints>
-                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <alignmentX value="0.5"/>
@@ -594,7 +610,7 @@
                               </component>
                               <component id="2c72" class="javax.swing.JTextField" binding="textFieldNome">
                                 <constraints>
-                                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                                  <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
                                     <preferred-size width="140" height="-1"/>
                                   </grid>
                                 </constraints>
@@ -605,7 +621,7 @@
                               </component>
                               <component id="f1b87" class="javax.swing.JLabel" binding="cognomeLabel">
                                 <constraints>
-                                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                  <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <alignmentX value="0.5"/>
@@ -617,7 +633,7 @@
                               </component>
                               <component id="58397" class="javax.swing.JTextField" binding="textFieldCognome">
                                 <constraints>
-                                  <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                                  <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                                     <preferred-size width="140" height="-1"/>
                                   </grid>
                                 </constraints>
@@ -628,12 +644,23 @@
                               </component>
                               <component id="4c1e4" class="javax.swing.JCheckBox" binding="contattoPrivatoCheckBox" default-binding="true">
                                 <constraints>
-                                  <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <grid row="3" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <font size="16" style="1"/>
                                   <selected value="false"/>
                                   <text value="Contatto privato"/>
+                                </properties>
+                              </component>
+                              <component id="8b1e3" class="javax.swing.JButton" binding="btnAddContactModifica">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="4" col-span="1" vsize-policy="0" hsize-policy="4" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <alignmentX value="0.5"/>
+                                  <horizontalAlignment value="4"/>
+                                  <text value=""/>
+                                  <visible value="false"/>
                                 </properties>
                               </component>
                             </children>

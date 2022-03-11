@@ -17,6 +17,7 @@ public class ImplementazioneEmailPostgresDAO implements EmailDAO {
     private int index;
     private ArrayList<String> username = new ArrayList<>();
     private ArrayList<String> dominio = new ArrayList<>();
+    private int num;
 
     public ImplementazioneEmailPostgresDAO(){
         try {
@@ -57,4 +58,27 @@ public class ImplementazioneEmailPostgresDAO implements EmailDAO {
         }
     }
 
+    public int getcontNumEmail (int pk) throws SQLException{
+        s = connection.createStatement();
+        //QUERY DI CONTEGGIO
+        rs = s.executeQuery("SELECT COUNT (*) as CONTEGGIO " +
+                "FROM EMAIL " +
+                "WHERE ID_CONTATTO = "+pk);
+        while(rs.next()){
+            num = rs.getInt("CONTEGGIO");
+        }
+        return num;
+    }
+
+    public void getArrayEmail (ArrayList<String> array,int pk) throws SQLException{
+        s = connection.createStatement();
+        array.clear();
+        //QUERY DI CONTEGGIO
+        rs = s.executeQuery("SELECT USERNAME,DOMINIO " +
+                "FROM EMAIL " +
+                "WHERE ID_CONTATTO = "+pk);
+        while(rs.next()){
+            array.add(rs.getString("USERNAME")+"@"+rs.getString("DOMINIO"));
+        }
+    }
 }

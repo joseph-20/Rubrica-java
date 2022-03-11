@@ -8,9 +8,9 @@ public class ConnessioneDatabase {
     // ATTRIBUTI
     private static ConnessioneDatabase instance;
     private Connection connection = null;
-    private String nome = "gomwmhzurnduwv";
-    private String password = "94e9a2e201fd7fb2b28805cea46b519e3e10bfe689164cbac04292342cdb1328";
-    private String url = "jdbc:postgresql://ec2-63-34-153-52.eu-west-1.compute.amazonaws.com:5432/df1kj1nc91i2pn";
+    private String nome = "gmrbcvnzblxbqo";
+    private String password = "73adfbf723013b464edc8f3b143c7769d0b7a5cbd1ade30b1ad4662072d2ec42";
+    private String url = "jdbc:postgresql://ec2-54-194-147-61.eu-west-1.compute.amazonaws.com:5432/dcip2l877niggc";
     private String driver = "org.postgresql.Driver";
 
     // COSTRUTTORE

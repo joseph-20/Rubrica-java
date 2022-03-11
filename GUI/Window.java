@@ -191,6 +191,8 @@ public class Window {
     private JPanel panelSearchPrivati;
     private JButton btnBackPrivati;
     private JButton btnBack;
+    private JButton btnAddContactModifica;
+    private JComboBox comboBoxRicerca;
     private ImageIcon img;
     private DefaultListCellRenderer renderer;
     private DefaultListModel DlmServizi = new DefaultListModel();
@@ -208,6 +210,7 @@ public class Window {
     private ArrayList<String> numeroF = new ArrayList<>();
     private ArrayList<String> prefissoM = new ArrayList<>();
     private ArrayList<String> numeroM = new ArrayList<>();
+    private ArrayList<String> getStrings = new ArrayList<>();
     private Random rand = new Random();
     private int getpk;
 
@@ -245,6 +248,9 @@ public class Window {
         randImage.add("icon_orange.png");
         randImage.add("icon_purple.png");
         randImage.add("icon_white.png");
+        img = c.SetImageSize(".images/rubrica.png",512,512);
+        frame.setIconImage(img.getImage());
+
 
         //Blocco scorrimento ScrollBar e settaggio visibilità panel
         scrollPaneContatti.setViewportView(listContatti);    //Aggiungiamo una VerticalScrollBar alla JList
@@ -319,6 +325,11 @@ public class Window {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+
+                panelInfoContatti.setVisible(true);
+                c.swapVisibility(panelInfoContattoSinistra,panelCreaContatto);
+                contattiSplitPane.setDividerLocation(350);
+                frame.validate();
                 try {
                     //Settaggio visibilità dei lblServizi
                     if(c.getServizio("Messenger",pkContatti.get(listContatti.getSelectedIndex())) == null) lblMessenger.setVisible(false);
@@ -336,9 +347,6 @@ public class Window {
                     if(c.getServizio("Whatsapp",pkContatti.get(listContatti.getSelectedIndex())) == null) lblWhatsapp.setVisible(false);
                     else lblWhatsapp.setVisible(true);
 
-                    panelInfoContatti.setVisible(true);
-                    c.swapVisibility(panelInfoContattoSinistra,panelCreaContatto);
-                    contattiSplitPane.setDividerLocation(350);
                     //SET FOTO
                     if(c.getPath(pkContatti.get(listContatti.getSelectedIndex())) == null) {
                         img = c.SetImageSize(".images/" + randImage.get(rand.nextInt(randImage.size() - 1)), 200, 200);
@@ -2037,6 +2045,38 @@ public class Window {
             }
         });
 
+        //SETTAGGIO TEXT CURSOR NEI TEXTFIELD RICERCA
+        textFieldSearch.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldSearch.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+
+        //SETTAGGIO TEXT CURSOR NEI TEXTFIELD RICERCA
+        textFieldSearchPrivati.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldSearchPrivati.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+
         //SETTAGGIO TEXT CURSOR NEL TEXTFIELD NOME
         textFieldNome.addMouseListener(new MouseAdapter() {
             @Override
@@ -3387,12 +3427,535 @@ public class Window {
                 btnAggiungi.setVisible(false);
                 btnAnnulla.setVisible(false);
 
+                //settaggio btnAddContact
+                btnAddContact.setVisible(false);
+                btnAddContactModifica.setVisible(true);
                 try {
-                    //Settaggio lbl Nome
+                    if(c.getPath(pkContatti.get(listContatti.getSelectedIndex()))!=null) {
+                        img = c.SetImageSize(c.getPath(pkContatti.get(listContatti.getSelectedIndex())), 200, 200);
+                        btnAddContactModifica.setIcon(img);
+                    }else{
+                        img = c.SetImageSize(".images/" + randImage.get(rand.nextInt(randImage.size() - 1)), 200, 200);
+                        btnAddContactModifica.setIcon(img);
+                    }
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+
+                try {
+                    //Settaggio cont
+                    contEmail = (c.getcontNumEmail(pkContatti.get(listContatti.getSelectedIndex())));
+                    contNumeriFissi = (c.getcontNumNumeriFissi(pkContatti.get(listContatti.getSelectedIndex())));
+                    contNumeriMobili = (c.getcontNumNumeriMobili(pkContatti.get(listContatti.getSelectedIndex())));
+                    contIndirizziSecondari = (c.getcontNumIndirizziSecondari(pkContatti.get(listContatti.getSelectedIndex())));
+                    //Settaggio Nome
                     textFieldNome.setText(c.getNome(pkContatti.get(listContatti.getSelectedIndex())));
-                    //Settaggio lbl Cognome
+                    //Settaggio Cognome
                     textFieldCognome.setText(c.getCognome(pkContatti.get(listContatti.getSelectedIndex())));
-                    //Settaggio lbl Email
+                    //Settaggio Email
+                    switch (contEmail){
+                        case 1 : c.getArrayEmail(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldEmail0.setText(getStrings.get(0));
+                            break;
+                        case 2 : c.getArrayEmail(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldEmail0.setText(getStrings.get(0));
+                            textFieldEmail1.setText(getStrings.get(1));
+                            textFieldEmail1.setVisible(true);
+                            break;
+                        case 3: c.getArrayEmail(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldEmail0.setText(getStrings.get(0));
+                            textFieldEmail1.setText(getStrings.get(1));
+                            textFieldEmail1.setVisible(true);
+                            textFieldEmail2.setText(getStrings.get(2));
+                            textFieldEmail2.setVisible(true);
+                            break;
+                        case 4: c.getArrayEmail(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldEmail0.setText(getStrings.get(0));
+                            textFieldEmail1.setText(getStrings.get(1));
+                            textFieldEmail1.setVisible(true);
+                            textFieldEmail2.setText(getStrings.get(2));
+                            textFieldEmail2.setVisible(true);
+                            textFieldEmail3.setText(getStrings.get(3));
+                            textFieldEmail3.setVisible(true);
+                            break;
+                        case 5: c.getArrayEmail(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldEmail0.setText(getStrings.get(0));
+                            textFieldEmail1.setText(getStrings.get(1));
+                            textFieldEmail1.setVisible(true);
+                            textFieldEmail2.setText(getStrings.get(2));
+                            textFieldEmail2.setVisible(true);
+                            textFieldEmail3.setText(getStrings.get(3));
+                            textFieldEmail3.setVisible(true);
+                            textFieldEmail4.setText(getStrings.get(4));
+                            textFieldEmail4.setVisible(true);
+                            break;
+                        case 6: c.getArrayEmail(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldEmail0.setText(getStrings.get(0));
+                            textFieldEmail1.setText(getStrings.get(1));
+                            textFieldEmail1.setVisible(true);
+                            textFieldEmail2.setText(getStrings.get(2));
+                            textFieldEmail2.setVisible(true);
+                            textFieldEmail3.setText(getStrings.get(3));
+                            textFieldEmail3.setVisible(true);
+                            textFieldEmail4.setText(getStrings.get(4));
+                            textFieldEmail4.setVisible(true);
+                            textFieldEmail5.setText(getStrings.get(5));
+                            textFieldEmail5.setVisible(true);
+                            break;
+                        case 7: c.getArrayEmail(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldEmail0.setText(getStrings.get(0));
+                            textFieldEmail1.setText(getStrings.get(1));
+                            textFieldEmail1.setVisible(true);
+                            textFieldEmail2.setText(getStrings.get(2));
+                            textFieldEmail2.setVisible(true);
+                            textFieldEmail3.setText(getStrings.get(3));
+                            textFieldEmail3.setVisible(true);
+                            textFieldEmail4.setText(getStrings.get(4));
+                            textFieldEmail4.setVisible(true);
+                            textFieldEmail5.setText(getStrings.get(5));
+                            textFieldEmail5.setVisible(true);
+                            textFieldEmail6.setText(getStrings.get(6));
+                            textFieldEmail6.setVisible(true);
+                            break;
+                        case 8: c.getArrayEmail(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldEmail0.setText(getStrings.get(0));
+                            textFieldEmail1.setText(getStrings.get(1));
+                            textFieldEmail1.setVisible(true);
+                            textFieldEmail2.setText(getStrings.get(2));
+                            textFieldEmail2.setVisible(true);
+                            textFieldEmail3.setText(getStrings.get(3));
+                            textFieldEmail3.setVisible(true);
+                            textFieldEmail4.setText(getStrings.get(4));
+                            textFieldEmail4.setVisible(true);
+                            textFieldEmail5.setText(getStrings.get(5));
+                            textFieldEmail5.setVisible(true);
+                            textFieldEmail6.setText(getStrings.get(6));
+                            textFieldEmail6.setVisible(true);
+                            textFieldEmail7.setText(getStrings.get(7));
+                            textFieldEmail7.setVisible(true);
+                            break;
+                        case 9: c.getArrayEmail(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldEmail0.setText(getStrings.get(0));
+                            textFieldEmail1.setText(getStrings.get(1));
+                            textFieldEmail1.setVisible(true);
+                            textFieldEmail2.setText(getStrings.get(2));
+                            textFieldEmail2.setVisible(true);
+                            textFieldEmail3.setText(getStrings.get(3));
+                            textFieldEmail3.setVisible(true);
+                            textFieldEmail4.setText(getStrings.get(4));
+                            textFieldEmail4.setVisible(true);
+                            textFieldEmail5.setText(getStrings.get(5));
+                            textFieldEmail5.setVisible(true);
+                            textFieldEmail6.setText(getStrings.get(6));
+                            textFieldEmail6.setVisible(true);
+                            textFieldEmail7.setText(getStrings.get(7));
+                            textFieldEmail7.setVisible(true);
+                            textFieldEmail8.setText(getStrings.get(8));
+                            textFieldEmail8.setVisible(true);
+                            break;
+                        case 10: c.getArrayEmail(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldEmail0.setText(getStrings.get(0));
+                            textFieldEmail1.setText(getStrings.get(1));
+                            textFieldEmail1.setVisible(true);
+                            textFieldEmail2.setText(getStrings.get(2));
+                            textFieldEmail2.setVisible(true);
+                            textFieldEmail3.setText(getStrings.get(3));
+                            textFieldEmail3.setVisible(true);
+                            textFieldEmail4.setText(getStrings.get(4));
+                            textFieldEmail4.setVisible(true);
+                            textFieldEmail5.setText(getStrings.get(5));
+                            textFieldEmail5.setVisible(true);
+                            textFieldEmail6.setText(getStrings.get(6));
+                            textFieldEmail6.setVisible(true);
+                            textFieldEmail7.setText(getStrings.get(7));
+                            textFieldEmail7.setVisible(true);
+                            textFieldEmail8.setText(getStrings.get(8));
+                            textFieldEmail8.setVisible(true);
+                            textFieldEmail9.setText(getStrings.get(9));
+                            textFieldEmail9.setVisible(true);
+                            break;
+                    }
+
+                    //Settaggio NumeriFissi
+                    switch (contNumeriFissi){
+                        case 1 : c.getArrayNumeriFissi(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldNumeriFissi0.setText(getStrings.get(0));
+                            break;
+                        case 2 : c.getArrayNumeriFissi(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldNumeriFissi0.setText(getStrings.get(0));
+                            textFieldNumeriFissi1.setText(getStrings.get(1));
+                            textFieldNumeriFissi1.setVisible(true);
+                            break;
+                        case 3: c.getArrayNumeriFissi(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldNumeriFissi0.setText(getStrings.get(0));
+                            textFieldNumeriFissi1.setText(getStrings.get(1));
+                            textFieldNumeriFissi1.setVisible(true);
+                            textFieldNumeriFissi2.setText(getStrings.get(2));
+                            textFieldNumeriFissi2.setVisible(true);
+                            break;
+                        case 4: c.getArrayNumeriFissi(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldNumeriFissi0.setText(getStrings.get(0));
+                            textFieldNumeriFissi1.setText(getStrings.get(1));
+                            textFieldNumeriFissi1.setVisible(true);
+                            textFieldNumeriFissi2.setText(getStrings.get(2));
+                            textFieldNumeriFissi2.setVisible(true);
+                            textFieldNumeriFissi3.setText(getStrings.get(3));
+                            textFieldNumeriFissi3.setVisible(true);
+                            break;
+                        case 5: c.getArrayNumeriFissi(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldNumeriFissi0.setText(getStrings.get(0));
+                            textFieldNumeriFissi1.setText(getStrings.get(1));
+                            textFieldNumeriFissi1.setVisible(true);
+                            textFieldNumeriFissi2.setText(getStrings.get(2));
+                            textFieldNumeriFissi2.setVisible(true);
+                            textFieldNumeriFissi3.setText(getStrings.get(3));
+                            textFieldNumeriFissi3.setVisible(true);
+                            textFieldNumeriFissi4.setText(getStrings.get(4));
+                            textFieldNumeriFissi4.setVisible(true);
+                            break;
+                        case 6: c.getArrayNumeriFissi(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldNumeriFissi0.setText(getStrings.get(0));
+                            textFieldNumeriFissi1.setText(getStrings.get(1));
+                            textFieldNumeriFissi1.setVisible(true);
+                            textFieldNumeriFissi2.setText(getStrings.get(2));
+                            textFieldNumeriFissi2.setVisible(true);
+                            textFieldNumeriFissi3.setText(getStrings.get(3));
+                            textFieldNumeriFissi3.setVisible(true);
+                            textFieldNumeriFissi4.setText(getStrings.get(4));
+                            textFieldNumeriFissi4.setVisible(true);
+                            textFieldNumeriFissi5.setText(getStrings.get(5));
+                            textFieldNumeriFissi5.setVisible(true);
+
+                            break;
+                        case 7: c.getArrayNumeriFissi(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldNumeriFissi0.setText(getStrings.get(0));
+                            textFieldNumeriFissi1.setText(getStrings.get(1));
+                            textFieldNumeriFissi1.setVisible(true);
+                            textFieldNumeriFissi2.setText(getStrings.get(2));
+                            textFieldNumeriFissi2.setVisible(true);
+                            textFieldNumeriFissi3.setText(getStrings.get(3));
+                            textFieldNumeriFissi3.setVisible(true);
+                            textFieldNumeriFissi4.setText(getStrings.get(4));
+                            textFieldNumeriFissi4.setVisible(true);
+                            textFieldNumeriFissi5.setText(getStrings.get(5));
+                            textFieldNumeriFissi5.setVisible(true);
+                            textFieldNumeriFissi6.setText(getStrings.get(6));
+                            textFieldNumeriFissi6.setVisible(true);
+                            break;
+                        case 8: c.getArrayNumeriFissi(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldNumeriFissi0.setText(getStrings.get(0));
+                            textFieldNumeriFissi1.setText(getStrings.get(1));
+                            textFieldNumeriFissi1.setVisible(true);
+                            textFieldNumeriFissi2.setText(getStrings.get(2));
+                            textFieldNumeriFissi2.setVisible(true);
+                            textFieldNumeriFissi3.setText(getStrings.get(3));
+                            textFieldNumeriFissi3.setVisible(true);
+                            textFieldNumeriFissi4.setText(getStrings.get(4));
+                            textFieldNumeriFissi4.setVisible(true);
+                            textFieldNumeriFissi5.setText(getStrings.get(5));
+                            textFieldNumeriFissi5.setVisible(true);
+                            textFieldNumeriFissi6.setText(getStrings.get(6));
+                            textFieldNumeriFissi6.setVisible(true);
+                            textFieldNumeriFissi7.setText(getStrings.get(7));
+                            textFieldNumeriFissi7.setVisible(true);
+                            break;
+                        case 9: c.getArrayNumeriFissi(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldNumeriFissi0.setText(getStrings.get(0));
+                            textFieldNumeriFissi1.setText(getStrings.get(1));
+                            textFieldNumeriFissi1.setVisible(true);
+                            textFieldNumeriFissi2.setText(getStrings.get(2));
+                            textFieldNumeriFissi2.setVisible(true);
+                            textFieldNumeriFissi3.setText(getStrings.get(3));
+                            textFieldNumeriFissi3.setVisible(true);
+                            textFieldNumeriFissi4.setText(getStrings.get(4));
+                            textFieldNumeriFissi4.setVisible(true);
+                            textFieldNumeriFissi5.setText(getStrings.get(5));
+                            textFieldNumeriFissi5.setVisible(true);
+                            textFieldNumeriFissi6.setText(getStrings.get(6));
+                            textFieldNumeriFissi6.setVisible(true);
+                            textFieldNumeriFissi7.setText(getStrings.get(7));
+                            textFieldNumeriFissi7.setVisible(true);
+                            textFieldNumeriFissi8.setText(getStrings.get(8));
+                            textFieldNumeriFissi8.setVisible(true);
+                            break;
+                        case 10: c.getArrayNumeriFissi(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldNumeriFissi0.setText(getStrings.get(0));
+                            textFieldNumeriFissi1.setText(getStrings.get(1));
+                            textFieldNumeriFissi1.setVisible(true);
+                            textFieldNumeriFissi2.setText(getStrings.get(2));
+                            textFieldNumeriFissi2.setVisible(true);
+                            textFieldNumeriFissi3.setText(getStrings.get(3));
+                            textFieldNumeriFissi3.setVisible(true);
+                            textFieldNumeriFissi4.setText(getStrings.get(4));
+                            textFieldNumeriFissi4.setVisible(true);
+                            textFieldNumeriFissi5.setText(getStrings.get(5));
+                            textFieldNumeriFissi5.setVisible(true);
+                            textFieldNumeriFissi6.setText(getStrings.get(6));
+                            textFieldNumeriFissi6.setVisible(true);
+                            textFieldNumeriFissi7.setText(getStrings.get(7));
+                            textFieldNumeriFissi7.setVisible(true);
+                            textFieldNumeriFissi8.setText(getStrings.get(8));
+                            textFieldNumeriFissi8.setVisible(true);
+                            textFieldNumeriFissi9.setText(getStrings.get(9));
+                            textFieldNumeriFissi9.setVisible(true);
+                            break;
+                    }
+
+                    //Settaggio NumeriMobili
+                    switch (contNumeriMobili){
+                        case 1 : c.getArrayNumeriMobili(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldNumeriMobili0.setText(getStrings.get(0));
+                            break;
+                        case 2 : c.getArrayNumeriMobili(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldNumeriMobili0.setText(getStrings.get(0));
+                            textFieldNumeriMobili1.setText(getStrings.get(1));
+                            textFieldNumeriMobili1.setVisible(true);
+                            break;
+                        case 3: c.getArrayNumeriMobili(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldNumeriMobili0.setText(getStrings.get(0));
+                            textFieldNumeriMobili1.setText(getStrings.get(1));
+                            textFieldNumeriMobili1.setVisible(true);
+                            textFieldNumeriMobili2.setText(getStrings.get(2));
+                            textFieldNumeriMobili2.setVisible(true);
+                            break;
+                        case 4: c.getArrayNumeriMobili(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldNumeriMobili0.setText(getStrings.get(0));
+                            textFieldNumeriMobili1.setText(getStrings.get(1));
+                            textFieldNumeriMobili1.setVisible(true);
+                            textFieldNumeriMobili2.setText(getStrings.get(2));
+                            textFieldNumeriMobili2.setVisible(true);
+                            textFieldNumeriMobili3.setText(getStrings.get(3));
+                            textFieldNumeriMobili3.setVisible(true);
+                            break;
+                        case 5: c.getArrayNumeriMobili(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldNumeriMobili0.setText(getStrings.get(0));
+                            textFieldNumeriMobili1.setText(getStrings.get(1));
+                            textFieldNumeriMobili1.setVisible(true);
+                            textFieldNumeriMobili2.setText(getStrings.get(2));
+                            textFieldNumeriMobili2.setVisible(true);
+                            textFieldNumeriMobili3.setText(getStrings.get(3));
+                            textFieldNumeriMobili3.setVisible(true);
+                            textFieldNumeriMobili4.setText(getStrings.get(4));
+                            textFieldNumeriMobili4.setVisible(true);
+                            break;
+                        case 6: c.getArrayNumeriMobili(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldNumeriMobili0.setText(getStrings.get(0));
+                            textFieldNumeriMobili1.setText(getStrings.get(1));
+                            textFieldNumeriMobili1.setVisible(true);
+                            textFieldNumeriMobili2.setText(getStrings.get(2));
+                            textFieldNumeriMobili2.setVisible(true);
+                            textFieldNumeriMobili3.setText(getStrings.get(3));
+                            textFieldNumeriMobili3.setVisible(true);
+                            textFieldNumeriMobili4.setText(getStrings.get(4));
+                            textFieldNumeriMobili4.setVisible(true);
+                            textFieldNumeriMobili5.setText(getStrings.get(5));
+                            textFieldNumeriMobili5.setVisible(true);
+                            break;
+                        case 7: c.getArrayNumeriMobili(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldNumeriMobili0.setText(getStrings.get(0));
+                            textFieldNumeriMobili1.setText(getStrings.get(1));
+                            textFieldNumeriMobili1.setVisible(true);
+                            textFieldNumeriMobili2.setText(getStrings.get(2));
+                            textFieldNumeriMobili2.setVisible(true);
+                            textFieldNumeriMobili3.setText(getStrings.get(3));
+                            textFieldNumeriMobili3.setVisible(true);
+                            textFieldNumeriMobili4.setText(getStrings.get(4));
+                            textFieldNumeriMobili4.setVisible(true);
+                            textFieldNumeriMobili5.setText(getStrings.get(5));
+                            textFieldNumeriMobili5.setVisible(true);
+                            textFieldNumeriMobili6.setText(getStrings.get(6));
+                            textFieldNumeriMobili6.setVisible(true);
+                            break;
+                        case 8: c.getArrayNumeriMobili(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldNumeriMobili0.setText(getStrings.get(0));
+                            textFieldNumeriMobili1.setText(getStrings.get(1));
+                            textFieldNumeriMobili1.setVisible(true);
+                            textFieldNumeriMobili2.setText(getStrings.get(2));
+                            textFieldNumeriMobili2.setVisible(true);
+                            textFieldNumeriMobili3.setText(getStrings.get(3));
+                            textFieldNumeriMobili3.setVisible(true);
+                            textFieldNumeriMobili4.setText(getStrings.get(4));
+                            textFieldNumeriMobili4.setVisible(true);
+                            textFieldNumeriMobili5.setText(getStrings.get(5));
+                            textFieldNumeriMobili5.setVisible(true);
+                            textFieldNumeriMobili6.setText(getStrings.get(6));
+                            textFieldNumeriMobili6.setVisible(true);
+                            textFieldNumeriMobili7.setText(getStrings.get(7));
+                            textFieldNumeriMobili7.setVisible(true);
+                            break;
+                        case 9: c.getArrayNumeriMobili(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldNumeriMobili0.setText(getStrings.get(0));
+                            textFieldNumeriMobili1.setText(getStrings.get(1));
+                            textFieldNumeriMobili1.setVisible(true);
+                            textFieldNumeriMobili2.setText(getStrings.get(2));
+                            textFieldNumeriMobili2.setVisible(true);
+                            textFieldNumeriMobili3.setText(getStrings.get(3));
+                            textFieldNumeriMobili3.setVisible(true);
+                            textFieldNumeriMobili4.setText(getStrings.get(4));
+                            textFieldNumeriMobili4.setVisible(true);
+                            textFieldNumeriMobili5.setText(getStrings.get(5));
+                            textFieldNumeriMobili5.setVisible(true);
+                            textFieldNumeriMobili6.setText(getStrings.get(6));
+                            textFieldNumeriMobili6.setVisible(true);
+                            textFieldNumeriMobili7.setText(getStrings.get(7));
+                            textFieldNumeriMobili7.setVisible(true);
+                            textFieldNumeriMobili8.setText(getStrings.get(8));
+                            textFieldNumeriMobili8.setVisible(true);
+                            break;
+                        case 10: c.getArrayNumeriMobili(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldNumeriMobili0.setText(getStrings.get(0));
+                            textFieldNumeriMobili1.setText(getStrings.get(1));
+                            textFieldNumeriMobili1.setVisible(true);
+                            textFieldNumeriMobili2.setText(getStrings.get(2));
+                            textFieldNumeriMobili2.setVisible(true);
+                            textFieldNumeriMobili3.setText(getStrings.get(3));
+                            textFieldNumeriMobili3.setVisible(true);
+                            textFieldNumeriMobili4.setText(getStrings.get(4));
+                            textFieldNumeriMobili4.setVisible(true);
+                            textFieldNumeriMobili5.setText(getStrings.get(5));
+                            textFieldNumeriMobili5.setVisible(true);
+                            textFieldNumeriMobili6.setText(getStrings.get(6));
+                            textFieldNumeriMobili6.setVisible(true);
+                            textFieldNumeriMobili7.setText(getStrings.get(7));
+                            textFieldNumeriMobili7.setVisible(true);
+                            textFieldNumeriMobili8.setText(getStrings.get(8));
+                            textFieldNumeriMobili8.setVisible(true);
+                            textFieldNumeriMobili9.setText(getStrings.get(9));
+                            textFieldNumeriMobili9.setVisible(true);
+                            break;
+                    }
+
+                    //Settaggio Indirizzo principale
+                    if(!c.getIndirizzoPrincipaleNoHTML(pkContatti.get(listContatti.getSelectedIndex())).equals("NOT FOUND")){
+                        textFieldIndirizzoPrincipale.setText(c.getIndirizzoPrincipaleNoHTML(pkContatti.get(listContatti.getSelectedIndex())));
+                    }
+
+                    //Settaggio IndirizziSecondari
+                    switch (contIndirizziSecondari){
+                        case 1 : c.getArrayIndirizziSecondari(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldIndirizziSecondari0.setText(getStrings.get(0));
+                            break;
+                        case 2 : c.getArrayIndirizziSecondari(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldIndirizziSecondari0.setText(getStrings.get(0));
+                            textFieldIndirizziSecondari1.setText(getStrings.get(1));
+                            textFieldIndirizziSecondari1.setVisible(true);
+                            break;
+                        case 3: c.getArrayIndirizziSecondari(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldIndirizziSecondari0.setText(getStrings.get(0));
+                            textFieldIndirizziSecondari1.setText(getStrings.get(1));
+                            textFieldIndirizziSecondari1.setVisible(true);
+                            textFieldIndirizziSecondari2.setText(getStrings.get(2));
+                            textFieldIndirizziSecondari2.setVisible(true);
+                            break;
+                        case 4: c.getArrayIndirizziSecondari(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldIndirizziSecondari0.setText(getStrings.get(0));
+                            textFieldIndirizziSecondari1.setText(getStrings.get(1));
+                            textFieldIndirizziSecondari1.setVisible(true);
+                            textFieldIndirizziSecondari2.setText(getStrings.get(2));
+                            textFieldIndirizziSecondari2.setVisible(true);
+                            textFieldIndirizziSecondari3.setText(getStrings.get(3));
+                            textFieldIndirizziSecondari3.setVisible(true);
+                            break;
+                        case 5: c.getArrayIndirizziSecondari(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldIndirizziSecondari0.setText(getStrings.get(0));
+                            textFieldIndirizziSecondari1.setText(getStrings.get(1));
+                            textFieldIndirizziSecondari1.setVisible(true);
+                            textFieldIndirizziSecondari2.setText(getStrings.get(2));
+                            textFieldIndirizziSecondari2.setVisible(true);
+                            textFieldIndirizziSecondari3.setText(getStrings.get(3));
+                            textFieldIndirizziSecondari3.setVisible(true);
+                            textFieldIndirizziSecondari4.setText(getStrings.get(4));
+                            textFieldIndirizziSecondari4.setVisible(true);
+                            break;
+                        case 6: c.getArrayIndirizziSecondari(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldIndirizziSecondari0.setText(getStrings.get(0));
+                            textFieldIndirizziSecondari1.setText(getStrings.get(1));
+                            textFieldIndirizziSecondari1.setVisible(true);
+                            textFieldIndirizziSecondari2.setText(getStrings.get(2));
+                            textFieldIndirizziSecondari2.setVisible(true);
+                            textFieldIndirizziSecondari3.setText(getStrings.get(3));
+                            textFieldIndirizziSecondari3.setVisible(true);
+                            textFieldIndirizziSecondari4.setText(getStrings.get(4));
+                            textFieldIndirizziSecondari4.setVisible(true);
+                            textFieldIndirizziSecondari5.setText(getStrings.get(5));
+                            textFieldIndirizziSecondari5.setVisible(true);
+                            break;
+                        case 7: c.getArrayIndirizziSecondari(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldIndirizziSecondari0.setText(getStrings.get(0));
+                            textFieldIndirizziSecondari1.setText(getStrings.get(1));
+                            textFieldIndirizziSecondari1.setVisible(true);
+                            textFieldIndirizziSecondari2.setText(getStrings.get(2));
+                            textFieldIndirizziSecondari2.setVisible(true);
+                            textFieldIndirizziSecondari3.setText(getStrings.get(3));
+                            textFieldIndirizziSecondari3.setVisible(true);
+                            textFieldIndirizziSecondari4.setText(getStrings.get(4));
+                            textFieldIndirizziSecondari4.setVisible(true);
+                            textFieldIndirizziSecondari5.setText(getStrings.get(5));
+                            textFieldIndirizziSecondari5.setVisible(true);
+                            textFieldIndirizziSecondari6.setText(getStrings.get(6));
+                            textFieldIndirizziSecondari6.setVisible(true);
+                            break;
+                        case 8: c.getArrayIndirizziSecondari(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldIndirizziSecondari0.setText(getStrings.get(0));
+                            textFieldIndirizziSecondari1.setText(getStrings.get(1));
+                            textFieldIndirizziSecondari1.setVisible(true);
+                            textFieldIndirizziSecondari2.setText(getStrings.get(2));
+                            textFieldIndirizziSecondari2.setVisible(true);
+                            textFieldIndirizziSecondari3.setText(getStrings.get(3));
+                            textFieldIndirizziSecondari3.setVisible(true);
+                            textFieldIndirizziSecondari4.setText(getStrings.get(4));
+                            textFieldIndirizziSecondari4.setVisible(true);
+                            textFieldIndirizziSecondari5.setText(getStrings.get(5));
+                            textFieldIndirizziSecondari5.setVisible(true);
+                            textFieldIndirizziSecondari6.setText(getStrings.get(6));
+                            textFieldIndirizziSecondari6.setVisible(true);
+                            textFieldIndirizziSecondari7.setText(getStrings.get(7));
+                            textFieldIndirizziSecondari7.setVisible(true);
+                            break;
+                        case 9: c.getArrayIndirizziSecondari(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldIndirizziSecondari0.setText(getStrings.get(0));
+                            textFieldIndirizziSecondari1.setText(getStrings.get(1));
+                            textFieldIndirizziSecondari1.setVisible(true);
+                            textFieldIndirizziSecondari2.setText(getStrings.get(2));
+                            textFieldIndirizziSecondari2.setVisible(true);
+                            textFieldIndirizziSecondari3.setText(getStrings.get(3));
+                            textFieldIndirizziSecondari3.setVisible(true);
+                            textFieldIndirizziSecondari4.setText(getStrings.get(4));
+                            textFieldIndirizziSecondari4.setVisible(true);
+                            textFieldIndirizziSecondari5.setText(getStrings.get(5));
+                            textFieldIndirizziSecondari5.setVisible(true);
+                            textFieldIndirizziSecondari6.setText(getStrings.get(6));
+                            textFieldIndirizziSecondari6.setVisible(true);
+                            textFieldIndirizziSecondari7.setText(getStrings.get(7));
+                            textFieldIndirizziSecondari7.setVisible(true);
+                            textFieldIndirizziSecondari8.setText(getStrings.get(8));
+                            textFieldIndirizziSecondari8.setVisible(true);
+                            break;
+                        case 10: c.getArrayIndirizziSecondari(getStrings,pkContatti.get(listContatti.getSelectedIndex()));
+                            textFieldIndirizziSecondari0.setText(getStrings.get(0));
+                            textFieldIndirizziSecondari1.setText(getStrings.get(1));
+                            textFieldIndirizziSecondari1.setVisible(true);
+                            textFieldIndirizziSecondari2.setText(getStrings.get(2));
+                            textFieldIndirizziSecondari2.setVisible(true);
+                            textFieldIndirizziSecondari3.setText(getStrings.get(3));
+                            textFieldIndirizziSecondari3.setVisible(true);
+                            textFieldIndirizziSecondari4.setText(getStrings.get(4));
+                            textFieldIndirizziSecondari4.setVisible(true);
+                            textFieldIndirizziSecondari5.setText(getStrings.get(5));
+                            textFieldIndirizziSecondari5.setVisible(true);
+                            textFieldIndirizziSecondari6.setText(getStrings.get(6));
+                            textFieldIndirizziSecondari6.setVisible(true);
+                            textFieldIndirizziSecondari7.setText(getStrings.get(7));
+                            textFieldIndirizziSecondari7.setVisible(true);
+                            textFieldIndirizziSecondari8.setText(getStrings.get(8));
+                            textFieldIndirizziSecondari8.setVisible(true);
+                            textFieldIndirizziSecondari9.setText(getStrings.get(9));
+                            textFieldIndirizziSecondari9.setVisible(true);
+                            break;
+                    }
+
+
+
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }

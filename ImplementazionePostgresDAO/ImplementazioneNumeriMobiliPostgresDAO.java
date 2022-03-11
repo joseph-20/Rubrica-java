@@ -15,7 +15,7 @@ public class ImplementazioneNumeriMobiliPostgresDAO implements NumeriMobiliDAO {
     private ResultSet rs;
     private Statement s;
     private int cont;
-
+    private int num;
     public ImplementazioneNumeriMobiliPostgresDAO(){
         try {
             connection = ConnessioneDatabase.getInstance().getConnection();
@@ -47,6 +47,30 @@ public class ImplementazioneNumeriMobiliPostgresDAO implements NumeriMobiliDAO {
         for(int i=0;i<n;i++){
             s.executeUpdate("INSERT INTO NUMERO_MOBILE " +
                     "VALUES ('"+prefisso.get(i)+"','"+numero.get(i)+"',"+id+")");
+        }
+    }
+
+    public int getcontNumNumeriMobili(int pk) throws SQLException{
+        s = connection.createStatement();
+        //QUERY DI CONTEGGIO
+        rs = s.executeQuery("SELECT COUNT (*) as CONTEGGIO " +
+                "FROM NUMERO_MOBILE " +
+                "WHERE ID_CONTATTO = "+pk);
+        while(rs.next()){
+            num = rs.getInt("CONTEGGIO");
+        }
+        return num;
+    }
+
+    public void getArrayNumeriMobili (ArrayList<String> array,int pk) throws SQLException{
+        s = connection.createStatement();
+        array.clear();
+        //QUERY DI CONTEGGIO
+        rs = s.executeQuery("SELECT PREFISSO,NUMERO " +
+                "FROM NUMERO_MOBILE " +
+                "WHERE ID_CONTATTO = "+pk);
+        while(rs.next()){
+            array.add(rs.getString("PREFISSO")+rs.getString("NUMERO"));
         }
     }
 }

@@ -6,4 +6,6 @@ public interface EmailDAO {
 
     public String getEmail(int pk) throws SQLException;
     public void creaEmail (ArrayList<String> mail, int id, int n) throws SQLException;
+    public int getcontNumEmail (int pk) throws SQLException;
+    public void getArrayEmail (ArrayList<String> array,int pk) throws SQLException;
 }

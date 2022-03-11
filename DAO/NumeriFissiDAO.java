@@ -7,4 +7,6 @@ public interface NumeriFissiDAO {
 
     public String getNumeriFissi(int pk) throws SQLException;
     public void creaNumeriFissi (ArrayList<String> prefisso, ArrayList<String> numero, int id, int n) throws SQLException;
+    public int getcontNumNumeriFissi (int pk) throws SQLException;
+    public void getArrayNumeriFissi (ArrayList<String> array,int pk) throws SQLException;
 }

@@ -15,6 +15,7 @@ public class ImplementazioneNumeriFissiPostgresDAO implements NumeriFissiDAO {
     private ResultSet rs;
     private Statement s;
     private int cont;
+    private int num;
 
     public ImplementazioneNumeriFissiPostgresDAO(){
         try {
@@ -47,6 +48,30 @@ public class ImplementazioneNumeriFissiPostgresDAO implements NumeriFissiDAO {
         for(int i=0;i<n;i++){
             s.executeUpdate("INSERT INTO NUMERO_FISSO " +
                     "VALUES ('"+prefisso.get(i)+"','"+numero.get(i)+"',"+id+")");
+        }
+    }
+
+    public int getcontNumNumeriFissi (int pk) throws SQLException{
+        s = connection.createStatement();
+        //QUERY DI CONTEGGIO
+        rs = s.executeQuery("SELECT COUNT (*) as CONTEGGIO " +
+                "FROM NUMERO_FISSO " +
+                "WHERE ID_CONTATTO = "+pk);
+        while(rs.next()){
+            num = rs.getInt("CONTEGGIO");
+        }
+        return num;
+    }
+
+    public void getArrayNumeriFissi (ArrayList<String> array,int pk) throws SQLException{
+        s = connection.createStatement();
+        array.clear();
+        //QUERY DI CONTEGGIO
+        rs = s.executeQuery("SELECT PREFISSO,NUMERO " +
+                "FROM NUMERO_FISSO " +
+                "WHERE ID_CONTATTO = "+pk);
+        while(rs.next()){
+            array.add(rs.getString("PREFISSO")+rs.getString("NUMERO"));
         }
     }
 }

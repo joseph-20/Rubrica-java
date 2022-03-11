@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class ImplementazioneIndirizziSecondariPostgresDAO implements IndirizziSecondariDAO {
     private Connection connection;
@@ -13,6 +14,7 @@ public class ImplementazioneIndirizziSecondariPostgresDAO implements IndirizziSe
     private ResultSet rs;
     private Statement s;
     private int cont;
+    private int num;
 
     public ImplementazioneIndirizziSecondariPostgresDAO(){
         try {
@@ -37,5 +39,29 @@ public class ImplementazioneIndirizziSecondariPostgresDAO implements IndirizziSe
         indirizziSecondari = indirizziSecondari+"<br/><html>";
         if(cont==0) return "NOT FOUND";
         return indirizziSecondari;
+    }
+
+    public int getcontNumIndirizziSecondari(int pk) throws SQLException{
+        s = connection.createStatement();
+        //QUERY DI CONTEGGIO
+        rs = s.executeQuery("SELECT COUNT (*) as CONTEGGIO " +
+                "FROM INDIRIZZO_SECONDARIO " +
+                "WHERE ID_CONTATTO = "+pk);
+        while(rs.next()){
+            num = rs.getInt("CONTEGGIO");
+        }
+        return num;
+    }
+
+    public void getArrayIndirizziSecondari (ArrayList<String> array, int pk) throws SQLException{
+        s = connection.createStatement();
+        array.clear();
+        //QUERY DI CONTEGGIO
+        rs = s.executeQuery("SELECT VIA,CIVICO,CITTA,CAP,NAZIONE " +
+                "FROM INDIRIZZO_SECONDARIO " +
+                "WHERE ID_CONTATTO = "+pk);
+        while(rs.next()){
+            array.add(rs.getString("VIA")+","+rs.getString("CIVICO")+","+rs.getString("CITTA")+","+rs.getString("CAP")+","+rs.getString("NAZIONE"));
+        }
     }
 }
