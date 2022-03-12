@@ -303,7 +303,7 @@ public class Window {
         //ELIMINAZIONE BORDER AUTOMATICO DELLO SCROLL
         infoBottomScroll.setBorder(null);
 
-        //INTERAZIONI BTNBACKPRIVATI
+        //INTERAZIONI BTNBACK
         btnBack.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -416,6 +416,7 @@ public class Window {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+                panelInfoContatti.setVisible(false);
                 DLMContatti.clear();
                 try {
                     if(comboBoxRicerca.getSelectedItem().toString().equals("NOME")) {
@@ -445,14 +446,35 @@ public class Window {
             }
         });
 
+
         //Interazioni btnSearchPrivati
         btnSearchPrivati.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+                InfoContattiPrivata.setVisible(false);
                 DLMContattiPrivati.clear();
                 try {
-                    DLMContattiPrivati = c.getContattiSearchPrivati(textFieldSearchPrivati.getText(),pkContattiPrivati);
+                    if(comboBoxRicerca.getSelectedItem().toString().equals("NOME")) {
+                        DLMContattiPrivati.removeAllElements();
+                        DLMContattiPrivati = c.getContattiSearchPrivati(textFieldSearchPrivati.getText(), pkContattiPrivati);
+                    }
+                    else if(comboBoxRicerca.getSelectedItem().toString().equals("EMAIL")){
+                        DLMContattiPrivati.removeAllElements();
+                        DLMContattiPrivati = c.getContattiSearchEmailPrivati(textFieldSearchPrivati.getText(), pkContattiPrivati);
+                    }
+                    else if(comboBoxRicerca.getSelectedItem().toString().equals("ACCOUNT")){
+                        DLMContattiPrivati.removeAllElements();
+                        DLMContattiPrivati = c.getContattiSearchUsernamePrivati(textFieldSearchPrivati.getText(),pkContattiPrivati);
+                    }
+                    else if(comboBoxRicerca.getSelectedItem().toString().equals("NUMERO FISSO")){
+                        DLMContattiPrivati.removeAllElements();
+                        DLMContattiPrivati = c.getContattiSearchNumeriFissiPrivati(textFieldSearchPrivati.getText(),pkContattiPrivati);
+                    }
+                    else if(comboBoxRicerca.getSelectedItem().toString().equals("NUMERO MOBILE")){
+                        DLMContattiPrivati.removeAllElements();
+                        DLMContattiPrivati = c.getContattiSearchNumeriMobiliPrivati(textFieldSearchPrivati.getText(),pkContattiPrivati);
+                    }
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
