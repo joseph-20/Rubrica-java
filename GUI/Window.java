@@ -3462,12 +3462,8 @@ public class Window {
                 btnAddContact.setIcon(img);
 
                 //Settaggio bottoni
-                btnReindirizzamentiModifica.setVisible(true);
                 btnAggiornaModifica.setVisible(true);
-                btnAnnullaModifica.setVisible(true);
-                btnReindirizzamentiCreaContatto.setVisible(false);
                 btnAggiungi.setVisible(false);
-                btnAnnulla.setVisible(false);
 
                 //settaggio btnAddContact
                 btnAddContact.setVisible(false);
@@ -4003,41 +3999,6 @@ public class Window {
                 }
             }
         });
-        //INTERAZIONI BTNANNULLAMODIFICA
-        btnAnnullaModifica.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                //Settaggio bottoni
-                btnReindirizzamentiModifica.setVisible(false);
-                btnAggiornaModifica.setVisible(false);
-                btnAnnullaModifica.setVisible(false);
-                btnReindirizzamentiCreaContatto.setVisible(true);
-                btnAggiungi.setVisible(true);
-                btnAnnulla.setVisible(true);
-
-                //Torna alla schermata di prima
-                panelInfoContatti.setVisible(true);
-                c.swapVisibility(panelInfoContattoSinistra,panelCreaContatto);
-                contattiSplitPane.setDividerLocation(350);
-            }
-        });
-
-        //INTERAZIONI BTNAGGIORNAMODIFICA
-        btnAggiornaModifica.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-            }
-        });
-
-        //INTERAZIONI BTNAGGIORNAMODIFICA
-        btnReindirizzamentiModifica.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-            }
-        });
 
         //SETTAGGIO ZONA PRIVATA
         //Listener contattoprivato click
@@ -4440,6 +4401,532 @@ public class Window {
             }
         });
 
+        //Interazione btnAggiornaModifica
+        btnAggiornaModifica.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                if (textFieldNome.getText().equals("")) {
+                    img = c.SetImageSize(".images/warning.png", 30, 30);
+                    JOptionPane.showMessageDialog(null, "Non è stato inserito il nome del contatto!", "ATTENZIONE!", 1, img);
+                }
+                //SE NON E' STATO INSERITO UN COGNOME AL CONTATTO NON CONTINUARE
+                else if(textFieldCognome.getText().equals("")){
+                    img = c.SetImageSize(".images/warning.png", 30, 30);
+                    JOptionPane.showMessageDialog(null, "Non è stato inserito il cognome del contatto", "ATTENZIONE!", 1, img);
+                }
+                //SE NON E' STATO INSERITO UN INDIRIZZO PRINCIPALE AL CONTATTO NON CONTINUARE
+                else if(textFieldIndirizzoPrincipale.getText().equals("")){
+                    img = c.SetImageSize(".images/warning.png", 30, 30);
+                    JOptionPane.showMessageDialog(null, "Non è stato inserito l'indirizzo principale del contatto!", "ATTENZIONE!", 1, img);
+                }else{
+                    try {
+                        //QUERY CREA CONTATTO
+                        c.setIdToLastMessaging(pkContatti.get(listContatti.getSelectedIndex()),(c.getLastId()));
+                        c.setIdToLastReindirizzamenti(pkContatti.get(listContatti.getSelectedIndex()),(c.getLastId()));
+                        c.cancellaContatto(pkContatti.get(listContatti.getSelectedIndex()));
+                        if (jfc.getSelectedFile() == null) {
+                            getpk = c.creaContatto("null", textFieldNome.getText(), textFieldCognome.getText(), contattoPrivatoCheckBox.isSelected());
+                        } else {
+                            getpk = c.creaContatto("'C:/Users/39366/IdeaProjects/Rubrica-java/.images/" + (c.getLastId()+1)+"'", textFieldNome.getText(), textFieldCognome.getText(), contattoPrivatoCheckBox.isSelected());
+                        }
+                        //QUERY CREA EMAIL
+                        email.clear();
+                        if(contEmail==1 && !textFieldEmail0.getText().equals("")) {
+                            email.add(textFieldEmail0.getText());
+                            c.creaEmail(email, getpk, 1);
+                        }
+                        switch(contEmail){
+                            case 2 :
+                                email.add(textFieldEmail0.getText());
+                                email.add(textFieldEmail1.getText());
+                                c.creaEmail(email,getpk,2);
+                                break;
+                            case 3 :
+                                email.add(textFieldEmail0.getText());
+                                email.add(textFieldEmail1.getText());
+                                email.add(textFieldEmail2.getText());
+                                c.creaEmail(email,getpk,3);
+                                break;
+                            case 4 :
+                                email.add(textFieldEmail0.getText());
+                                email.add(textFieldEmail1.getText());
+                                email.add(textFieldEmail2.getText());
+                                email.add(textFieldEmail3.getText());
+                                c.creaEmail(email,getpk,4);
+                                break;
+                            case 5:
+                                email.add(textFieldEmail0.getText());
+                                email.add(textFieldEmail1.getText());
+                                email.add(textFieldEmail2.getText());
+                                email.add(textFieldEmail3.getText());
+                                email.add(textFieldEmail4.getText());
+                                c.creaEmail(email,getpk,5);
+                                break;
+                            case 6 :
+                                email.add(textFieldEmail0.getText());
+                                email.add(textFieldEmail1.getText());
+                                email.add(textFieldEmail2.getText());
+                                email.add(textFieldEmail3.getText());
+                                email.add(textFieldEmail4.getText());
+                                email.add(textFieldEmail5.getText());
+                                c.creaEmail(email,getpk,6);
+                                break;
+                            case 7 :
+                                email.add(textFieldEmail0.getText());
+                                email.add(textFieldEmail1.getText());
+                                email.add(textFieldEmail2.getText());
+                                email.add(textFieldEmail3.getText());
+                                email.add(textFieldEmail4.getText());
+                                email.add(textFieldEmail5.getText());
+                                email.add(textFieldEmail6.getText());
+                                c.creaEmail(email,getpk,7);
+                                break;
+                            case 8 :
+                                email.add(textFieldEmail0.getText());
+                                email.add(textFieldEmail1.getText());
+                                email.add(textFieldEmail2.getText());
+                                email.add(textFieldEmail3.getText());
+                                email.add(textFieldEmail4.getText());
+                                email.add(textFieldEmail5.getText());
+                                email.add(textFieldEmail6.getText());
+                                email.add(textFieldEmail7.getText());
+                                c.creaEmail(email,getpk,8);
+                                break;
+                            case 9 :
+                                email.add(textFieldEmail0.getText());
+                                email.add(textFieldEmail1.getText());
+                                email.add(textFieldEmail2.getText());
+                                email.add(textFieldEmail3.getText());
+                                email.add(textFieldEmail4.getText());
+                                email.add(textFieldEmail5.getText());
+                                email.add(textFieldEmail6.getText());
+                                email.add(textFieldEmail7.getText());
+                                email.add(textFieldEmail8.getText());
+                                c.creaEmail(email,getpk,9);
+                                break;
+                            case 10 :
+                                email.add(textFieldEmail0.getText());
+                                email.add(textFieldEmail1.getText());
+                                email.add(textFieldEmail2.getText());
+                                email.add(textFieldEmail3.getText());
+                                email.add(textFieldEmail4.getText());
+                                email.add(textFieldEmail5.getText());
+                                email.add(textFieldEmail6.getText());
+                                email.add(textFieldEmail7.getText());
+                                email.add(textFieldEmail8.getText());
+                                email.add(textFieldEmail9.getText());
+                                c.creaEmail(email,getpk,10);
+                                break;
+                        }
+
+                        //QUERY CREA NUMERI FISSI
+                        prefissoF.clear();
+                        numeroF.clear();
+                        if(contNumeriFissi==1 && !textFieldNumeriFissi0.getText().equals("")){
+                            prefissoF.add(textFieldNumeriFissi0.getText().substring(0,3));
+                            numeroF.add(textFieldNumeriFissi0.getText().substring(3));
+                            c.creaNumeriFissi(prefissoF,numeroF,getpk,1);
+                        }
+                        switch(contNumeriFissi){
+                            case 2 :
+                                prefissoF.add(textFieldNumeriFissi0.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi0.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi1.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi1.getText().substring(3));
+                                c.creaNumeriFissi(prefissoF,numeroF,getpk,2);
+                                break;
+                            case 3 :
+                                prefissoF.add(textFieldNumeriFissi0.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi0.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi1.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi1.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi2.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi2.getText().substring(3));
+                                c.creaNumeriFissi(prefissoF,numeroF,getpk,3);
+                                break;
+                            case 4 :
+                                prefissoF.add(textFieldNumeriFissi0.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi0.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi1.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi1.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi2.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi2.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi3.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi3.getText().substring(3));
+                                c.creaNumeriFissi(prefissoF,numeroF,getpk,4);
+                                break;
+                            case 5 :
+                                prefissoF.add(textFieldNumeriFissi0.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi0.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi1.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi1.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi2.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi2.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi3.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi3.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi4.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi4.getText().substring(3));
+                                c.creaNumeriFissi(prefissoF,numeroF,getpk,5);
+                                break;
+                            case 6 :
+                                prefissoF.add(textFieldNumeriFissi0.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi0.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi1.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi1.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi2.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi2.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi3.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi3.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi4.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi4.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi5.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi5.getText().substring(3));
+                                c.creaNumeriFissi(prefissoF,numeroF,getpk,6);
+                                break;
+                            case 7 :
+                                prefissoF.add(textFieldNumeriFissi0.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi0.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi1.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi1.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi2.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi2.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi3.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi3.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi4.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi4.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi5.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi5.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi6.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi6.getText().substring(3));
+                                c.creaNumeriFissi(prefissoF,numeroF,getpk,7);
+                                break;
+                            case 8 :
+                                prefissoF.add(textFieldNumeriFissi0.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi0.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi1.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi1.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi2.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi2.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi3.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi3.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi4.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi4.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi5.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi5.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi6.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi6.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi7.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi7.getText().substring(3));
+                                c.creaNumeriFissi(prefissoF,numeroF,getpk,8);
+                                break;
+                            case 9 :
+                                prefissoF.add(textFieldNumeriFissi0.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi0.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi1.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi1.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi2.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi2.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi3.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi3.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi4.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi4.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi5.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi5.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi6.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi6.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi7.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi7.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi8.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi8.getText().substring(3));
+                                c.creaNumeriFissi(prefissoF,numeroF,getpk,9);
+                                break;
+                            case 10 :
+                                prefissoF.add(textFieldNumeriFissi0.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi0.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi1.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi1.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi2.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi2.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi3.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi3.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi4.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi4.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi5.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi5.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi6.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi6.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi7.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi7.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi8.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi8.getText().substring(3));
+                                prefissoF.add(textFieldNumeriFissi9.getText().substring(0,3));
+                                numeroF.add(textFieldNumeriFissi9.getText().substring(3));
+                                c.creaNumeriFissi(prefissoF,numeroF,getpk,10);
+                                break;
+                        }
+
+                        //QUERY CREA NUMERI MOBILI
+                        prefissoM.clear();
+                        numeroM.clear();
+                        if(contNumeriMobili==1 && !textFieldNumeriMobili0.getText().equals("")){
+                            prefissoM.add(textFieldNumeriMobili0.getText().substring(0,3));
+                            numeroM.add(textFieldNumeriMobili0.getText().substring(3));
+                            c.creaNumeriMobili(prefissoM,numeroM,getpk,1);
+                        }
+                        switch(contNumeriMobili){
+                            case 2 :
+                                prefissoM.add(textFieldNumeriMobili0.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili0.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili1.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili1.getText().substring(3));
+                                c.creaNumeriMobili(prefissoM,numeroM,getpk,2);
+                                break;
+                            case 3 :
+                                prefissoF.add(textFieldNumeriMobili0.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili0.getText().substring(3));
+                                prefissoF.add(textFieldNumeriMobili1.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili1.getText().substring(3));
+                                prefissoF.add(textFieldNumeriMobili2.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili2.getText().substring(3));
+                                c.creaNumeriMobili(prefissoM,numeroM,getpk,3);
+                                break;
+                            case 4 :
+                                prefissoM.add(textFieldNumeriMobili0.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili0.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili1.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili1.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili2.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili2.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili3.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili3.getText().substring(3));
+                                c.creaNumeriMobili(prefissoM,numeroM,getpk,4);
+                            case 5 :
+                                prefissoM.add(textFieldNumeriMobili0.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili0.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili1.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili1.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili2.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili2.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili3.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili3.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili4.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili4.getText().substring(3));
+                                c.creaNumeriMobili(prefissoM,numeroM,getpk,5);
+                            case 6 :
+                                prefissoM.add(textFieldNumeriMobili0.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili0.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili1.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili1.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili2.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili2.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili3.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili3.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili4.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili4.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili5.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili5.getText().substring(3));
+                                c.creaNumeriMobili(prefissoM,numeroM,getpk,6);
+                            case 7 :
+                                prefissoM.add(textFieldNumeriMobili0.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili0.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili1.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili1.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili2.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili2.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili3.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili3.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili4.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili4.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili5.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili5.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili6.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili6.getText().substring(3));
+                                c.creaNumeriMobili(prefissoM,numeroM,getpk,7);
+                            case 8 :
+                                prefissoM.add(textFieldNumeriMobili0.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili0.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili1.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili1.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili2.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili2.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili3.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili3.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili4.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili4.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili5.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili5.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili6.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili6.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili7.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili7.getText().substring(3));
+                                c.creaNumeriMobili(prefissoM,numeroM,getpk,8);
+                            case 9 :
+                                prefissoM.add(textFieldNumeriMobili0.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili0.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili1.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili1.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili2.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili2.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili3.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili3.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili4.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili4.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili5.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili5.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili6.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili6.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili7.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili7.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili8.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili8.getText().substring(3));
+                                c.creaNumeriMobili(prefissoM,numeroM,getpk,9);
+                            case 10 :
+                                prefissoM.add(textFieldNumeriMobili0.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili0.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili1.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili1.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili2.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili2.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili3.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili3.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili4.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili4.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili5.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili5.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili6.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili6.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili7.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili7.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili8.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili8.getText().substring(3));
+                                prefissoM.add(textFieldNumeriMobili9.getText().substring(0,3));
+                                numeroM.add(textFieldNumeriMobili9.getText().substring(3));
+                                c.creaNumeriMobili(prefissoM,numeroM,getpk,10);
+                        }
+
+                        //QUERY CREA INDIRIZZO PRINCIPALE
+                        c.creaIndirizzoPrincipale(textFieldIndirizzoPrincipale.getText(),getpk);
+
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                    //Refresh dlm contatti e dlm contattiprivati
+                    DLMContatti.clear();
+                    DLMContattiPrivati.clear();
+                    try {
+                        DLMContatti = c.getContatti(pkContatti);
+                        listContatti.setModel(DLMContatti);                                         //Aggiungiamo nel JList i nomi e cognomi dei contatti
+                        DLMContattiPrivati = c.getContattiPrivati(pkContattiPrivati);
+                        listAreaPrivata.setModel(DLMContattiPrivati);
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                    //Chiusura pannello creazione contatto
+                    panelInfoContatti.setVisible(false);
+
+                    //MESSAGGIO DI CONFERMA CREAZIONE CONTATTO
+                    img = c.SetImageSize(".images/creazionecontatto.png", 30, 30);
+                    JOptionPane.showMessageDialog(null, textFieldNome.getText() + " " + textFieldCognome.getText() + " aggiornato/a con successo!", "CREAZIONE RIUSCITA!", 1, img);
+
+                    //Settaggio di tutti i textField a default
+                    //email
+                    textFieldNome.setText(null);
+                    textFieldCognome.setText(null);
+                    textFieldEmail0.setText(null);
+                    textFieldEmail1.setText(null);
+                    textFieldEmail1.setVisible(false);
+                    textFieldEmail2.setText(null);
+                    textFieldEmail2.setVisible(false);
+                    textFieldEmail3.setText(null);
+                    textFieldEmail3.setVisible(false);
+                    textFieldEmail4.setText(null);
+                    textFieldEmail4.setVisible(false);
+                    textFieldEmail5.setText(null);
+                    textFieldEmail5.setVisible(false);
+                    textFieldEmail6.setText(null);
+                    textFieldEmail6.setVisible(false);
+                    textFieldEmail7.setText(null);
+                    textFieldEmail7.setVisible(false);
+                    textFieldEmail8.setText(null);
+                    textFieldEmail8.setVisible(false);
+                    textFieldEmail9.setText(null);
+                    textFieldEmail9.setVisible(false);
+                    //numeri fissi
+                    textFieldNumeriFissi0.setText(null);
+                    textFieldNumeriFissi1.setText(null);
+                    textFieldNumeriFissi1.setVisible(false);
+                    textFieldNumeriFissi2.setText(null);
+                    textFieldNumeriFissi2.setVisible(false);
+                    textFieldNumeriFissi3.setText(null);
+                    textFieldNumeriFissi3.setVisible(false);
+                    textFieldNumeriFissi4.setText(null);
+                    textFieldNumeriFissi4.setVisible(false);
+                    textFieldNumeriFissi5.setText(null);
+                    textFieldNumeriFissi5.setVisible(false);
+                    textFieldNumeriFissi6.setText(null);
+                    textFieldNumeriFissi6.setVisible(false);
+                    textFieldNumeriFissi7.setText(null);
+                    textFieldNumeriFissi7.setVisible(false);
+                    textFieldNumeriFissi8.setText(null);
+                    textFieldNumeriFissi8.setVisible(false);
+                    textFieldNumeriFissi9.setText(null);
+                    textFieldNumeriFissi9.setVisible(false);
+                    //Numeri mobili
+                    textFieldNumeriMobili0.setText(null);
+                    textFieldNumeriMobili1.setText(null);
+                    textFieldNumeriMobili1.setVisible(false);
+                    textFieldNumeriMobili2.setText(null);
+                    textFieldNumeriMobili2.setVisible(false);
+                    textFieldNumeriMobili3.setText(null);
+                    textFieldNumeriMobili3.setVisible(false);
+                    textFieldNumeriMobili4.setText(null);
+                    textFieldNumeriMobili4.setVisible(false);
+                    textFieldNumeriMobili5.setText(null);
+                    textFieldNumeriMobili5.setVisible(false);
+                    textFieldNumeriMobili6.setText(null);
+                    textFieldNumeriMobili6.setVisible(false);
+                    textFieldNumeriMobili7.setText(null);
+                    textFieldNumeriMobili7.setVisible(false);
+                    textFieldNumeriMobili8.setText(null);
+                    textFieldNumeriMobili8.setVisible(false);
+                    textFieldNumeriMobili9.setText(null);
+                    textFieldNumeriMobili9.setVisible(false);
+                    //indirizzo principale
+                    textFieldIndirizzoPrincipale.setText(null);
+                    //indirizzi secondari
+                    textFieldIndirizziSecondari0.setText(null);
+                    textFieldIndirizziSecondari1.setText(null);
+                    textFieldIndirizziSecondari1.setVisible(false);
+                    textFieldIndirizziSecondari2.setText(null);
+                    textFieldIndirizziSecondari2.setVisible(false);
+                    textFieldIndirizziSecondari3.setText(null);
+                    textFieldIndirizziSecondari3.setVisible(false);
+                    textFieldIndirizziSecondari4.setText(null);
+                    textFieldIndirizziSecondari4.setVisible(false);
+                    textFieldIndirizziSecondari5.setText(null);
+                    textFieldIndirizziSecondari5.setVisible(false);
+                    textFieldIndirizziSecondari6.setText(null);
+                    textFieldIndirizziSecondari6.setVisible(false);
+                    textFieldIndirizziSecondari7.setText(null);
+                    textFieldIndirizziSecondari7.setVisible(false);
+                    textFieldIndirizziSecondari8.setText(null);
+                    textFieldIndirizziSecondari8.setVisible(false);
+                    textFieldIndirizziSecondari9.setText(null);
+                    textFieldIndirizziSecondari9.setVisible(false);
+
+                    //settaggio contatori
+                    contEmail = 1;
+                    contNumeriFissi = 1;
+                    contNumeriMobili = 1;
+                    contIndirizziSecondari = 1;
+
+                    //Rimozione spunta JCheckBox
+                    contattoPrivatoCheckBox.setSelected(false);
+                }
+            }
+        });
+
     }
     public static void main(String[] args) throws SQLException{
         try {
@@ -4450,3 +4937,5 @@ public class Window {
         new Window();
     }
 }
+
+

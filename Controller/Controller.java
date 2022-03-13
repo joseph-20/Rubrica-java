@@ -246,4 +246,10 @@ public class Controller {
     public DefaultListModel getContattiSearchNumeriMobiliPrivati(String ricerca, ArrayList<Integer> pkContattiPrivati) throws SQLException{
        return numeriM.getContattiSearchNumeriMobiliPrivati(ricerca,pkContattiPrivati);
     }
+    public void setIdToLastMessaging (int precId,int lastId) throws SQLException{
+       messaging.setIdToLast(precId,lastId);
+    }
+    public void setIdToLastReindirizzamenti (int precId,int lastId) throws SQLException{
+       reindirizzamento.setIdToLast(precId,lastId);
+    }
 }

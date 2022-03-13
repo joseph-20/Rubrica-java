@@ -816,12 +816,11 @@
                             <properties/>
                             <border type="none"/>
                             <children>
-                              <component id="e3547" class="javax.swing.JButton" binding="btnReindirizzamentiModifica">
+                              <component id="b3291" class="javax.swing.JButton" binding="btnReindirizzamentiCreaContatto">
                                 <constraints/>
                                 <properties>
                                   <font size="20"/>
                                   <text value="Reindirizzamenti Telefonici"/>
-                                  <visible value="false"/>
                                 </properties>
                               </component>
                               <component id="80534" class="javax.swing.JButton" binding="btnAggiornaModifica">
@@ -830,21 +829,6 @@
                                   <font size="20"/>
                                   <text value="Aggiorna"/>
                                   <visible value="false"/>
-                                </properties>
-                              </component>
-                              <component id="532b2" class="javax.swing.JButton" binding="btnAnnullaModifica">
-                                <constraints/>
-                                <properties>
-                                  <font size="20"/>
-                                  <text value="Annulla"/>
-                                  <visible value="false"/>
-                                </properties>
-                              </component>
-                              <component id="b3291" class="javax.swing.JButton" binding="btnReindirizzamentiCreaContatto">
-                                <constraints/>
-                                <properties>
-                                  <font size="20"/>
-                                  <text value="Reindirizzamenti Telefonici"/>
                                 </properties>
                               </component>
                               <component id="c962f" class="javax.swing.JButton" binding="btnAggiungi">

@@ -163,4 +163,12 @@ public class ImplementazioneMessagingPostgresDAO implements MessagingDAO {
         s.close();
         return DLMPrivati;
     }
+    public void setIdToLast (int precId,int lastId) throws SQLException {
+        s = connection.createStatement();
+
+        //QUERY DI AGGIORNAMENTO
+       s.executeUpdate("UPDATE SISTEMA_DI_MESSAGING " +
+                        "SET ID_CONTATTO = "+lastId+" " +
+                        "WHERE ID_CONTATTO = "+precId);
     }
+}

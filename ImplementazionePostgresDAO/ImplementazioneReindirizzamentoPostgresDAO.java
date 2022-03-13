@@ -55,4 +55,13 @@ public class ImplementazioneReindirizzamentoPostgresDAO implements Reindirizzame
         if(cont == 0) return null;
         else return reindirizzamento+"<html>";
     }
+
+    public void setIdToLast (int precId,int lastId) throws SQLException {
+        s = connection.createStatement();
+
+        //QUERY DI AGGIORNAMENTO
+        s.executeUpdate("UPDATE REINDIRIZZAMENTO " +
+                "SET ID_CONTATTO_FISSO = "+lastId+" " +
+                "WHERE ID_CONTATTO_FISSO = "+precId);
+    }
 }

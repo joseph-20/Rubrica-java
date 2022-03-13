@@ -63,7 +63,7 @@ public class CreaServizio {
                         frame.dispose();
                     } catch (SQLException ex) {
                         img = c.SetImageSize(".images/warning.png",30,30);
-                        JOptionPane.showMessageDialog(null,"Email o Username già collegata a questo servizio!","ATTENZIONE!",1,img);
+                        JOptionPane.showMessageDialog(null,"Il contatto è gia collegato al servizio!","ATTENZIONE!",1,img);
                         ex.printStackTrace();
                     }
                 }
