@@ -64,6 +64,7 @@ public class ImplementazioneNumeriMobiliPostgresDAO implements NumeriMobiliDAO {
         while(rs.next()){
             num = rs.getInt("CONTEGGIO");
         }
+        if(num==0) num=1;
         return num;
     }
 
@@ -94,12 +95,12 @@ public class ImplementazioneNumeriMobiliPostgresDAO implements NumeriMobiliDAO {
         else if (ricerca.length()>3){
             rs = s.executeQuery("SELECT DISTINCT NOME,COGNOME,FOTO,SECURITY,ID " +
                     "FROM CONTATTO,NUMERO_MOBILE " +
-                    "WHERE SECURITY = FALSE AND ID_CONTATTO = ID AND PREFISSO = '" + ricerca.substring(0,3) + "' AND NUMERO ILIKE '"+ricerca.substring(3)+"%'" +
+                    "WHERE SECURITY = FALSE AND ID_CONTATTO = ID AND PREFISSO = '%" + ricerca.substring(0,3) + "%' AND NUMERO ILIKE '%"+ricerca.substring(3)+"%'" +
                     " ORDER BY NOME,COGNOME");
         }else{
             rs = s.executeQuery("SELECT DISTINCT NOME,COGNOME,FOTO,SECURITY,ID " +
                     "FROM CONTATTO,NUMERO_MOBILE " +
-                    "WHERE SECURITY = FALSE AND ID_CONTATTO = ID AND PREFISSO ILIKE '" + ricerca + "%'"+
+                    "WHERE SECURITY = FALSE AND ID_CONTATTO = ID AND PREFISSO ILIKE '%" + ricerca + "%'"+
                     " ORDER BY NOME,COGNOME");
         }
         while (rs.next()) {                                   //Finche non scorro tutto il resultSet
@@ -128,12 +129,12 @@ public class ImplementazioneNumeriMobiliPostgresDAO implements NumeriMobiliDAO {
         else if (ricerca.length()>3){
             rs = s.executeQuery("SELECT DISTINCT NOME,COGNOME,FOTO,SECURITY,ID " +
                     "FROM CONTATTO,NUMERO_MOBILE " +
-                    "WHERE SECURITY = TRUE AND ID_CONTATTO = ID AND PREFISSO = '" + ricerca.substring(0,3) + "' AND NUMERO ILIKE '"+ricerca.substring(3)+"%'" +
+                    "WHERE SECURITY = TRUE AND ID_CONTATTO = ID AND PREFISSO = '%" + ricerca.substring(0,3) + "%' AND NUMERO ILIKE '%"+ricerca.substring(3)+"%'" +
                     " ORDER BY NOME,COGNOME");
         }else{
             rs = s.executeQuery("SELECT DISTINCT NOME,COGNOME,FOTO,SECURITY,ID " +
                     "FROM CONTATTO,NUMERO_MOBILE " +
-                    "WHERE SECURITY = TRUE AND ID_CONTATTO = ID AND PREFISSO ILIKE '" + ricerca + "%'"+
+                    "WHERE SECURITY = TRUE AND ID_CONTATTO = ID AND PREFISSO ILIKE '%" + ricerca + "%'"+
                     " ORDER BY NOME,COGNOME");
         }
         while (rs.next()) {                                   //Finche non scorro tutto il resultSet

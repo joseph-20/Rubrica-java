@@ -72,6 +72,7 @@ public class ImplementazioneEmailPostgresDAO implements EmailDAO {
         while(rs.next()){
             num = rs.getInt("CONTEGGIO");
         }
+        if(num==0) num=1;
         return num;
     }
 

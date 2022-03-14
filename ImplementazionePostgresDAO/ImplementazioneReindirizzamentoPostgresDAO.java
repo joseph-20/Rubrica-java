@@ -64,4 +64,13 @@ public class ImplementazioneReindirizzamentoPostgresDAO implements Reindirizzame
                 "SET ID_CONTATTO_FISSO = "+lastId+" " +
                 "WHERE ID_CONTATTO_FISSO = "+precId);
     }
+
+    public void deleteReindirizzamento() throws SQLException {
+        s = connection.createStatement();
+
+        //QUERY DI AGGIORNAMENTO
+        s.executeUpdate("DELETE FROM REINDIRIZZAMENTO AS R " +
+                "WHERE R.PREFISSO_FISSO NOT IN (SELECT NF.PREFISSO FROM NUMERO_FISSO AS NF WHERE NF.NUMERO = R.NUMERO_FISSO) " +
+                "OR R.PREFISSO_MOBILE NOT IN (SELECT NM.PREFISSO FROM NUMERO_MOBILE AS NM WHERE NM.NUMERO = R.NUMERO_MOBILE)");
+    }
 }

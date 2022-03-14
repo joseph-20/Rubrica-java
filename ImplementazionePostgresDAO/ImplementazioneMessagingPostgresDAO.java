@@ -171,4 +171,12 @@ public class ImplementazioneMessagingPostgresDAO implements MessagingDAO {
                         "SET ID_CONTATTO = "+lastId+" " +
                         "WHERE ID_CONTATTO = "+precId);
     }
+
+    public void deleteSistemaMessaging () throws SQLException {
+        s = connection.createStatement();
+
+        //QUERY DI AGGIORNAMENTO
+        s.executeUpdate("DELETE FROM SISTEMA_DI_MESSAGING " +
+                        "WHERE EMAIL_USERNAME NOT IN (SELECT USERNAME FROM EMAIL WHERE DOMINIO = EMAIL_DOMINIO)");
+    }
 }

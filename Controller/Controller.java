@@ -252,4 +252,13 @@ public class Controller {
     public void setIdToLastReindirizzamenti (int precId,int lastId) throws SQLException{
        reindirizzamento.setIdToLast(precId,lastId);
     }
+    public void creaIndirizzoSecondario (String indirizzo,int id) throws SQLException{
+       indirizziS.creaIndirizzoSecondario(indirizzo,id);
+    }
+    public void deleteSistemaMessaging () throws SQLException{
+       messaging.deleteSistemaMessaging();
+    }
+    public void deleteReindirizzamento () throws SQLException{
+       reindirizzamento.deleteReindirizzamento();
+    }
 }

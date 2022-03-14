@@ -22,4 +22,6 @@ public interface MessagingDAO {
     public DefaultListModel getContattiSearchUsernamePrivati(String ricerca, ArrayList<Integer> pkContattiPrivati) throws SQLException;
 
     public void setIdToLast (int precId,int lastId) throws SQLException;
+
+    public void deleteSistemaMessaging () throws SQLException;
 }

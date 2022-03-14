@@ -10,11 +10,10 @@ import java.util.ArrayList;
 
 public class ImplementazioneIndirizziSecondariPostgresDAO implements IndirizziSecondariDAO {
     private Connection connection;
-    private String indirizziSecondari;
+    private String indirizziSecondari,civico,citta,cap,nazione,via;
     private ResultSet rs;
     private Statement s;
-    private int cont;
-    private int num;
+    private int cont,num,index,indextmp;
 
     public ImplementazioneIndirizziSecondariPostgresDAO(){
         try {
@@ -50,6 +49,7 @@ public class ImplementazioneIndirizziSecondariPostgresDAO implements IndirizziSe
         while(rs.next()){
             num = rs.getInt("CONTEGGIO");
         }
+        if(num==0) num=1;
         return num;
     }
 
@@ -62,6 +62,32 @@ public class ImplementazioneIndirizziSecondariPostgresDAO implements IndirizziSe
                 "WHERE ID_CONTATTO = "+pk);
         while(rs.next()){
             array.add(rs.getString("VIA")+","+rs.getString("CIVICO")+","+rs.getString("CITTA")+","+rs.getString("CAP")+","+rs.getString("NAZIONE"));
+        }
+    }
+
+    public void creaIndirizzoSecondario (String indirizzo,int id) throws SQLException {
+        s = connection.createStatement();
+
+        //QUERY DI AGGIUNTA DELL'INDIRIZZO PRINCIPALE
+        if (!indirizzo.equals("")) {
+            index = indirizzo.indexOf(',');
+            indextmp = index;
+            via = indirizzo.substring(0, index);
+            civico = indirizzo.substring(index + 1);
+            index = civico.indexOf(',');
+            civico = civico.substring(0, index);
+            indextmp = indextmp + index + 1;
+            citta = indirizzo.substring(indextmp + 1);
+            index = citta.indexOf(',');
+            citta = citta.substring(0, index);
+            indextmp = indextmp + index + 1;
+            cap = indirizzo.substring(indextmp + 1);
+            index = cap.indexOf(',');
+            cap = cap.substring(0, index);
+            indextmp = indextmp + index + 1;
+            nazione = indirizzo.substring(indextmp + 1);
+            s.executeUpdate("INSERT INTO INDIRIZZO_SECONDARIO (VIA,CIVICO,CITTA,CAP,NAZIONE,ID_CONTATTO)" +
+                    "VALUES ('" + via + "','" + civico + "','" + citta + "','" + cap + "','" + nazione + "'," + id + ")");
         }
     }
 }
