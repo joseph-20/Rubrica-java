@@ -24,6 +24,8 @@ public class ImplementazioneIndirizzoPrincipalePostgresDAO implements IndirizzoP
             e.printStackTrace();
         }
     }
+
+
     public String getIndirizzoPrincipale (int pk) throws SQLException{
         cont = 0;
         indirizzoPrincipale = "<html>";
@@ -41,6 +43,7 @@ public class ImplementazioneIndirizzoPrincipalePostgresDAO implements IndirizzoP
         return indirizzoPrincipale;
     }
 
+
     public String getIndirizzoPrincipaleNoHTML (int pk) throws SQLException{
         cont = 0;
         indirizzoPrincipale = "";
@@ -56,6 +59,7 @@ public class ImplementazioneIndirizzoPrincipalePostgresDAO implements IndirizzoP
         if(cont==0) return "NOT FOUND";
         return indirizzoPrincipale;
     }
+
 
     public void creaIndirizzoPrincipale (String indirizzo,int id) throws SQLException{
         s = connection.createStatement();
@@ -79,6 +83,4 @@ public class ImplementazioneIndirizzoPrincipalePostgresDAO implements IndirizzoP
             s.executeUpdate("INSERT INTO INDIRIZZO_PRINCIPALE (VIA,CIVICO,CITTA,CAP,NAZIONE,ID_CONTATTO)" +
                     "VALUES ('"+via+"','"+civico+"','"+citta+"','"+cap+"','"+nazione+"',"+id+")");
     }
-
-
 }

@@ -46,6 +46,7 @@ public class ImplementazioneNumeriMobiliPostgresDAO implements NumeriMobiliDAO {
         return numeriMobili;
     }
 
+
     public void creaNumeriMobili (ArrayList<String> prefisso, ArrayList<String> numero, int id, int n) throws SQLException{
         s = connection.createStatement();
         //QUERY DI AGGIUNTA DI I NUMERI MOBILI
@@ -54,6 +55,7 @@ public class ImplementazioneNumeriMobiliPostgresDAO implements NumeriMobiliDAO {
                     "VALUES ('"+prefisso.get(i)+"','"+numero.get(i)+"',"+id+")");
         }
     }
+
 
     public int getcontNumNumeriMobili(int pk) throws SQLException{
         s = connection.createStatement();
@@ -68,6 +70,7 @@ public class ImplementazioneNumeriMobiliPostgresDAO implements NumeriMobiliDAO {
         return num;
     }
 
+
     public void getArrayNumeriMobili (ArrayList<String> array,int pk) throws SQLException{
         s = connection.createStatement();
         array.clear();
@@ -79,6 +82,7 @@ public class ImplementazioneNumeriMobiliPostgresDAO implements NumeriMobiliDAO {
             array.add(rs.getString("PREFISSO")+rs.getString("NUMERO"));
         }
     }
+
 
     public DefaultListModel getContattiSearchNumeriMobili(String ricerca, ArrayList<Integer> pkContatti) throws SQLException {
         pkContatti.clear();
@@ -113,6 +117,7 @@ public class ImplementazioneNumeriMobiliPostgresDAO implements NumeriMobiliDAO {
         s.close();
         return DLM;
     }
+
 
     public DefaultListModel getContattiSearchNumeriMobiliPrivati(String ricerca, ArrayList<Integer> pkContattiPrivati) throws SQLException {
         pkContattiPrivati.clear();

@@ -5648,6 +5648,13 @@ public class Window {
                     btnAggiornaModifica.setVisible(false);
                     btnAggiungi.setVisible(true);
 
+                    //Eliminazione di tutti i reindirizzamenti e sistemi di messaging di cui non esistono più mail o numeri
+                    try {
+                        c.deleteReindirizzamento();
+                        c.deleteSistemaMessaging();
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
 
                 }
             }

@@ -31,12 +31,15 @@ public class ImplementazioneReindirizzamentoPostgresDAO implements Reindirizzame
         s.executeUpdate("INSERT INTO REINDIRIZZAMENTO " +
                 "VALUES ('"+numero_fisso.substring(0,3)+"','"+numero_fisso.substring(3)+"',"+pk+",'"+numero_mobile.substring(0,3)+"','"+numero_mobile.substring(3)+"')");
     }
+
+
     public void eliminaReindirizzamento (int pk) throws SQLException{
         s = connection.createStatement();
         //QUERY DI ELIMINAZIONE
         s.executeUpdate("DELETE FROM REINDIRIZZAMENTO " +
                 "WHERE ID_CONTATTO_FISSO = "+pk);
     }
+
 
     public String getReindirizzamenti(int pk) throws SQLException{
         reindirizzamento="<html>";
@@ -56,6 +59,7 @@ public class ImplementazioneReindirizzamentoPostgresDAO implements Reindirizzame
         else return reindirizzamento+"<html>";
     }
 
+
     public void setIdToLast (int precId,int lastId) throws SQLException {
         s = connection.createStatement();
 
@@ -64,6 +68,7 @@ public class ImplementazioneReindirizzamentoPostgresDAO implements Reindirizzame
                 "SET ID_CONTATTO_FISSO = "+lastId+" " +
                 "WHERE ID_CONTATTO_FISSO = "+precId);
     }
+
 
     public void deleteReindirizzamento() throws SQLException {
         s = connection.createStatement();

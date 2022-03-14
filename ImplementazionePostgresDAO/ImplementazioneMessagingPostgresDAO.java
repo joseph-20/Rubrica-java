@@ -35,6 +35,7 @@ public class ImplementazioneMessagingPostgresDAO implements MessagingDAO {
         }
     }
 
+
     public String getServizio(String sistema,int pk) throws SQLException {
         s = connection.createStatement();
         cont=0;
@@ -52,6 +53,7 @@ public class ImplementazioneMessagingPostgresDAO implements MessagingDAO {
         return servizio;
     }
 
+
     public String getUsername (String sistema,int pk) throws SQLException{
         s= connection.createStatement();
         //QUERY DI OTTENIMENTO USERNAME
@@ -63,6 +65,7 @@ public class ImplementazioneMessagingPostgresDAO implements MessagingDAO {
         }
         return username;
     }
+
 
     public String getEmail (String sistema,int pk) throws SQLException{
         s= connection.createStatement();
@@ -76,6 +79,7 @@ public class ImplementazioneMessagingPostgresDAO implements MessagingDAO {
         return email;
     }
 
+
     public String getStato (String sistema,int pk) throws SQLException{
         s = connection.createStatement();
         //QUERY DI OTTENIMENTO STATO
@@ -88,6 +92,7 @@ public class ImplementazioneMessagingPostgresDAO implements MessagingDAO {
         return stato;
     }
 
+
     public void creaMessaging(String username,String servizio,String stato,String email,int pk) throws SQLException {
         s = connection.createStatement();
         //scomposizione email
@@ -99,12 +104,14 @@ public class ImplementazioneMessagingPostgresDAO implements MessagingDAO {
                         "VALUES ('"+username+"','"+servizio+"','"+stato+"','"+emailUsername+"','"+emailDominio+"',"+pk+")");
     }
 
+
     public void eliminaMessaging (int pk) throws SQLException{
         s = connection.createStatement();
         //QUERY DI ELIMINAZIONE
         s.executeUpdate("DELETE FROM SISTEMA_DI_MESSAGING " +
                 "WHERE ID_CONTATTO = "+pk);
         }
+
 
     public DefaultListModel getContattiSearchUsername(String ricerca, ArrayList<Integer> pkContatti) throws SQLException {
         pkContatti.clear();
@@ -135,6 +142,7 @@ public class ImplementazioneMessagingPostgresDAO implements MessagingDAO {
         return DLM;
     }
 
+
     public DefaultListModel getContattiSearchUsernamePrivati(String ricerca, ArrayList<Integer> pkContattiPrivati) throws SQLException {
         pkContattiPrivati.clear();
         DLMPrivati.removeAllElements();
@@ -163,6 +171,8 @@ public class ImplementazioneMessagingPostgresDAO implements MessagingDAO {
         s.close();
         return DLMPrivati;
     }
+
+
     public void setIdToLast (int precId,int lastId) throws SQLException {
         s = connection.createStatement();
 
@@ -171,6 +181,7 @@ public class ImplementazioneMessagingPostgresDAO implements MessagingDAO {
                         "SET ID_CONTATTO = "+lastId+" " +
                         "WHERE ID_CONTATTO = "+precId);
     }
+
 
     public void deleteSistemaMessaging () throws SQLException {
         s = connection.createStatement();

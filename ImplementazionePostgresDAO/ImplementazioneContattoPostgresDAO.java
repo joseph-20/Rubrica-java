@@ -32,7 +32,6 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
         }
     }
 
-
     public DefaultListModel getContatti(ArrayList<Integer> pkContatti) throws SQLException {
         pkContatti.clear();
         s = connection.createStatement();
@@ -51,6 +50,8 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
         s.close();
         return DLM;
     }
+
+
     public DefaultListModel getContattiSearch(String ricerca,ArrayList<Integer> pkContatti) throws SQLException {
         pkContatti.clear();
         DLM.removeAllElements();
@@ -87,6 +88,7 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
         s.close();
         return DLM;
     }
+
 
     public DefaultListModel getContattiSearchPrivati(String ricerca,ArrayList<Integer> pkContattiPrivati) throws SQLException {
         pkContattiPrivati.clear();
@@ -125,6 +127,7 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
         return DLMPrivati;
     }
 
+
     public DefaultListModel getContattiPrivati(ArrayList<Integer> pkContattiPrivati) throws SQLException {
         pkContattiPrivati.clear();
         s = connection.createStatement();
@@ -156,6 +159,7 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
         return path;
     }
 
+
     public String getNome(int pk) throws SQLException {
         s = connection.createStatement();
         //QUERY DI SELEZIONE NOME CONTATTO
@@ -167,6 +171,7 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
         }
         return name;
     }
+
 
     public String getCognome(int pk) throws SQLException {
         s = connection.createStatement();
@@ -180,6 +185,7 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
         return surname;
     }
 
+
     public void cancellaContatto(int pk) throws SQLException {
         s = connection.createStatement();
         //QUERY DI CANCELLAZIONE CONTATTO
@@ -190,6 +196,7 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
                         "FROM SISTEMA_DI_MESSAGING " +
                         "WHERE ID_CONTATTO = " + pk);
     }
+
 
     public int creaContatto(String pathFoto, String nome, String cognome, boolean security) throws SQLException {
         s = connection.createStatement();
@@ -204,6 +211,7 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
         }
         return pk;
     }
+
 
     public int getLastId() throws SQLException {
         s = connection.createStatement();

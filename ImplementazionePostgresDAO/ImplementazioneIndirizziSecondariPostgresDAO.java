@@ -23,6 +23,7 @@ public class ImplementazioneIndirizziSecondariPostgresDAO implements IndirizziSe
         }
     }
 
+
     public String getIndirizziSecondari(int pk) throws SQLException {
         cont = 0;
         indirizziSecondari = "<html>";
@@ -40,6 +41,7 @@ public class ImplementazioneIndirizziSecondariPostgresDAO implements IndirizziSe
         return indirizziSecondari;
     }
 
+
     public int getcontNumIndirizziSecondari(int pk) throws SQLException{
         s = connection.createStatement();
         //QUERY DI CONTEGGIO
@@ -53,6 +55,7 @@ public class ImplementazioneIndirizziSecondariPostgresDAO implements IndirizziSe
         return num;
     }
 
+
     public void getArrayIndirizziSecondari (ArrayList<String> array, int pk) throws SQLException{
         s = connection.createStatement();
         array.clear();
@@ -64,6 +67,7 @@ public class ImplementazioneIndirizziSecondariPostgresDAO implements IndirizziSe
             array.add(rs.getString("VIA")+","+rs.getString("CIVICO")+","+rs.getString("CITTA")+","+rs.getString("CAP")+","+rs.getString("NAZIONE"));
         }
     }
+
 
     public void creaIndirizzoSecondario (String indirizzo,int id) throws SQLException {
         s = connection.createStatement();

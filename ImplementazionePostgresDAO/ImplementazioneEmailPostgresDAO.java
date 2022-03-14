@@ -32,6 +32,7 @@ public class ImplementazioneEmailPostgresDAO implements EmailDAO {
         }
     }
 
+
     public String getEmail(int pk) throws SQLException {
         cont = 0;
         email = "<html>";
@@ -49,6 +50,7 @@ public class ImplementazioneEmailPostgresDAO implements EmailDAO {
         return email;
     }
 
+
     public void creaEmail (ArrayList<String> mail, int id, int n) throws SQLException{
         s = connection.createStatement();
         username.clear();
@@ -63,6 +65,7 @@ public class ImplementazioneEmailPostgresDAO implements EmailDAO {
         }
     }
 
+
     public int getcontNumEmail (int pk) throws SQLException{
         s = connection.createStatement();
         //QUERY DI CONTEGGIO
@@ -76,6 +79,7 @@ public class ImplementazioneEmailPostgresDAO implements EmailDAO {
         return num;
     }
 
+
     public void getArrayEmail (ArrayList<String> array,int pk) throws SQLException{
         s = connection.createStatement();
         cont = 0;
@@ -88,6 +92,7 @@ public class ImplementazioneEmailPostgresDAO implements EmailDAO {
             array.add(rs.getString("USERNAME")+"@"+rs.getString("DOMINIO"));
         }
     }
+
 
     public DefaultListModel getContattiSearchEmail(String ricerca, ArrayList<Integer> pkContatti) throws SQLException {
         pkContatti.clear();
@@ -125,6 +130,7 @@ public class ImplementazioneEmailPostgresDAO implements EmailDAO {
         s.close();
         return DLM;
     }
+
 
     public DefaultListModel getContattiSearchEmailPrivati(String ricerca, ArrayList<Integer> pkContattiPrivati) throws SQLException {
         pkContattiPrivati.clear();
