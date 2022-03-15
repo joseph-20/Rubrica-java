@@ -1506,6 +1506,15 @@
               </grid>
             </children>
           </splitpane>
+          <grid id="edac0" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <tabbedpane title="Gruppi"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
           <splitpane id="4e528" binding="SplitPaneAreaPrivata">
             <constraints>
               <tabbedpane title="Area Protetta"/>
@@ -1994,6 +2003,15 @@
               </grid>
             </children>
           </splitpane>
+          <grid id="a1441" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <tabbedpane title=""/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
         </children>
       </tabbedpane>
     </children>

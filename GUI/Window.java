@@ -302,6 +302,8 @@ public class Window {
         img = c.SetImageSize(".images/close.png",30,30);
         btnBack.setIcon(img);
         btnBackPrivati.setIcon(img);
+        img = c.SetImageSize(".images/key.png", 30, 30);
+        Tabs.setIconAt(3,img);
 
         //ELIMINAZIONE BORDER AUTOMATICO DELLO SCROLL
         infoBottomScroll.setBorder(null);
@@ -321,6 +323,28 @@ public class Window {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 InfoContattiPrivata.setVisible(false);
+            }
+        });
+
+        //Interazione click area privata
+        Tabs.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                try {
+                    if(Tabs.getSelectedIndex()==2 && c.getPassword() == null){
+                        try {
+                            c.setJTabs(Tabs);
+                            new CreaPassword(c);
+                        } catch (SQLException ex) {
+                            ex.printStackTrace();
+                        }
+                    }else if (Tabs.getSelectedIndex()==2){
+                        //TODO CREARE GUI PER INSERIRE PASSWORD
+                    }
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
 
@@ -1619,6 +1643,7 @@ public class Window {
                 contattiSplitPane.setDividerLocation(350);
                 img = c.SetImageSize(".images/"+randImage.get(rand.nextInt(randImage.size()-1)),200,200);
                 btnAddContact.setIcon(img);
+                panelInfoContatti.validate();
             }
         });
 
@@ -5671,4 +5696,4 @@ public class Window {
     }
 }
 
-
+//TODO BUG MODIFICA IN CONTATTO PRIVATO

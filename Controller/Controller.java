@@ -3,6 +3,7 @@ package Controller;
 import DAO.*;
 import Database.ConnessioneDatabase;
 import ImplementazionePostgresDAO.*;
+import Model.Password;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,6 +20,7 @@ public class Controller {
     private NumeriMobiliDAO numeriM = new ImplementazioneNumeriMobiliPostgresDAO();
     private MessagingDAO messaging = new ImplementazioneMessagingPostgresDAO();
     private ReindirizzamentoDAO reindirizzamento = new ImplementazioneReindirizzamentoPostgresDAO();
+    private PasswordDAO password = new ImplementazionePasswordPostgresDAO();
     private ImageIcon img;
     private DefaultComboBoxModel dlmServizi = new DefaultComboBoxModel();
     private DefaultComboBoxModel dlmReindirizzamentiMobili = new DefaultComboBoxModel();
@@ -29,6 +31,7 @@ public class Controller {
     private String stato;
     private String servizioMessaging;
     private String reindirizzamentoInfo;
+    private JTabbedPane jt;
 
     //Comunicazione con il DB per ottenere tutti i contatti e ritornare un DLM
    public DefaultListModel getContatti(ArrayList<Integer> pkContatti) throws SQLException{
@@ -390,4 +393,25 @@ public class Controller {
     public void deleteReindirizzamento () throws SQLException{
        reindirizzamento.deleteReindirizzamento();
     }
+
+    //Ritorno della password settata
+    public String getPassword () throws SQLException{
+      return password.getPassword();
+    }
+
+    //Settaggio tabs di window per CreaPassword
+    public void setJTabs(JTabbedPane jtb){
+       jt = jtb;
+    }
+
+    //Get tabs di window per CreaPassword
+    public JTabbedPane getJTabs (){
+       return jt;
+    }
+
+    //Query di set password
+    public void setPassword(String pw) throws SQLException{
+       password.setPassword(pw);
+    }
+
 }
