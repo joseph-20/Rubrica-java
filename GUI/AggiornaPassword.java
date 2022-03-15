@@ -34,6 +34,36 @@ public class AggiornaPassword {
 
         JDialog dialog = new JDialog(new Frame(), "AGGIORNA PASSWORD");
 
+        //Interazione btnConferma
+        confermaButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
+                try {
+                    if(!String.valueOf(passwordField1.getPassword()).equals(c.getPassword())){
+                        img = c.SetImageSize(".images/warning.png",30,30);
+                        JOptionPane.showMessageDialog(null,"La password inserita non è corretta!","ATTENZIONE!",1,img);
+                    }else{
+                        if(!String.valueOf(passwordField2.getPassword()).equals(String.valueOf(passwordField3.getPassword()))){
+                            img = c.SetImageSize(".images/warning.png",30,30);
+                            JOptionPane.showMessageDialog(null,"Le due password inserite non coincidono!","ATTENZIONE!",1,img);
+                        }
+                        else if(String.valueOf(passwordField2.getPassword()).equals("")&&String.valueOf(passwordField3.getPassword()).equals("")){
+                            img = c.SetImageSize(".images/warning.png",30,30);
+                            JOptionPane.showMessageDialog(null,"Non è possibile inserire password con campi vuoti!","ATTENZIONE!",1,img);
+                        }else{
+                            c.setPassword(String.valueOf(passwordField2.getPassword()));
+                            img = c.SetImageSize(".images/creazionecontatto.png",30,30);
+                            JOptionPane.showMessageDialog(null,"Aggiornamento password effettuato!","SUCCESSO!",1,img);
+                            dialog.dispose();
+                        }
+                    }
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
         //Interazione btnAnnulla
         annullaButton.addMouseListener(new MouseAdapter() {
             @Override
