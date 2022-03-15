@@ -32,6 +32,8 @@ public class Controller {
     private String servizioMessaging;
     private String reindirizzamentoInfo;
     private JTabbedPane jt;
+    private int lastint;
+    private JPanel pan;
 
     //Comunicazione con il DB per ottenere tutti i contatti e ritornare un DLM
    public DefaultListModel getContatti(ArrayList<Integer> pkContatti) throws SQLException{
@@ -414,4 +416,23 @@ public class Controller {
        password.setPassword(pw);
     }
 
+    //Setta l'ultimo int di TabbedPane
+    public void setLastInt(int l){
+       lastint = l;
+    }
+
+    //Ritorna l'ultimo int di TabbedPane
+    public int getLastInt(){
+       return lastint;
+    }
+
+    //Setta il panel da rendere false in un altra gui
+    public void setPanel (JPanel p){
+       pan = p;
+    }
+
+    //Ritorna il panel
+    public JPanel getPanel (){
+       return pan;
+    }
 }

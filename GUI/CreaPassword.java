@@ -20,6 +20,7 @@ public class CreaPassword {
     private JButton annullaButton;
     private JButton confermaButton;
     private JPasswordField passwordField1;
+    private JPanel panelCreaPassword;
     private ImageIcon img;
 
     public CreaPassword(Controller c) throws SQLException {
@@ -28,16 +29,14 @@ public class CreaPassword {
 
     private void esegui(Controller c) throws SQLException {
 
-
-
         JDialog dialog = new JDialog(new Frame(),"CREAZIONE PASSWORD");
 
         //Interazione btnAnnulla
         annullaButton.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                c.getJTabs().setSelectedIndex(0);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
+                c.getJTabs().setSelectedIndex(c.getLastInt());
                 img = c.SetImageSize(".images/warning.png",30,30);
                 JOptionPane.showMessageDialog(null,"Nessuna password inserita, ACCESSO NEGATO!","ATTENZIONE!",1,img);
                 dialog.dispose();
@@ -47,8 +46,8 @@ public class CreaPassword {
         //Interazione btnConferma
         confermaButton.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 if(!String.valueOf(passwordField1.getPassword()).equals(String.valueOf(passwordField2.getPassword()))){
                     img = c.SetImageSize(".images/warning.png",30,30);
                     JOptionPane.showMessageDialog(null,"Le due password inserite non coincidono!","ATTENZIONE!",1,img);
@@ -71,11 +70,12 @@ public class CreaPassword {
         dialog.setModal (true);
         dialog.setModalityType (Dialog.ModalityType.APPLICATION_MODAL);
         dialog.add(panelMain);
+        dialog.setUndecorated(true);
         dialog.setMinimumSize (new Dimension(450, 250));
 
         //Settaggio finestra al centro
         Point center = GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint();
-        dialog.setBounds(center.x - 450 / 2, center.y - 450 / 2, 450, 250);
+        dialog.setBounds(center.x - 450 / 2, center.y - 200 / 2, 450, 250);
         dialog.setVisible(true);
 
     }

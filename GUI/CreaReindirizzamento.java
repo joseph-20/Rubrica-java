@@ -53,8 +53,8 @@ public class CreaReindirizzamento {
         //Interazioni click Reindirizza
         btnReindirizza.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 try {
                     c.creaReindirizzamento(comboBoxNumeriMobili.getSelectedItem().toString(),comboBoxNumeriFissi.getSelectedItem().toString(),c.getLastId());
                     img = c.SetImageSize(".images/creazionecontatto.png",30,30);

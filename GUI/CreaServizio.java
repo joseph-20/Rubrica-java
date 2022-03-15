@@ -54,8 +54,8 @@ public class CreaServizio {
             //Interazione con btnSeleziona
             btnSeleziona.addMouseListener(new MouseAdapter() {
                 @Override
-                public void mouseClicked(MouseEvent e) {
-                    super.mouseClicked(e);
+                public void mousePressed(MouseEvent e) {
+                    super.mousePressed(e);
                     try {
                         c.creaMessaging(textFieldUsername.getText(),c.getServizioMessaging(),textFieldStato.getText(),comboBoxEmail.getSelectedItem().toString(),c.getLastId());
                         img = c.SetImageSize(".images/creazionecontatto.png",30,30);

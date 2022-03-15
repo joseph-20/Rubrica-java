@@ -217,10 +217,13 @@ public class Window {
     private JPasswordField pwd = new JPasswordField(30);
     private int action;
     private int getpk;
+    private int lastSelect=0;
 
     public Window() throws SQLException{
         Controller c = new Controller();
         run(c);
+        btnReindirizzamentiPrivati.addMouseListener(new MouseAdapter() {
+        });
     }
 
     private void run(Controller c) throws SQLException {
@@ -304,6 +307,7 @@ public class Window {
         btnBackPrivati.setIcon(img);
         img = c.SetImageSize(".images/key.png", 30, 30);
         Tabs.setIconAt(3,img);
+        c.setJTabs(Tabs);
 
         //ELIMINAZIONE BORDER AUTOMATICO DELLO SCROLL
         infoBottomScroll.setBorder(null);
@@ -311,8 +315,8 @@ public class Window {
         //INTERAZIONI BTNBACK
         btnBack.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 panelInfoContatti.setVisible(false);
             }
         });
@@ -320,8 +324,8 @@ public class Window {
         //INTERAZIONI BTNBACKPRIVATI
         btnBackPrivati.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 InfoContattiPrivata.setVisible(false);
             }
         });
@@ -329,18 +333,40 @@ public class Window {
         //Interazione click area privata
         Tabs.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 try {
-                    if(Tabs.getSelectedIndex()==2 && c.getPassword() == null){
+                    if(Tabs.getSelectedIndex()==0){
+                        InfoContattiPrivata.setVisible(false);
+                        lastSelect=0;
+                        c.setLastInt(lastSelect);
+                    }
+                    else if(Tabs.getSelectedIndex()==1){
+                        panelInfoContatti.setVisible(false);
+                        InfoContattiPrivata.setVisible(false);
+                        lastSelect=1;
+                        c.setLastInt(lastSelect);
+                    }
+                    else if(Tabs.getSelectedIndex()==2 && c.getPassword() == null){
                         try {
-                            c.setJTabs(Tabs);
+                            panelInfoContatti.setVisible(false);
                             new CreaPassword(c);
                         } catch (SQLException ex) {
                             ex.printStackTrace();
                         }
                     }else if (Tabs.getSelectedIndex()==2){
-                        //TODO CREARE GUI PER INSERIRE PASSWORD
+                        panelInfoContatti.setVisible(false);
+                        c.setPanel(InfoContattiPrivata);
+                        new InserisciPassword(c);
+                    }
+                    else if (Tabs.getSelectedIndex()==3){
+                        if(c.getPassword()==null){
+                            Tabs.setSelectedIndex(lastSelect);
+                            new CreaPassword(c);
+                        }else{
+                            Tabs.setSelectedIndex(lastSelect);
+                            new AggiornaPassword(c);
+                        }
                     }
                 } catch (SQLException ex) {
                     ex.printStackTrace();
@@ -351,8 +377,8 @@ public class Window {
         //Listener contatto click
         listContatti.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
 
                 panelInfoContatti.setVisible(true);
                 c.swapVisibility(panelInfoContattoSinistra,panelCreaContatto);
@@ -441,8 +467,8 @@ public class Window {
         //Interazioni btnSearch
         btnSearch.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 panelInfoContatti.setVisible(false);
                 DLMContatti.clear();
                 try {
@@ -477,8 +503,8 @@ public class Window {
         //Interazioni btnSearchPrivati
         btnSearchPrivati.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 InfoContattiPrivata.setVisible(false);
                 DLMContattiPrivati.clear();
                 try {
@@ -534,8 +560,8 @@ public class Window {
         //mouse clicked
         lblMessenger.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 try {
                     c.setImg(".images/Messenger512x512.png");
                     c.setEmail("Messenger",pkContatti.get(listContatti.getSelectedIndex()));
@@ -572,8 +598,8 @@ public class Window {
         //mouse clicked
         lblSkype.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 try {
                     c.setImg(".images/Skype512x512.png");
                     c.setEmail("Skype",pkContatti.get(listContatti.getSelectedIndex()));
@@ -610,8 +636,8 @@ public class Window {
         //mouse clicked
         lblTeams.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 try {
                     c.setImg(".images/Teams512x512.png");
                     c.setEmail("Teams",pkContatti.get(listContatti.getSelectedIndex()));
@@ -648,8 +674,8 @@ public class Window {
         //mouse clicked
         lblWeChat.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 try {
                     c.setImg(".images/WeChat512x512.png");
                     c.setEmail("WeChat",pkContatti.get(listContatti.getSelectedIndex()));
@@ -686,8 +712,8 @@ public class Window {
         //mouse clicked
         lblWhatsapp.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 try {
                     c.setImg(".images/Whatsapp512x512.png");
                     c.setEmail("Whatsapp",pkContatti.get(listContatti.getSelectedIndex()));
@@ -724,8 +750,8 @@ public class Window {
         //mouse clicked
         lblViber.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 try {
                     c.setImg(".images/Viber512x512.png");
                     c.setEmail("Viber",pkContatti.get(listContatti.getSelectedIndex()));
@@ -762,8 +788,8 @@ public class Window {
         //mouse clicked
         lblTelegram.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 try {
                     c.setImg(".images/Telegram512x512.png");
                     c.setEmail("Telegram",pkContatti.get(listContatti.getSelectedIndex()));
@@ -801,8 +827,8 @@ public class Window {
         //Mouse clicked
         lblMessengerCreaContatto.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 if (textFieldEmail0.getText().equals("")) {
                     img = c.SetImageSize(".images/warning.png", 30, 30);
                     JOptionPane.showMessageDialog(null, "Bisogna inserire almeno una mail per registrare un sistema di messaging!", "ATTENZIONE!", 2, img);
@@ -919,8 +945,8 @@ public class Window {
         //Mouse clicked
         lblSkypeCreaContatto.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 if (textFieldEmail0.getText().equals("")) {
                     img = c.SetImageSize(".images/warning.png", 30, 30);
                     JOptionPane.showMessageDialog(null, "Bisogna inserire almeno una mail per registrare un sistema di messaging!", "ATTENZIONE!", 2, img);
@@ -1038,8 +1064,8 @@ public class Window {
         //Mouse clicked
         lblTeamsCreaContatto.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 if (textFieldEmail0.getText().equals("")) {
                     img = c.SetImageSize(".images/warning.png", 30, 30);
                     JOptionPane.showMessageDialog(null, "Bisogna inserire almeno una mail per registrare un sistema di messaging!", "ATTENZIONE!", 2, img);
@@ -1156,8 +1182,8 @@ public class Window {
         //Mouse clicked
         lblWeChatCreaContatto.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 if (textFieldEmail0.getText().equals("")) {
                     img = c.SetImageSize(".images/warning.png", 30, 30);
                     JOptionPane.showMessageDialog(null, "Bisogna inserire almeno una mail per registrare un sistema di messaging!", "ATTENZIONE!", 2, img);
@@ -1274,8 +1300,8 @@ public class Window {
         //Mouse clicked
         lblWhatsappCreaContatto.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 if (textFieldEmail0.getText().equals("")) {
                     img = c.SetImageSize(".images/warning.png", 30, 30);
                     JOptionPane.showMessageDialog(null, "Bisogna inserire almeno una mail per registrare un sistema di messaging!", "ATTENZIONE!", 2, img);
@@ -1392,8 +1418,8 @@ public class Window {
         //Mouse clicked
         lblViberCreaContatto.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 if (textFieldEmail0.getText().equals("")) {
                     img = c.SetImageSize(".images/warning.png", 30, 30);
                     JOptionPane.showMessageDialog(null, "Bisogna inserire almeno una mail per registrare un sistema di messaging!", "ATTENZIONE!", 2, img);
@@ -1510,8 +1536,8 @@ public class Window {
         //Mouse clicked
         lblTelegramCreaContatto.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 if (textFieldEmail0.getText().equals("")) {
                     img = c.SetImageSize(".images/warning.png", 30, 30);
                     JOptionPane.showMessageDialog(null, "Bisogna inserire almeno una mail per registrare un sistema di messaging!", "ATTENZIONE!", 2, img);
@@ -1607,8 +1633,8 @@ public class Window {
         //GESTIONE CLICK ELIMINA IN INFO CONTATTI
         btnElimina.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 img = c.SetImageSize(".images/warning.png",30,30);
                 if(JOptionPane.showConfirmDialog(null,"SEI SICURO DI VOLER ELIMINARE QUESTO CONTATTO?","ATTENZIONE!",0,1,img)==0){
                     try {
@@ -1635,8 +1661,8 @@ public class Window {
         //GESTIONE CLICK CREA CONTATTO IN LISTA CONTATTI
         aggiungiContattoButton.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 jfc = new JFileChooser();
                 panelInfoContatti.setVisible(true);
                 c.swapVisibility(panelCreaContatto,panelInfoContattoSinistra);
@@ -1650,8 +1676,8 @@ public class Window {
         //GESTIONE CLICK ANNULLA IN CREA CONTATTO
         btnAnnulla.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 //swap finestra
                 panelInfoContattoSinistra.setVisible(false);
                 panelCreaContatto.setVisible(false);
@@ -1780,8 +1806,8 @@ public class Window {
         //INTERAZIONI AGGIUNTA FOTO CONTATTO IN CREA CONTATTO
         btnAddContact.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 jfc.showDialog(null,"Seleziona la foto del contatto");
                 jfc.setVisible(true);
                 try {
@@ -1801,8 +1827,8 @@ public class Window {
         //INTERAZIONI CON PULSANTE BTNADDEMAIL
         btnAddEmail.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 switch(contEmail){
                     case 1 : textFieldEmail1.setVisible(true);
                         break;
@@ -1838,8 +1864,8 @@ public class Window {
         //INTERAZIONI CON BTNBACKEMAIL
         btnBackEmail.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 switch(contEmail){
                     case 1 : img = c.SetImageSize(".images/warning.png",30,30);
                         JOptionPane.showMessageDialog(null,"Non è possibile eliminare ulteriori textbox!","ATTENZIONE!",1,img);
@@ -1882,8 +1908,8 @@ public class Window {
         //INTERAZIONI CON PULSANTE BTNADDNUMERIFISSI
         btnAddNumeriFissi.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 switch(contNumeriFissi){
                     case 1 : textFieldNumeriFissi1.setVisible(true);
                         break;
@@ -1918,8 +1944,8 @@ public class Window {
         //INTERAZIONI CON BTNBACKNUMERIFISSI
         btnBackNumeriFissi.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 switch(contNumeriFissi){
                     case 1 : img = c.SetImageSize(".images/warning.png",30,30);
                         JOptionPane.showMessageDialog(null,"Non è possibile eliminare ulteriori TextBox!","ATTENZIONE!",1,img);
@@ -1962,8 +1988,8 @@ public class Window {
         //INTERAZIONI CON PULSANTE BTNADDNUMERIMOBILI
         btnAddNumeriMobili.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 switch(contNumeriMobili){
                     case 1 : textFieldNumeriMobili1.setVisible(true);
                         break;
@@ -1998,8 +2024,8 @@ public class Window {
         //INTERAZIONI CON BTNBACKNUMERIMOBILI
         btnBackNumeriMobili.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 switch(contNumeriMobili){
                     case 1 : img = c.SetImageSize(".images/warning.png",30,30);
                         JOptionPane.showMessageDialog(null,"Non è possibile eliminare ulteriori TextBox!","ATTENZIONE!",1,img);
@@ -2042,8 +2068,8 @@ public class Window {
         //INTERAZIONI CON BTNBACKINDIRIZZISECONDARI
         btnBackIndirizziSecondari.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 switch(contIndirizziSecondari){
                     case 1 : img = c.SetImageSize(".images/warning.png",30,30);
                         JOptionPane.showMessageDialog(null,"Non è possibile eliminare ulteriori TextBox!","ATTENZIONE!",1,img);
@@ -2086,8 +2112,8 @@ public class Window {
         //INTERAZIONI CON PULSANTE BTNADDINDIRIZZISECONDARI
         btnAddIndirizziSecondari.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 switch(contIndirizziSecondari){
                     case 1 : textFieldIndirizziSecondari1.setVisible(true);
                         break;
@@ -2770,8 +2796,8 @@ public class Window {
         //INTERAZIONI BTNAGGIUNGI IN CREA CONTATTO
         btnAggiungi.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 //SE NON E' STATO INSERITO UN NOME AL CONTATTO NON CONTINUARE
                 if (textFieldNome.getText().equals("")) {
                     img = c.SetImageSize(".images/warning.png", 30, 30);
@@ -3364,8 +3390,8 @@ public class Window {
         //Interazione click CreaReindirizzamenti
         btnReindirizzamentiCreaContatto.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 if (textFieldNumeriFissi0.getText().equals("") || textFieldNumeriMobili0.getText().equals("")) {
                     img = c.SetImageSize(".images/warning.png", 30, 30);
                     JOptionPane.showMessageDialog(null, "Inserire almeno un numero mobile e un numero fisso per creare un reindirizzamento!", "ATTENZIONE!", 1, img);
@@ -3537,8 +3563,8 @@ public class Window {
         //Set interazioni reindirizzamenti in infoContatto
         btnReindirizzamenti.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 try {
                     c.setReindirizzamenti(pkContatti.get(listContatti.getSelectedIndex()));
                     if(c.getReindirizzamenti()==null){
@@ -3554,8 +3580,8 @@ public class Window {
         //INTERAZIONI BTNMODIFICA
         btnModifica.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 //swap finestra
                 panelInfoContatti.setVisible(true);
                 c.swapVisibility(panelCreaContatto, panelInfoContattoSinistra);
@@ -4140,8 +4166,8 @@ public class Window {
         //Listener contattoprivato click
         listAreaPrivata.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 InfoContattiPrivata.setVisible(true);
                 try {
                     //Settaggio visibilità dei lblServizi
@@ -4228,8 +4254,8 @@ public class Window {
         //GESTIONE CLICK ELIMINA IN INFO CONTATTI PRIVATI
         btnEliminaPrivati.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 img = c.SetImageSize(".images/warning.png",30,30);
                 if(JOptionPane.showConfirmDialog(null,"SEI SICURO DI VOLER ELIMINARE QUESTO CONTATTO?","ATTENZIONE!",0,1,img)==0){
                     try {
@@ -4258,8 +4284,8 @@ public class Window {
         //INTERAZIONI BTNMODIFICAPRIVATI
         btnModificaPrivati.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 //swap finestra
                 panelInfoContatti.setVisible(true);
                 c.swapVisibility(panelCreaContatto, panelInfoContattoSinistra);
@@ -4298,11 +4324,11 @@ public class Window {
                     contattoPrivatoCheckBox.setSelected(true);
 
                     //Settaggio Email
+                    if(contEmail==1 && !textFieldEmail0.getText().equals("")){
+                        c.getArrayEmail(getStrings, pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
+                        textFieldEmail0.setText(getStrings.get(0));
+                    }
                     switch (contEmail) {
-                        case 1:
-                            c.getArrayEmail(getStrings, pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
-                            textFieldEmail0.setText(getStrings.get(0));
-                            break;
                         case 2:
                             c.getArrayEmail(getStrings, pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
                             textFieldEmail0.setText(getStrings.get(0));
@@ -4432,11 +4458,11 @@ public class Window {
                     }
 
                     //Settaggio NumeriFissi
+                    if(contNumeriFissi==1 && !textFieldNumeriFissi0.getText().equals("")){
+                        c.getArrayNumeriFissi(getStrings, pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
+                        textFieldNumeriFissi0.setText(getStrings.get(0));
+                    }
                     switch (contNumeriFissi) {
-                        case 1:
-                            c.getArrayNumeriFissi(getStrings, pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
-                            textFieldNumeriFissi0.setText(getStrings.get(0));
-                            break;
                         case 2:
                             c.getArrayNumeriFissi(getStrings, pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
                             textFieldNumeriFissi0.setText(getStrings.get(0));
@@ -4567,11 +4593,11 @@ public class Window {
                     }
 
                     //Settaggio NumeriMobili
+                    if(contNumeriMobili==1 && !textFieldNumeriMobili0.getText().equals("")){
+                        c.getArrayNumeriMobili(getStrings, pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
+                        textFieldNumeriMobili0.setText(getStrings.get(0));
+                    }
                     switch (contNumeriMobili) {
-                        case 1:
-                            c.getArrayNumeriMobili(getStrings, pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
-                            textFieldNumeriMobili0.setText(getStrings.get(0));
-                            break;
                         case 2:
                             c.getArrayNumeriMobili(getStrings, pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
                             textFieldNumeriMobili0.setText(getStrings.get(0));
@@ -4706,11 +4732,11 @@ public class Window {
                     }
 
                     //Settaggio IndirizziSecondari
+                    if(contIndirizziSecondari==1 && !textFieldIndirizziSecondari0.getText().equals("")){
+                        c.getArrayIndirizziSecondari(getStrings, pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
+                        textFieldIndirizziSecondari0.setText(getStrings.get(0));
+                    }
                     switch (contIndirizziSecondari) {
-                        case 1:
-                            c.getArrayIndirizziSecondari(getStrings, pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
-                            textFieldIndirizziSecondari0.setText(getStrings.get(0));
-                            break;
                         case 2:
                             c.getArrayIndirizziSecondari(getStrings, pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
                             textFieldIndirizziSecondari0.setText(getStrings.get(0));
@@ -4849,8 +4875,8 @@ public class Window {
         //Set interazioni reindirizzamenti in infoContattoPrivati
         btnReindirizzamentiPrivati.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 try {
                     c.setReindirizzamenti(pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
                     if(c.getReindirizzamenti()==null){
@@ -4888,8 +4914,8 @@ public class Window {
         //mouse clicked
         lblMessengerPrivati.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 try {
                     c.setImg(".images/Messenger512x512.png");
                     c.setEmail("Messenger",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
@@ -4926,8 +4952,8 @@ public class Window {
         //mouse clicked
         lblSkypePrivati.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 try {
                     c.setImg(".images/Skype512x512.png");
                     c.setEmail("Skype",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
@@ -4964,8 +4990,8 @@ public class Window {
         //mouse clicked
         lblTeamsPrivati.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 try {
                     c.setImg(".images/Teams512x512.png");
                     c.setEmail("Teams",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
@@ -5002,8 +5028,8 @@ public class Window {
         //mouse clicked
         lblWeChatPrivati.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 try {
                     c.setImg(".images/WeChat512x512.png");
                     c.setEmail("WeChat",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
@@ -5040,8 +5066,8 @@ public class Window {
         //mouse clicked
         lblWhatsappPrivati.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 try {
                     c.setImg(".images/Whatsapp512x512.png");
                     c.setEmail("Whatsapp",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
@@ -5078,8 +5104,8 @@ public class Window {
         //mouse clicked
         lblViberPrivati.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 try {
                     c.setImg(".images/Viber512x512.png");
                     c.setEmail("Viber",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
@@ -5116,8 +5142,8 @@ public class Window {
         //mouse clicked
         lblTelegramPrivati.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 try {
                     c.setImg(".images/Telegram512x512.png");
                     c.setEmail("Telegram",pkContattiPrivati.get(listAreaPrivata.getSelectedIndex()));
@@ -5133,8 +5159,8 @@ public class Window {
         //Interazione btnAggiornaModifica
         btnAggiornaModifica.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 if (textFieldNome.getText().equals("")) {
                     img = c.SetImageSize(".images/warning.png", 30, 30);
                     JOptionPane.showMessageDialog(null, "Non è stato inserito il nome del contatto!", "ATTENZIONE!", 1, img);
@@ -5695,5 +5721,3 @@ public class Window {
         new Window();
     }
 }
-
-//TODO BUG MODIFICA IN CONTATTO PRIVATO
