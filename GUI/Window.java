@@ -453,6 +453,8 @@ public class Window {
                 panelInfoContattoSinistra.setVisible(false);
                 panelCreaContatto.setVisible(false);
                 panelInfoContatti.setVisible(false);
+                img = c.SetImageSize(".images/group.png",200,200);
+                lblFotoGruppo.setIcon(img);
                 c.getPkGruppo().clear();
             }
         });
