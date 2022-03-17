@@ -568,6 +568,8 @@ public class Window {
                     else if(Tabs.getSelectedIndex()==2 && c.getPassword() == null){
                         try {
                             panelInfoContatti.setVisible(false);
+                            DLMContattiPrivati.clear();
+                            listAreaPrivata.setModel(DLMContattiPrivati);
                             new CreaPassword(c);
                         } catch (SQLException ex) {
                             ex.printStackTrace();
@@ -575,6 +577,8 @@ public class Window {
                     }else if (Tabs.getSelectedIndex()==2){
                         panelInfoContatti.setVisible(false);
                         c.setPanel(InfoContattiPrivata);
+                        DLMContattiPrivati.clear();
+                        listAreaPrivata.setModel(DLMContattiPrivati);
                         new InserisciPassword(c);
                     }
                     else if (Tabs.getSelectedIndex()==3){
