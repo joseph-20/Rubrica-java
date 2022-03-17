@@ -32,8 +32,10 @@ public class Window {
     private JPanel PanelBottoni;
     private JList listContatti;
     private JScrollPane scrollPaneContatti;
-    DefaultListModel DLMContatti = new DefaultListModel();
-    DefaultListModel DLMContattiPrivati = new DefaultListModel();
+    private DefaultListModel DLMContatti = new DefaultListModel();
+    private DefaultListModel DLMContattiPrivati = new DefaultListModel();
+    private DefaultListModel DLMGruppi = new DefaultListModel();
+    private DefaultListModel DLMPartecipanti = new DefaultListModel();
     private JList listAreaPrivata;
     private JScrollPane scrollPaneAreaPrivata;
     private JLabel lblFoto;
@@ -70,15 +72,9 @@ public class Window {
     private JSplitPane InfoCreaSplitPane;
     private JButton btnAnnulla;
     private JButton btnReindirizzamenti;
-    private JPanel panelCreaContattoTop;
     private JButton btnAddContact;
-    private JLabel nomeLabel;
-    private JLabel cognomeLabel;
     private JTextField textFieldNome;
     private JTextField textFieldCognome;
-    private JPanel panelMidCreaContatto;
-    private JPanel panelServices;
-    private JPanel panelGridBagServices;
     private JLabel lblMessengerCreaContatto;
     private JLabel lblSkypeCreaContatto;
     private JLabel lblTeamsCreaContatto;
@@ -86,10 +82,8 @@ public class Window {
     private JLabel lblViberCreaContatto;
     private JLabel lblWeChatCreaContatto;
     private JLabel lblWhatsappCreaContatto;
-    private JPanel panelBottomCreaContatto;
     private JScrollPane creaContattoScrollPane;
     private JPanel panelCreaContattoScrollPane;
-    private JLabel lblEmailCreaContatto;
     private JTextField textFieldEmail0;
     private JButton btnAddEmail;
     private JButton btnBackEmail;
@@ -102,9 +96,7 @@ public class Window {
     private JTextField textFieldEmail7;
     private JTextField textFieldEmail8;
     private JTextField textFieldEmail9;
-    private JButton btnAddEmailCanGrow;
     private JTextField textFieldIndirizzoPrincipale;
-    private JLabel lblNumeroFissoCreaContatto;
     private JButton btnAddNumeriFissi;
     private JButton btnAddNumeriFissiCanGrow;
     private JButton btnBackNumeriFissi;
@@ -118,8 +110,6 @@ public class Window {
     private JTextField textFieldNumeriFissi7;
     private JTextField textFieldNumeriFissi8;
     private JTextField textFieldNumeriFissi9;
-    private JLabel lblIndirizzoPrincipaleCreaContatto;
-    private JLabel lblNumeriMobiliCreaContatto;
     private JButton btnAddNumeriMobili;
     private JButton btnBackNumeriMobili;
     private JTextField textFieldNumeriMobili0;
@@ -142,7 +132,6 @@ public class Window {
     private JTextField textFieldIndirizziSecondari7;
     private JTextField textFieldIndirizziSecondari8;
     private JTextField textFieldIndirizziSecondari9;
-    private JLabel lblIndirizziSecondariCreaContatto;
     private JButton btnAddIndirizziSecondari;
     private JButton btnBackIndirizziSecondari;
     private JButton btnAggiungi;
@@ -194,6 +183,55 @@ public class Window {
     private JComboBox comboBoxRicerca;
     private JComboBox comboBoxRicercaPrivati;
     private JButton btnModificaPrivati;
+    private JSplitPane panelCreaSplitPane;
+    private JPanel panelCreaContatto1;
+    private JPanel panelCreaContattoTop;
+    private JPanel panelMidCreaContatto;
+    private JPanel panelBottomCreaContatto;
+    private JLabel nomeLabel;
+    private JLabel cognomeLabel;
+    private JPanel panelServices;
+    private JPanel panelGridBagServices;
+    private JLabel lblEmailCreaContatto;
+    private JLabel numeriFissiLabel;
+    private JLabel indirizzoPrincipaleLabel;
+    private JLabel numeriMobiliLabel;
+    private JLabel indirizziSecondariLabel;
+    private JPanel panelCreaGruppo;
+    private JPanel panelNomeGruppo;
+    private JLabel lblNomeGruppo;
+    private JTextField textFieldNomeGruppo;
+    private JPanel panelBottoniCreaGruppo;
+    private JButton btnAnnullaCreaGruppo;
+    private JButton btnAggiungiCreaGruppo;
+    private JButton btnCreaGruppoGrp;
+    private JPanel panelListGruppo;
+    private JScrollPane gruppoScrollPane;
+    private JScrollPane scrollPaneGruppo;
+    private JList listGruppo;
+    private JLabel lblListaContattiGruppo;
+    private JPanel panelGruppi;
+    private JSplitPane splitPaneGruppi;
+    private JPanel panelListaGruppi;
+    private JScrollPane scrollPaneListaGruppi;
+    private JList listNomiGruppi;
+    private JButton btnSearchGruppo;
+    private JComboBox comboBoxGruppo;
+    private JTextField textFieldGruppo;
+    private JPanel panelSearchGruppo;
+    private JPanel panelVuoto;
+    private JPanel panelInfoGruppo;
+    private JLabel lblInfoNomeGruppo;
+    private JPanel panelInfoGruppoScroll;
+    private JScrollPane scrollPaneInfoGruppo;
+    private JList listPartecipantiGruppo;
+    private JLabel lblPartecipanti;
+    private JPanel panelBottoni;
+    private JButton btnEliminaGruppo;
+    private JButton btnBackGruppo;
+    private JButton btnAddFotoGruppo;
+    private JLabel lblFotoGruppo;
+    private JLabel lblNomiGruppoPartecipanti;
     private ImageIcon img;
     private DefaultListCellRenderer renderer;
     private DefaultListModel DlmServizi = new DefaultListModel();
@@ -217,13 +255,12 @@ public class Window {
     private JPasswordField pwd = new JPasswordField(30);
     private int action;
     private int getpk;
+    private int contatore=0;
     private int lastSelect=0;
 
     public Window() throws SQLException{
         Controller c = new Controller();
         run(c);
-        btnReindirizzamentiPrivati.addMouseListener(new MouseAdapter() {
-        });
     }
 
     private void run(Controller c) throws SQLException {
@@ -257,6 +294,8 @@ public class Window {
         randImage.add("icon_white.png");
         img = c.SetImageSize(".images/rubrica.png",512,512);
         frame.setIconImage(img.getImage());
+        img = c.SetImageSize(".images/group.png",200,200);
+        btnAddFotoGruppo.setIcon(img);
 
 
         //Blocco scorrimento ScrollBar e settaggio visibilità panel
@@ -271,11 +310,27 @@ public class Window {
         panelInfoContatti.setVisible(false);
         InfoCreaSplitPane.setDividerSize(0);
         contattiSplitPane.setDividerSize(0);
+        panelCreaSplitPane.setDividerSize(0);
         panelInfoContattoSinistra.setVisible(false);
         panelCreaContatto.setVisible(false);
         creaContattoScrollPane.setBorder(null);
         infoContattiPrivatiScroll.setBorder(null);
         InfoContattiPrivata.setVisible(false);
+        panelCreaGruppo.setVisible(false);
+        panelCreaSplitPane.setBorder(null);
+        panelCreaSplitPane.setEnabled(false);
+        listContatti.setBorder(null);
+        listContatti.setBackground(null);
+        listAreaPrivata.setBorder(null);
+        listAreaPrivata.setBackground(null);
+        gruppoScrollPane.setBorder(null);
+        listGruppo.setBackground(null);
+        renderer = (DefaultListCellRenderer) listGruppo.getCellRenderer();
+        renderer.setHorizontalAlignment(SwingConstants.CENTER);
+        panelInfoGruppo.setVisible(false);
+        splitPaneGruppi.setEnabled(false);
+        listNomiGruppi.setBackground(null);
+        scrollPaneInfoGruppo.setBorder(null);
 
 
         //Gestione zona contatti
@@ -285,8 +340,13 @@ public class Window {
 
         //Gestione zona contatti privati
         pkContattiPrivati = new ArrayList<Integer>();
-        DLMContattiPrivati = c.getContattiPrivati(pkContattiPrivati);
-        listAreaPrivata.setModel(DLMContattiPrivati);                               //Aggiungiamo nel JList i nomi e cognomi dei contatti
+        c.setDlmPrivati(DLMContattiPrivati);
+        c.setListPrivata(listAreaPrivata);
+        c.setPkContattiPrivati(pkContattiPrivati);
+
+        //Gestione zona gruppi
+        DLMGruppi = c.getDLMGruppi();
+        listNomiGruppi.setModel(DLMGruppi);
 
         //SETTAGGIO LABEL INIZIALI E ICONE
         lblEmail.setText("<html>Posta Elettronica<br/><html>");
@@ -301,6 +361,7 @@ public class Window {
         lblIndirizziSecondariPrivati.setText("<html>Indirizzi Secondari<br/><html>");
         img = c.SetImageSize(".images/search.png",30,30);
         btnSearch.setIcon(img);
+        btnSearchGruppo.setIcon(img);
         btnSearchPrivati.setIcon(img);
         img = c.SetImageSize(".images/close.png",30,30);
         btnBack.setIcon(img);
@@ -308,6 +369,8 @@ public class Window {
         img = c.SetImageSize(".images/key.png", 30, 30);
         Tabs.setIconAt(3,img);
         c.setJTabs(Tabs);
+        img = c.SetImageSize(".images/close.png",30,30);
+        btnBackGruppo.setIcon(img);
 
         //ELIMINAZIONE BORDER AUTOMATICO DELLO SCROLL
         infoBottomScroll.setBorder(null);
@@ -321,12 +384,161 @@ public class Window {
             }
         });
 
+        //INTERAZIONI BTNBACKGRUPPO
+        btnBackGruppo.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
+                panelInfoGruppo.setVisible(false);
+            }
+        });
+
         //INTERAZIONI BTNBACKPRIVATI
         btnBackPrivati.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
                 super.mousePressed(e);
                 InfoContattiPrivata.setVisible(false);
+            }
+        });
+
+        //INERAZIONE BTNCREAGRUPPO
+        creaGruppoButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
+
+                //panel CreaContatto
+                panelCreaContattoTop.setVisible(false);
+                panelMidCreaContatto.setVisible(false);
+                panelBottomCreaContatto.setVisible(false);
+                creaContattoScrollPane.setVisible(false);
+
+                //this panel
+                panelNomeGruppo.setVisible(true);
+                panelBottoniCreaGruppo.setVisible(true);
+                panelListGruppo.setVisible(true);
+
+                //set dlm
+                listGruppo.setModel(DLMContatti);
+
+                //set window
+                panelInfoContatti.setVisible(true);
+                panelInfoContattoSinistra.setVisible(false);
+                panelCreaContatto.setVisible(true);
+                panelCreaContatto1.setVisible(false);
+                panelCreaGruppo.setVisible(true);
+                panelCreaSplitPane.setVisible(true);
+                panelInfoContatti.validate();
+                contattiSplitPane.setDividerLocation(350);
+                panelCreaSplitPane.setDividerLocation(0);
+                frame.validate();
+            }
+        });
+
+        btnAggiungiCreaGruppo.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
+                c.setPkGruppo(pkContatti.get(listGruppo.getSelectedIndex()));
+                contatore++;
+            }
+        });
+
+        btnAnnullaCreaGruppo.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
+                textFieldNomeGruppo.setText("");
+                panelInfoContattoSinistra.setVisible(false);
+                panelCreaContatto.setVisible(false);
+                panelInfoContatti.setVisible(false);
+                c.getPkGruppo().clear();
+            }
+        });
+
+        btnCreaGruppoGrp.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
+                if(textFieldNomeGruppo.getText().equals("")){
+                    img = c.SetImageSize(".images/warning.png",30,30);
+                    JOptionPane.showMessageDialog(null,"Inserire il nome del gruppo!","ATTENZIONE!",1,img);
+                }else if(contatore==0){
+                    img = c.SetImageSize(".images/warning.png",30,30);
+                    JOptionPane.showMessageDialog(null,"Inserire almeno un contatto nel gruppo!","ATTENZIONE!",1,img);
+                }else{
+                    try {
+                        contatore=0;
+                        c.setGruppo(textFieldNomeGruppo.getText());
+                        c.setPartecipazioni(c.getPkGruppo(),textFieldNomeGruppo.getText());
+                        if (jfc.getSelectedFile() != null) {
+                            Files.copy(Path.of((foto.getPath())), Path.of(".images/" + textFieldNomeGruppo.getText()), StandardCopyOption.REPLACE_EXISTING);
+                        }
+                        panelInfoContattoSinistra.setVisible(false);
+                        panelCreaContatto.setVisible(false);
+                        panelInfoContatti.setVisible(false);
+                        textFieldNomeGruppo.setText("");
+                        DLMGruppi = c.getDLMGruppi();
+                        listNomiGruppi.setModel(DLMGruppi);
+                    } catch (SQLException ex) {
+                        img = c.SetImageSize(".images/warning.png",30,30);
+                        JOptionPane.showMessageDialog(null,"Nome del gruppo già esistente!","ATTENZIONE!",1,img);
+                        ex.printStackTrace();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        });
+
+        //Interazione click gruppo
+        listNomiGruppi.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
+                panelInfoGruppo.setVisible(true);
+                lblInfoNomeGruppo.setText(listNomiGruppi.getSelectedValue().toString());
+                if (jfc.getSelectedFile() != null) {
+                    img = c.SetImageSize(".images/" + listNomiGruppi.getSelectedValue().toString(), 200, 200);
+                    lblFotoGruppo.setIcon(img);
+                }
+                else{
+                    img = c.SetImageSize(".images/group.png",200,200);
+                    lblFotoGruppo.setIcon(img);
+                }
+                try {
+                    lblNomiGruppoPartecipanti.setText(c.getPartecipanti(listNomiGruppi.getSelectedValue().toString()));
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+                splitPaneGruppi.setDividerLocation(350);
+            }
+        });
+
+        //Interazione btneliminagruppo
+        btnEliminaGruppo.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
+                try {
+                    img = c.SetImageSize(".images/warning.png",30,30);
+                    if(JOptionPane.showConfirmDialog(null,"SEI SICURO DI VOLER ELIMINARE QUESTO GRUPPO?","ATTENZIONE!",0,1,img)==0) {
+                        c.eliminaGruppo(listNomiGruppi.getSelectedValue().toString());
+                        if(Files.exists(Path.of(".images/" + listNomiGruppi.getSelectedValue().toString()))) {
+                            Files.delete(Path.of(".images/" + listNomiGruppi.getSelectedValue().toString()));
+                        }
+                        img = c.SetImageSize(".images/creazionecontatto.png", 30, 30);
+                        JOptionPane.showMessageDialog(null, "Gruppo " + listNomiGruppi.getSelectedValue().toString() + " eliminato con successo!", "ELIMINAZIONE RIUSCITA!", 1, img);
+                        panelInfoGruppo.setVisible(false);
+                        DLMGruppi = c.getDLMGruppi();
+                        listNomiGruppi.setModel(DLMGruppi);
+                    }
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
 
@@ -340,11 +552,15 @@ public class Window {
                         InfoContattiPrivata.setVisible(false);
                         lastSelect=0;
                         c.setLastInt(lastSelect);
+                        DLMContattiPrivati.clear();
+                        listAreaPrivata.setModel(DLMContattiPrivati);
                     }
                     else if(Tabs.getSelectedIndex()==1){
                         panelInfoContatti.setVisible(false);
                         InfoContattiPrivata.setVisible(false);
                         lastSelect=1;
+                        DLMContattiPrivati.clear();
+                        listAreaPrivata.setModel(DLMContattiPrivati);
                         c.setLastInt(lastSelect);
                     }
                     else if(Tabs.getSelectedIndex()==2 && c.getPassword() == null){
@@ -362,9 +578,13 @@ public class Window {
                     else if (Tabs.getSelectedIndex()==3){
                         if(c.getPassword()==null){
                             Tabs.setSelectedIndex(lastSelect);
+                            DLMContattiPrivati.clear();
+                            listAreaPrivata.setModel(DLMContattiPrivati);
                             new CreaPassword(c);
                         }else{
                             Tabs.setSelectedIndex(lastSelect);
+                            DLMContattiPrivati.clear();
+                            listAreaPrivata.setModel(DLMContattiPrivati);
                             new AggiornaPassword(c);
                         }
                     }
@@ -380,8 +600,14 @@ public class Window {
             public void mousePressed(MouseEvent e) {
                 super.mousePressed(e);
 
+                //Eliminazione di presunte partecipazioni a gruppi
+                c.getPkGruppo().clear();
+
                 panelInfoContatti.setVisible(true);
                 c.swapVisibility(panelInfoContattoSinistra,panelCreaContatto);
+                InfoCreaSplitPane.setVisible(true);
+                panelCreaGruppo.setVisible(false);
+                panelCreaSplitPane.setVisible(false);
                 contattiSplitPane.setDividerLocation(350);
                 frame.validate();
                 try {
@@ -499,6 +725,31 @@ public class Window {
             }
         });
 
+        //Interazioni btnSearchGruppo
+        btnSearchGruppo.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
+                panelInfoContatti.setVisible(false);
+                DLMContatti.clear();
+                try {
+                    if(comboBoxGruppo.getSelectedItem().toString().equals("GRUPPO")) {
+                        DLMGruppi.removeAllElements();
+                        DLMGruppi = c.getGruppiSearch(textFieldGruppo.getText());
+                        panelInfoGruppo.setVisible(false);
+                    }
+                    else if(comboBoxGruppo.getSelectedItem().toString().equals("CONTATTO")){
+                        DLMGruppi.removeAllElements();
+                        DLMGruppi = c.getGruppiSearchContatto(textFieldGruppo.getText());
+                        panelInfoGruppo.setVisible(false);
+                    }
+
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+                listNomiGruppi.setModel(DLMGruppi);
+            }
+        });
 
         //Interazioni btnSearchPrivati
         btnSearchPrivati.addMouseListener(new MouseAdapter() {
@@ -1664,12 +1915,127 @@ public class Window {
             public void mousePressed(MouseEvent e) {
                 super.mousePressed(e);
                 jfc = new JFileChooser();
+                //This panel
+                panelCreaContattoTop.setVisible(true);
+                panelMidCreaContatto.setVisible(true);
+                panelBottomCreaContatto.setVisible(true);
+                creaContattoScrollPane.setVisible(true);
+
+                //Panel gruppo
+                panelNomeGruppo.setVisible(false);
+                panelBottoniCreaGruppo.setVisible(false);
+                panelListGruppo.setVisible(false);
+
                 panelInfoContatti.setVisible(true);
-                c.swapVisibility(panelCreaContatto,panelInfoContattoSinistra);
+                InfoCreaSplitPane.setVisible(true);
+                panelCreaContatto.setVisible(true);
+                panelCreaSplitPane.setVisible(true);
+                panelCreaContatto1.setVisible(true);
+                panelInfoContattoSinistra.setVisible(false);
+                panelCreaGruppo.setVisible(false);
                 contattiSplitPane.setDividerLocation(350);
+                panelCreaSplitPane.setDividerLocation(0);
                 img = c.SetImageSize(".images/"+randImage.get(rand.nextInt(randImage.size()-1)),200,200);
                 btnAddContact.setIcon(img);
-                panelInfoContatti.validate();
+                frame.validate();
+                //Settaggio di tutti i textField a default
+                //email
+                textFieldNome.setText(null);
+                textFieldCognome.setText(null);
+                textFieldEmail0.setText(null);
+                textFieldEmail1.setText(null);
+                textFieldEmail1.setVisible(false);
+                textFieldEmail2.setText(null);
+                textFieldEmail2.setVisible(false);
+                textFieldEmail3.setText(null);
+                textFieldEmail3.setVisible(false);
+                textFieldEmail4.setText(null);
+                textFieldEmail4.setVisible(false);
+                textFieldEmail5.setText(null);
+                textFieldEmail5.setVisible(false);
+                textFieldEmail6.setText(null);
+                textFieldEmail6.setVisible(false);
+                textFieldEmail7.setText(null);
+                textFieldEmail7.setVisible(false);
+                textFieldEmail8.setText(null);
+                textFieldEmail8.setVisible(false);
+                textFieldEmail9.setText(null);
+                textFieldEmail9.setVisible(false);
+                //numeri fissi
+                textFieldNumeriFissi0.setText(null);
+                textFieldNumeriFissi1.setText(null);
+                textFieldNumeriFissi1.setVisible(false);
+                textFieldNumeriFissi2.setText(null);
+                textFieldNumeriFissi2.setVisible(false);
+                textFieldNumeriFissi3.setText(null);
+                textFieldNumeriFissi3.setVisible(false);
+                textFieldNumeriFissi4.setText(null);
+                textFieldNumeriFissi4.setVisible(false);
+                textFieldNumeriFissi5.setText(null);
+                textFieldNumeriFissi5.setVisible(false);
+                textFieldNumeriFissi6.setText(null);
+                textFieldNumeriFissi6.setVisible(false);
+                textFieldNumeriFissi7.setText(null);
+                textFieldNumeriFissi7.setVisible(false);
+                textFieldNumeriFissi8.setText(null);
+                textFieldNumeriFissi8.setVisible(false);
+                textFieldNumeriFissi9.setText(null);
+                textFieldNumeriFissi9.setVisible(false);
+                //Numeri mobili
+                textFieldNumeriMobili0.setText(null);
+                textFieldNumeriMobili1.setText(null);
+                textFieldNumeriMobili1.setVisible(false);
+                textFieldNumeriMobili2.setText(null);
+                textFieldNumeriMobili2.setVisible(false);
+                textFieldNumeriMobili3.setText(null);
+                textFieldNumeriMobili3.setVisible(false);
+                textFieldNumeriMobili4.setText(null);
+                textFieldNumeriMobili4.setVisible(false);
+                textFieldNumeriMobili5.setText(null);
+                textFieldNumeriMobili5.setVisible(false);
+                textFieldNumeriMobili6.setText(null);
+                textFieldNumeriMobili6.setVisible(false);
+                textFieldNumeriMobili7.setText(null);
+                textFieldNumeriMobili7.setVisible(false);
+                textFieldNumeriMobili8.setText(null);
+                textFieldNumeriMobili8.setVisible(false);
+                textFieldNumeriMobili9.setText(null);
+                textFieldNumeriMobili9.setVisible(false);
+                //indirizzo principale
+                textFieldIndirizzoPrincipale.setText(null);
+                //indirizzi secondari
+                textFieldIndirizziSecondari0.setText(null);
+                textFieldIndirizziSecondari1.setText(null);
+                textFieldIndirizziSecondari1.setVisible(false);
+                textFieldIndirizziSecondari2.setText(null);
+                textFieldIndirizziSecondari2.setVisible(false);
+                textFieldIndirizziSecondari3.setText(null);
+                textFieldIndirizziSecondari3.setVisible(false);
+                textFieldIndirizziSecondari4.setText(null);
+                textFieldIndirizziSecondari4.setVisible(false);
+                textFieldIndirizziSecondari5.setText(null);
+                textFieldIndirizziSecondari5.setVisible(false);
+                textFieldIndirizziSecondari6.setText(null);
+                textFieldIndirizziSecondari6.setVisible(false);
+                textFieldIndirizziSecondari7.setText(null);
+                textFieldIndirizziSecondari7.setVisible(false);
+                textFieldIndirizziSecondari8.setText(null);
+                textFieldIndirizziSecondari8.setVisible(false);
+                textFieldIndirizziSecondari9.setText(null);
+                textFieldIndirizziSecondari9.setVisible(false);
+
+                //settaggio contatori
+                contEmail = 1;
+                contNumeriFissi = 1;
+                contNumeriMobili = 1;
+                contIndirizziSecondari = 1;
+
+                //Rimozione spunta JCheckBox
+                contattoPrivatoCheckBox.setSelected(false);
+
+                //Reset tasti
+                btnAggiornaModifica.setVisible(false);
+                btnAggiungi.setVisible(true);
             }
         });
 
@@ -1823,6 +2189,22 @@ public class Window {
                 }
             }
         });
+
+        //INTERAZIONI AGGIUNTA FOTO CONTATTO IN CREA GRUPPO
+        btnAddFotoGruppo.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
+                jfc.showDialog(null,"Seleziona la foto del gruppo");
+                jfc.setVisible(true);
+                img=null;
+                foto = jfc.getSelectedFile();
+                img = c.SetImageSize(foto.getPath(),200,200);
+                btnAddFotoGruppo.setIcon(img);
+            }
+        });
+
+
 
         //INTERAZIONI CON PULSANTE BTNADDEMAIL
         btnAddEmail.addMouseListener(new MouseAdapter() {
@@ -2142,6 +2524,38 @@ public class Window {
                 panelCreaContattoScrollPane.setVisible(false);
                 panelCreaContattoScrollPane.setVisible(true);
                 contIndirizziSecondari++;
+            }
+        });
+
+        //SETTAGGIO TEXT CURSOR NEI TEXTFIELD NOMEGRUPPO
+        textFieldNomeGruppo.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldNomeGruppo.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
+            }
+        });
+
+        //SETTAGGIO TEXT CURSOR NEI TEXTFIELD SEARCHGRUPPO
+        textFieldGruppo.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(textCursor);
+            }
+        });
+        textFieldGruppo.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                frame.setCursor(defaultCursor);
             }
         });
 
@@ -3586,6 +4000,18 @@ public class Window {
                 panelInfoContatti.setVisible(true);
                 c.swapVisibility(panelCreaContatto, panelInfoContattoSinistra);
                 contattiSplitPane.setDividerLocation(350);
+
+                //Panel gruppo
+                panelNomeGruppo.setVisible(false);
+                panelBottoniCreaGruppo.setVisible(false);
+                panelListGruppo.setVisible(false);
+
+                panelInfoContatti.setVisible(true);
+                panelCreaSplitPane.setVisible(true);
+                panelCreaContatto1.setVisible(true);
+                panelCreaGruppo.setVisible(false);
+
+
                 img = c.SetImageSize(".images/" + randImage.get(rand.nextInt(randImage.size() - 1)), 200, 200);
                 btnAddContact.setIcon(img);
 
@@ -5179,6 +5605,7 @@ public class Window {
                         //QUERY CREA CONTATTO
                         c.setIdToLastMessaging(pkContatti.get(listContatti.getSelectedIndex()),(c.getLastId()));
                         c.setIdToLastReindirizzamenti(pkContatti.get(listContatti.getSelectedIndex()),(c.getLastId()));
+                        c.setIdToLastPartecipazione(pkContatti.get(listContatti.getSelectedIndex()),(c.getLastId()));
                         if(c.getPath(pkContatti.get(listContatti.getSelectedIndex()))==null) {
                             c.cancellaContatto(pkContatti.get(listContatti.getSelectedIndex()));
                             if (jfc.getSelectedFile() == null) {

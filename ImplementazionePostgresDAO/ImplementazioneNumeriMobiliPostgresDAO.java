@@ -99,7 +99,7 @@ public class ImplementazioneNumeriMobiliPostgresDAO implements NumeriMobiliDAO {
         else if (ricerca.length()>3){
             rs = s.executeQuery("SELECT DISTINCT NOME,COGNOME,FOTO,SECURITY,ID " +
                     "FROM CONTATTO,NUMERO_MOBILE " +
-                    "WHERE SECURITY = FALSE AND ID_CONTATTO = ID AND PREFISSO = '%" + ricerca.substring(0,3) + "%' AND NUMERO ILIKE '%"+ricerca.substring(3)+"%'" +
+                    "WHERE SECURITY = FALSE AND ID_CONTATTO = ID AND PREFISSO ILIKE '%" + ricerca.substring(0,3) + "%' AND NUMERO ILIKE '"+ricerca.substring(3)+"%'" +
                     " ORDER BY NOME,COGNOME");
         }else{
             rs = s.executeQuery("SELECT DISTINCT NOME,COGNOME,FOTO,SECURITY,ID " +
@@ -134,7 +134,7 @@ public class ImplementazioneNumeriMobiliPostgresDAO implements NumeriMobiliDAO {
         else if (ricerca.length()>3){
             rs = s.executeQuery("SELECT DISTINCT NOME,COGNOME,FOTO,SECURITY,ID " +
                     "FROM CONTATTO,NUMERO_MOBILE " +
-                    "WHERE SECURITY = TRUE AND ID_CONTATTO = ID AND PREFISSO = '%" + ricerca.substring(0,3) + "%' AND NUMERO ILIKE '%"+ricerca.substring(3)+"%'" +
+                    "WHERE SECURITY = TRUE AND ID_CONTATTO = ID AND PREFISSO ILIKE '%" + ricerca.substring(0,3) + "%' AND NUMERO ILIKE '%"+ricerca.substring(3)+"%'" +
                     " ORDER BY NOME,COGNOME");
         }else{
             rs = s.executeQuery("SELECT DISTINCT NOME,COGNOME,FOTO,SECURITY,ID " +

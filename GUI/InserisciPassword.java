@@ -46,8 +46,11 @@ public class InserisciPassword {
                 super.mousePressed(e);
                 try {
                     if(String.valueOf(passwordField1.getPassword()).equals(c.getPassword())){
+                        c.getDlmPrivati().clear();
                         img = c.SetImageSize(".images/creazionecontatto.png",30,30);
                         JOptionPane.showMessageDialog(null,"Password corretta!","SUCCESSO!",1,img);
+                        c.setDlmPrivati(c.getContattiPrivati(c.getPkContattiPrivati()));
+                        c.getListPrivati().setModel(c.getDlmPrivati());                               //Aggiungiamo nel JList i nomi e cognomi dei contatti
                         dialog.dispose();
                     }else{
                         img = c.SetImageSize(".images/warning.png",30,30);

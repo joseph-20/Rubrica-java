@@ -57,9 +57,12 @@ public class CreaPassword {
                     JOptionPane.showMessageDialog(null,"Non è possibile inserire password con campi vuoti!","ATTENZIONE!",1,img);
                 }else{
                     try {
+                        c.getDlmPrivati().clear();
                         c.setPassword(String.valueOf(passwordField1.getPassword()));
                         img = c.SetImageSize(".images/creazionecontatto.png",30,30);
                         JOptionPane.showMessageDialog(null,"Password creata con successo!","SUCCESSO!",1,img);
+                        c.setDlmPrivati(c.getContattiPrivati(c.getPkContattiPrivati()));
+                        c.getListPrivati().setModel(c.getDlmPrivati());                               //Aggiungiamo nel JList i nomi e cognomi dei contatti
                         dialog.dispose();
                     } catch (SQLException ex) {
                         ex.printStackTrace();

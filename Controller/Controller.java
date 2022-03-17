@@ -21,6 +21,8 @@ public class Controller {
     private MessagingDAO messaging = new ImplementazioneMessagingPostgresDAO();
     private ReindirizzamentoDAO reindirizzamento = new ImplementazioneReindirizzamentoPostgresDAO();
     private PasswordDAO password = new ImplementazionePasswordPostgresDAO();
+    private GruppoDAO gruppo = new ImplementazioneGruppoPostgresDAO();
+    private PartecipazioniDAO partecipazioni = new ImplementazionePartecipazioniPostgresDAO();
     private ImageIcon img;
     private DefaultComboBoxModel dlmServizi = new DefaultComboBoxModel();
     private DefaultComboBoxModel dlmReindirizzamentiMobili = new DefaultComboBoxModel();
@@ -34,6 +36,10 @@ public class Controller {
     private JTabbedPane jt;
     private int lastint;
     private JPanel pan;
+    private DefaultListModel<String> DlmPrivati = new DefaultListModel<>();
+    private JList listPrivata = new JList();
+    private ArrayList<Integer> pkContattiPrivati = new ArrayList<>();
+    private ArrayList<Integer> pkGruppo = new ArrayList<>();
 
     //Comunicazione con il DB per ottenere tutti i contatti e ritornare un DLM
    public DefaultListModel getContatti(ArrayList<Integer> pkContatti) throws SQLException{
@@ -381,6 +387,11 @@ public class Controller {
        reindirizzamento.setIdToLast(precId,lastId);
     }
 
+    //Setta gli id dei GRUPPI di un contatto che viene modificato a LastId
+    public void setIdToLastPartecipazione (int precId,int lastId) throws SQLException{
+       partecipazioni.setIdToLast(precId,lastId);
+    }
+
     //Crea un indirizzo secondario
     public void creaIndirizzoSecondario (String indirizzo,int id) throws SQLException{
        indirizziS.creaIndirizzoSecondario(indirizzo,id);
@@ -434,5 +445,88 @@ public class Controller {
     //Ritorna il panel
     public JPanel getPanel (){
        return pan;
+    }
+
+    //Set dlmPrivati
+    public void setDlmPrivati(DefaultListModel dlm){
+       DlmPrivati = dlm;
+    }
+
+    //get dlmPrivati
+    public DefaultListModel<String> getDlmPrivati(){
+       return DlmPrivati;
+    }
+
+    public void setListPrivata(JList privata){
+        listPrivata = privata;
+    }
+
+    //get listPrivati
+    public JList getListPrivati(){
+        return listPrivata;
+    }
+
+    public void setPkContattiPrivati(ArrayList<Integer> privateCont){
+        pkContattiPrivati = privateCont;
+    }
+
+    //get dlmPrivati
+    public ArrayList<Integer> getPkContattiPrivati(){
+        return pkContattiPrivati;
+    }
+
+    //setId
+    public void setPkGruppo (int elem){
+       if(!pkGruppo.contains(elem)){
+           pkGruppo.add(elem);
+           img = SetImageSize(".images/creazionecontatto.png", 30, 30);
+           JOptionPane.showMessageDialog(null,"Contatto selezionato!", "SUCCESSO!", 1, img);
+       }else{
+           img = SetImageSize(".images/warning.png",30,30);
+           JOptionPane.showMessageDialog(null,"Contatto già selezionato per il gruppo!","ATTENZIONE!",1,img);
+       }
+    }
+
+    //getId
+    public ArrayList getPkGruppo (){
+       return pkGruppo;
+    }
+
+    //Set nome gruppo nel database
+    public void setGruppo (String nome) throws SQLException{
+       gruppo.setGruppo(nome);
+        img = SetImageSize(".images/creazionecontatto.png", 30, 30);
+        JOptionPane.showMessageDialog(null,"Gruppo "+nome+" creato con successo!", "SUCCESSO!", 1, img);
+    }
+
+    //Set partecipazione gruppo nel database
+    public void setPartecipazioni (ArrayList pk,String gruppo) throws SQLException{
+       partecipazioni.setPartecipazioni(pk,gruppo);
+       pk.clear();
+    }
+
+    //Ritorna il DLM dei gruppi
+    public DefaultListModel getDLMGruppi() throws SQLException{
+       return gruppo.setDLMGruppi();
+    }
+
+    //Ritorna il DLM dei partecipanti
+    public String getPartecipanti (String gruppo) throws SQLException{
+       return partecipazioni.getPartecipanti(gruppo);
+    }
+
+    //Eliminazione gruppo
+    public void eliminaGruppo (String gruppo) throws SQLException{
+       partecipazioni.eliminaGruppo(gruppo);
+    }
+
+    //Ricerca gruppo
+    public DefaultListModel getGruppiSearch(String ricerca) throws SQLException{
+       return gruppo.getGruppiSearch(ricerca);
+    }
+
+    //Ricerca gruppo per contatto
+    public DefaultListModel getGruppiSearchContatto(String ricerca) throws SQLException{
+      return partecipazioni.getGruppiSearchContatto(ricerca);
     }
 }

@@ -3,12 +3,12 @@
   <grid id="27dc6" binding="panel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="1360" height="2074"/>
+      <xy x="20" y="20" width="1588" height="2074"/>
     </constraints>
     <properties>
-      <maximumSize width="1920" height="1080"/>
-      <minimumSize width="800" height="600"/>
-      <preferredSize width="800" height="600"/>
+      <maximumSize width="1280" height="720"/>
+      <minimumSize width="1280" height="720"/>
+      <preferredSize width="1280" height="720"/>
     </properties>
     <border type="none"/>
     <children>
@@ -30,7 +30,7 @@
               <tabbedpane title="Contatti"/>
             </constraints>
             <properties>
-              <dividerLocation value="330"/>
+              <dividerLocation value="273"/>
               <lastDividerLocation value="350"/>
               <maximumSize width="120" height="10"/>
               <minimumSize width="0" height="0"/>
@@ -99,6 +99,7 @@
                         <properties>
                           <focusable value="false"/>
                           <font size="18"/>
+                          <selectionBackground color="-9932033"/>
                         </properties>
                       </component>
                     </children>
@@ -566,7 +567,7 @@
                           </grid>
                         </children>
                       </grid>
-                      <grid id="262c1" binding="panelCreaContatto" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                      <grid id="262c1" binding="panelCreaContatto" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                         <margin top="0" left="0" bottom="0" right="0"/>
                         <constraints>
                           <splitpane position="right"/>
@@ -576,928 +577,1104 @@
                         </properties>
                         <border type="none"/>
                         <children>
-                          <grid id="738c" binding="panelCreaContattoTop" layout-manager="GridLayoutManager" row-count="4" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                            <margin top="0" left="0" bottom="0" right="0"/>
+                          <splitpane id="9c8b6" binding="panelCreaSplitPane">
                             <constraints>
-                              <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties>
                               <visible value="true"/>
                             </properties>
                             <border type="none"/>
                             <children>
-                              <component id="53049" class="javax.swing.JButton" binding="btnAddContact">
-                                <constraints>
-                                  <grid row="0" column="0" row-span="4" col-span="2" vsize-policy="0" hsize-policy="4" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-                                </constraints>
-                                <properties>
-                                  <alignmentX value="0.5"/>
-                                  <horizontalAlignment value="4"/>
-                                  <text value=""/>
-                                </properties>
-                              </component>
-                              <component id="8383" class="javax.swing.JLabel" binding="nomeLabel">
-                                <constraints>
-                                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                                </constraints>
-                                <properties>
-                                  <alignmentX value="0.5"/>
-                                  <font size="20" style="1"/>
-                                  <horizontalAlignment value="0"/>
-                                  <horizontalTextPosition value="0"/>
-                                  <text value="Nome"/>
-                                </properties>
-                              </component>
-                              <component id="2c72" class="javax.swing.JTextField" binding="textFieldNome">
-                                <constraints>
-                                  <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                                    <preferred-size width="140" height="-1"/>
-                                  </grid>
-                                </constraints>
-                                <properties>
-                                  <font size="16"/>
-                                  <horizontalAlignment value="2"/>
-                                </properties>
-                              </component>
-                              <component id="f1b87" class="javax.swing.JLabel" binding="cognomeLabel">
-                                <constraints>
-                                  <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                                </constraints>
-                                <properties>
-                                  <alignmentX value="0.5"/>
-                                  <font size="20" style="1"/>
-                                  <horizontalAlignment value="0"/>
-                                  <horizontalTextPosition value="0"/>
-                                  <text value="Cognome"/>
-                                </properties>
-                              </component>
-                              <component id="58397" class="javax.swing.JTextField" binding="textFieldCognome">
-                                <constraints>
-                                  <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                                    <preferred-size width="140" height="-1"/>
-                                  </grid>
-                                </constraints>
-                                <properties>
-                                  <font size="16"/>
-                                  <horizontalAlignment value="2"/>
-                                </properties>
-                              </component>
-                              <component id="4c1e4" class="javax.swing.JCheckBox" binding="contattoPrivatoCheckBox" default-binding="true">
-                                <constraints>
-                                  <grid row="3" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                                </constraints>
-                                <properties>
-                                  <font size="16" style="1"/>
-                                  <selected value="false"/>
-                                  <text value="Contatto privato"/>
-                                </properties>
-                              </component>
-                            </children>
-                          </grid>
-                          <grid id="6ec48" binding="panelMidCreaContatto" layout-manager="GridBagLayout">
-                            <constraints>
-                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties/>
-                            <border type="none"/>
-                            <children>
-                              <grid id="4617f" binding="panelServices" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                              <grid id="dea28" binding="panelCreaContatto1" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                                 <margin top="0" left="0" bottom="0" right="0"/>
                                 <constraints>
-                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="1" indent="0" use-parent-layout="true">
-                                    <preferred-size width="-1" height="20"/>
-                                    <maximum-size width="-1" height="50"/>
-                                  </grid>
-                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                  <splitpane position="left"/>
                                 </constraints>
-                                <properties/>
+                                <properties>
+                                  <visible value="true"/>
+                                </properties>
                                 <border type="none"/>
                                 <children>
-                                  <grid id="59518" binding="panelGridBagServices" layout-manager="GridBagLayout">
+                                  <grid id="95a99" binding="panelCreaContattoTop" layout-manager="GridLayoutManager" row-count="4" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                                    <margin top="0" left="0" bottom="0" right="0"/>
                                     <constraints>
-                                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="4" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false">
-                                        <preferred-size width="50" height="50"/>
-                                      </grid>
+                                      <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
-                                      <alignmentX value="1.0"/>
-                                      <alignmentY value="1.0"/>
-                                      <autoscrolls value="false"/>
-                                      <doubleBuffered value="false"/>
-                                      <requestFocusEnabled value="false"/>
+                                      <visible value="true"/>
                                     </properties>
-                                    <border type="none">
-                                      <size top="40" left="40" bottom="40" right="40"/>
-                                    </border>
+                                    <border type="none"/>
                                     <children>
-                                      <component id="414d7" class="javax.swing.JLabel" binding="lblMessengerCreaContatto">
+                                      <component id="232e7" class="javax.swing.JButton" binding="btnAddContact">
                                         <constraints>
-                                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                                          <gridbag weightx="0.0" weighty="0.0"/>
+                                          <grid row="0" column="0" row-span="4" col-span="1" vsize-policy="0" hsize-policy="4" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                                         </constraints>
                                         <properties>
-                                          <horizontalAlignment value="10"/>
-                                          <horizontalTextPosition value="10"/>
-                                          <text value=""/>
-                                          <verticalTextPosition value="0"/>
-                                        </properties>
-                                      </component>
-                                      <component id="e1b26" class="javax.swing.JLabel" binding="lblSkypeCreaContatto">
-                                        <constraints>
-                                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                                          <gridbag weightx="0.0" weighty="0.0"/>
-                                        </constraints>
-                                        <properties>
+                                          <alignmentX value="0.5"/>
+                                          <horizontalAlignment value="4"/>
                                           <text value=""/>
                                         </properties>
                                       </component>
-                                      <component id="12655" class="javax.swing.JLabel" binding="lblTeamsCreaContatto">
+                                      <component id="f7dd7" class="javax.swing.JLabel" binding="nomeLabel">
                                         <constraints>
-                                          <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                                          <gridbag weightx="0.0" weighty="0.0"/>
+                                          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                         </constraints>
                                         <properties>
+                                          <alignmentX value="0.5"/>
+                                          <font size="20" style="1"/>
+                                          <horizontalAlignment value="0"/>
+                                          <horizontalTextPosition value="0"/>
+                                          <text value="Nome"/>
+                                        </properties>
+                                      </component>
+                                      <component id="4a31f" class="javax.swing.JTextField" binding="textFieldNome">
+                                        <constraints>
+                                          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                                            <preferred-size width="140" height="-1"/>
+                                          </grid>
+                                        </constraints>
+                                        <properties>
+                                          <font size="16"/>
+                                          <horizontalAlignment value="2"/>
+                                        </properties>
+                                      </component>
+                                      <component id="3cf0b" class="javax.swing.JLabel" binding="cognomeLabel">
+                                        <constraints>
+                                          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                        </constraints>
+                                        <properties>
+                                          <alignmentX value="0.5"/>
+                                          <font size="20" style="1"/>
+                                          <horizontalAlignment value="0"/>
+                                          <horizontalTextPosition value="0"/>
+                                          <text value="Cognome"/>
+                                        </properties>
+                                      </component>
+                                      <component id="3e947" class="javax.swing.JTextField" binding="textFieldCognome">
+                                        <constraints>
+                                          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                                            <preferred-size width="140" height="-1"/>
+                                          </grid>
+                                        </constraints>
+                                        <properties>
+                                          <font size="16"/>
+                                          <horizontalAlignment value="2"/>
+                                        </properties>
+                                      </component>
+                                      <component id="43d9b" class="javax.swing.JCheckBox" binding="contattoPrivatoCheckBox">
+                                        <constraints>
+                                          <grid row="3" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                        </constraints>
+                                        <properties>
+                                          <font size="16" style="1"/>
+                                          <selected value="false"/>
+                                          <text value="Contatto privato"/>
+                                        </properties>
+                                      </component>
+                                    </children>
+                                  </grid>
+                                  <grid id="b3e51" binding="panelMidCreaContatto" layout-manager="GridBagLayout">
+                                    <constraints>
+                                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties/>
+                                    <border type="none"/>
+                                    <children>
+                                      <grid id="7237e" binding="panelServices" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                                        <margin top="0" left="0" bottom="0" right="0"/>
+                                        <constraints>
+                                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="1" indent="0" use-parent-layout="true">
+                                            <preferred-size width="-1" height="20"/>
+                                            <maximum-size width="-1" height="50"/>
+                                          </grid>
+                                          <gridbag weightx="0.0" weighty="0.0"/>
+                                        </constraints>
+                                        <properties/>
+                                        <border type="none"/>
+                                        <children>
+                                          <grid id="f4228" binding="panelGridBagServices" layout-manager="GridBagLayout">
+                                            <constraints>
+                                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="4" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                                                <preferred-size width="50" height="50"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <alignmentX value="1.0"/>
+                                              <alignmentY value="1.0"/>
+                                              <autoscrolls value="false"/>
+                                              <doubleBuffered value="false"/>
+                                              <requestFocusEnabled value="false"/>
+                                            </properties>
+                                            <border type="none">
+                                              <size top="40" left="40" bottom="40" right="40"/>
+                                            </border>
+                                            <children>
+                                              <component id="c6ebf" class="javax.swing.JLabel" binding="lblMessengerCreaContatto">
+                                                <constraints>
+                                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                                </constraints>
+                                                <properties>
+                                                  <horizontalAlignment value="10"/>
+                                                  <horizontalTextPosition value="10"/>
+                                                  <text value=""/>
+                                                  <verticalTextPosition value="0"/>
+                                                </properties>
+                                              </component>
+                                              <component id="aa8d4" class="javax.swing.JLabel" binding="lblSkypeCreaContatto">
+                                                <constraints>
+                                                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                                </constraints>
+                                                <properties>
+                                                  <text value=""/>
+                                                </properties>
+                                              </component>
+                                              <component id="30d38" class="javax.swing.JLabel" binding="lblTeamsCreaContatto">
+                                                <constraints>
+                                                  <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                                </constraints>
+                                                <properties>
+                                                  <text value=""/>
+                                                </properties>
+                                              </component>
+                                              <component id="d451e" class="javax.swing.JLabel" binding="lblTelegramCreaContatto">
+                                                <constraints>
+                                                  <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                                </constraints>
+                                                <properties>
+                                                  <text value=""/>
+                                                </properties>
+                                              </component>
+                                              <component id="74e8e" class="javax.swing.JLabel" binding="lblViberCreaContatto">
+                                                <constraints>
+                                                  <grid row="0" column="8" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                                </constraints>
+                                                <properties>
+                                                  <text value=""/>
+                                                </properties>
+                                              </component>
+                                              <component id="c7fa0" class="javax.swing.JLabel" binding="lblWeChatCreaContatto">
+                                                <constraints>
+                                                  <grid row="0" column="10" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                                </constraints>
+                                                <properties>
+                                                  <text value=""/>
+                                                </properties>
+                                              </component>
+                                              <component id="46c38" class="javax.swing.JLabel" binding="lblWhatsappCreaContatto">
+                                                <constraints>
+                                                  <grid row="0" column="12" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                                </constraints>
+                                                <properties>
+                                                  <text value=""/>
+                                                </properties>
+                                              </component>
+                                              <hspacer id="8676c">
+                                                <constraints>
+                                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                                  <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
+                                                </constraints>
+                                              </hspacer>
+                                              <hspacer id="27941">
+                                                <constraints>
+                                                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                                  <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
+                                                </constraints>
+                                              </hspacer>
+                                              <hspacer id="9c7f8">
+                                                <constraints>
+                                                  <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                                  <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
+                                                </constraints>
+                                              </hspacer>
+                                              <hspacer id="dc781">
+                                                <constraints>
+                                                  <grid row="0" column="7" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                                  <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
+                                                </constraints>
+                                              </hspacer>
+                                              <hspacer id="5d2ca">
+                                                <constraints>
+                                                  <grid row="0" column="9" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                                  <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
+                                                </constraints>
+                                              </hspacer>
+                                              <hspacer id="6ba84">
+                                                <constraints>
+                                                  <grid row="0" column="11" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                                  <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
+                                                </constraints>
+                                              </hspacer>
+                                            </children>
+                                          </grid>
+                                        </children>
+                                      </grid>
+                                    </children>
+                                  </grid>
+                                  <grid id="4f656" binding="panelBottomCreaContatto" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="2">
+                                    <constraints>
+                                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties/>
+                                    <border type="none"/>
+                                    <children>
+                                      <component id="4acef" class="javax.swing.JButton" binding="btnReindirizzamentiCreaContatto">
+                                        <constraints/>
+                                        <properties>
+                                          <font size="20"/>
+                                          <text value="Reindirizzamenti Telefonici"/>
+                                        </properties>
+                                      </component>
+                                      <component id="2b2cc" class="javax.swing.JButton" binding="btnAggiornaModifica">
+                                        <constraints/>
+                                        <properties>
+                                          <font size="20"/>
+                                          <text value="Aggiorna"/>
+                                          <visible value="false"/>
+                                        </properties>
+                                      </component>
+                                      <component id="de013" class="javax.swing.JButton" binding="btnAggiungi">
+                                        <constraints/>
+                                        <properties>
+                                          <font size="20"/>
+                                          <text value="Aggiungi"/>
+                                        </properties>
+                                      </component>
+                                      <component id="a2517" class="javax.swing.JButton" binding="btnAnnulla">
+                                        <constraints/>
+                                        <properties>
+                                          <font size="20"/>
+                                          <horizontalAlignment value="0"/>
+                                          <text value="Annulla"/>
+                                        </properties>
+                                      </component>
+                                    </children>
+                                  </grid>
+                                  <scrollpane id="58a99" binding="creaContattoScrollPane">
+                                    <constraints>
+                                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties/>
+                                    <border type="none"/>
+                                    <children>
+                                      <grid id="95c0f" binding="panelCreaContattoScrollPane" layout-manager="GridLayoutManager" row-count="47" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                                        <margin top="0" left="0" bottom="0" right="0"/>
+                                        <constraints/>
+                                        <properties/>
+                                        <border type="none"/>
+                                        <children>
+                                          <component id="26670" class="javax.swing.JLabel" binding="lblEmailCreaContatto">
+                                            <constraints>
+                                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="4" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                                            </constraints>
+                                            <properties>
+                                              <enabled value="true"/>
+                                              <font size="20" style="1"/>
+                                              <text value="Posta Elettronica"/>
+                                            </properties>
+                                          </component>
+                                          <vspacer id="f5fed">
+                                            <constraints>
+                                              <grid row="46" column="0" row-span="1" col-span="6" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                                            </constraints>
+                                          </vspacer>
+                                          <component id="3bf1" class="javax.swing.JButton" binding="btnAddEmail">
+                                            <constraints>
+                                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16" style="1"/>
+                                              <text value="+"/>
+                                            </properties>
+                                          </component>
+                                          <component id="d6440" class="javax.swing.JTextField" binding="textFieldEmail0">
+                                            <constraints>
+                                              <grid row="1" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="300" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <text value=""/>
+                                              <toolTipText value="Username@Dominio"/>
+                                              <visible value="true"/>
+                                            </properties>
+                                          </component>
+                                          <component id="bbf3" class="javax.swing.JTextField" binding="textFieldEmail1">
+                                            <constraints>
+                                              <grid row="2" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="300" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="a6d45" class="javax.swing.JTextField" binding="textFieldEmail2">
+                                            <constraints>
+                                              <grid row="3" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="300" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="a8be" class="javax.swing.JTextField" binding="textFieldEmail3">
+                                            <constraints>
+                                              <grid row="4" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="300" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="d8626" class="javax.swing.JTextField" binding="textFieldEmail4">
+                                            <constraints>
+                                              <grid row="5" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="300" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="13a32" class="javax.swing.JTextField" binding="textFieldEmail5">
+                                            <constraints>
+                                              <grid row="6" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="300" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="982c2" class="javax.swing.JTextField" binding="textFieldEmail6">
+                                            <constraints>
+                                              <grid row="7" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="300" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="87807" class="javax.swing.JTextField" binding="textFieldEmail7">
+                                            <constraints>
+                                              <grid row="8" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="300" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="e70d5" class="javax.swing.JTextField" binding="textFieldEmail8">
+                                            <constraints>
+                                              <grid row="9" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="300" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="9da04" class="javax.swing.JTextField" binding="textFieldEmail9">
+                                            <constraints>
+                                              <grid row="10" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="300" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="d5e4" class="javax.swing.JTextField" binding="textFieldIndirizzoPrincipale">
+                                            <constraints>
+                                              <grid row="34" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="400" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <text value=""/>
+                                              <toolTipText value="Via,Civico,Città,Cap,Nazione"/>
+                                              <visible value="true"/>
+                                            </properties>
+                                          </component>
+                                          <component id="fd26" class="javax.swing.JLabel" binding="numeriFissiLabel">
+                                            <constraints>
+                                              <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="4" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                                            </constraints>
+                                            <properties>
+                                              <enabled value="true"/>
+                                              <font size="20" style="1"/>
+                                              <text value="Numeri Fissi"/>
+                                            </properties>
+                                          </component>
+                                          <component id="a6512" class="javax.swing.JButton" binding="btnAddNumeriFissi">
+                                            <constraints>
+                                              <grid row="11" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16" style="1"/>
+                                              <text value="+"/>
+                                            </properties>
+                                          </component>
+                                          <component id="70a1a" class="javax.swing.JTextField" binding="textFieldNumeriFissi0">
+                                            <constraints>
+                                              <grid row="12" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="140" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <editable value="true"/>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="true"/>
+                                            </properties>
+                                          </component>
+                                          <component id="ffe01" class="javax.swing.JTextField" binding="textFieldNumeriFissi1">
+                                            <constraints>
+                                              <grid row="13" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="140" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <editable value="true"/>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="f2903" class="javax.swing.JTextField" binding="textFieldNumeriFissi2">
+                                            <constraints>
+                                              <grid row="14" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="140" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <editable value="true"/>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="ec82b" class="javax.swing.JTextField" binding="textFieldNumeriFissi3">
+                                            <constraints>
+                                              <grid row="15" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="140" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <editable value="true"/>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="3f473" class="javax.swing.JTextField" binding="textFieldNumeriFissi4">
+                                            <constraints>
+                                              <grid row="16" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="140" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <editable value="true"/>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="fa0b0" class="javax.swing.JTextField" binding="textFieldNumeriFissi5">
+                                            <constraints>
+                                              <grid row="17" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="140" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <editable value="true"/>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="66db3" class="javax.swing.JTextField" binding="textFieldNumeriFissi6">
+                                            <constraints>
+                                              <grid row="18" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="140" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <editable value="true"/>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="2973d" class="javax.swing.JTextField" binding="textFieldNumeriFissi7">
+                                            <constraints>
+                                              <grid row="19" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="140" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <editable value="true"/>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="be2aa" class="javax.swing.JTextField" binding="textFieldNumeriFissi8">
+                                            <constraints>
+                                              <grid row="20" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="140" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <editable value="true"/>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="1e5c9" class="javax.swing.JTextField" binding="textFieldNumeriFissi9">
+                                            <constraints>
+                                              <grid row="21" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="140" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <editable value="true"/>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="b2690" class="javax.swing.JButton" binding="btnBackEmail">
+                                            <constraints>
+                                              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="4" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16" style="1"/>
+                                              <text value="-"/>
+                                              <visible value="true"/>
+                                            </properties>
+                                          </component>
+                                          <component id="6ea2c" class="javax.swing.JButton" binding="btnBackNumeriFissi">
+                                            <constraints>
+                                              <grid row="11" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="4" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16" style="1"/>
+                                              <text value="-"/>
+                                              <visible value="true"/>
+                                            </properties>
+                                          </component>
+                                          <component id="85557" class="javax.swing.JLabel" binding="indirizzoPrincipaleLabel">
+                                            <constraints>
+                                              <grid row="33" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="4" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                            </constraints>
+                                            <properties>
+                                              <font size="20" style="1"/>
+                                              <text value="Indirizzo Principale"/>
+                                            </properties>
+                                          </component>
+                                          <component id="6b409" class="javax.swing.JLabel" binding="numeriMobiliLabel">
+                                            <constraints>
+                                              <grid row="22" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                                            </constraints>
+                                            <properties>
+                                              <font size="20" style="1"/>
+                                              <text value="Numeri Mobili"/>
+                                            </properties>
+                                          </component>
+                                          <component id="93ae3" class="javax.swing.JButton" binding="btnAddNumeriMobili">
+                                            <constraints>
+                                              <grid row="22" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16" style="1"/>
+                                              <text value="+"/>
+                                            </properties>
+                                          </component>
+                                          <component id="d794e" class="javax.swing.JButton" binding="btnBackNumeriMobili">
+                                            <constraints>
+                                              <grid row="22" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="4" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16" style="1"/>
+                                              <text value="-"/>
+                                              <visible value="true"/>
+                                            </properties>
+                                          </component>
+                                          <component id="1c695" class="javax.swing.JTextField" binding="textFieldNumeriMobili0">
+                                            <constraints>
+                                              <grid row="23" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="140" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <editable value="true"/>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="true"/>
+                                            </properties>
+                                          </component>
+                                          <component id="7bb99" class="javax.swing.JTextField" binding="textFieldNumeriMobili1">
+                                            <constraints>
+                                              <grid row="24" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="140" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <editable value="true"/>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="8554a" class="javax.swing.JTextField" binding="textFieldNumeriMobili2">
+                                            <constraints>
+                                              <grid row="25" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="140" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <editable value="true"/>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="5d03" class="javax.swing.JTextField" binding="textFieldNumeriMobili3">
+                                            <constraints>
+                                              <grid row="26" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="140" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <editable value="true"/>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="3f3d0" class="javax.swing.JTextField" binding="textFieldNumeriMobili4">
+                                            <constraints>
+                                              <grid row="27" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="140" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <editable value="true"/>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="fd776" class="javax.swing.JTextField" binding="textFieldNumeriMobili5">
+                                            <constraints>
+                                              <grid row="28" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="140" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <editable value="true"/>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="c2dfe" class="javax.swing.JTextField" binding="textFieldNumeriMobili6">
+                                            <constraints>
+                                              <grid row="29" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="140" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <editable value="true"/>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="a0244" class="javax.swing.JTextField" binding="textFieldNumeriMobili7">
+                                            <constraints>
+                                              <grid row="30" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="140" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <editable value="true"/>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="9ef01" class="javax.swing.JTextField" binding="textFieldNumeriMobili8">
+                                            <constraints>
+                                              <grid row="31" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="140" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <editable value="true"/>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="d52f6" class="javax.swing.JTextField" binding="textFieldNumeriMobili9">
+                                            <constraints>
+                                              <grid row="32" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="140" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <editable value="true"/>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="50a07" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari0">
+                                            <constraints>
+                                              <grid row="36" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="400" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="true"/>
+                                            </properties>
+                                          </component>
+                                          <component id="4935a" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari1">
+                                            <constraints>
+                                              <grid row="37" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="400" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="21b6a" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari2">
+                                            <constraints>
+                                              <grid row="38" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="400" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="72476" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari3">
+                                            <constraints>
+                                              <grid row="39" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="400" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="ab58d" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari4">
+                                            <constraints>
+                                              <grid row="40" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="400" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="4d7cf" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari5">
+                                            <constraints>
+                                              <grid row="41" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="400" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="e9e07" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari6">
+                                            <constraints>
+                                              <grid row="42" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="400" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="23259" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari7">
+                                            <constraints>
+                                              <grid row="43" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="400" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="2e36a" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari8">
+                                            <constraints>
+                                              <grid row="44" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="400" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="5d2cb" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari9">
+                                            <constraints>
+                                              <grid row="45" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                                <preferred-size width="400" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16"/>
+                                              <horizontalAlignment value="0"/>
+                                              <visible value="false"/>
+                                            </properties>
+                                          </component>
+                                          <component id="3adbd" class="javax.swing.JLabel" binding="indirizziSecondariLabel">
+                                            <constraints>
+                                              <grid row="35" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="4" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                                            </constraints>
+                                            <properties>
+                                              <font size="20" style="1"/>
+                                              <text value="Indirizzi Secondari"/>
+                                            </properties>
+                                          </component>
+                                          <component id="53b82" class="javax.swing.JButton" binding="btnAddIndirizziSecondari">
+                                            <constraints>
+                                              <grid row="35" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16" style="1"/>
+                                              <text value="+"/>
+                                            </properties>
+                                          </component>
+                                          <component id="b0006" class="javax.swing.JButton" binding="btnBackIndirizziSecondari">
+                                            <constraints>
+                                              <grid row="35" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="4" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                            </constraints>
+                                            <properties>
+                                              <font size="16" style="1"/>
+                                              <text value="-"/>
+                                              <visible value="true"/>
+                                            </properties>
+                                          </component>
+                                        </children>
+                                      </grid>
+                                    </children>
+                                  </scrollpane>
+                                </children>
+                              </grid>
+                              <grid id="80050" binding="panelCreaGruppo" layout-manager="BorderLayout" hgap="0" vgap="0">
+                                <constraints>
+                                  <splitpane position="right"/>
+                                </constraints>
+                                <properties>
+                                  <maximumSize width="398" height="164"/>
+                                  <preferredSize width="398" height="164"/>
+                                  <visible value="true"/>
+                                </properties>
+                                <border type="none"/>
+                                <children>
+                                  <grid id="85ea3" binding="panelNomeGruppo" layout-manager="GridLayoutManager" row-count="6" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                                    <margin top="0" left="0" bottom="0" right="0"/>
+                                    <constraints border-constraint="North"/>
+                                    <properties/>
+                                    <border type="none"/>
+                                    <children>
+                                      <vspacer id="d1f69">
+                                        <constraints>
+                                          <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                                            <preferred-size width="-1" height="45"/>
+                                          </grid>
+                                        </constraints>
+                                      </vspacer>
+                                      <component id="7779d" class="javax.swing.JLabel" binding="lblListaContattiGruppo">
+                                        <constraints>
+                                          <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                        </constraints>
+                                        <properties>
+                                          <alignmentX value="0.5"/>
+                                          <font size="20" style="1"/>
+                                          <horizontalAlignment value="0"/>
+                                          <horizontalTextPosition value="0"/>
+                                          <text value="LISTA CONTATTI"/>
+                                        </properties>
+                                      </component>
+                                      <vspacer id="9bfc8">
+                                        <constraints>
+                                          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                                            <preferred-size width="-1" height="25"/>
+                                          </grid>
+                                        </constraints>
+                                      </vspacer>
+                                      <vspacer id="820d">
+                                        <constraints>
+                                          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                                            <preferred-size width="-1" height="40"/>
+                                          </grid>
+                                        </constraints>
+                                      </vspacer>
+                                      <component id="33545" class="javax.swing.JLabel" binding="lblNomeGruppo">
+                                        <constraints>
+                                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="10" fill="0" indent="4" use-parent-layout="false"/>
+                                        </constraints>
+                                        <properties>
+                                          <alignmentX value="0.5"/>
+                                          <font size="20" style="1"/>
+                                          <horizontalAlignment value="0"/>
+                                          <horizontalTextPosition value="0"/>
+                                          <text value="Nome"/>
+                                        </properties>
+                                      </component>
+                                      <component id="cba84" class="javax.swing.JButton" binding="btnAddFotoGruppo">
+                                        <constraints>
+                                          <grid row="1" column="0" row-span="2" col-span="1" vsize-policy="0" hsize-policy="4" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                                        </constraints>
+                                        <properties>
+                                          <alignmentX value="0.5"/>
+                                          <horizontalAlignment value="4"/>
                                           <text value=""/>
                                         </properties>
                                       </component>
-                                      <component id="56570" class="javax.swing.JLabel" binding="lblTelegramCreaContatto">
+                                      <component id="aa233" class="javax.swing.JTextField" binding="textFieldNomeGruppo">
                                         <constraints>
-                                          <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                                          <gridbag weightx="0.0" weighty="0.0"/>
+                                          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="9" fill="0" indent="0" use-parent-layout="false">
+                                            <preferred-size width="150" height="-1"/>
+                                          </grid>
                                         </constraints>
                                         <properties>
-                                          <text value=""/>
+                                          <font size="16"/>
+                                          <horizontalAlignment value="0"/>
                                         </properties>
                                       </component>
-                                      <component id="3062" class="javax.swing.JLabel" binding="lblViberCreaContatto">
+                                    </children>
+                                  </grid>
+                                  <grid id="57d18" binding="panelBottoniCreaGruppo" layout-manager="GridLayoutManager" row-count="1" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                                    <margin top="0" left="0" bottom="0" right="0"/>
+                                    <constraints border-constraint="South"/>
+                                    <properties/>
+                                    <border type="none"/>
+                                    <children>
+                                      <component id="27233" class="javax.swing.JButton" binding="btnAnnullaCreaGruppo">
                                         <constraints>
-                                          <grid row="0" column="8" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                                          <gridbag weightx="0.0" weighty="0.0"/>
+                                          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                                         </constraints>
                                         <properties>
-                                          <text value=""/>
+                                          <font size="20"/>
+                                          <horizontalAlignment value="0"/>
+                                          <text value="Annulla"/>
                                         </properties>
                                       </component>
-                                      <component id="c3b48" class="javax.swing.JLabel" binding="lblWeChatCreaContatto">
+                                      <hspacer id="c9504">
                                         <constraints>
-                                          <grid row="0" column="10" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                                          <gridbag weightx="0.0" weighty="0.0"/>
-                                        </constraints>
-                                        <properties>
-                                          <text value=""/>
-                                        </properties>
-                                      </component>
-                                      <component id="fdee9" class="javax.swing.JLabel" binding="lblWhatsappCreaContatto">
-                                        <constraints>
-                                          <grid row="0" column="12" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                                          <gridbag weightx="0.0" weighty="0.0"/>
-                                        </constraints>
-                                        <properties>
-                                          <text value=""/>
-                                        </properties>
-                                      </component>
-                                      <hspacer id="b02f6">
-                                        <constraints>
-                                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                          <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
+                                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                                         </constraints>
                                       </hspacer>
-                                      <hspacer id="900b">
+                                      <component id="93ccf" class="javax.swing.JButton" binding="btnAggiungiCreaGruppo">
                                         <constraints>
-                                          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                          <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
+                                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                                         </constraints>
-                                      </hspacer>
-                                      <hspacer id="75a2c">
+                                        <properties>
+                                          <font size="20"/>
+                                          <text value="Aggiungi"/>
+                                        </properties>
+                                      </component>
+                                      <component id="554b0" class="javax.swing.JButton" binding="btnCreaGruppoGrp">
                                         <constraints>
-                                          <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                          <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
+                                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                                         </constraints>
-                                      </hspacer>
-                                      <hspacer id="22c59">
+                                        <properties>
+                                          <font size="20"/>
+                                          <text value="Crea Gruppo"/>
+                                        </properties>
+                                      </component>
+                                    </children>
+                                  </grid>
+                                  <grid id="4b0e8" binding="panelListGruppo" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                                    <margin top="0" left="0" bottom="0" right="0"/>
+                                    <constraints border-constraint="Center"/>
+                                    <properties/>
+                                    <border type="none"/>
+                                    <children>
+                                      <scrollpane id="d9890" binding="gruppoScrollPane">
                                         <constraints>
-                                          <grid row="0" column="7" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                          <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
+                                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                                         </constraints>
-                                      </hspacer>
-                                      <hspacer id="758fc">
-                                        <constraints>
-                                          <grid row="0" column="9" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                          <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
-                                        </constraints>
-                                      </hspacer>
-                                      <hspacer id="70ace">
-                                        <constraints>
-                                          <grid row="0" column="11" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                          <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
-                                        </constraints>
-                                      </hspacer>
+                                        <properties/>
+                                        <border type="none"/>
+                                        <children>
+                                          <component id="1f266" class="javax.swing.JList" binding="listGruppo">
+                                            <constraints/>
+                                            <properties>
+                                              <font size="18"/>
+                                              <selectionBackground color="-9932033"/>
+                                              <selectionMode value="2"/>
+                                            </properties>
+                                          </component>
+                                        </children>
+                                      </scrollpane>
                                     </children>
                                   </grid>
                                 </children>
                               </grid>
                             </children>
-                          </grid>
-                          <grid id="9d19c" binding="panelBottomCreaContatto" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="2">
-                            <constraints>
-                              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties/>
-                            <border type="none"/>
-                            <children>
-                              <component id="b3291" class="javax.swing.JButton" binding="btnReindirizzamentiCreaContatto">
-                                <constraints/>
-                                <properties>
-                                  <font size="20"/>
-                                  <text value="Reindirizzamenti Telefonici"/>
-                                </properties>
-                              </component>
-                              <component id="80534" class="javax.swing.JButton" binding="btnAggiornaModifica">
-                                <constraints/>
-                                <properties>
-                                  <font size="20"/>
-                                  <text value="Aggiorna"/>
-                                  <visible value="false"/>
-                                </properties>
-                              </component>
-                              <component id="c962f" class="javax.swing.JButton" binding="btnAggiungi">
-                                <constraints/>
-                                <properties>
-                                  <font size="20"/>
-                                  <text value="Aggiungi"/>
-                                </properties>
-                              </component>
-                              <component id="e3976" class="javax.swing.JButton" binding="btnAnnulla">
-                                <constraints/>
-                                <properties>
-                                  <font size="20"/>
-                                  <horizontalAlignment value="0"/>
-                                  <text value="Annulla"/>
-                                </properties>
-                              </component>
-                            </children>
-                          </grid>
-                          <scrollpane id="e7d13" binding="creaContattoScrollPane">
-                            <constraints>
-                              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties/>
-                            <border type="none"/>
-                            <children>
-                              <grid id="75e24" binding="panelCreaContattoScrollPane" layout-manager="GridLayoutManager" row-count="47" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                                <margin top="0" left="0" bottom="0" right="0"/>
-                                <constraints/>
-                                <properties/>
-                                <border type="none"/>
-                                <children>
-                                  <component id="85fad" class="javax.swing.JLabel" binding="lblEmailCreaContatto">
-                                    <constraints>
-                                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="4" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-                                    </constraints>
-                                    <properties>
-                                      <enabled value="true"/>
-                                      <font size="20" style="1"/>
-                                      <text value="Posta Elettronica"/>
-                                    </properties>
-                                  </component>
-                                  <vspacer id="f1f8b">
-                                    <constraints>
-                                      <grid row="46" column="0" row-span="1" col-span="6" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-                                    </constraints>
-                                  </vspacer>
-                                  <component id="f0ef8" class="javax.swing.JButton" binding="btnAddEmail">
-                                    <constraints>
-                                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16" style="1"/>
-                                      <text value="+"/>
-                                    </properties>
-                                  </component>
-                                  <component id="94dd5" class="javax.swing.JTextField" binding="textFieldEmail0">
-                                    <constraints>
-                                      <grid row="1" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="300" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <text value=""/>
-                                      <toolTipText value="Username@Dominio"/>
-                                      <visible value="true"/>
-                                    </properties>
-                                  </component>
-                                  <component id="4b754" class="javax.swing.JTextField" binding="textFieldEmail1">
-                                    <constraints>
-                                      <grid row="2" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="300" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="ba29c" class="javax.swing.JTextField" binding="textFieldEmail2">
-                                    <constraints>
-                                      <grid row="3" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="300" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="411dd" class="javax.swing.JTextField" binding="textFieldEmail3">
-                                    <constraints>
-                                      <grid row="4" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="300" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="e60ba" class="javax.swing.JTextField" binding="textFieldEmail4">
-                                    <constraints>
-                                      <grid row="5" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="300" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="eeb4b" class="javax.swing.JTextField" binding="textFieldEmail5">
-                                    <constraints>
-                                      <grid row="6" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="300" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="f5c7d" class="javax.swing.JTextField" binding="textFieldEmail6">
-                                    <constraints>
-                                      <grid row="7" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="300" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="c52a1" class="javax.swing.JTextField" binding="textFieldEmail7">
-                                    <constraints>
-                                      <grid row="8" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="300" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="6847d" class="javax.swing.JTextField" binding="textFieldEmail8">
-                                    <constraints>
-                                      <grid row="9" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="300" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="2216e" class="javax.swing.JTextField" binding="textFieldEmail9">
-                                    <constraints>
-                                      <grid row="10" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="300" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="2c849" class="javax.swing.JTextField" binding="textFieldIndirizzoPrincipale">
-                                    <constraints>
-                                      <grid row="34" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="400" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <text value=""/>
-                                      <toolTipText value="Via,Civico,Città,Cap,Nazione"/>
-                                      <visible value="true"/>
-                                    </properties>
-                                  </component>
-                                  <component id="670ba" class="javax.swing.JLabel" binding="lblNumeroFissoCreaContatto">
-                                    <constraints>
-                                      <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="4" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-                                    </constraints>
-                                    <properties>
-                                      <enabled value="true"/>
-                                      <font size="20" style="1"/>
-                                      <text value="Numeri Fissi"/>
-                                    </properties>
-                                  </component>
-                                  <component id="939f3" class="javax.swing.JButton" binding="btnAddNumeriFissi">
-                                    <constraints>
-                                      <grid row="11" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16" style="1"/>
-                                      <text value="+"/>
-                                    </properties>
-                                  </component>
-                                  <component id="bb8fb" class="javax.swing.JTextField" binding="textFieldNumeriFissi0">
-                                    <constraints>
-                                      <grid row="12" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="140" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <editable value="true"/>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="true"/>
-                                    </properties>
-                                  </component>
-                                  <component id="48436" class="javax.swing.JTextField" binding="textFieldNumeriFissi1">
-                                    <constraints>
-                                      <grid row="13" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="140" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <editable value="true"/>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="ea8cb" class="javax.swing.JTextField" binding="textFieldNumeriFissi2">
-                                    <constraints>
-                                      <grid row="14" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="140" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <editable value="true"/>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="4881d" class="javax.swing.JTextField" binding="textFieldNumeriFissi3">
-                                    <constraints>
-                                      <grid row="15" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="140" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <editable value="true"/>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="d8ad7" class="javax.swing.JTextField" binding="textFieldNumeriFissi4">
-                                    <constraints>
-                                      <grid row="16" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="140" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <editable value="true"/>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="95570" class="javax.swing.JTextField" binding="textFieldNumeriFissi5">
-                                    <constraints>
-                                      <grid row="17" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="140" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <editable value="true"/>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="3e6d" class="javax.swing.JTextField" binding="textFieldNumeriFissi6">
-                                    <constraints>
-                                      <grid row="18" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="140" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <editable value="true"/>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="5bedc" class="javax.swing.JTextField" binding="textFieldNumeriFissi7">
-                                    <constraints>
-                                      <grid row="19" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="140" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <editable value="true"/>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="b1dfa" class="javax.swing.JTextField" binding="textFieldNumeriFissi8">
-                                    <constraints>
-                                      <grid row="20" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="140" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <editable value="true"/>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="b8c79" class="javax.swing.JTextField" binding="textFieldNumeriFissi9">
-                                    <constraints>
-                                      <grid row="21" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="140" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <editable value="true"/>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="5efdf" class="javax.swing.JButton" binding="btnBackEmail">
-                                    <constraints>
-                                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="4" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16" style="1"/>
-                                      <text value="-"/>
-                                      <visible value="true"/>
-                                    </properties>
-                                  </component>
-                                  <component id="3cc72" class="javax.swing.JButton" binding="btnBackNumeriFissi">
-                                    <constraints>
-                                      <grid row="11" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="4" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16" style="1"/>
-                                      <text value="-"/>
-                                      <visible value="true"/>
-                                    </properties>
-                                  </component>
-                                  <component id="84844" class="javax.swing.JLabel" binding="lblIndirizzoPrincipaleCreaContatto">
-                                    <constraints>
-                                      <grid row="33" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="4" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                                    </constraints>
-                                    <properties>
-                                      <font size="20" style="1"/>
-                                      <text value="Indirizzo Principale"/>
-                                    </properties>
-                                  </component>
-                                  <component id="b3981" class="javax.swing.JLabel" binding="lblNumeriMobiliCreaContatto">
-                                    <constraints>
-                                      <grid row="22" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-                                    </constraints>
-                                    <properties>
-                                      <font size="20" style="1"/>
-                                      <text value="Numeri Mobili"/>
-                                    </properties>
-                                  </component>
-                                  <component id="47fe1" class="javax.swing.JButton" binding="btnAddNumeriMobili">
-                                    <constraints>
-                                      <grid row="22" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16" style="1"/>
-                                      <text value="+"/>
-                                    </properties>
-                                  </component>
-                                  <component id="198a3" class="javax.swing.JButton" binding="btnBackNumeriMobili">
-                                    <constraints>
-                                      <grid row="22" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="4" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16" style="1"/>
-                                      <text value="-"/>
-                                      <visible value="true"/>
-                                    </properties>
-                                  </component>
-                                  <component id="c0841" class="javax.swing.JTextField" binding="textFieldNumeriMobili0">
-                                    <constraints>
-                                      <grid row="23" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="140" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <editable value="true"/>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="true"/>
-                                    </properties>
-                                  </component>
-                                  <component id="93c0d" class="javax.swing.JTextField" binding="textFieldNumeriMobili1">
-                                    <constraints>
-                                      <grid row="24" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="140" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <editable value="true"/>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="e70ac" class="javax.swing.JTextField" binding="textFieldNumeriMobili2">
-                                    <constraints>
-                                      <grid row="25" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="140" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <editable value="true"/>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="7dfc" class="javax.swing.JTextField" binding="textFieldNumeriMobili3">
-                                    <constraints>
-                                      <grid row="26" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="140" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <editable value="true"/>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="5ba45" class="javax.swing.JTextField" binding="textFieldNumeriMobili4">
-                                    <constraints>
-                                      <grid row="27" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="140" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <editable value="true"/>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="7b067" class="javax.swing.JTextField" binding="textFieldNumeriMobili5">
-                                    <constraints>
-                                      <grid row="28" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="140" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <editable value="true"/>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="40737" class="javax.swing.JTextField" binding="textFieldNumeriMobili6">
-                                    <constraints>
-                                      <grid row="29" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="140" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <editable value="true"/>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="82b7c" class="javax.swing.JTextField" binding="textFieldNumeriMobili7">
-                                    <constraints>
-                                      <grid row="30" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="140" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <editable value="true"/>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="28b9a" class="javax.swing.JTextField" binding="textFieldNumeriMobili8">
-                                    <constraints>
-                                      <grid row="31" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="140" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <editable value="true"/>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="e9343" class="javax.swing.JTextField" binding="textFieldNumeriMobili9">
-                                    <constraints>
-                                      <grid row="32" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="140" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <editable value="true"/>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="e1667" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari0">
-                                    <constraints>
-                                      <grid row="36" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="400" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="true"/>
-                                    </properties>
-                                  </component>
-                                  <component id="51293" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari1">
-                                    <constraints>
-                                      <grid row="37" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="400" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="6d8fe" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari2">
-                                    <constraints>
-                                      <grid row="38" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="400" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="742f3" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari3">
-                                    <constraints>
-                                      <grid row="39" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="400" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="d4f5a" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari4">
-                                    <constraints>
-                                      <grid row="40" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="400" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="41e50" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari5">
-                                    <constraints>
-                                      <grid row="41" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="400" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="9576c" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari6">
-                                    <constraints>
-                                      <grid row="42" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="400" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="127d6" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari7">
-                                    <constraints>
-                                      <grid row="43" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="400" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="8b890" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari8">
-                                    <constraints>
-                                      <grid row="44" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="400" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="e4989" class="javax.swing.JTextField" binding="textFieldIndirizziSecondari9">
-                                    <constraints>
-                                      <grid row="45" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                        <preferred-size width="400" height="-1"/>
-                                      </grid>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <horizontalAlignment value="0"/>
-                                      <visible value="false"/>
-                                    </properties>
-                                  </component>
-                                  <component id="8d4f6" class="javax.swing.JLabel" binding="lblIndirizziSecondariCreaContatto">
-                                    <constraints>
-                                      <grid row="35" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="4" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-                                    </constraints>
-                                    <properties>
-                                      <font size="20" style="1"/>
-                                      <text value="Indirizzi Secondari"/>
-                                    </properties>
-                                  </component>
-                                  <component id="1789c" class="javax.swing.JButton" binding="btnAddIndirizziSecondari">
-                                    <constraints>
-                                      <grid row="35" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16" style="1"/>
-                                      <text value="+"/>
-                                    </properties>
-                                  </component>
-                                  <component id="f339" class="javax.swing.JButton" binding="btnBackIndirizziSecondari">
-                                    <constraints>
-                                      <grid row="35" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="4" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16" style="1"/>
-                                      <text value="-"/>
-                                      <visible value="true"/>
-                                    </properties>
-                                  </component>
-                                </children>
-                              </grid>
-                            </children>
-                          </scrollpane>
+                          </splitpane>
                         </children>
                       </grid>
                     </children>
@@ -1506,14 +1683,232 @@
               </grid>
             </children>
           </splitpane>
-          <grid id="edac0" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="edac0" binding="panelGruppi" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <tabbedpane title="Gruppi"/>
             </constraints>
             <properties/>
             <border type="none"/>
-            <children/>
+            <children>
+              <splitpane id="df1f7" binding="splitPaneGruppi">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="200" height="200"/>
+                  </grid>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <grid id="93f93" binding="panelListaGruppi" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <splitpane position="left"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <scrollpane id="d3ed4" binding="scrollPaneListaGruppi">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <component id="4ec5e" class="javax.swing.JList" binding="listNomiGruppi">
+                            <constraints/>
+                            <properties>
+                              <font size="18"/>
+                              <selectionBackground color="-9932033"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </scrollpane>
+                      <grid id="d81a4" binding="panelSearchGruppo" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="0" left="0" bottom="0" right="0"/>
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <component id="ea989" class="javax.swing.JTextField" binding="textFieldGruppo">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="4" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font size="18"/>
+                            </properties>
+                          </component>
+                          <component id="7e0ac" class="javax.swing.JButton" binding="btnSearchGruppo">
+                            <constraints>
+                              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="2" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font size="18"/>
+                              <text value=""/>
+                            </properties>
+                          </component>
+                          <component id="dbb53" class="javax.swing.JComboBox" binding="comboBoxGruppo">
+                            <constraints>
+                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="3" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font size="12"/>
+                              <maximumRowCount value="8"/>
+                              <model>
+                                <item value="GRUPPO"/>
+                                <item value="CONTATTO"/>
+                              </model>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                  <grid id="e1b90" binding="panelInfoGruppo" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <splitpane position="right"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="2f633" class="javax.swing.JLabel" binding="lblInfoNomeGruppo">
+                        <constraints>
+                          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font size="48"/>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                      <grid id="15d42" binding="panelInfoGruppoScroll" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="0" left="0" bottom="0" right="0"/>
+                        <constraints>
+                          <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <scrollpane id="fe846" binding="scrollPaneInfoGruppo">
+                            <constraints>
+                              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties/>
+                            <border type="none"/>
+                            <children>
+                              <component id="41e3c" class="javax.swing.JLabel" binding="lblNomiGruppoPartecipanti">
+                                <constraints/>
+                                <properties>
+                                  <font size="18"/>
+                                  <horizontalAlignment value="0"/>
+                                  <text value=""/>
+                                  <verticalAlignment value="1"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </scrollpane>
+                          <component id="842b" class="javax.swing.JLabel" binding="lblPartecipanti">
+                            <constraints>
+                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font size="20" style="1"/>
+                              <text value="Membri del gruppo"/>
+                            </properties>
+                          </component>
+                          <vspacer id="736d7">
+                            <constraints>
+                              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                                <preferred-size width="-1" height="20"/>
+                              </grid>
+                            </constraints>
+                          </vspacer>
+                          <vspacer id="4d9f1">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                                <preferred-size width="-1" height="35"/>
+                              </grid>
+                            </constraints>
+                          </vspacer>
+                        </children>
+                      </grid>
+                      <vspacer id="8e023">
+                        <constraints>
+                          <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                            <preferred-size width="-1" height="25"/>
+                          </grid>
+                        </constraints>
+                      </vspacer>
+                      <vspacer id="6b5de">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                            <preferred-size width="-1" height="20"/>
+                          </grid>
+                        </constraints>
+                      </vspacer>
+                      <grid id="82b83" binding="panelBottoni" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="0" left="0" bottom="0" right="0"/>
+                        <constraints>
+                          <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <component id="64051" class="javax.swing.JButton" binding="btnEliminaGruppo">
+                            <constraints>
+                              <grid row="0" column="2" row-span="2" col-span="1" vsize-policy="0" hsize-policy="3" anchor="6" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font size="20"/>
+                              <text value="Elimina"/>
+                            </properties>
+                          </component>
+                          <hspacer id="a302f">
+                            <constraints>
+                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                          </hspacer>
+                          <component id="f51be" class="javax.swing.JButton" binding="btnBackGruppo">
+                            <constraints>
+                              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="4" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font size="20"/>
+                              <horizontalAlignment value="0"/>
+                              <text value=""/>
+                            </properties>
+                          </component>
+                          <hspacer id="40277">
+                            <constraints>
+                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                                <preferred-size width="10" height="-1"/>
+                              </grid>
+                            </constraints>
+                          </hspacer>
+                        </children>
+                      </grid>
+                      <component id="5e09" class="javax.swing.JLabel" binding="lblFotoGruppo">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                      <hspacer id="1d430">
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="70" height="-1"/>
+                          </grid>
+                        </constraints>
+                      </hspacer>
+                    </children>
+                  </grid>
+                </children>
+              </splitpane>
+            </children>
           </grid>
           <splitpane id="4e528" binding="SplitPaneAreaPrivata">
             <constraints>
@@ -1546,6 +1941,7 @@
                         <constraints/>
                         <properties>
                           <font size="18"/>
+                          <selectionBackground color="-9932033"/>
                         </properties>
                       </component>
                     </children>
@@ -2003,7 +2399,7 @@
               </grid>
             </children>
           </splitpane>
-          <grid id="a1441" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="a1441" binding="panelVuoto" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <tabbedpane title=""/>
