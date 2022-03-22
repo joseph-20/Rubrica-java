@@ -30,6 +30,7 @@ public class ImplementazioneReindirizzamentoPostgresDAO implements Reindirizzame
         //QUERY DI CREAZIONE REINDIRIZZAMENTO
         s.executeUpdate("INSERT INTO REINDIRIZZAMENTO " +
                 "VALUES ('"+numero_fisso.substring(0,3)+"','"+numero_fisso.substring(3)+"',"+pk+",'"+numero_mobile.substring(0,3)+"','"+numero_mobile.substring(3)+"')");
+        s.close();
     }
 
 
@@ -38,6 +39,7 @@ public class ImplementazioneReindirizzamentoPostgresDAO implements Reindirizzame
         //QUERY DI ELIMINAZIONE
         s.executeUpdate("DELETE FROM REINDIRIZZAMENTO " +
                 "WHERE ID_CONTATTO_FISSO = "+pk);
+        s.close();
     }
 
 
@@ -55,6 +57,8 @@ public class ImplementazioneReindirizzamentoPostgresDAO implements Reindirizzame
                     + "\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+rs.getString("prefisso_mobile")+" "+rs.getString("numero_mobile")+"<br/>";
             cont++;
         }
+        rs.close();
+        s.close();
         if(cont == 0) return null;
         else return reindirizzamento+"<html>";
     }
@@ -67,6 +71,7 @@ public class ImplementazioneReindirizzamentoPostgresDAO implements Reindirizzame
         s.executeUpdate("UPDATE REINDIRIZZAMENTO " +
                 "SET ID_CONTATTO_FISSO = "+lastId+" " +
                 "WHERE ID_CONTATTO_FISSO = "+precId);
+        s.close();
     }
 
 
@@ -77,5 +82,6 @@ public class ImplementazioneReindirizzamentoPostgresDAO implements Reindirizzame
         s.executeUpdate("DELETE FROM REINDIRIZZAMENTO AS R " +
                 "WHERE R.PREFISSO_FISSO NOT IN (SELECT NF.PREFISSO FROM NUMERO_FISSO AS NF WHERE NF.NUMERO = R.NUMERO_FISSO) " +
                 "OR R.PREFISSO_MOBILE NOT IN (SELECT NM.PREFISSO FROM NUMERO_MOBILE AS NM WHERE NM.NUMERO = R.NUMERO_MOBILE)");
+        s.close();
     }
 }

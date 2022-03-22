@@ -39,6 +39,8 @@ public class ImplementazioneIndirizzoPrincipalePostgresDAO implements IndirizzoP
             cont++;
         }
         indirizzoPrincipale = indirizzoPrincipale+"<br/><html>";
+        rs.close();
+        s.close();
         if(cont==0) return "NOT FOUND";
         return indirizzoPrincipale;
     }
@@ -56,6 +58,8 @@ public class ImplementazioneIndirizzoPrincipalePostgresDAO implements IndirizzoP
             indirizzoPrincipale = indirizzoPrincipale+(rs.getString("via")+","+rs.getString("civico")+","+rs.getString("citta")+","+rs.getString("cap")+","+rs.getString("nazione"));
             cont++;
         }
+        rs.close();
+        s.close();
         if(cont==0) return "NOT FOUND";
         return indirizzoPrincipale;
     }
@@ -82,5 +86,8 @@ public class ImplementazioneIndirizzoPrincipalePostgresDAO implements IndirizzoP
         nazione = indirizzo.substring(indextmp+1);
             s.executeUpdate("INSERT INTO INDIRIZZO_PRINCIPALE (VIA,CIVICO,CITTA,CAP,NAZIONE,ID_CONTATTO)" +
                     "VALUES ('"+via+"','"+civico+"','"+citta+"','"+cap+"','"+nazione+"',"+id+")");
+        rs.close();
+        s.close();
     }
+
 }

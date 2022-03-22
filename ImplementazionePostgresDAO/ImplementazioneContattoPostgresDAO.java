@@ -156,7 +156,10 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
         while (rs.next()) {
             path = rs.getString("FOTO");
         }
+        rs.close();
+        s.close();
         return path;
+
     }
 
 
@@ -169,6 +172,8 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
         while (rs.next()) {
             name = rs.getString("NOME");
         }
+        rs.close();
+        s.close();
         return name;
     }
 
@@ -182,6 +187,8 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
         while (rs.next()) {
             surname = rs.getString("COGNOME");
         }
+        rs.close();
+        s.close();
         return surname;
     }
 
@@ -195,6 +202,8 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
         s.executeUpdate("DELETE " +
                         "FROM SISTEMA_DI_MESSAGING " +
                         "WHERE ID_CONTATTO = " + pk);
+
+        s.close();
     }
 
 
@@ -209,6 +218,8 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
         while (rs.next()) {
             pk = rs.getInt("id");
         }
+        rs.close();
+        s.close();
         return pk;
     }
 
@@ -220,6 +231,8 @@ public class ImplementazioneContattoPostgresDAO implements ContattoDAO {
         while (rs.next()) {
             pk = rs.getInt(1);
         }
+        rs.close();
+        s.close();
         return pk;
     }
 }

@@ -51,6 +51,8 @@ public class ImplementazioneIndirizziSecondariPostgresDAO implements IndirizziSe
         while(rs.next()){
             num = rs.getInt("CONTEGGIO");
         }
+        rs.close();
+        s.close();
         return num;
     }
 
@@ -65,6 +67,8 @@ public class ImplementazioneIndirizziSecondariPostgresDAO implements IndirizziSe
         while(rs.next()){
             array.add(rs.getString("VIA")+","+rs.getString("CIVICO")+","+rs.getString("CITTA")+","+rs.getString("CAP")+","+rs.getString("NAZIONE"));
         }
+        rs.close();
+        s.close();
     }
 
 
@@ -92,5 +96,7 @@ public class ImplementazioneIndirizziSecondariPostgresDAO implements IndirizziSe
             s.executeUpdate("INSERT INTO INDIRIZZO_SECONDARIO (VIA,CIVICO,CITTA,CAP,NAZIONE,ID_CONTATTO)" +
                     "VALUES ('" + via + "','" + civico + "','" + citta + "','" + cap + "','" + nazione + "'," + id + ")");
         }
+        rs.close();
+        s.close();
     }
 }

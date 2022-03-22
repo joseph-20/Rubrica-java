@@ -42,6 +42,8 @@ public class ImplementazioneNumeriFissiPostgresDAO implements NumeriFissiDAO {
             cont++;
         }
         numeriFissi = numeriFissi+"<br/><html>";
+        rs.close();
+        s.close();
         if(cont==0) return "NOT FOUND";
         return numeriFissi;
     }
@@ -54,6 +56,7 @@ public class ImplementazioneNumeriFissiPostgresDAO implements NumeriFissiDAO {
             s.executeUpdate("INSERT INTO NUMERO_FISSO " +
                     "VALUES ('"+prefisso.get(i)+"','"+numero.get(i)+"',"+id+")");
         }
+        s.close();
     }
 
 
@@ -66,6 +69,8 @@ public class ImplementazioneNumeriFissiPostgresDAO implements NumeriFissiDAO {
         while(rs.next()){
             num = rs.getInt("CONTEGGIO");
         }
+        rs.close();
+        s.close();
         return num;
     }
 
@@ -80,6 +85,8 @@ public class ImplementazioneNumeriFissiPostgresDAO implements NumeriFissiDAO {
         while(rs.next()){
             array.add(rs.getString("PREFISSO")+rs.getString("NUMERO"));
         }
+        rs.close();
+        s.close();
     }
 
 

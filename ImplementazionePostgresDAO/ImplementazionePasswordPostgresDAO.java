@@ -33,6 +33,7 @@ public class ImplementazionePasswordPostgresDAO implements PasswordDAO {
         //QUERY DI INSERIMENTO PASSWORD
         s.executeUpdate("INSERT INTO AREA_PRIVATA " +
                         "VALUES('"+pw+"')");
+        s.close();
     }
 
     public String getPassword () throws SQLException {
@@ -46,6 +47,8 @@ public class ImplementazionePasswordPostgresDAO implements PasswordDAO {
             password = rs.getString("PASSWORD");
             cont++;
         }
+        rs.close();
+        s.close();
         if(cont==0){
             return null;
         }else{

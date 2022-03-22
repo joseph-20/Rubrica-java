@@ -42,6 +42,8 @@ public class ImplementazioneNumeriMobiliPostgresDAO implements NumeriMobiliDAO {
             cont++;
         }
         numeriMobili = numeriMobili+"<br/><html>";
+        rs.close();
+        s.close();
         if(cont==0) return "NOT FOUND";
         return numeriMobili;
     }
@@ -54,6 +56,7 @@ public class ImplementazioneNumeriMobiliPostgresDAO implements NumeriMobiliDAO {
             s.executeUpdate("INSERT INTO NUMERO_MOBILE " +
                     "VALUES ('"+prefisso.get(i)+"','"+numero.get(i)+"',"+id+")");
         }
+        s.close();
     }
 
 
@@ -66,6 +69,8 @@ public class ImplementazioneNumeriMobiliPostgresDAO implements NumeriMobiliDAO {
         while(rs.next()){
             num = rs.getInt("CONTEGGIO");
         }
+        rs.close();
+        s.close();
         return num;
     }
 
@@ -80,6 +85,8 @@ public class ImplementazioneNumeriMobiliPostgresDAO implements NumeriMobiliDAO {
         while(rs.next()){
             array.add(rs.getString("PREFISSO")+rs.getString("NUMERO"));
         }
+        rs.close();
+        s.close();
     }
 
 

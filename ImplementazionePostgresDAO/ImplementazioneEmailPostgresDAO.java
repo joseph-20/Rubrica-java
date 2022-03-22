@@ -46,6 +46,8 @@ public class ImplementazioneEmailPostgresDAO implements EmailDAO {
             cont++;
         }
         email = email+"<br/><html>";
+        rs.close();
+        s.close();
         if(cont==0) return "NOT FOUND";
         return email;
     }
@@ -63,6 +65,7 @@ public class ImplementazioneEmailPostgresDAO implements EmailDAO {
             s.executeUpdate("INSERT INTO EMAIL " +
                             "VALUES ('"+username.get(i)+"','"+dominio.get(i)+"',"+id+")");
         }
+        s.close();
     }
 
 
@@ -75,6 +78,8 @@ public class ImplementazioneEmailPostgresDAO implements EmailDAO {
         while(rs.next()){
             num = rs.getInt("CONTEGGIO");
         }
+        rs.close();
+        s.close();
         return num;
     }
 
@@ -89,6 +94,8 @@ public class ImplementazioneEmailPostgresDAO implements EmailDAO {
         while(rs.next()){
             array.add(rs.getString("USERNAME")+"@"+rs.getString("DOMINIO"));
         }
+        rs.close();
+        s.close();
     }
 
 

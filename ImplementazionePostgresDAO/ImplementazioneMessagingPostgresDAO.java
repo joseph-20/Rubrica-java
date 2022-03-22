@@ -47,6 +47,8 @@ public class ImplementazioneMessagingPostgresDAO implements MessagingDAO {
             servizio = rs.getString("SERVIZIO");
             cont++;
         }
+        rs.close();
+        s.close();
         if(cont==0){
             return null;
         }
@@ -63,6 +65,8 @@ public class ImplementazioneMessagingPostgresDAO implements MessagingDAO {
         while(rs.next()){
             username = rs.getString("username");
         }
+        rs.close();
+        s.close();
         return username;
     }
 
@@ -76,6 +80,8 @@ public class ImplementazioneMessagingPostgresDAO implements MessagingDAO {
         while(rs.next()){
             email = rs.getString("EMAIL_USERNAME")+"@"+rs.getString("EMAIL_DOMINIO");
         }
+        rs.close();
+        s.close();
         return email;
     }
 
@@ -89,6 +95,8 @@ public class ImplementazioneMessagingPostgresDAO implements MessagingDAO {
         while(rs.next()){
             stato = rs.getString("STATO");
         }
+        rs.close();
+        s.close();
         return stato;
     }
 
@@ -102,6 +110,7 @@ public class ImplementazioneMessagingPostgresDAO implements MessagingDAO {
         //QUERY DI CREAZIONE MESSAGING
         s.executeUpdate("INSERT INTO SISTEMA_DI_MESSAGING " +
                         "VALUES ('"+username+"','"+servizio+"','"+stato+"','"+emailUsername+"','"+emailDominio+"',"+pk+")");
+        s.close();
     }
 
 
@@ -110,6 +119,7 @@ public class ImplementazioneMessagingPostgresDAO implements MessagingDAO {
         //QUERY DI ELIMINAZIONE
         s.executeUpdate("DELETE FROM SISTEMA_DI_MESSAGING " +
                 "WHERE ID_CONTATTO = "+pk);
+        s.close();
         }
 
 
@@ -180,6 +190,7 @@ public class ImplementazioneMessagingPostgresDAO implements MessagingDAO {
        s.executeUpdate("UPDATE SISTEMA_DI_MESSAGING " +
                         "SET ID_CONTATTO = "+lastId+" " +
                         "WHERE ID_CONTATTO = "+precId);
+       s.close();
     }
 
 
@@ -189,5 +200,6 @@ public class ImplementazioneMessagingPostgresDAO implements MessagingDAO {
         //QUERY DI AGGIORNAMENTO
         s.executeUpdate("DELETE FROM SISTEMA_DI_MESSAGING " +
                         "WHERE EMAIL_USERNAME NOT IN (SELECT USERNAME FROM EMAIL WHERE DOMINIO = EMAIL_DOMINIO)");
+        s.close();
     }
 }

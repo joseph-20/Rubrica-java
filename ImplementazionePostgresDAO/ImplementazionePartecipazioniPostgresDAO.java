@@ -36,6 +36,7 @@ public class ImplementazionePartecipazioniPostgresDAO implements PartecipazioniD
             s.executeUpdate("INSERT INTO PARTECIPAZIONE " +
                     "VALUES (" + pk.get(i) + ",'"+gruppo+"')");
         }
+        s.close();
     }
 
     public void setIdToLast (int precId,int lastId) throws SQLException {
@@ -45,6 +46,7 @@ public class ImplementazionePartecipazioniPostgresDAO implements PartecipazioniD
         s.executeUpdate("UPDATE PARTECIPAZIONE " +
                 "SET ID_CONTATTO = "+lastId+" " +
                 "WHERE ID_CONTATTO = "+precId);
+        s.close();
     }
 
     public String getPartecipanti (String gruppo) throws SQLException {
@@ -58,6 +60,8 @@ public class ImplementazionePartecipazioniPostgresDAO implements PartecipazioniD
             partecipanti = partecipanti+rs.getString("NOME")+" "+rs.getString("COGNOME")+"<br/>";
         }
         partecipanti = partecipanti+"<html>";
+        rs.close();
+        s.close();
         return partecipanti;
     }
 
@@ -66,6 +70,7 @@ public class ImplementazionePartecipazioniPostgresDAO implements PartecipazioniD
 
         //QUERY DI ELIMINAZIONE DEI PARTECIPANTI AL GRUPPO
         s.executeUpdate("DELETE FROM PARTECIPAZIONE WHERE NOME_GRUPPO = '"+gruppo+"'");
+        s.close();
     }
 
     public DefaultListModel getGruppiSearchContatto(String ricerca) throws SQLException {
@@ -94,6 +99,8 @@ public class ImplementazionePartecipazioniPostgresDAO implements PartecipazioniD
         while (rs.next()) {                                   //Finche non scorro tutto il resultSet
             DLMGruppi.addElement(rs.getString("NOME_GRUPPO"));
         }
+        rs.close();
+        s.close();
         return DLMGruppi;
     }
 }

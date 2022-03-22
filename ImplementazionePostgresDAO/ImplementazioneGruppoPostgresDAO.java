@@ -43,6 +43,8 @@ public class ImplementazioneGruppoPostgresDAO implements GruppoDAO {
         while(rs.next()){
             DLMGruppi.addElement(rs.getString("nome"));
         }
+        rs.close();
+        s.close();
         return DLMGruppi;
     }
 
@@ -62,6 +64,8 @@ public class ImplementazioneGruppoPostgresDAO implements GruppoDAO {
         while (rs.next()) {                                   //Finche non scorro tutto il resultSet
             DLMGruppi.addElement(rs.getString("NOME"));
         }
+        rs.close();
+        s.close();
         return DLMGruppi;
     }
 
