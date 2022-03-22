@@ -2010,7 +2010,7 @@ public class Window {
                 //indirizzo principale
                 textFieldIndirizzoPrincipale.setText(null);
                 //indirizzi secondari
-                textFieldIndirizziSecondari0.setText(null);
+                textFieldIndirizziSecondari0.setText("");
                 textFieldIndirizziSecondari1.setText(null);
                 textFieldIndirizziSecondari1.setVisible(false);
                 textFieldIndirizziSecondari2.setText(null);
@@ -2129,7 +2129,7 @@ public class Window {
                 //indirizzo principale
                 textFieldIndirizzoPrincipale.setText(null);
                 //indirizzi secondari
-                textFieldIndirizziSecondari0.setText(null);
+                textFieldIndirizziSecondari0.setText("");
                 textFieldIndirizziSecondari1.setText(null);
                 textFieldIndirizziSecondari1.setVisible(false);
                 textFieldIndirizziSecondari2.setText(null);
@@ -3775,7 +3775,7 @@ public class Window {
                     //indirizzo principale
                     textFieldIndirizzoPrincipale.setText(null);
                     //indirizzi secondari
-                    textFieldIndirizziSecondari0.setText(null);
+                    textFieldIndirizziSecondari0.setText("");
                     textFieldIndirizziSecondari1.setText(null);
                     textFieldIndirizziSecondari1.setVisible(false);
                     textFieldIndirizziSecondari2.setText(null);
@@ -4048,10 +4048,11 @@ public class Window {
                     //Settaggio Cognome
                     textFieldCognome.setText(c.getCognome(pkContatti.get(listContatti.getSelectedIndex())));
                     //Settaggio Email
-                    if(contEmail==1 && !textFieldEmail0.getText().equals("")){
+                    if(contEmail==1){
                         c.getArrayEmail(getStrings, pkContatti.get(listContatti.getSelectedIndex()));
                         textFieldEmail0.setText(getStrings.get(0));
                     }
+                    else if (contEmail==0) contEmail=1;
                     switch (contEmail) {
                         case 2:
                             c.getArrayEmail(getStrings, pkContatti.get(listContatti.getSelectedIndex()));
@@ -4182,10 +4183,11 @@ public class Window {
                     }
 
                     //Settaggio NumeriFissi
-                    if(contNumeriFissi==1 && !textFieldNumeriFissi0.getText().equals("")){
+                    if(contNumeriFissi==1){
                         c.getArrayNumeriFissi(getStrings, pkContatti.get(listContatti.getSelectedIndex()));
                         textFieldNumeriFissi0.setText(getStrings.get(0));
                     }
+                    else if (contNumeriFissi==0) contNumeriFissi=1;
                     switch (contNumeriFissi) {
                         case 2:
                             c.getArrayNumeriFissi(getStrings, pkContatti.get(listContatti.getSelectedIndex()));
@@ -4317,10 +4319,11 @@ public class Window {
                     }
 
                     //Settaggio NumeriMobili
-                    if(contNumeriMobili==1 && !textFieldNumeriMobili0.getText().equals("")){
+                    if(contNumeriMobili==1){
                         c.getArrayNumeriMobili(getStrings, pkContatti.get(listContatti.getSelectedIndex()));
                         textFieldNumeriMobili0.setText(getStrings.get(0));
                     }
+                    else if(contNumeriMobili==0) contNumeriMobili=1;
                     switch (contNumeriMobili) {
                         case 2:
                             c.getArrayNumeriMobili(getStrings, pkContatti.get(listContatti.getSelectedIndex()));
@@ -4456,10 +4459,11 @@ public class Window {
                     }
 
                     //Settaggio IndirizziSecondari
-                    if(contIndirizziSecondari==1 && !textFieldIndirizziSecondari0.getText().equals("")){
+                    if(contIndirizziSecondari==1){
                         c.getArrayIndirizziSecondari(getStrings, pkContatti.get(listContatti.getSelectedIndex()));
                         textFieldIndirizziSecondari0.setText(getStrings.get(0));
                     }
+                    else if (contIndirizziSecondari==0) contIndirizziSecondari=1;
                     switch (contIndirizziSecondari) {
                         case 2:
                             c.getArrayIndirizziSecondari(getStrings, pkContatti.get(listContatti.getSelectedIndex()));
@@ -6012,6 +6016,74 @@ public class Window {
                         //QUERY CREA INDIRIZZO PRINCIPALE
                         c.creaIndirizzoPrincipale(textFieldIndirizzoPrincipale.getText(),getpk);
 
+                        //QUERY CREA INDIRIZZI SECONDARI
+                        if(contIndirizziSecondari==1 && !textFieldIndirizziSecondari0.getText().equals("")){
+                            c.creaIndirizzoSecondario(textFieldIndirizziSecondari0.getText(),getpk);
+                        }
+                        switch(contIndirizziSecondari){
+                            case 2: c.creaIndirizzoSecondario(textFieldIndirizziSecondari0.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari1.getText(),getpk);
+                                break;
+                            case 3 : c.creaIndirizzoSecondario(textFieldIndirizziSecondari0.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari1.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari2.getText(),getpk);
+                                break;
+                            case 4 : c.creaIndirizzoSecondario(textFieldIndirizziSecondari0.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari1.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari2.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari3.getText(),getpk);
+                                break;
+                            case 5 : c.creaIndirizzoSecondario(textFieldIndirizziSecondari0.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari1.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari2.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari3.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari4.getText(),getpk);
+                                break;
+                            case 6 : c.creaIndirizzoSecondario(textFieldIndirizziSecondari0.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari1.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari2.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari3.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari4.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari5.getText(),getpk);
+                                break;
+                            case 7 : c.creaIndirizzoSecondario(textFieldIndirizziSecondari0.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari1.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari2.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari3.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari4.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari5.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari6.getText(),getpk);
+                                break;
+                            case 8 : c.creaIndirizzoSecondario(textFieldIndirizziSecondari0.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari1.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari2.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari3.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari4.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari5.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari6.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari7.getText(),getpk);
+                                break;
+                            case 9 : c.creaIndirizzoSecondario(textFieldIndirizziSecondari0.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari1.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari2.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari3.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari4.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari5.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari6.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari7.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari8.getText(),getpk);
+                                break;
+                            case 10 : c.creaIndirizzoSecondario(textFieldIndirizziSecondari0.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari1.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari2.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari3.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari4.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari5.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari6.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari7.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari8.getText(),getpk);
+                                c.creaIndirizzoSecondario(textFieldIndirizziSecondari9.getText(),getpk);
+                        }
                     } catch (SQLException ex) {
                         ex.printStackTrace();
                     }

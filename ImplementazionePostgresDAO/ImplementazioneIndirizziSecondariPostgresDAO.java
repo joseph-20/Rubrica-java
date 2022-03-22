@@ -51,7 +51,6 @@ public class ImplementazioneIndirizziSecondariPostgresDAO implements IndirizziSe
         while(rs.next()){
             num = rs.getInt("CONTEGGIO");
         }
-        if(num==0) num=1;
         return num;
     }
 
@@ -59,7 +58,7 @@ public class ImplementazioneIndirizziSecondariPostgresDAO implements IndirizziSe
     public void getArrayIndirizziSecondari (ArrayList<String> array, int pk) throws SQLException{
         s = connection.createStatement();
         array.clear();
-        //QUERY DI CONTEGGIO
+        //QUERY DI OTTENIMENTO INDIRIZZO
         rs = s.executeQuery("SELECT VIA,CIVICO,CITTA,CAP,NAZIONE " +
                 "FROM INDIRIZZO_SECONDARIO " +
                 "WHERE ID_CONTATTO = "+pk);

@@ -75,16 +75,14 @@ public class ImplementazioneEmailPostgresDAO implements EmailDAO {
         while(rs.next()){
             num = rs.getInt("CONTEGGIO");
         }
-        if(num==0) num=1;
         return num;
     }
 
 
     public void getArrayEmail (ArrayList<String> array,int pk) throws SQLException{
         s = connection.createStatement();
-        cont = 0;
         array.clear();
-        //QUERY DI CONTEGGIO
+        //QUERY DI OTTENIMENTO USERNAME DOMINIO
         rs = s.executeQuery("SELECT USERNAME,DOMINIO " +
                 "FROM EMAIL " +
                 "WHERE ID_CONTATTO = "+pk);
